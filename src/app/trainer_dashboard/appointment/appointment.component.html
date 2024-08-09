@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <h1 class="my-3 text-center">Appointment</h1>
+    </div>
+    <div class="row">
+        <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">User Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <td scope="col">Action</td>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let Apmt of showAppointmentData">
+                    <td>Sagar Singh</td>
+                    <td>{{Apmt.date}}</td>
+                    <td>{{Apmt.time}}</td>
+                    <td><button (click)="onDelete(Apmt._id)" class="btn btn-primary">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    </div>
+</div>

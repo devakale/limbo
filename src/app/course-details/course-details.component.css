@@ -1,0 +1,84 @@
+.text-color{
+    color: #674ACB;
+}
+.card-user{
+    border: 1px solid black ;
+    padding: 5px 5px 0 5px;
+    border-radius: 5px;
+  }
+  .checked {
+    color: orange;
+  }
+  .btn-phone{
+    color: white;
+    background-color: #674ACB;
+  }
+  .btn-whatsapp{
+    color: white;
+    background-color: #F96D63;
+  }
+
+  
+.btn1{
+    background: rgb(97,73,205);
+    background: linear-gradient(90deg, rgba(97,73,205,1) 0%, rgba(166,84,172,1) 50%, rgba(234,95,139,1) 100%);
+    color: white;
+    border-radius: 25px;
+    width: 90%;
+    text-align: center;
+}
+.btnq{
+    background: rgb(97,73,205);
+    background: linear-gradient(90deg, rgba(97,73,205,1) 0%, rgba(166,84,172,1) 50%, rgba(234,95,139,1) 100%);
+    color: white;
+    border-radius: 25px;
+    text-align: center;
+}
+.btn-0{
+    background-color: #F96D63;
+    color: white;
+}
+.rounded-box{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.card-title{
+    color: #674ACB;
+}
+.modify{
+   background-color: #674ACB !important;
+}
+.left-side-top{
+    background-color: #F9C4C4;
+    padding: 5px 15px 5px 15px;
+    font-size: large;
+    border: none;
+    position: absolute;
+    top: 0%;
+    margin-top: 10px;
+  }
+  .img-resize{
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  /* .carousel {
+    background-color: #f2f2f2;
+  } */
+
+  .carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #000; /* Adjust color as needed */
+  }
+
+  .textonimage{
+    position: absolute;
+    margin-left: 40px;
+    margin-top: 120px;
+  }
+
+
+  

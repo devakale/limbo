@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="row">
+        <h1 class="my-3 text-center">Event</h1>
+
+    </div>
+    <div class="col-sm-12 col-lg-12 d-flex gap-5 justify-content-start my-3"> 
+        <button class="btn rounded-pill text-light " data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" style="background-color: #674ACB;width: 150px;">Add New Event</button>
+    </div>
+    <div class="row">
+        <div class="table-responsive">
+        <table class="table ">
+            <thead>
+                <tr>
+                <th scope="col">Event Name</th>
+                <th scope="col">Event Mode</th>
+                <th scope="col">Categories</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Time</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let event of showeventdata">
+                    <td>{{event.event_name}}</td>
+                    <td>{{event.event_type}}</td>
+                    <td>{{event.event_categories}}</td>
+                    <td>{{event.event_start_time}}</td>
+                    <td>{{event.event_end_time}}</td>
+                    <td><button (click)="onDelete(event._id)" class="btn btn-danger">Delete</button><button routerLink="/editevent/{{event._id}}" class="btn btn-primary ms-3">Update</button></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+
+
+
+<!-- Model For Add New Courses -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Event</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form (ngSubmit)="onSubmit()">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="event_name" class="col-form-label">Event Name:</label>
+                <input class="form-control" type="text" id="event_name" [(ngModel)]="event.event_name" name="event_name" required>  
+              </div> 
+        
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="event_type" class="col-form-label">Event Type:</label>
+                <input class="form-control"   type="text" id="event_type" [(ngModel)]="event.event_type" name="event_type"  required>  
+              </div> 
+        
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="event_categories" class="col-form-label">Event Category:</label>
+                <input class="form-control" type="text" id="event_categories" [(ngModel)]="event.event_categories" name="event_categories" required>
+              </div>
+        
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="event_start_time" class="col-form-label">Event Start Time:</label>
+                <input class="form-control" type="text"  id="event_start_time" [(ngModel)]="event.event_start_time" name="event_start_time" required>
+              </div> 
+        
+              <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                <label for="event_end_time" class="col-form-label">Event End Time:</label>
+                <input type="text" class="form-control" id="event_end_time" [(ngModel)]="event.event_end_time" name="event_end_time" required>
+              </div> 
+
+              <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                <label for="trainerid" class="col-form-label">Trainer:</label>
+                <input type="text" class="form-control" id="trainerid" [(ngModel)]="event.trainerid" name="trainerid" required>
+              </div> 
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add Event</button>
+          </div>
+        </form>
+        
+      </div>
+
+  
+    </div>
+
+  </div>

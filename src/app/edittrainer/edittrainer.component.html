@@ -1,0 +1,164 @@
+<div class="container">
+    <div *ngIf="currentRow === 0" class="row">
+        <h2>Personal Information</h2>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Name</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Email</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Password</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Mobile Number</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Whatsapp Number</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Date of Birth</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Address Line 1</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Address Line 2</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">City</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Pincode</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">State</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Country</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="text-end">
+            <button (click)="nextRow()" class="btn text-light" style="background-color: #674ACB;">Next</button>
+        </div>
+       
+    </div>
+
+    <div *ngIf="currentRow === 1" class="row">
+        <h2>Social Information</h2>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Facebook</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Instagram</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Youtube</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Linkedin</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="12">
+            <h2>Educational Information</h2>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">School Name</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">College Name</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Degree</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">University Name</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Other Details</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+       
+        <div class="d-flex align-items-center justify-content-between">
+            <button (click)="previousRow()" class="btn text-light rounded-pill" style="background-color: #F96D63;">Back</button>
+            <button (click)="nextRow()" class="btn text-light rounded-pill" style="background-color: #674ACB;">Next</button>
+        </div>
+       
+    </div>
+
+    <div *ngIf="currentRow === 2" class="row mt-4">
+        <h2>Experience</h2>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Do you have any experience </label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Years of exprience</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Previous Organization Name</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Languages Known</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Reason of leaving</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Factors of salary dependant</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="12">
+            <h2>Payroll Information</h2>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Aadhar Card No</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Pan Card No</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Bank Name</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Account Number</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">IFSC code</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+       
+        <div class="d-flex align-items-center justify-content-between">
+            <button (click)="previousRow()" class="btn text-light rounded-pill" style="background-color: #F96D63;">Back</button>
+            <button class="btn text-light rounded-pill" style="background-color: #674ACB;">Submit</button>
+        </div>
+       
+    </div>
+   
+</div>

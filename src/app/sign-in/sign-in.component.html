@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row pt-5 desktop" >
+
+            <div class="col-sm-12 col-lg-7 text-end">
+                <p>New Users?  <label routerLink="/signup" style="color: #6149CD;">Create an account</label></p>
+            </div>
+
+            <div>
+                <h4>Sign In</h4>
+                <div>
+                    <button class="btn btn-block rounded-pill "> <i class="fa-brands fa-google"></i> Sign in with Google</button> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class=" rounded-pill btn-fb my-3"> <i class="fa-brands fa-facebook"></i> Sign in with Facebook</button>
+                </div>
+            </div>
+
+            <div class="col-1 pt-5">
+                <hr>
+            </div>
+
+            <p> Or sign in using your email address</p>
+         
+     <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <div class="col-6 pt-3">    
+          <div class="row">
+            <div class="col-sm-12 col-lg-6">
+              <label for="email_id" class="form-label">Your Email</label>
+              <input type="email" class="form-control rounded-pill" id="email_id" [(ngModel)]="email_id" name="email_id" required placeholder="achavan@example.com">
+            </div>
+            <div class="col-sm-12 col-lg-6">
+              <label for="password" class="form-label">Password</label>
+              <div class="d-flex align-items-center inputbtn">
+                <input [type]="show ? 'text' : 'password'" class="form-control rounded-pill" id="password" [(ngModel)]="password" name="password" required placeholder="">
+                <button type="button" (click)="togglePassword()">
+                  <i class="fa fa-eye" aria-hidden="true" *ngIf="!show"></i>
+                  <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="form-check pt-3">
+            <input class="form-check-input border-dark" type="checkbox"  [(ngModel)]="rememberMe" name="rememberMe" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">Remember me</label>
+            &nbsp; &nbsp; &nbsp;
+            <label style="color: #6149CD;">Forgot Password?</label>
+          </div>
+        </div>
+        <div class="pt-5">
+          <button type="submit" [disabled]="!rememberMe" class="btn sign-in-btn rounded-pill w-25">Sign in</button>
+        </div>  
+      </form>
+    
+       
+
+     
+      
+
+</div>
+</div>
+
+

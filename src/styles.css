@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.right-side-top{
+    background-color: #F9C4C4;
+    padding: 4px 6px;
+    border-radius: 50%;
+    font-size: large;
+    border: none;
+    position: absolute;
+    top: -7px;
+    right: 15px;
+    margin-top: 20px;
+  }
+
+  .right-side-top-delete{
+    background-color: #F9C4C4;
+    padding: 5px 6px;
+    border-radius: 50%;
+    font-size: large;
+    border: none;
+    position: absolute;
+    top: -7px;
+    right: 50px;
+    margin-top: 20px;
+  }
