@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, observable } from 'rxjs';
 
@@ -6,8 +6,8 @@ import { Observable, observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TrainerService {
-
-  Trainer_API ="http://localhost:1000/trainers/66ab6ebac529cee22889ab2d/data";
+  
+  Trainer_API ="http://localhost:1000/trainers";
 
   private Cousers_API="http://localhost:1000/course";
 
@@ -21,22 +21,28 @@ export class TrainerService {
 
   constructor(private http:HttpClient) { }
 
+
+  
+
   //LOGIN TRAINER API
 
       logintrainer():Observable<any>{
         return this.http.get<any>(this.login);
       }
 
-
-      gettrainerdatabyID():Observable<any>{
-        return this.http.get<any>(this.Trainer_API);
-      }
-
-
   // Courses API
 
+  gettrainerdatabyID():Observable<any>{
+    let headers = new HttpHeaders()
+    .set("Authorization", `Bearer ${sessionStorage.getItem('Authorization')}`)
+     return this.http.get<any>("http://localhost:1000/trainers",{headers});
+   }
+
+
   deleteCoursebyID(_id: string): Observable<any> {
-    return this.http.delete(`${this.Cousers_API}/${_id}`);
+    let headers = new HttpHeaders()
+    .set("Authorization", `Bearer ${sessionStorage.getItem('Authorization')}`)
+    return this.http.delete(`${this.Cousers_API}/${_id}`,{headers});
   }
 
   updateCorseByID(CID: any, CDATA:FormData):Observable<any>{

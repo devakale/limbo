@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { window } from 'rxjs';
 import { AdminService } from 'src/app/common_service/admin.service';
+import { LoginService } from 'src/app/common_service/login.service';
 import { TrainerService } from 'src/app/common_service/trainer.service';
 import Swal from 'sweetalert2';
 
@@ -11,6 +11,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./my-course.component.css']
 })
 export class MyCourseComponent implements OnInit {
+
+
+
 
   showIcon = false;
   toggleIcon() {
@@ -29,14 +32,13 @@ export class MyCourseComponent implements OnInit {
     course_name:' ',
     category_id:' ',
     online_offline:' ',
-    trainer_id:' ',
+    // trainer_id:' ',
     price:' ',
     offer_prize:' ',
     start_date:' ',
     end_date:' ',
     start_time:' ',
     end_time:' ',
-    progress:' ',
     course_information:' ',
     thumbnail_image:' ',
     gallary_image:' ',
@@ -46,11 +48,11 @@ export class MyCourseComponent implements OnInit {
 
   };
 
-  constructor(private admin:AdminService, private service:TrainerService ){}
+  constructor(private admin:AdminService, private service:TrainerService, private login:LoginService ){}
 
   ngOnInit(): void{
 
-    this.service.gettrainerdatabyID().subscribe(result =>{
+    this.service.gettrainerdatabyID().subscribe((result:any) =>{
       console.log("Show course Data",result);
       this.showcoursedata = result.coursesWithFullImageUrl;
     })
@@ -71,6 +73,8 @@ export class MyCourseComponent implements OnInit {
     })
   }
 
+ 
+
 
     onsubmit(): void {
     const formData = new FormData();
@@ -85,17 +89,21 @@ export class MyCourseComponent implements OnInit {
 
     this.admin.postcoursesdata(formData).subscribe({
       next: (response) => {
-        // console.log("Success", response);
-        Swal.fire('Ohh...!', 'Course Added Successfully..!', 'success');
-        
-        (window as any).location.reload();
+        Swal.fire('Ohh...!', 'Course Added Successfully..!', 'success').then(() => {
+                // Close the modal
+                const modalCloseButton = document.querySelector('.btn-secondary[data-bs-dismiss="modal"]') as HTMLElement;
+                if (modalCloseButton) {
+                  modalCloseButton.click();
+                }
+                window.location.reload();               
+              });
       },
       error: (error) => {
         console.error("Error", error);
         Swal.fire('Error', 'Please fill the datails', 'error');
       }
-    });
-  }
+    }); 
+   }
 
     onFileSelected(event: any): void {
       this.thumbnail_image = event.target.files[0];
@@ -107,7 +115,7 @@ export class MyCourseComponent implements OnInit {
         response => {
           // console.log('Data deleted successfully', response);
           alert("Course deleted successfully");
-          
+          window.location.reload();
         },
         error => {
           // console.error('Error deleting data', error);
@@ -117,20 +125,8 @@ export class MyCourseComponent implements OnInit {
       
     }
 
-
-
-
-
     successNotification() {
-     
     }
-  
-
-
-  
-
-  // constructor(private service:TrainerService){}
-
   
 
 }

@@ -19,7 +19,8 @@
 
             <p> Or sign in using your email address</p>
          
-     <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+     <!-- <form (ngSubmit)="onSubmit()" #loginForm="ngForm"> -->
+      <form #login="ngForm" (ngSubmit)="onSubmit(login.value)" >
         <div class="col-6 pt-3">    
           <div class="row">
             <div class="col-sm-12 col-lg-6">

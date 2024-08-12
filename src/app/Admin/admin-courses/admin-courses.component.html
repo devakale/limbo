@@ -412,7 +412,7 @@
                     <label for="trainer_id" class="col-form-label">Assign Instructors</label>
                      <select class="form-select" aria-label="Default select example" id="trainer_id" [(ngModel)]="Courses.trainer_id" name="trainer_id">
                         <option selected>Select Trainer</option>
-                        <option *ngFor="let trainer of showtrainerdata" [value]="trainer.trainer_id">{{trainer.trainer_name}}</option>
+                        <option *ngFor="let trainer of showtrainerdata" [value]="trainer._id">{{trainer.user_name}}</option>
                         
                     </select>
                 </div>

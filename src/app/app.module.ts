@@ -28,7 +28,6 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminCoursesComponent } from './admin/admin-courses/admin-courses.component';
 import { InstructorComponent } from './admin/instructor/instructor.component';
 import { TrainerHomeComponent } from './trainer_dashboard/trainer-home/trainer-home.component';
-import { PracticeComponent } from './practice/practice.component';
 import { CourseenrollComponent } from './courseenroll/courseenroll.component';
 import { EnrollNowComponent } from './enroll-now/enroll-now.component';
 import { EdittrainerComponent } from './edittrainer/edittrainer.component';
@@ -70,7 +69,6 @@ import { UpdateCourseComponent } from './admin/update-course/update-course.compo
     AdminCoursesComponent,
     InstructorComponent,
     TrainerHomeComponent,
-    PracticeComponent,
     CourseenrollComponent,
     EnrollNowComponent,
     EdittrainerComponent,

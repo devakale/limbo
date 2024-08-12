@@ -1,41 +1,38 @@
+<!-- navbar.component.html -->
 <div class="container-fluid" style="background-color: #F9F8FF;">
   <div class="row mt-1">
     <div class="col-sm-6 col-md-6 col-lg-3 mt-2">
       <h3 style="color: #8775D9;" routerLink="/">
-        <!-- SVG content -->
         MULTI TRAINER
       </h3>
     </div>
     <div class="col-sm-6 col-md-6 col-lg-2">
       <h1 class="Welcome">Welcome!</h1>
     </div>
-    <div class="col-lg-2">
-      <!-- <h1>Welcome!</h1> -->
-    </div> 
+    <div class="col-lg-2"></div> 
     <div class="col-sm-6 col-md-6 col-lg-3">
       <div class="d-flex align-items-center justify-content-between inputContainer1 my-2 position-relative">
-        <input type="text" class="form-control form-control-lg rounded-pill" placeholder="Search courses or instructor"
-               style="padding-left: 50px;" >
+        <input type="text" class="form-control form-control-lg rounded-pill" placeholder="Search courses or instructor" style="padding-left: 50px;">
         <i class="fa-solid fa-magnifying-glass fs-5 pt-1"></i>
-        
       </div>
     </div>
     <div class="col-sm-6 col-md-6 col-lg-2 d-flex align-items-center justify-content-end">
-      <i class="fa-solid fa-bell icon"></i> &nbsp;&nbsp;&nbsp;&nbsp;
-      <!-- <i  class="fa-solid fa-user icon" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i> -->
+      <i *ngIf="(isLoggedIn$ | async)" class="fa-solid fa-bell icon"></i> &nbsp;&nbsp;&nbsp;&nbsp;
       <div class="dropdown">
-        <i  class="fa-solid fa-user icon" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+        <i class="fa-solid fa-user icon" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" routerLink="/">Student</a></li>
-          <li><a class="dropdown-item" routerLink="/signin">Trainer</a></li>
-          <li><a class="dropdown-item" routerLink="/admin">Admin</a></li>
+          <ng-container *ngIf="(isLoggedIn$ | async); else notLoggedIn">
+            <li><a class="dropdown-item">{{ (user$ | async) }}</a></li>
+            <li><a class="dropdown-item" routerLink="/edittrainer">Edit Profile</a></li>
+            <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+          </ng-container>
+          <ng-template #notLoggedIn>
+            <li><a class="dropdown-item" routerLink="/">Student</a></li>
+            <li><a class="dropdown-item" routerLink="/signin">Trainer</a></li>
+            <li><a class="dropdown-item" routerLink="/admin">Admin</a></li>
+          </ng-template>
         </ul>
       </div>
-      
     </div>
-
-   
   </div>
 </div>
-
-

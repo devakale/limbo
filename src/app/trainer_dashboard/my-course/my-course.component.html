@@ -17,7 +17,7 @@
     
                 <div  *ngFor="let trainer of showcoursedata" class="col-sm-12 col-md-6 col-lg-2 mb-3">
                     <div class="card p-2 round">
-                        <img src={{trainer.thumbnail_image}} class="card-img-top rounded" alt="...">
+                        <img src={{trainer.thumbnail_image}} height="120px" width="200px" class="card-img-top rounded" alt="...">
                         <div class="card-body">
                             <h6 class="card-title">{{trainer.course_name}}</h6>
                             <!-- <div class="d-flex  align-items-center gap-3">
@@ -154,14 +154,14 @@
                     </select>
                 </div>  
 
-                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <!-- <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
                     <label for="trainer_id" class="col-form-label">Assign Instructors</label>
                      <select class="form-select" aria-label="Default select example" id="trainer_id" [(ngModel)]="Courses.trainer_id" name="trainer_id">
                         <option selected>Select Trainer</option>
                         <option *ngFor="let trainer of showtrainerdata" [value]="trainer.trainer_id">{{trainer.trainer_name}}</option>
                         
                     </select>
-                </div>
+                </div> -->
                
 
                 <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
@@ -192,10 +192,7 @@
                      <input type="time" class="form-control" id="end_time" [(ngModel)]="Courses.end_time" name="end_time">    
                 </div> 
 
-                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-                    <label for="progress" class="col-form-label">Progress</label>
-                     <input type="number" class="form-control" id="progress" [(ngModel)]="Courses.progress" name="progress">    
-                </div> 
+              
 
                 <div class="mb-3 col-sm-12 col-md-6 col-lg-6">
                     <label for="thumbnail_image" class="col-form-label">Upload Course Image</label><br>

@@ -36,7 +36,7 @@ export class UpdateProductComponent implements OnInit {
       t_id: ['', Validators.required]
     });
 
-    this.service.getproductById(this._id).subscribe(d => {
+    this.service.getproductById(this._id).subscribe((d : any) => {
       this.uploadform.patchValue({
         _id: d._id,
         product_name: d.product_name,

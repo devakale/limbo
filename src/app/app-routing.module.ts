@@ -66,7 +66,7 @@ const routes: Routes = [
         ]
 
       },
-      {path:"edit",component:EdittrainerComponent},
+      {path:"edittrainer",component:EdittrainerComponent},
       {path:"editcourse/:_id",component:EditCourseComponent},
       {path:"editproduct/:_id",component:UpdateProductComponent},
       {path:"editevent/:_id",component:UpdateEventComponent},

@@ -57,7 +57,7 @@ export class AdminCoursesComponent implements OnInit {
 
     this.admin.gettrainerdata().subscribe(data =>{
       console.log(data);
-      this.showtrainerdata = data.allTrainers ;
+      this.showtrainerdata = data.allRegistration ;
     })
   }
 

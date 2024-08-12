@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, retry } from 'rxjs';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class AdminService {
 
   private Cousers_API="http://localhost:1000/course";
 
-  private trainer_API="http://localhost:1000/trainerINfo"
+  private trainer_API="http://localhost:1000/registration"
 
 
 
@@ -72,8 +72,17 @@ export class AdminService {
       //   return this.http.post<any>(this.Cousers_API,postdata)
       // }
 
+
+      // gettrainerdatabyID():Observable<any>{
+      //   let headers = new HttpHeaders()
+      //   .set("Authorization", `Bearer ${sessionStorage.getItem('Authorization')}`)
+      //    return this.http.get<any>("http://localhost:1000/trainers",{headers});
+      //  }
+
       postcoursesdata(courseData: FormData): Observable<any> {
-        return this.http.post(this.Cousers_API, courseData);
+        let headers = new HttpHeaders()
+        .set("Authorization", `Bearer ${sessionStorage.getItem('Authorization')}`)
+        return this.http.post(this.Cousers_API, courseData,{headers});
       }
 
       getcoursedata():Observable<any>{
