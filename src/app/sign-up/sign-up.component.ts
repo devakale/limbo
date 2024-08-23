@@ -37,7 +37,7 @@ export class SignUpComponent implements OnInit {
           this.loginservices.postsignupdata(this.userData).subscribe({
             next: (response) => {
               // console.log(alert("Success"),response);
-              Swal.fire('Congratulation', 'You Hava Register successfully!', 'success');
+              Swal.fire('Congratulation','Welcome to Ximbo! <br> Were thrilled to have you join our community of esteemed trainers, coaches, and educators. Ximbo is designed to empower you with the tools and resources needed to deliver exceptional training and create impactful learning experiences. <br> You Have Register successfully!', 'success');
               this.route.navigate(['/signin'])
             },
             error: (error)=>{

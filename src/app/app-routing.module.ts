@@ -33,6 +33,12 @@ import { EditCategoryComponent } from './Admin/edit-category/edit-category.compo
 import { UpdateProductComponent } from './trainer_dashboard/update-product/update-product.component';
 import { UpdateEventComponent } from './trainer_dashboard/update-event/update-event.component';
 import { UpdateCourseComponent } from './admin/update-course/update-course.component';
+import { LoginComponent } from './Student_Dashboard/login.component';
+import { StudentRegisterComponent } from './Student_Dashboard/student-register/student-register.component';
+import { StudentHomeComponent } from './Student_Dashboard/student-home/student-home.component';
+import { StudentCourseComponent } from './Student_Dashboard/student-course/student-course.component';
+import { TrainerMyhomeComponent } from './trainer_dashboard/trainer-myhome/trainer-myhome.component';
+import { StudentDashboardComponent } from './Student_Dashboard/student-dashboard/student-dashboard.component';
 
 const routes: Routes = [
 
@@ -44,8 +50,7 @@ const routes: Routes = [
       { path:"adminhome",component:AdminHomeComponent},
       { path:"admincategory",component:AdminDashboardCategoriesComponent},
       { path:"admincourse",component:AdminCoursesComponent},
-      { path:"instructors",component:InstructorComponent},
-      
+      { path:"instructors",component:InstructorComponent},  
     ]
     
    },
@@ -54,9 +59,8 @@ const routes: Routes = [
 
    //  Routing For Trainer Dashboard
       {path:"trainer",component:TrainerHomeComponent,
-
         children:[
-          {path:"",component:MyCourseComponent},
+          {path:"",component:TrainerMyhomeComponent},
           {path:"mycourse",component:MyCourseComponent},
           {path:"product",component:ProductComponent},
           {path:"question",component:QuestionComponent},
@@ -64,7 +68,6 @@ const routes: Routes = [
           {path:"event",component:EventComponent},
           {path:"enquiry",component:EnquiryComponent}
         ]
-
       },
       {path:"edittrainer",component:EdittrainerComponent},
       {path:"editcourse/:_id",component:EditCourseComponent},
@@ -89,10 +92,19 @@ const routes: Routes = [
       {path:"trainer",component:TrainerComponent},
     ]
   },
-  {path:"couserenroll",component:CourseenrollComponent},
-  {path:"enrollNow",component:EnrollNowComponent}
-   
+
+  {path:"couserenroll/:id",component:CourseenrollComponent},
+  {path:"enrollNow",component:EnrollNowComponent},
   
+  // Routing For Student Dashborad
+         {path:"login",component:LoginComponent},
+         {path:"register",component:StudentRegisterComponent},
+         {path:"student",component:StudentHomeComponent,
+            children: [
+              {path:"student-course",component:StudentCourseComponent},
+              {path:"studentDashboard",component:StudentDashboardComponent},
+            ]
+         },
 
 ];
 

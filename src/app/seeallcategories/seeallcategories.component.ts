@@ -9,48 +9,62 @@ import { DashboardService } from '../common_service/dashboard.service';
 })
 export class SeeallcategoriesComponent implements OnInit {
 
-  showCategorydata: any[] = []; // Initialize with an empty array
-  allData: any[] = []; // Initialize with an empty array
-  filteredData: any[] = []; // Array to hold the filtered data
+  Showcategorydata: any;
+  Showcouserdata: any;
+  filteredCourses: any[] = [];
   selectedCategories: string[] = [];
-  uniqueCategories: Set<string> = new Set(); // Use a Set to store unique categories
 
   constructor(private service: DashboardService) {}
 
   ngOnInit(): void {
-    this.service.getcategorydatadbjson().subscribe((data: any[]) => {
-      this.allData = data;
-      this.filteredData = data; // Initialize filteredData with all data
-      this.extractUniqueCategories(); // Extract unique categories
+    this.service.getcategoryname().subscribe(data => {
+      this.Showcategorydata = data.categoriesWithFullImageUrl;
+    });
+
+    this.service.getcouserdata().subscribe(result => {
+      this.Showcouserdata = result.coursesWithFullImageUrl;
+      this.filteredCourses = this.Showcouserdata; // Initially show all courses
     });
   }
 
-  extractUniqueCategories() {
-    this.allData.forEach(item => {
-      this.uniqueCategories.add(item.c_name); // Add each category to the Set
-    });
-  }
-
-  onCategoryChange(category: string, event: Event) {
-    const isChecked = (event.target as HTMLInputElement).checked; // Cast to HTMLInputElement to access checked
-    if (isChecked) {
+  onCategoryChange(category: string, event: any): void {
+    if (event.target.checked) {
       this.selectedCategories.push(category);
     } else {
       const index = this.selectedCategories.indexOf(category);
-      if (index > -1) {
+      if (index !== -1) {
         this.selectedCategories.splice(index, 1);
       }
     }
-    this.filterData();
+    this.filterCourses();
   }
 
-  filterData() {
+  filterCourses(): void {
     if (this.selectedCategories.length > 0) {
-      this.filteredData = this.allData.filter(item =>
-        this.selectedCategories.includes(item.c_name)
+      this.filteredCourses = this.Showcouserdata.filter((course:any) =>
+        this.selectedCategories.includes(course.category_id.category_name)
       );
     } else {
-      this.filteredData = this.allData;
+      this.filteredCourses = this.Showcouserdata;
     }
   }
+
+
+
+
+  // Showcategorydata:any;
+  // Showcouserdata:any;
+  //   constructor(private service:DashboardService){}
+
+  // ngOnInit(): void {
+  //     this.service.getcategoryname().subscribe(data =>{
+  //       this.Showcategorydata=data.categoriesWithFullImageUrl;
+  //     });
+
+  //     this.service.getcouserdata().subscribe(result => {
+  //       this.Showcouserdata = result.coursesWithFullImageUrl;
+  //     })
+  // }
+
+ 
 }

@@ -7,9 +7,11 @@ import { Observable, retry } from 'rxjs';
 })
 export class AdminService {
 
-  private APIURL="http://localhost:3000/trainer";
+  private APIURL="http://localhost:1000/trainer";
 
-  private CategoryURL="http://localhost:1000/category";
+  private CategoryURL="http://localhost:1000/beforeLogin/allcategory";
+
+  private dashboard="http://localhost:1000/beforeLogin/allcategory"
 
   private Cousers_API="http://localhost:1000/course";
 
@@ -20,7 +22,7 @@ export class AdminService {
 
   constructor(private http:HttpClient) { }
 
-  // Category API Code Start From here
+  // ******************** Category API ***********************
 
       postCategory(name: string, image: File): Observable<any> {
         const formData: FormData = new FormData();
@@ -33,63 +35,34 @@ export class AdminService {
         return this.http.get<any>(this.CategoryURL);
       }
 
+      getcategorydatadashboard():Observable<any>{
+        return this.http.get<any>(this.dashboard);
+      }
+
       deletecategorybyID(_id: string): Observable<any> {
         const url = `${this.CategoryURL}/${_id}`;
         return this.http.delete(url);
       }
 
-      // getcategorydatabyID(C_ID:any): Observable<any>{
-      //   return this.http.get(`${this.CategoryURL}/${C_ID}`);
-      // }
-
-      // public updatecategorydata(id:any,data:any): Observable<any> {
-      //   return this.http.put<any>(`${this.CategoryURL}/${id}`,data);
-
-      // }
-
-      // getcategorydatabyID(id: string): Observable<any> {
-      //   return this.http.get(`${this.CategoryURL}/categories/${id}`);
-      // }
-    
-      // updatecategorydata(id: string, data: any): Observable<any> {
-      //   return this.http.put(`${this.CategoryURL}/categories/${id}`, data);
-      // }
-
       getCategoryById(id: string): Observable<any> {
         return this.http.get(`${this.CategoryURL}/${id}`);
       }
     
-      // Method to update category data
       updateData(id: string, updatedData: FormData): Observable<any> {
         return this.http.put(`${this.CategoryURL}/${id}`, updatedData);
       }
 
-     // Category API Code End here
+  // Category API Code End here
 
-  // Courses API Code Start From here
-
-      // postcoursesdata(postdata:any):Observable<any>{
-      //   return this.http.post<any>(this.Cousers_API,postdata)
-      // }
-
-
-      // gettrainerdatabyID():Observable<any>{
-      //   let headers = new HttpHeaders()
-      //   .set("Authorization", `Bearer ${sessionStorage.getItem('Authorization')}`)
-      //    return this.http.get<any>("http://localhost:1000/trainers",{headers});
-      //  }
+  // ******************** Courses API ***********************
 
       postcoursesdata(courseData: FormData): Observable<any> {
-        let headers = new HttpHeaders()
-        .set("Authorization", `Bearer ${sessionStorage.getItem('Authorization')}`)
-        return this.http.post(this.Cousers_API, courseData,{headers});
+        return this.http.post(this.Cousers_API, courseData);
       }
 
       getcoursedata():Observable<any>{
         return this.http.get(this.Cousers_API);
       }
-
-      
 
       deletCoursebyID(_id: string): Observable<any> {
         const url = `${this.Cousers_API}/${_id}`;

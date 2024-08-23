@@ -7,7 +7,9 @@ import { Observable, observable } from 'rxjs';
 })
 export class TrainerService {
   
-  Trainer_API ="http://localhost:1000/trainers";
+  private APIURL = "http://localhost:1000";
+
+  private Trainer_API ="http://localhost:1000/trainers";
 
   private Cousers_API="http://localhost:1000/course";
 
@@ -17,86 +19,107 @@ export class TrainerService {
 
   private Appointment="http://localhost:1000/appointment";
 
-  private login="http://localhost:1000/registration";
+  private Trainer ="http://localhost:1000/registration";
+
+  private social = "http://localhost:1000/socialMedia";
+
+  private education = "http://localhost:1000/education"
 
   constructor(private http:HttpClient) { }
 
-
-  
-
-  //LOGIN TRAINER API
-
-      logintrainer():Observable<any>{
-        return this.http.get<any>(this.login);
+  // *************** Trainer Profile API *****************
+      gettrainerbyID():Observable<any>{
+        return this.http.get<any>(`${this.Trainer}/trainer`)
       }
 
-  // Courses API
+      updatetrainerDetails(formData:FormData):Observable<any>{
+        return this.http.put<any>(`${this.Trainer}/update`,formData)
+      }
 
-  gettrainerdatabyID():Observable<any>{
-    let headers = new HttpHeaders()
-    .set("Authorization", `Bearer ${sessionStorage.getItem('Authorization')}`)
-     return this.http.get<any>("http://localhost:1000/trainers",{headers});
-   }
+      postSocialLinks(formData:any):Observable<any>{
+        return this.http.post<any>(`${this.social}`,formData)
+      }
 
+      postEducation(formData:any):Observable<any>{
+        return this.http.post<any>(`${this.education}`,formData)
+      }
 
-  deleteCoursebyID(_id: string): Observable<any> {
-    let headers = new HttpHeaders()
-    .set("Authorization", `Bearer ${sessionStorage.getItem('Authorization')}`)
-    return this.http.delete(`${this.Cousers_API}/${_id}`,{headers});
-  }
+      postabout(formData:any):Observable<any>{
+        return this.http.post<any>(`${this.APIURL}/about`,formData)
+      }
 
-  updateCorseByID(CID: any, CDATA:FormData):Observable<any>{
-    return this.http.put<any>(`${this.Cousers_API}/${CID}`,CDATA);
-  }
+      posttestimonial(formData:any):Observable<any>{
+        return this.http.post<any>(`${this.APIURL}/testmonial`,formData)
+      }
 
-  // Event API
+      postgallary(formData:FormData):Observable<any>{
+        return this.http.post<any>(`${this.APIURL}/gallary`,formData)
+      }
 
-     geteventdata():Observable<any>{
-       return this.http.get<any>(`${this.Trainer_API}`)
-     }
+  // *************** Course API *****************
 
-     deleteEnquiryBYID(_id: string):Observable<any>{
-     return this.http.delete<any>(`${this}/${_id}`)
-    }
-    
-    AddEvent(eventData: any): Observable<any> {
-      return this.http.post<any>(this.Event_API, eventData);
-    }
+      gettrainerdatabyID():Observable<any>{
+        let headers = new HttpHeaders()
+        .set("Authorization", `Bearer ${sessionStorage.getItem('Authorization')}`)
+        return this.http.get<any>("http://localhost:1000/trainers",{headers});
+      }
 
-    deleteEvent(_id:any):Observable<any>{
-      return this.http.delete<any>(`${this.Event_API}/${_id}`)
-    }
+      deleteCoursebyID(_id: string): Observable<any> {
+        return this.http.delete(`${this.Cousers_API}/${_id}`);
+      }
 
-    geteventbyID(_id:any):Observable<any>{
-      return this.http.get<any>(`${this.Event_API}/${_id}`);
-    }
-
-    UpdateEventbyID(_id : any, formData:any):Observable<any>{
-      return this.http.put<any>(`${this.Event_API}/${_id}`,formData)
-    }
+      updateCorseByID(CID: any, CDATA:FormData):Observable<any>{
+        return this.http.put<any>(`${this.Cousers_API}/${CID}`,CDATA);
+      }
 
 
-  // Product API
+  // *************** Event API *****************
+      geteventdata():Observable<any>{
+        return this.http.get<any>(`${this.Trainer_API}`)
+      }
 
-  addProduct(productData: FormData): Observable<any> {
-    return this.http.post(this.product_API, productData);
-  }
+      AddEvent(eventData: any): Observable<any> {
+        return this.http.post<any>(this.Event_API, eventData);
+      }
 
-     deleteproductBYID(_id: string):Observable<any>{
-    return this.http.delete<any>(`${this.product_API}/${_id}`);
-    }
+      deleteEvent(_id:any):Observable<any>{
+        return this.http.delete<any>(`${this.Event_API}/${_id}`)
+      }
 
-    getproductById(_id:string):Observable<any>{
-      return this.http.get<any>(`${this.product_API}/${_id}`);
-    }
+      geteventbyID(_id:any):Observable<any>{
+        return this.http.get<any>(`${this.Event_API}/event/${_id}`);
+      }
 
-    updateproductbyID(_id : string, formData:FormData):Observable<any>{
-      return this.http.put<any>(`${this.product_API}/${_id}`,formData)
-    }
+      UpdateEventbyID(_id : string, formData:any):Observable<any>{
+        return this.http.put<any>(`${this.Event_API}/${_id}`,formData)
+      }
 
-    //Appointment
-    deleteAppointmentbyID(_id: string):Observable<any>{
-      return this.http.delete<any>(`${this.Appointment}/${_id}`);
+
+  // *************** Product API *****************
+      addProduct(productData: FormData): Observable<any> {
+        return this.http.post(this.product_API, productData);
+      }
+
+      deleteproductBYID(_id: string):Observable<any>{
+        return this.http.delete<any>(`${this.product_API}/${_id}`);
+      }
+
+      getproductById(_id:string):Observable<any>{
+        return this.http.get<any>(`${this.product_API}/${_id}`);
+      }
+
+      updateproductbyID(_id : string, formData:FormData ):Observable<any>{
+        return this.http.put<any>(`${this.product_API}/${_id}`,formData)
+      }
+
+  // *************** Enquiry API *****************
+      deleteEnquiryBYID(_id: string):Observable<any>{
+        return this.http.delete<any>(`${this}/${_id}`)
+      }    
+
+  // *************** Appointment *****************
+      deleteAppointmentbyID(_id: string):Observable<any>{
+        return this.http.delete<any>(`${this.Appointment}/${_id}`);
       }
 
 }

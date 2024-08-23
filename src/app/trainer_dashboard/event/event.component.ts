@@ -34,7 +34,6 @@ export class EventComponent  implements OnInit{
 
   onSubmit() {
     const eventData = {
-      _id: this.event._id,
       event_name: this.event.event_name,
       event_type: this.event.event_type,
       event_categories: this.event.event_categories,

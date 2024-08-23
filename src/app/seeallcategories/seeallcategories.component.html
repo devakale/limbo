@@ -1,50 +1,36 @@
 <div class="container-fluid mt-3">
-  <!-- <div class="row">
-        <div class="row p-3 rounded-top" style="background-color: #674ACB;">
-            <div class="col-lg-4">
-
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-8 text">
-                <div class="d-flex align-items-center gap-5 font-style">
-                    <h6 routerLink="/relevance/relevancedata">Relevance</h6>
-                    <h6 routerLink="/relevance/courses">Courses</h6>
-                    <h6 routerLink="/relevance/trainer">Trainer</h6>
-                </div>
-            </div>
-        </div> 
-</div> -->
-
   <div class="row">
+
     <div class="col-sm-12 col-md-6 col-lg-2 pt-3 ps-4"
       style="background-color:#DDDBE9;margin-left: -12px !important;height: 100vh;">
       <h5>Category</h5>
-      <div *ngFor="let category of uniqueCategories" class="form-check mb-2">
-        <input class="form-check-input" type="checkbox" [value]="category" (change)="onCategoryChange(category, $event)"
-          id="flexCheckDefault{{category}}">
-        <label class="form-check-label" [for]="'flexCheckDefault' + category">{{category}}</label>
+
+      <div *ngFor="let category of Showcategorydata" class="form-check mb-2">
+        <input class="form-check-input" type="checkbox" (change)="onCategoryChange(category.category_name, $event)" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">{{category.category_name}}</label>
       </div>
+
     </div>
 
-    <div class="col-sm-12 col-md-6 col-lg-10">
+    <div class="col-sm-12 col-md-6 col-lg-10" >
       <div class="row">
-        <div *ngFor="let item of filteredData" class="col-sm-12 col-md-6 col-lg-3 mb-3">
-          <div routerLink="/couserenroll" class="card p-2 round" style="width: 18.8rem;">
-            <img [src]="item.img" class="card-img-top rounded" alt="...">
+        <div *ngFor="let course of filteredCourses" class="col-sm-12 col-md-6 col-lg-3 mb-3">
+          <div routerLink="/couserenroll/{{course._id}}" class="card p-2 round" style="width: 18.8rem;">
+            <img src="{{course.thumbnail_image}}" class="card-img-top rounded" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Fitness Claases</h5>
+              <h5 class="card-title">{{course.course_name}}</h5>
               <div class="d-flex align-items-center gap-2"> 
                 <i class="fa-solid fa-user card-user"></i>
-                <label>Sourabh Deo</label>
+                <label>{{course.trainer_id.user_name}}</label>
               </div>
-              <div class="progress mt-3 " role="progressbar" aria-label=" striped example" aria-valuenow="50"
-                aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar modify rounded-pill" style="width: 50%; "></div>
-              </div>
-              <button class="left-side-top rounded-pill">{{item.c_name}}</button>
+              <button class="left-side-top rounded-pill">{{course.category_id.category_name}}</button>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> 
+    
   </div>
 </div>
+
+

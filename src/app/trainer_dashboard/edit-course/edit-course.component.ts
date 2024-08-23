@@ -12,7 +12,6 @@ import Swal from 'sweetalert2';
 export class EditCourseComponent implements OnInit {
 
   showCategorydata: any[] = [];
-  showtrainerdata: any[] = [];
 
   _id: any;
   uploadform!: FormGroup;
@@ -68,11 +67,6 @@ export class EditCourseComponent implements OnInit {
       console.log(data);
       this.showCategorydata = data.categories;
     });
-
-    this.admin.gettrainerdata().subscribe(data => {
-      console.log(data);
-      this.showtrainerdata = data.allTrainers;
-    });
   }
 
   onFileSelected(event: any): void {
@@ -101,7 +95,6 @@ export class EditCourseComponent implements OnInit {
       formData.append('thumbnail_image', this.thumbnail_image);
     }
   
-    console.log('Form Data:', formData); // Log form data for debugging
   
     this.admin.updateCorseByID(this._id, formData).subscribe({
       next: response => {

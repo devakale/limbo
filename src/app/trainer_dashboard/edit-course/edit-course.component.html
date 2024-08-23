@@ -1,8 +1,8 @@
-<div class="container-fluid" style="background-color: teal;">
+<div class="container-fluid" style="background-color: #F9F8FF;">
   <div class="container">
     <div class="row p-3">
-      <h1 class="text-center">Update Course</h1>
       <form [formGroup]="uploadform" (ngSubmit)="onSubmit()" >
+        <h1 class="text-center">Update Course</h1>
         <div class="row">
           <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="course_name" class="col-form-label">Course Name</label>
@@ -26,25 +26,6 @@
               <option value="Online">Online</option>
               <option value="Offline">Offline</option>
               <option value="Hybrid">Hybrid</option>
-            </select>
-          </div>
-
-          <!-- <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-            <label for="trainer_id" class="col-form-label">Assign Instructors</label>
-            <select class="form-select" id="trainer_id" formControlName="trainer_id">
-              <option value="" disabled>Select Trainer</option>
-              <option *ngFor="let trainer of showtrainerdata" [value]="trainer.trainer_id">
-                {{ trainer.trainer_name }}
-              </option>
-            </select>
-          </div> -->
-          <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-            <label for="trainer_id" class="col-form-label">Assign Instructors</label>
-            <select class="form-select" id="trainer_id" formControlName="trainer_id">
-              <option value="" disabled selected>Select Trainer</option>
-              <option *ngFor="let trainer of showtrainerdata" [value]="trainer.trainer_id">
-                {{ trainer.trainer_name }}
-              </option>
             </select>
           </div>
 
@@ -94,7 +75,7 @@
           </div>
 
           <div class="text-center my-3">
-            <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">Close</button>
+            <button routerLink="/trainer/mycourse" type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Update Course</button>
           </div>
         </div>

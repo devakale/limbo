@@ -1,6 +1,6 @@
   import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,7 +42,13 @@ import { EditCategoryComponent } from './Admin/edit-category/edit-category.compo
 import { UpdateProductComponent } from './trainer_dashboard/update-product/update-product.component';
 import { UpdateEventComponent } from './trainer_dashboard/update-event/update-event.component';
 import { UpdateCourseComponent } from './admin/update-course/update-course.component'; // Import FormsModule
-
+import { InterceptorService } from './Interceptor/interceptor.service';
+import { LoginComponent } from './Student_Dashboard/login.component';
+import { StudentRegisterComponent } from './Student_Dashboard/student-register/student-register.component';
+import { StudentHomeComponent } from './Student_Dashboard/student-home/student-home.component';
+import { StudentCourseComponent } from './Student_Dashboard/student-course/student-course.component';
+import { TrainerMyhomeComponent } from './trainer_dashboard/trainer-myhome/trainer-myhome.component';
+import { StudentDashboardComponent } from './Student_Dashboard/student-dashboard/student-dashboard.component';
 
 
 @NgModule({
@@ -82,7 +88,14 @@ import { UpdateCourseComponent } from './admin/update-course/update-course.compo
     EditCategoryComponent,
     UpdateProductComponent,
     UpdateEventComponent,
-    UpdateCourseComponent
+    UpdateCourseComponent,
+    LoginComponent,
+    StudentRegisterComponent,
+    StudentHomeComponent,
+    StudentCourseComponent,
+    TrainerMyhomeComponent,
+    StudentDashboardComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -90,10 +103,10 @@ import { UpdateCourseComponent } from './admin/update-course/update-course.compo
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
    
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

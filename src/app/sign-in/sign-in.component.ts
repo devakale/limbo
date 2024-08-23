@@ -56,6 +56,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../common_service/login.service';
 import {  Router } from '@angular/router';
 import { AuthServiceService } from '../common_service/auth-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-in',
@@ -79,16 +80,21 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(token: string) {
+    
     this.loginService.login(token).subscribe({
       next: (response: any) => { 
-        alert('Login Successful');
+        //alert('We’re excited to see you again. Your login was successful, and you’re now ready to continue creating amazing learning experiences.');
         sessionStorage.setItem("Authorization",response.token)
             this.route.navigate(['/trainer']);
         this.authService.login(response.token); // Set login state
+        Swal.fire('','We’re excited to see you again. Your login was successful, and you’re now ready to continue creating amazing learning experiences.', 'success');
+        
       },
       error: () => { 
         this.message = 'An error occurred';
-        alert("Invalid credentials. Please try again");
+        //alert("Invalid credentials. Please try again");
+        Swal.fire('Error', 'Please Enter Valid Details.', 'error');
+
       }
     });
   }

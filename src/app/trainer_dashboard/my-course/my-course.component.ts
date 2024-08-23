@@ -20,9 +20,7 @@ export class MyCourseComponent implements OnInit {
     this.showIcon = !this.showIcon;
   }
   showCategorydata:any;
-  showtrainerdata:any[]=[];
   showcoursedata:any;
-  showtrainerdatabyID:any[]=[];
   
 
   thumbnail_image: File | null = null;
@@ -32,7 +30,6 @@ export class MyCourseComponent implements OnInit {
     course_name:' ',
     category_id:' ',
     online_offline:' ',
-    // trainer_id:' ',
     price:' ',
     offer_prize:' ',
     start_date:' ',
@@ -53,24 +50,15 @@ export class MyCourseComponent implements OnInit {
   ngOnInit(): void{
 
     this.service.gettrainerdatabyID().subscribe((result:any) =>{
-      console.log("Show course Data",result);
+      // console.log("Show course Data",result);
       this.showcoursedata = result.coursesWithFullImageUrl;
     })
 
     this.admin.getcategorydata().subscribe( data =>{
       // console.log("data",data)
-      this.showCategorydata = data.categories;
+      this.showCategorydata = data.categoriesWithFullImageUrl;
     });
 
-    this.admin.gettrainerdata().subscribe(data =>{
-      console.log(data);
-      this.showtrainerdata = data.allTrainers ;
-    });
-
-    this.service.gettrainerdatabyID().subscribe(data =>{
-      console.log(data);
-      this.showtrainerdatabyID = data.ByTrainerIdCourses;
-    })
   }
 
  
