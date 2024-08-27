@@ -10,7 +10,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CourseenrollComponent implements OnInit {
 
-  myForm!: FormGroup;
   id: any;
     Showcoursedetails:any;
 

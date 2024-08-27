@@ -3,6 +3,15 @@
     color: white;
 }
 
+.card{
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover{
+  transform: scale(1.04);
+  /* transform: translatey(-10px) */
+}
 
 .inputContainer1 > i{
     position: absolute;

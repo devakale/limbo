@@ -36,13 +36,13 @@
             <div class="row">
                   <div class="d-flex align-items-center justify-content-between my-1">
                     <h5>Categories</h5>
-                    <button routerLink="/seeallcategories" class="btn btn-sm btn-primary">See All</button>
+                    <button routerLink="/relevance" class="btn btn-sm btn-primary">See All</button>
                   </div>
             </div>
             <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
 
               <div *ngFor="let category of visibleCategories()" class="col-sm-12 col-md-6 col-lg-3 ">
-                <div class="card p-2 round" >
+                <div routerLink="/relevance" class="card p-2 round" >
                   <img [src]="category.category_image" class="card-img-top rounded" alt="...">
                   <div class="card-body">
                        <button class="left-side-top rounded-pill">{{category.category_name}}</button>
@@ -56,7 +56,7 @@
             <div class="row mt-3 mb-1">
               <div class="d-flex align-items-center justify-content-between">
                 <h5>Trending Courses</h5>
-                <button class="btn btn-sm cursor-pointer btn-primary" routerLink="/seeallcategories">See All</button>
+                <button class="btn btn-sm cursor-pointer btn-primary" routerLink="/relevance">See All</button>
               </div>
             </div>
 
@@ -98,10 +98,10 @@
             <div class="row mt-3">
               <div class="d-flex align-items-center justify-content-between mb-1">
                 <h5>Products</h5>
-                <button class="btn btn-sm  btn-primary">See All</button>
+                <button routerLink="/relevance/userproduct" class="btn btn-sm  btn-primary">See All</button>
               </div>
 
-              <div *ngFor="let product of visibleProduct()" class="col-sm-12 col-md-3 col-lg-3 mb-3">
+              <!-- <div *ngFor="let product of visibleProduct()" class="col-sm-12 col-md-3 col-lg-3 mb-3">
                 <div class="card rounded-box">
                  <img src="{{product.product_image}}" class="card-img-top rounded-box" alt="...">
                  <div class="card-body ">
@@ -111,47 +111,70 @@
                      <p class="m-0"><b>Description : </b> {{product.products_info}}</p>
                  </div>
                 </div>
-             </div>
-            </div>
-
-            <!-- Event List Code Start From Here -->
-            <div class="col-sm-12 col-lg-9">
-              <div class="row">
-                <div class="d-flex align-items-center justify-content-between mb-1">
-                  <h5>Event</h5>
-                  <button class="btn btn-sm  btn-primary">See All</button>
-                </div>
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Event Name</th>
-                        <th scope="col">Event Mode</th>
-                        <th scope="col">Categories</th>
-                        <th scope="col">Start Time</th>
-                        <th scope="col">End Time</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let event of showeventdata">
-                        <td>{{ event.event_name }}</td>
-                        <td>{{ event.event_type }}</td>
-                        <td>{{ event.event_categories }}</td>
-                        <td>{{ event.event_start_time }}</td>
-                        <td>{{ event.event_end_time }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+             </div> -->
+             <div *ngFor="let product of visibleProduct()" class="col-sm-12 col-md-3 col-lg-3 mb-3">
+              <div class="card p-2 round" >
+               <img src="{{product.product_image}}" class="card-img-top rounded img-fluid" alt="...">
+               <div class="card-body ">
+                   <h5 class="card-title">{{product.product_name}}</h5>
+                   <p class="m-0"><b>Prize : ₹ </b>{{product.product_prize}}</p>
+                   <p class="m-0"><b>Selling Prize : ₹ </b> {{product.product_selling_prize}}</p>
+                   <p class="m-0"><b>Description : </b> {{ (product.products_info | slice: 0 : 8)}}
+                      <button (click)="showProductDescription(product)" class="btn btn-sm btn-primary rounded-pill mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Know More</button>
+                  </p>
+               </div>
+              </div>
+           </div>
+          
+              
+            <!-- Modal For Show Product Description -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Product Description</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <p *ngIf="selectedProduct">{{ selectedProduct.products_info }}</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                  </div>
                 </div>
               </div>
             </div>
+    
+            </div>
+
+            <!-- Event List Code Start From Here -->
+              <div class="row">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h5>Events</h5>
+                  <button routerLink="/relevance/userevent" class="btn btn-sm  btn-primary">See All</button>
+                </div>
+                <div *ngFor="let Event of visibleEvent()" class="col-sm-12 col-md-3 col-lg-3 mb-3">
+                  <div class="card p-2 round" >
+                   <img src="../../assets/10.jpg" class="rounded img-fluid" alt="...">
+                   <div class="card-body ">
+                       <h5 class="card-title">{{Event.event_name}}</h5>
+                       <p class="m-0"><b>Type : </b>{{Event.event_type}}</p>
+                       <p class="m-0"><b>Category : </b> {{Event.event_category}}</p>
+                       <p class="m-0"><b>Start Time : </b> {{Event.event_start_time}}</p>
+                       <p class="m-0"><b>End Time : </b> {{Event.event_end_time}}</p>
+                   </div>
+                  </div>
+               </div>
+
+              </div>
+           
          </div>
          
     <!-- Trainer List Code Strat From Here -->
           <div class="col-sm-12 col-lg-2">
             <h5 class="mb-4">Trainer List</h5>
               <div *ngFor="let trainer of visibleTrainer()" class="d-flex align-items-center justify-content-between  gap-5 mb-3">
-                  <div routerLink="/courcedetails" class="d-flex align-items-center  gap-4 ">
+                  <div routerLink="/courcedetails" class="d-flex align-items-center  gap-4 " style="cursor: pointer;">
                     <img src="../../assets/Rohit sharma.jpg" class="Trainer-img" alt="">
                     <div >
                       <h6 class="m-0">{{trainer.user_name}}</h6>
@@ -174,7 +197,7 @@
 
                    
                     <div class="text-center">
-                      <button class="btn btn-sm btn-primary" (click)="toggleViewtainer()">{{ showAlltrainer ? 'Show Less' : 'See All' }}</button>
+                      <button routerLink="/relevance/trainer" class="btn btn-sm btn-primary" >See All</button>
                     </div>
            
             

@@ -39,6 +39,9 @@ import { StudentHomeComponent } from './Student_Dashboard/student-home/student-h
 import { StudentCourseComponent } from './Student_Dashboard/student-course/student-course.component';
 import { TrainerMyhomeComponent } from './trainer_dashboard/trainer-myhome/trainer-myhome.component';
 import { StudentDashboardComponent } from './Student_Dashboard/student-dashboard/student-dashboard.component';
+import { CartComponent } from './cart/cart.component';
+import { UsersideProductComponent } from './userside-product/userside-product.component';
+import { UserEventComponent } from './user-event/user-event.component';
 
 const routes: Routes = [
 
@@ -81,15 +84,19 @@ const routes: Routes = [
   {path:"signup",component:SignUpComponent},
   {path:"forgotfassword",component:ForgotPasswordComponent},
   {path:"seeallcategories",component:SeeallcategoriesComponent},
-  {path:"courcedetails", component:CourseDetailsComponent},
+  {path:"coursedetails/:id", component:CourseDetailsComponent},
   {path:"shop",component:ShopComponent},
+  {path:"cart",component:CartComponent},
   {path:"gallery",component:GalleryComponent},
   {path:"relevance",component:RelevanceComponent,
     children:[
-      {path:"",component:RelevanceDataComponent},
+      // {path:"",component:RelevanceDataComponent},
+      {path:"",component:SeeallcategoriesComponent},
       {path:"relevancedata",component:RelevanceDataComponent},
       {path:"courses",component:CoursesComponent},
       {path:"trainer",component:TrainerComponent},
+      {path:"userproduct",component:UsersideProductComponent},
+      {path:"userevent",component:UserEventComponent},
     ]
   },
 

@@ -8,21 +8,16 @@ import { Observable } from 'rxjs';
 })
 export class DashboardService {
 
-  private APIurl = "http://localhost:3000";
    
   private beforelogin ="http://localhost:1000/beforeLogin"
 
-
-  // private TrainerURL ="http://localhost:3000/trainer"
-
-  private categoryAPI="http://localhost:1000/category";
 
   constructor(private http:HttpClient) { }
 
 
 
           getcategoryname():Observable<any>{
-            return this.http.get<any>(this.beforelogin);
+            return this.http.get<any>(`${this.beforelogin}/allcategory`);
           }
 
           getcouserdata():Observable<any>{
@@ -44,28 +39,5 @@ export class DashboardService {
            Eventdata():Observable<any>{
             return this.http.get<any>(`${this.beforelogin}/allevents`);
            }
-
-  // getcategorydata():Observable<any>{
-  //   return this.http.get<any>(this.categoryAPI);
-  //  }
-  
-     getcategorydatadbjson():Observable<any>{
-      return this.http.get<any>(`${this.APIurl}/`);
-     }
-
-
-    
-
-     postcategorydata(data:any){
-        return this.http.put(this.categoryAPI,data);
-     }
-
-
-     
-
-    //  postdata(post:any){
-    //   return this.http.post(this.APIurl+'/users',post);
-    //   return this.http.post(`${this.APIurl}/users`,post);
-    //  }
 
 }

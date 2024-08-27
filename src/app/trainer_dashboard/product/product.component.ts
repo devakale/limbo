@@ -18,6 +18,11 @@ export class ProductComponent implements OnInit {
 
   showproductdata: any;
   trainerID:any;
+  selectedProduct: any;
+
+  showProductDescription(product: any) {
+    this.selectedProduct = product;
+  }
 
   product = {
     product_name: '',

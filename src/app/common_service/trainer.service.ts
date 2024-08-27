@@ -6,6 +6,8 @@ import { Observable, observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TrainerService {
+
+  Trainer_APIURL ="http://localhost:1000/trainers";
   
   private APIURL = "http://localhost:1000";
 
@@ -122,4 +124,8 @@ export class TrainerService {
         return this.http.delete<any>(`${this.Appointment}/${_id}`);
       }
 
+
+      getprofile(id:string):Observable<any>{
+        return this.http.get<any>(`${this.Trainer_APIURL}/${id}`);
+      }
 }

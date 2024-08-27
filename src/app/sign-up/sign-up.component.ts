@@ -13,16 +13,13 @@ import Swal from 'sweetalert2';
 export class SignUpComponent implements OnInit {
 
  
-  showPassword: boolean = false;
-  // password: string = '';
   show: boolean = false; 
   rememberMe: boolean = false;
 
-  
-
    userData= {
-    id:' ',
-      user_name:' ',
+      f_Name:'',
+      middle_Name:'',
+      l_Name:'',
       email_id:' ',
       password:' ',
       mobile_number:' ',
@@ -43,7 +40,6 @@ export class SignUpComponent implements OnInit {
             error: (error)=>{
               // console.log(alert("Error"),error);
               Swal.fire('Error', 'Please Enter Valid Details.', 'error');
-
             } 
           });
         } else {
@@ -51,16 +47,6 @@ export class SignUpComponent implements OnInit {
         }
       }
 
-          // onSignUp(){
-          //     this.loginservices.postsignupdata(this.userData).subscribe({
-          //       next: (response) => {
-          //         console.log(alert("Success"),response);
-          //       },
-          //       error: (error)=>{
-          //         console.log(alert("Error"),error);
-          //       } 
-          //     });
-          // }
 
        // Hide And Show Password Logic
        togglePassword() {

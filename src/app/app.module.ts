@@ -49,6 +49,10 @@ import { StudentHomeComponent } from './Student_Dashboard/student-home/student-h
 import { StudentCourseComponent } from './Student_Dashboard/student-course/student-course.component';
 import { TrainerMyhomeComponent } from './trainer_dashboard/trainer-myhome/trainer-myhome.component';
 import { StudentDashboardComponent } from './Student_Dashboard/student-dashboard/student-dashboard.component';
+import { UsersideProductComponent } from './userside-product/userside-product.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FooterComponent } from './footer/footer.component';
+import { UserEventComponent } from './user-event/user-event.component';
 
 
 @NgModule({
@@ -95,6 +99,9 @@ import { StudentDashboardComponent } from './Student_Dashboard/student-dashboard
     StudentCourseComponent,
     TrainerMyhomeComponent,
     StudentDashboardComponent,
+    UsersideProductComponent,
+    FooterComponent,
+    UserEventComponent,
     
   ],
   imports: [
@@ -104,6 +111,7 @@ import { StudentDashboardComponent } from './Student_Dashboard/student-dashboard
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxPaginationModule
    
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],

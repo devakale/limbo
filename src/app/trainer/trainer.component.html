@@ -1,5 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- <div  class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-md-6 row-cols-lg-4 g-3"> -->
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3"></div>
+      <div *ngFor="let trainer of showtrainerData"  class="col-sm-12 col-md-6 col-lg-2 mb-2 ">
+        <div class="card p-2 round"  >
+          <img src="../../assets/1.jpg" class="card-img-top rounded" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title">{{trainer.user_name}}</h5>
+            <p>{{trainer.course_count}} Courses </p>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
 
-              <div class="row">
+
+
+              <!-- <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
                     <div class="card p-2 round" style="width: 19rem;">
                       <img src="./assets/trainer.jpg" class="card-img-top rounded" alt="...">
@@ -152,4 +169,4 @@
                     </div>
                   </div>
              
-              </div>
+              </div> -->

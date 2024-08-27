@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../common_service/dashboard.service';
+import { FilterService } from '../common_service/filter.service';
 
 
 @Component({
@@ -9,62 +10,31 @@ import { DashboardService } from '../common_service/dashboard.service';
 })
 export class SeeallcategoriesComponent implements OnInit {
 
-  Showcategorydata: any;
+ 
   Showcouserdata: any;
+  p: number = 1; // Current page
   filteredCourses: any[] = [];
-  selectedCategories: string[] = [];
 
-  constructor(private service: DashboardService) {}
+
+  constructor(private service: DashboardService, private filter:FilterService) {}
 
   ngOnInit(): void {
-    this.service.getcategoryname().subscribe(data => {
-      this.Showcategorydata = data.categoriesWithFullImageUrl;
-    });
-
+    
     this.service.getcouserdata().subscribe(result => {
       this.Showcouserdata = result.coursesWithFullImageUrl;
-      this.filteredCourses = this.Showcouserdata; // Initially show all courses
+      this.filteredCourses = this.Showcouserdata; // Show all courses if no category is selected
+
     });
-  }
 
-  onCategoryChange(category: string, event: any): void {
-    if (event.target.checked) {
-      this.selectedCategories.push(category);
-    } else {
-      const index = this.selectedCategories.indexOf(category);
-      if (index !== -1) {
-        this.selectedCategories.splice(index, 1);
+    this.filter.selectedCategories$.subscribe(selectedCategories => {
+      if (selectedCategories.length > 0) {
+        this.filteredCourses = this.Showcouserdata.filter((course:any) => 
+          selectedCategories.includes(course.category_id.category_name)
+        );
+      } else {
+        this.filteredCourses = this.Showcouserdata; // Show all courses if no category is selected
       }
-    }
-    this.filterCourses();
+    });
+
   }
-
-  filterCourses(): void {
-    if (this.selectedCategories.length > 0) {
-      this.filteredCourses = this.Showcouserdata.filter((course:any) =>
-        this.selectedCategories.includes(course.category_id.category_name)
-      );
-    } else {
-      this.filteredCourses = this.Showcouserdata;
-    }
-  }
-
-
-
-
-  // Showcategorydata:any;
-  // Showcouserdata:any;
-  //   constructor(private service:DashboardService){}
-
-  // ngOnInit(): void {
-  //     this.service.getcategoryname().subscribe(data =>{
-  //       this.Showcategorydata=data.categoriesWithFullImageUrl;
-  //     });
-
-  //     this.service.getcouserdata().subscribe(result => {
-  //       this.Showcouserdata = result.coursesWithFullImageUrl;
-  //     })
-  // }
-
- 
 }

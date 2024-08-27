@@ -10,12 +10,18 @@ import { AdminService } from '../common_service/admin.service';
 export class DashboardComponent implements OnInit {
 
   showAll: boolean = false;
-  showCategorydata:any;
-  Showcouserdata:any;
-  showproductdata:any;
-  showeventdata:any;
+  showCategorydata:any[]=[];
+  Showcouserdata:any[]=[];
+  showproductdata:any[]=[];
+  showeventdata:any[]=[];
 
-  showtrainerData:any;
+  showtrainerData:any[]=[];
+  selectedProduct: any;
+
+  showProductDescription(product: any) {
+    this.selectedProduct = product;
+  }
+
 
   visibleCategories() {
     return this.showAll ? this.showCategorydata : this.showCategorydata.slice(0, 4);

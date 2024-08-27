@@ -9,7 +9,7 @@
                 <button (click)="toggleIcon()" class="btn rounded-pill text-light " style="background-color: #F96D63;width:200px;">Update/Delete Product</button>
             </div>
        
-        <div *ngFor="let product of showproductdata" class="col-sm-12 col-md-3 col-lg-3 mb-3">
+        <!-- <div *ngFor="let product of showproductdata" class="col-sm-12 col-md-3 col-lg-3 mb-3">
            <div class="card rounded-box">
             <img src="{{product.product_image}}" class="card-img-top rounded-box" alt="...">
             <div class="card-body ">
@@ -22,6 +22,42 @@
             <i routerLink="/editproduct/{{product._id}}"  *ngIf="showIcon " class="fa-solid fa-edit right-side-top"></i>
             <i (click)="onDelete(product._id)" *ngIf="showIcon" class="fa-solid fa-trash right-side-top-delete"></i>
            </div>
+        </div> -->
+
+
+        <div *ngFor="let product of showproductdata" class="col-sm-12 col-md-3 col-lg-3 mb-3">
+          <div class="card rounded-box" >
+           <img src="{{product.product_image}}" class="rounded-box img-fluid" alt="...">
+           <div class="card-body ">
+               <h5 class="card-title">{{product.product_name}}</h5>
+               <p class="m-0"><b>Prize : ₹ </b>{{product.product_prize}}</p>
+               <p class="m-0"><b>Selling Prize : ₹ </b> {{product.product_selling_prize}}</p>
+               <p class="m-0"><b>Description : </b> {{ (product.products_info | slice: 0 : 8)}}
+                  <button (click)="showProductDescription(product)" class="btn btn-sm btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">Read More</button>
+              </p>
+           </div>
+           <i routerLink="/editproduct/{{product._id}}"  *ngIf="showIcon " class="fa-solid fa-edit right-side-top"></i>
+            <i (click)="onDelete(product._id)" *ngIf="showIcon" class="fa-solid fa-trash right-side-top-delete"></i>
+          </div>
+       </div>
+      
+          
+        <!-- Modal For Show Product Description -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Product Description</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <p *ngIf="selectedProduct">{{ selectedProduct.products_info }}</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- <div class="col-sm-12 col-md-3 col-lg-3">
@@ -32,26 +68,9 @@
                  <p class="m-0">₹ 130.00</p>
              </div>
             </div>
-         </div>
-
-         <div class="col-sm-12 col-md-3 col-lg-3">
-            <div class="card rounded-box">
-             <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="...">
-             <div class="card-body text-center">
-                 <h5 class="card-title">Proteins Shakes</h5>
-                 <p class="m-0">₹ 130.00</p>
-             </div>
-            </div>
-         </div>
-         <div class="col-sm-12 col-md-3 col-lg-3">
-            <div class="card rounded-box">
-             <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="...">
-             <div class="card-body text-center">
-                 <h5 class="card-title">Proteins Shakes</h5>
-                 <p class="m-0">₹ 130.00</p>
-             </div>
-            </div>
-         </div> -->
+         </div
+         -->
+         
     </div>
 </div>
 

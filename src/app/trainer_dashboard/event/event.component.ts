@@ -13,13 +13,11 @@ export class EventComponent  implements OnInit{
   showeventdata:any;
 
   event = {
-    _id:' ',
     event_name: ' ',
     event_type: ' ',
     event_categories: ' ',
     event_start_time: ' ',
     event_end_time: ' ',
-    trainerid: ' ',
   };
 
   constructor(private service:TrainerService){}
@@ -28,7 +26,7 @@ export class EventComponent  implements OnInit{
 
       this.service.gettrainerdatabyID().subscribe(data=>{
         console.log(data);
-        this.showeventdata = data.Events;
+        this.showeventdata = data.eventsWithThumbnailUrl;
       });
   }
 
@@ -39,7 +37,6 @@ export class EventComponent  implements OnInit{
       event_categories: this.event.event_categories,
       event_start_time: this.event.event_start_time,
       event_end_time: this.event.event_end_time,
-      trainerid: this.event.trainerid
     };
   
     this.service.AddEvent(eventData).subscribe({

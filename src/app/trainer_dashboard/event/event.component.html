@@ -124,7 +124,7 @@
               />
             </div>
 
-            <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+            <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
               <label for="event_end_time" class="col-form-label"
                 >Event End Time:</label
               >
@@ -138,17 +138,17 @@
               />
             </div>
 
-            <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-              <label for="trainerid" class="col-form-label">Trainer:</label>
+            <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+              <label for="trainerid" class="col-form-label">Event Thumbnail Image</label>
               <input
-                type="text"
+                type="file"
                 class="form-control"
                 id="trainerid"
-                [(ngModel)]="event.trainerid"
                 name="trainerid"
                 required
               />
             </div>
+
           </div>
         </div>
         <div class="modal-footer">
