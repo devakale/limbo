@@ -34,5 +34,17 @@ onCategoryChange(categoryName: string, event: Event) {
   this.filter.updateSelectedCategories(this.selectedCategories);
 }
 
+onSelectAll(event: Event): void {
+  const isChecked = (event.target as HTMLInputElement).checked;
+
+  if (isChecked) {
+    this.selectedCategories = this.Showcategorydata.map(cat => cat.category_name);
+  } else {
+    this.selectedCategories = [];
+  }
+
+  // Ensure that all category checkboxes are updated
+  this.filter.updateSelectedCategories(this.selectedCategories);
+}
 
 }

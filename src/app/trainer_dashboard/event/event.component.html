@@ -1,24 +1,19 @@
 <div class="container">
   <div>
-    <img
-      class="img-fluid rounded"
-      src="../../../assets/trainer_home_event.png"
-      alt=""
-    />
+    <img class="img-fluid rounded" src="../../../assets/trainer_home_event.png" alt="" />
   </div>
   <div class="row"></div>
   <div class="col-sm-12 col-lg-12 d-flex gap-5 justify-content-end my-3">
-    <button
-      class="btn rounded-pill text-light"
-      data-bs-toggle="modal"
-      data-bs-target="#exampleModal"
-      data-bs-whatever="@mdo"
-      style="background-color: #3078ff; width: 150px"
-    >
+    <button class="btn rounded-pill text-light" data-bs-toggle="modal" data-bs-target="#exampleModal"
+      data-bs-whatever="@mdo" style="background-color: #3078ff; width: 150px">
       Add New Event
     </button>
+    <button (click)="toggleIcon()" class="btn rounded-pill text-light"
+    style="background-color: #f96d63; width: 200px">
+    Update/Delete Course
+  </button>
   </div>
-  <div class="row">
+  <!-- <div class="row">
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -52,6 +47,24 @@
         </tbody>
       </table>
     </div>
+  </div> -->
+  <!-- Event List Code Start From Here -->
+  <div class="row mt-3">
+    <div *ngFor="let Event of showeventdata" class="col-sm-12 col-md-3 col-lg-3 mb-3">
+      <div class="card p-2 round">
+        <img src="{{Event.event_thumbnail}}" class="rounded img-fluid" alt="...">
+        <div class="card-body ">
+          <h5 class="card-title">{{Event.event_name}}</h5>
+          <p class="m-0"><b>Type : </b>{{Event.event_type}}</p>
+          <p class="m-0"><b>Category : </b> {{Event.event_category.category_name}}</p>
+          <p class="m-0"><b>Start Time : </b> {{Event.event_start_time}}</p>
+          <p class="m-0"><b>End Time : </b> {{Event.event_end_time}}</p>
+        </div>
+        <i routerLink="/editevent/{{ Event._id }}" *ngIf="showIcon" class="fa-solid fa-edit right-side-top"></i>
+        <i (click)="onDelete(Event._id)" *ngIf="showIcon" class="fa-solid fa-trash right-side-top-delete"></i>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -62,101 +75,63 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Event</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form (ngSubmit)="onSubmit()">
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
               <label for="event_name" class="col-form-label">Event Name:</label>
-              <input
-                class="form-control"
-                type="text"
-                id="event_name"
-                [(ngModel)]="event.event_name"
-                name="event_name"
-                required
-              />
+              <input class="form-control" type="text" id="event_name" [(ngModel)]="event.event_name" name="event_name"
+                required />
             </div>
 
             <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
               <label for="event_type" class="col-form-label">Event Type:</label>
-              <input
-                class="form-control"
-                type="text"
-                id="event_type"
-                [(ngModel)]="event.event_type"
-                name="event_type"
-                required
-              />
+              <input class="form-control" type="text" id="event_type" [(ngModel)]="event.event_type" name="event_type"
+                required />
             </div>
 
-            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-              <label for="event_categories" class="col-form-label"
-                >Event Category:</label
-              >
-              <input
-                class="form-control"
-                type="text"
-                id="event_categories"
-                [(ngModel)]="event.event_categories"
-                name="event_categories"
-                required
-              />
+            <!-- <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+              <label for="event_categories" class="col-form-label">Event Category:</label>
+              <input class="form-control" type="text" id="event_category" [(ngModel)]="event.event_category"
+                name="event_category" required />
+            </div> -->
+
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <label for="event_category" class="col-form-label">Select Categories</label>
+              <select class="form-select" aria-label="Default select example" id="event_category"
+                [(ngModel)]="event.event_category" name="event_category">
+                <option selected>Select Categories</option>
+                <option *ngFor="let category of showCategorydata" [value]="category._id">
+                  {{ category.category_name }}
+                </option>
+              </select>
             </div>
 
+            
+
             <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-              <label for="event_start_time" class="col-form-label"
-                >Event Start Time:</label
-              >
-              <input
-                class="form-control"
-                type="text"
-                id="event_start_time"
-                [(ngModel)]="event.event_start_time"
-                name="event_start_time"
-                required
-              />
+              <label for="event_start_time" class="col-form-label">Event Start Time:</label>
+              <input class="form-control" type="text" id="event_start_time" [(ngModel)]="event.event_start_time"
+                name="event_start_time" required />
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
-              <label for="event_end_time" class="col-form-label"
-                >Event End Time:</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="event_end_time"
-                [(ngModel)]="event.event_end_time"
-                name="event_end_time"
-                required
-              />
+              <label for="event_end_time" class="col-form-label">Event End Time:</label>
+              <input type="text" class="form-control" id="event_end_time" [(ngModel)]="event.event_end_time"
+                name="event_end_time" required />
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
-              <label for="trainerid" class="col-form-label">Event Thumbnail Image</label>
-              <input
-                type="file"
-                class="form-control"
-                id="trainerid"
-                name="trainerid"
-                required
-              />
+              <label for="event_thumbnail" class="col-form-label">Event Thumbnail Image</label>
+              <input class="form-control" type="file" id="event_thumbnail" name="event_thumbnail" (change)="onFileSelected($event)" required>
             </div>
 
           </div>
         </div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Close
           </button>
           <button type="submit" class="btn btn-primary">Add Event</button>
@@ -164,4 +139,3 @@
       </form>
     </div>
   </div>
-

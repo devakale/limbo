@@ -12,11 +12,22 @@
                   <label for="event_type" class="col-form-label">Event Type:</label>
                   <input class="form-control"   type="text" id="event_type" formControlName="event_type" name="event_type"  required>  
                 </div> 
+
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                  <label for="event_categories" class="col-form-label">Select Categories</label>
+                  <select class="form-select" aria-label="Default select example" id="event_categories"
+                  formControlName="event_categories" name="event_categories">
+                    <option selected>Select Categories</option>
+                    <option *ngFor="let category of showCategorydata" [value]="category._id">
+                      {{ category.category_name }}
+                    </option>
+                  </select>
+                </div>
           
-                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <!-- <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
                   <label for="event_categories" class="col-form-label">Event Category:</label>
                   <input class="form-control" type="text" id="event_categories" formControlName="event_categories" name="event_categories" required>
-                </div>
+                </div> -->
           
                 <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
                   <label for="event_start_time" class="col-form-label">Event Start Time:</label>
@@ -27,6 +38,16 @@
                   <label for="event_end_time" class="col-form-label">Event End Time:</label>
                   <input type="text" class="form-control" id="event_end_time" formControlName="event_end_time" name="event_end_time" required>
                 </div> 
+
+                <div class="mb-3 col-sm-12 col-md-6 col-lg-6">
+                  <label for="event_thumbnail" class="col-form-label">Upload Event Image</label><br />
+                  <input
+                    type="file"
+                    name="event_thumbnail"
+                    id="event_thumbnail"
+                    (change)="onFileSelected($event)"
+                  />
+                </div>
   
               </div>
             </div>

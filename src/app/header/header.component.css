@@ -57,3 +57,55 @@
 .dropdown-item:hover {
   background-color: #f8f9fa;
 }
+
+
+
+
+/* Become an Expert Button CSS */
+
+.main-button span { position:relative; z-index:5; color: #ffffff;}
+
+.main-button {
+  /* background-image: linear-gradient(to right, rgba(255,153,102,100), rgba(255,94,98,100)); */
+  /* background-color: rgba(48, 120, 255, 1); */
+  /* border: 0; */
+  /* padding:6px 15px; */
+  /* font-size:14px; */
+  /* font-weight: 600; */
+  /* line-height: 18px; */
+  /* font-family: 'Assistant'; */
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  position:relative;
+  z-index:3;
+  &:after {
+    background-color: #3078ff;
+    content: '';
+    display:block;
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    border-radius:1px;
+    animation-name: blink;
+    animation-duration: 1.3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    z-index:4;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    /* animation-timing-function: cubic-bezier(1, 0, 0, 1); */
+  }
+}
+
+@keyframes blink {
+  0% {
+    transform:scale3d(1,1,1);
+    opacity: 0.8;
+  }
+  100% {
+    transform:scale3d(1.1,1.4,1.1);
+    opacity:0;
+  }
+}

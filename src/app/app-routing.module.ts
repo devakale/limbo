@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -42,8 +42,13 @@ import { StudentDashboardComponent } from './Student_Dashboard/student-dashboard
 import { CartComponent } from './cart/cart.component';
 import { UsersideProductComponent } from './userside-product/userside-product.component';
 import { UserEventComponent } from './user-event/user-event.component';
+import { UserEventDetailsComponent } from './user-event-details/user-event-details.component';
+import { SuperAdminComponent } from './super-admin/super-admin.component';
 
 const routes: Routes = [
+
+    // Routing For Admin Dashboard
+        // {path:"superadmin",component:SuperAdminComponent},
 
   // Routing For Admin Dashboard
   { path:"admin",component:AdminDashboardComponent,
@@ -64,6 +69,7 @@ const routes: Routes = [
       {path:"trainer",component:TrainerHomeComponent,
         children:[
           {path:"",component:TrainerMyhomeComponent},
+          {path:"superadmin",component:SuperAdminComponent},
           {path:"mycourse",component:MyCourseComponent},
           {path:"product",component:ProductComponent},
           {path:"question",component:QuestionComponent},
@@ -85,7 +91,8 @@ const routes: Routes = [
   {path:"forgotfassword",component:ForgotPasswordComponent},
   {path:"seeallcategories",component:SeeallcategoriesComponent},
   {path:"coursedetails/:id", component:CourseDetailsComponent},
-  {path:"shop",component:ShopComponent},
+  {path:"shop/:id",component:ShopComponent},
+  {path:"eventdetails/:id",component:UserEventDetailsComponent},
   {path:"cart",component:CartComponent},
   {path:"gallery",component:GalleryComponent},
   {path:"relevance",component:RelevanceComponent,

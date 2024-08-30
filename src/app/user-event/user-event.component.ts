@@ -14,6 +14,8 @@ export class UserEventComponent implements OnInit{
 
   ngOnInit(): void {
     this.Dservice.Eventdata().subscribe(Response =>{
+      console.log(Response);
+      
       this.showeventdata = Response;
  })
   }

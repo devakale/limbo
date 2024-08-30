@@ -17,9 +17,9 @@ export class UsersideProductComponent implements OnInit{
   }
   
   constructor(private service:DashboardService){}
-
   ngOnInit(): void {
     this.service.productdata().subscribe(data =>{
+      console.log(data);
       this.showproductdata=data.productsWithFullImageUrls;
   });
   }

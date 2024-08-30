@@ -37,7 +37,7 @@ export class UpdateProductComponent implements OnInit {
     });
 
     this.service.getproductById(this._id).subscribe((d : any) => {
-      // console.log("Product data",d);
+      console.log("Product data",d);
       // console.log(this.uploadform.controls["product_name"].setValue("123"));
       this.uploadform.patchValue({
         product_name: d.product_name,

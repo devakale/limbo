@@ -100,21 +100,9 @@
                 <h5>Products</h5>
                 <button routerLink="/relevance/userproduct" class="btn btn-sm  btn-primary">See All</button>
               </div>
-
-              <!-- <div *ngFor="let product of visibleProduct()" class="col-sm-12 col-md-3 col-lg-3 mb-3">
-                <div class="card rounded-box">
-                 <img src="{{product.product_image}}" class="card-img-top rounded-box" alt="...">
-                 <div class="card-body ">
-                     <h5 class="card-title">{{product.product_name}}</h5>
-                     <p class="m-0"><b>Prize : ₹ </b>{{product.product_prize}}</p>
-                     <p class="m-0"><b>Selling Prize : ₹ </b> {{product.product_selling_prize}}</p>
-                     <p class="m-0"><b>Description : </b> {{product.products_info}}</p>
-                 </div>
-                </div>
-             </div> -->
              <div *ngFor="let product of visibleProduct()" class="col-sm-12 col-md-3 col-lg-3 mb-3">
               <div class="card p-2 round" >
-               <img src="{{product.product_image}}" class="card-img-top rounded img-fluid" alt="...">
+               <img src="{{product.product_image}}" routerLink="/shop/{{product._id}}" class="card-img-top rounded img-fluid" alt="...">
                <div class="card-body ">
                    <h5 class="card-title">{{product.product_name}}</h5>
                    <p class="m-0"><b>Prize : ₹ </b>{{product.product_prize}}</p>
@@ -154,12 +142,12 @@
                   <button routerLink="/relevance/userevent" class="btn btn-sm  btn-primary">See All</button>
                 </div>
                 <div *ngFor="let Event of visibleEvent()" class="col-sm-12 col-md-3 col-lg-3 mb-3">
-                  <div class="card p-2 round" >
-                   <img src="../../assets/10.jpg" class="rounded img-fluid" alt="...">
+                  <div class="card p-2 round" routerLink="/eventdetails/{{Event._id}}" >
+                   <img src="{{Event.event_thumbnail}}"  class="rounded img-fluid" alt="...">
                    <div class="card-body ">
                        <h5 class="card-title">{{Event.event_name}}</h5>
                        <p class="m-0"><b>Type : </b>{{Event.event_type}}</p>
-                       <p class="m-0"><b>Category : </b> {{Event.event_category}}</p>
+                       <p class="m-0"><b>Category : </b> {{Event.event_category.category_name}}</p>
                        <p class="m-0"><b>Start Time : </b> {{Event.event_start_time}}</p>
                        <p class="m-0"><b>End Time : </b> {{Event.event_end_time}}</p>
                    </div>
@@ -199,8 +187,6 @@
                     <div class="text-center">
                       <button routerLink="/relevance/trainer" class="btn btn-sm btn-primary" >See All</button>
                     </div>
-           
-            
           </div>
         </div>
 </div>

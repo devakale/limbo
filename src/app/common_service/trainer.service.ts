@@ -7,7 +7,7 @@ import { Observable, observable } from 'rxjs';
 })
 export class TrainerService {
 
-  Trainer_APIURL ="http://localhost:1000/trainers";
+  Trainer_APIURL ="http://localhost:1000/trainerbyid";
   
   private APIURL = "http://localhost:1000";
 
@@ -80,7 +80,7 @@ export class TrainerService {
         return this.http.get<any>(`${this.Trainer_API}`)
       }
 
-      AddEvent(eventData: any): Observable<any> {
+      AddEvent(eventData: FormData): Observable<any> {
         return this.http.post<any>(this.Event_API, eventData);
       }
 
@@ -89,7 +89,7 @@ export class TrainerService {
       }
 
       geteventbyID(_id:any):Observable<any>{
-        return this.http.get<any>(`${this.Event_API}/event/${_id}`);
+        return this.http.get<any>(`${this.Event_API}/${_id}`);
       }
 
       UpdateEventbyID(_id : string, formData:any):Observable<any>{

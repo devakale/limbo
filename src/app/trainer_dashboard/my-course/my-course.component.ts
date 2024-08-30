@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/common_service/admin.service';
+import { AuthServiceService } from 'src/app/common_service/auth-service.service';
 import { LoginService } from 'src/app/common_service/login.service';
 import { TrainerService } from 'src/app/common_service/trainer.service';
 import Swal from 'sweetalert2';
-
 
 @Component({
   selector: 'app-my-course',
@@ -12,7 +12,16 @@ import Swal from 'sweetalert2';
 })
 export class MyCourseComponent implements OnInit {
 
+  isTrainer: boolean = false;
+  isUser: boolean = true; // Example default value; adjust as needed
 
+
+  checkUserRole() {
+    const role = this.auth.getUserRole();
+    // console.log(role);
+    this.isTrainer = role === 'TRAINER';
+    this.isUser = role === 'USER'  || role === 'TRAINER' ;
+  }
 
 
   showIcon = false;
@@ -26,7 +35,6 @@ export class MyCourseComponent implements OnInit {
   thumbnail_image: File | null = null;
 
   Courses = {
-    _id:' ',
     course_name:' ',
     category_id:' ',
     online_offline:' ',
@@ -40,14 +48,15 @@ export class MyCourseComponent implements OnInit {
     thumbnail_image:' ',
     gallary_image:' ',
     trainer_materialImage:' ',
-  
-
-
   };
 
-  constructor(private admin:AdminService, private service:TrainerService, private login:LoginService ){}
+  constructor(private admin:AdminService, private service:TrainerService,private auth: AuthServiceService ){}
+
+  
 
   ngOnInit(): void{
+
+    this.checkUserRole();
 
     this.service.gettrainerdatabyID().subscribe((result:any) =>{
       // console.log("Show course Data",result);
@@ -58,11 +67,9 @@ export class MyCourseComponent implements OnInit {
       // console.log("data",data)
       this.showCategorydata = data.categoriesWithFullImageUrl;
     });
+    
 
   }
-
- 
-
 
     onsubmit(): void {
     const formData = new FormData();
@@ -113,8 +120,7 @@ export class MyCourseComponent implements OnInit {
       
     }
 
-    successNotification() {
-    }
+   
   
 
 }

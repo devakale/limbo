@@ -10,7 +10,10 @@ import { FilterService } from '../common_service/filter.service';
 })
 export class SeeallcategoriesComponent implements OnInit {
 
- 
+  // items: any[] = [];
+  // page = 1;
+  // limit = 4;
+
   Showcouserdata: any;
   p: number = 1; // Current page
   filteredCourses: any[] = [];
@@ -19,8 +22,10 @@ export class SeeallcategoriesComponent implements OnInit {
   constructor(private service: DashboardService, private filter:FilterService) {}
 
   ngOnInit(): void {
-    
+      
     this.service.getcouserdata().subscribe(result => {
+      console.log("data",result);
+      
       this.Showcouserdata = result.coursesWithFullImageUrl;
       this.filteredCourses = this.Showcouserdata; // Show all courses if no category is selected
 
@@ -37,4 +42,34 @@ export class SeeallcategoriesComponent implements OnInit {
     });
 
   }
+
+  // ngOnInit(): void {
+  //   this.loadItems();
+  // }
+
+  //   loadItems(): void {
+  //     this.service.getcouserdata().subscribe(
+  //       response => {
+  //         console.log(response); // Log the response to inspect its structure
+  //         if (response && Array.isArray(response.data)) {
+  //           this.items = [...this.items, ...response.data];
+  //         } else {
+  //           console.error('Unexpected API response structure:', response);
+  //         }
+  //       },
+  //       error => {
+  //         console.error('API Error:', error);
+  //       }
+  //     );
+  //   }
+    
+
+  // loadMore(): void {
+  //   this.page++;
+  //   this.loadItems();
+  // }
+
+
+
+ 
 }

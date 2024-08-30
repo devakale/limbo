@@ -17,7 +17,6 @@ export class ProductComponent implements OnInit {
   }
 
   showproductdata: any;
-  trainerID:any;
   selectedProduct: any;
 
   showProductDescription(product: any) {
@@ -31,7 +30,6 @@ export class ProductComponent implements OnInit {
     products_info: '',
     product_image: null,
     product_gallary:null,
-    t_id: '',
   };
 
   selectedFile: File | null = null;
@@ -48,9 +46,6 @@ export class ProductComponent implements OnInit {
       this.showproductdata = data.productsWithFullImageUrl;
     });
 
-    this.service.gettrainerdatabyID().subscribe(data =>{
-      this.trainerID = data.trainer;
-    })
   }
 
   onSubmit() {
@@ -59,7 +54,6 @@ export class ProductComponent implements OnInit {
     formData.append('product_prize', this.product.product_prize.toString());
     formData.append('product_selling_prize', this.product.product_selling_prize.toString());
     formData.append('products_info', this.product.products_info);
-    formData.append('t_id', this.product.t_id); // Ensure this matches the backend key
 
     if (this.selectedFile) {
       formData.append('product_image', this.selectedFile, this.selectedFile.name);

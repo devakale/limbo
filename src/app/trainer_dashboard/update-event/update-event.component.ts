@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AdminService } from 'src/app/common_service/admin.service';
 import { TrainerService } from 'src/app/common_service/trainer.service';
 import Swal from 'sweetalert2';
 
@@ -14,18 +15,27 @@ export class UpdateEventComponent implements OnInit {
 
   _id: any;
   uploadform!: FormGroup;
+  showCategorydata:any[]=[];
+  event_thumbnail : File | null = null;
 
 
   constructor(
     private router: ActivatedRoute, 
     private service: TrainerService, 
     private formb: FormBuilder,
-    private route:Router
+    private route:Router,
+    private admin:AdminService
   ) {  
     this._id = this.router.snapshot.paramMap.get('_id');
   }
 
   ngOnInit() {
+
+    this.admin.getcategorydata().subscribe( data =>{
+      // console.log("data",data)
+      this.showCategorydata = data.categoriesWithFullImageUrl;
+    });
+
     this.uploadform = this.formb.group({
       _id: [''],
       event_name:['', Validators.required],
@@ -33,8 +43,11 @@ export class UpdateEventComponent implements OnInit {
       event_categories:['',Validators.required],
       event_start_time:['',Validators.required],
       event_end_time:['',Validators.required],
+      event_thumbnail:['']
+
 
     });
+
 
     this.service.geteventbyID(this._id).subscribe((d:any) => {
       console.log('event data:', d);
@@ -46,9 +59,14 @@ export class UpdateEventComponent implements OnInit {
         event_start_time:d.event_start_time,
         event_end_time:d.event_end_time,        
       });
+      this.event_thumbnail = d.event_thumbnail;
     });
   }
 
+
+  onFileSelected(event: any): void {
+    this.event_thumbnail = event.target.files[0];
+  }
 
 
   onSubmit() {
@@ -59,11 +77,15 @@ export class UpdateEventComponent implements OnInit {
     formData.append('event_start_time',this.uploadform.get('event_start_time')?.value);
     formData.append('event_end_time',this.uploadform.get('event_end_time')?.value);  
 
+    if (this.event_thumbnail) {
+      formData.append('event_thumbnail', this.event_thumbnail);
+    }
+
     this.service.UpdateEventbyID(this._id, formData).subscribe({
       next: (response) => {
         console.log('Response:', response);
         Swal.fire('Success', 'Course updated successfully!', 'success');
-        this.route.navigate(['/trainer/event']);
+        // this.route.navigate(['/trainer/event']);
       },
       error: error => {
         console.error('Update failed', error);

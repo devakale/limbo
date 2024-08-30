@@ -11,6 +11,8 @@ export class DashboardService {
    
   private beforelogin ="http://localhost:1000/beforeLogin"
 
+  private Enroll ="http://localhost:1000/enrollcourse"
+
 
   constructor(private http:HttpClient) { }
 
@@ -22,6 +24,10 @@ export class DashboardService {
 
           getcouserdata():Observable<any>{
             return this.http.get<any>(`${this.beforelogin}/allcourses`)
+          }
+
+          gethomedatauser(page: number, limit: number):Observable<any>{
+            return this.http.get<any>(`${this.beforelogin}/home?page=${page}&limit=${limit}`)
           }
 
           getcouserdatabyID(id:any):Observable<any>{
@@ -36,8 +42,20 @@ export class DashboardService {
             return this.http.get<any>(`${this.beforelogin}/allproduct`);
            }
 
+           productdatabyID(id:any):Observable<any>{
+            return this.http.get<any>(`${this.beforelogin}/product/${id}`);
+           }
+
+
            Eventdata():Observable<any>{
             return this.http.get<any>(`${this.beforelogin}/allevents`);
            }
 
+           EventdatabyID(id:any):Observable<any>{
+            return this.http.get<any>(`${this.beforelogin}/event/${id}`);
+           }
+
+           courseenroll(data:{course_id: string}): Observable<any> {
+            return this.http.post<any>(`${this.Enroll}`, data);
+        }
 }

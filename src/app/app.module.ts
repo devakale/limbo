@@ -53,6 +53,8 @@ import { UsersideProductComponent } from './userside-product/userside-product.co
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FooterComponent } from './footer/footer.component';
 import { UserEventComponent } from './user-event/user-event.component';
+import { UserEventDetailsComponent } from './user-event-details/user-event-details.component';
+import { SuperAdminComponent } from './super-admin/super-admin.component';
 
 
 @NgModule({
@@ -102,6 +104,8 @@ import { UserEventComponent } from './user-event/user-event.component';
     UsersideProductComponent,
     FooterComponent,
     UserEventComponent,
+    UserEventDetailsComponent,
+    SuperAdminComponent,
     
   ],
   imports: [

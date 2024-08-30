@@ -1,29 +1,31 @@
-<div *ngIf="Showproductdata" class="container rounded mt-5" style="box-shadow: 10px  10px 50px #a79ccf;">
+<div *ngIf="ShowEvent" class="container rounded mt-5" style="box-shadow: 10px  10px 50px #a79ccf;">
     <div class="row ">
-        <div class="col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-between p-4 rounded-top" style="background-color: #E9E5FB;">
-            <h5>{{Showproductdata.product_name}}  Provided by {{Showproductdata.t_id.f_Name + ' ' + Showproductdata.t_id.l_Name }}</h5>
-            <button class="btn btn-0">Continue Shopping</button>
+        <div class="col-sm-12 col-md-12 col-lg-12  p-4 rounded-top" style="background-color: #E9E5FB;">
+            <h5>{{ShowEvent.event_name}} Provided by {{ShowEvent.trainerid.f_Name + ' ' + ShowEvent.trainerid.l_Name }}</h5>
+            <!-- <button class="btn btn-0">Continue Shopping</button> -->
         </div>
 
         <div class="col-sm-12 col-md-12 col-lg-6 mt-3 p-5">
-            <img src="{{Showproductdata.product_image}}" class="img-fluid " alt="..." style="border-radius: 20px;">
+            <img src="{{ShowEvent.event_thumbnail}}" class="img-fluid " alt="Event Thumbnail" style="border-radius: 20px;">
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6 mt-3 p-5">
-            <h6 class="fs-4 fw-bold" style="color: #674ACB;">{{Showproductdata.product_name}}</h6>
-            <p class="fs-5" style="text-align: justify;">Product Details : {{Showproductdata.products_info}}</p>
-            <p>Price : ₹ {{Showproductdata.product_prize}}</p>
-            <p>Selling Prize : ₹ {{Showproductdata.product_selling_prize}}</p>
-            <button routerLink="/cart" class="btn text-white me-3" style="background-color: #674ACB">Buy now</button>
-            <button routerLink="/coursedetails/{{Showproductdata.t_id}}" class="btn btn-0 " >View Trainer Profile</button>
-
+            <h3 class="card-title mb-2">{{ShowEvent.event_name}}</h3>
+            <p ><b>Type : </b>{{ShowEvent.event_type}}</p>
+            <p ><b>Category : </b> {{ShowEvent.event_category.category_name}}</p>
+            <p ><b>Start Time : </b> {{ShowEvent.event_start_time}}</p>
+            <p ><b>End Time : </b> {{ShowEvent.event_end_time}}</p>
+            <div class="mt-5">
+              <button class="btn btn-primary me-3">Book You Seat</button>
+              <button routerLink="/coursedetails/{{ShowEvent.trainerid}}" class="btn btn-0 " >View Trainer Profile</button>
+            </div>
         </div>
     </div>
     <div class="row p-5 gap-2">
-        <h5 class="fw-bold" style="color: #674ACB;">Related Product</h5>
+        <h5 class="fw-bold" style="color: #674ACB;">Related Events</h5>
         <div class="row row-cols-1 row-cols-md-5 g-3">
             <div class="col rounded-box">
               <div class="card h-100 rounded-box">
-                <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="...">
+                <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="Event Thumbnail">
                 <div class="card-body text-center">
                     <h5 class="card-title">Proteins Shakes</h5>
                     <p class="m-0">₹ 130.00</p>
@@ -33,7 +35,7 @@
             </div>
             <div class="col rounded-box">
               <div class="card h-100 rounded-box">
-                <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="...">
+                <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="Event Thumbnail">
                 <div class="card-body text-center">
                     <h5 class="card-title">Proteins Shakes</h5>
                     <p class="m-0">₹ 130.00</p>
@@ -43,7 +45,7 @@
             </div>
             <div class="col rounded-box">
               <div class="card h-100 rounded-box">
-                <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="...">
+                <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="Event Thumbnail">
                 <div class="card-body text-center">
                     <h5 class="card-title">Proteins Shakes</h5>
                     <p class="m-0">₹ 130.00</p>
@@ -53,7 +55,7 @@
             </div>
             <div class="col rounded-box">
               <div class="card h-100 rounded-box">
-                <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="...">
+                <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="Event Thumbnail">
                 <div class="card-body text-center">
                     <h5 class="card-title">Proteins Shakes</h5>
                     <p class="m-0">₹ 130.00</p>
@@ -63,7 +65,7 @@
             </div>
             <div class="col rounded-box">
                 <div class="card h-100 rounded-box">
-                  <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="...">
+                  <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="Event Thumbnail">
                   <div class="card-body text-center">
                     <h5 class="card-title">Proteins Shakes</h5>
                     <p class="m-0">₹ 130.00</p>

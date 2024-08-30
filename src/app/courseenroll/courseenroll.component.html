@@ -2,7 +2,7 @@
     <div *ngIf="Showcoursedetails" class="row ">
         <div class="col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-between p-4 rounded-top" style="background-color: #E9E5FB;">
             <h5>{{Showcoursedetails.course_name}} Provided By {{Showcoursedetails.trainer_id.user_name}}</h5>
-            <button routerLink="/seeallcategories" class="btn btn-0 rounded-pill" style="width: 80px;">Back</button>
+            <button routerLink="/relevance" class="btn btn-0 rounded-pill" style="width: 80px;">Back</button>
         </div>
 
         <div class="col-sm-12 col-md-12 col-lg-6 mt-3 p-5">
@@ -22,12 +22,12 @@
                     <label>End Time : <b>{{Showcoursedetails.end_time}}</b></label>
                 </div>
                <div class="mt-4">
-            <button routerLink="/enrollNow" class="btn text-white rounded-pill mb-3 me-4" style="background-color: #674ACB">Enroll Now</button>
+            <button  (click)="CourseEnroll(Showcoursedetails._id)" class="btn text-white rounded-pill mb-3 me-4" style="background-color: #674ACB">Enroll Now</button>
             <button routerLink="/coursedetails/{{Showcoursedetails.trainer_id._id}}" class="btn btn-0 rounded-pill mb-3" >View Trainer Profile</button>
         </div>
         </div>
     </div>
-    <div class="row p-5s gap-2">
+    <div class="row p-5 gap-2">
         <h5 class="fw-bold" style="color: #674ACB;">Related Courses</h5>
         <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
             <div class="col-sm-12 col-md-6 col-lg-3 ">
