@@ -3,24 +3,29 @@
      <div *ngIf="currentRow === 0  " class="row">
         <h2>Personal Information</h2>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-            <label for="recipient-name" class="col-form-label">Name</label>
-             <input type="text" value="" class="form-control" id="recipient-name" formControlName="user_name">    
+            <label for="f_Name" class="col-form-label">First Name</label>
+             <input type="text" value="" class="form-control" id="f_Name" formControlName="f_Name">    
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="l_Name" class="col-form-label">Last Name</label>
+             <input type="text" value="" class="form-control" id="l_Name" formControlName="l_Name">    
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="recipient-name" class="col-form-label">Email</label>
-             <input type="text" class="form-control" id="recipient-name" formControlName="email_id" >    
+             <input type="email" class="form-control" id="recipient-name" formControlName="email_id" >    
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="recipient-name" class="col-form-label">Mobile Number</label>
-             <input type="text" class="form-control" id="recipient-name" formControlName="mobile_number" >    
+             <input type="number" class="form-control" id="recipient-name" formControlName="mobile_number" >    
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="recipient-name" class="col-form-label">Whatsapp Number</label>
-             <input type="text" class="form-control" id="recipient-name" formControlName="whatsapp_no" >    
+             <input type="number" class="form-control" id="recipient-name" formControlName="whatsapp_no" >    
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="recipient-name" class="col-form-label">Date of Birth</label>
-             <input type="text" class="form-control" id="recipient-name" formControlName="date_of_birth" >    
+             <input type="date" class="form-control" id="recipient-name" formControlName="date_of_birth" >    
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="recipient-name" class="col-form-label">Address Line 1</label>
@@ -32,7 +37,7 @@
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="recipient-name" class="col-form-label">Pincode</label>
-             <input type="text" class="form-control" id="recipient-name" formControlName="pincode" >    
+             <input type="number" class="form-control" id="recipient-name" formControlName="pincode" >    
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="recipient-name" class="col-form-label">City</label>

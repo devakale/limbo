@@ -13,42 +13,8 @@
     Update/Delete Course
   </button>
   </div>
-  <!-- <div class="row">
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Event Name</th>
-            <th scope="col">Event Mode</th>
-            <th scope="col">Categories</th>
-            <th scope="col">Start Time</th>
-            <th scope="col">End Time</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let event of showeventdata">
-            <td>{{ event.event_name }}</td>
-            <td>{{ event.event_type }}</td>
-            <td>{{ event.event_categories }}</td>
-            <td>{{ event.event_start_time }}</td>
-            <td>{{ event.event_end_time }}</td>
-            <td>
-              <button (click)="onDelete(event._id)" class="btn btn-danger">
-                Delete</button
-              ><button
-                routerLink="/editevent/{{ event._id }}"
-                class="btn btn-primary ms-3"
-              >
-                Update
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div> -->
-  <!-- Event List Code Start From Here -->
+  
+   <!-- Event List Code Start From Here -->
   <div class="row mt-3">
     <div *ngFor="let Event of showeventdata" class="col-sm-12 col-md-3 col-lg-3 mb-3">
       <div class="card p-2 round">
@@ -71,14 +37,14 @@
 <!-- Model For Add New Courses -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
+  <div class="modal-dialog modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable ">
+    <div class="modal-content ">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Event</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-body">
       <form (ngSubmit)="onSubmit()">
-        <div class="modal-body">
           <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
               <label for="event_name" class="col-form-label">Event Name:</label>
@@ -92,12 +58,6 @@
                 required />
             </div>
 
-            <!-- <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-              <label for="event_categories" class="col-form-label">Event Category:</label>
-              <input class="form-control" type="text" id="event_category" [(ngModel)]="event.event_category"
-                name="event_category" required />
-            </div> -->
-
             <div class="col-sm-12 col-md-6 col-lg-6">
               <label for="event_category" class="col-form-label">Select Categories</label>
               <select class="form-select" aria-label="Default select example" id="event_category"
@@ -109,17 +69,15 @@
               </select>
             </div>
 
-            
-
             <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
               <label for="event_start_time" class="col-form-label">Event Start Time:</label>
-              <input class="form-control" type="text" id="event_start_time" [(ngModel)]="event.event_start_time"
+              <input class="form-control" type="time" id="event_start_time" [(ngModel)]="event.event_start_time"
                 name="event_start_time" required />
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
               <label for="event_end_time" class="col-form-label">Event End Time:</label>
-              <input type="text" class="form-control" id="event_end_time" [(ngModel)]="event.event_end_time"
+              <input type="time" class="form-control" id="event_end_time" [(ngModel)]="event.event_end_time"
                 name="event_end_time" required />
             </div>
 
@@ -127,9 +85,8 @@
               <label for="event_thumbnail" class="col-form-label">Event Thumbnail Image</label>
               <input class="form-control" type="file" id="event_thumbnail" name="event_thumbnail" (change)="onFileSelected($event)" required>
             </div>
-
           </div>
-        </div>
+        
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Close
@@ -137,5 +94,6 @@
           <button type="submit" class="btn btn-primary">Add Event</button>
         </div>
       </form>
+    </div>
     </div>
   </div>

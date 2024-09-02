@@ -46,7 +46,7 @@ export class EventComponent  implements OnInit{
 
       this.admin.getcategorydata().subscribe( data =>{
         // console.log("data",data)
-        this.showCategorydata = data.categoriesWithFullImageUrl;
+        this.showCategorydata = data;
       });
   }
 

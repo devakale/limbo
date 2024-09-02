@@ -1,0 +1,11 @@
+small{
+    cursor: pointer;
+    font-size: small;  
+}
+p{
+    font-size: smaller;
+}
+small:hover{
+   
+        color: royalblue;
+}

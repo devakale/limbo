@@ -59,7 +59,8 @@ export class EdittrainerComponent implements OnInit {
 
     ngOnInit(): void {
           this.myForm = this.fromb.group({
-            user_name :[''],
+            f_Name:[' '],
+            l_Name:[' '],
             email_id : [' '],
             mobile_number : [' '],
             trainer_image: [''],
@@ -76,7 +77,8 @@ export class EdittrainerComponent implements OnInit {
           this.service.gettrainerbyID().subscribe((data:any)=>{
               console.log("trainer Details",data);
               this.myForm.patchValue({
-                user_name :data.user_name,
+                f_Name:data.f_Name,
+                l_Name:data.l_Name,
                 email_id : data.email_id,
                 mobile_number : data.mobile_number,
                 date_of_birth: data.date_of_birth,
@@ -93,8 +95,8 @@ export class EdittrainerComponent implements OnInit {
 
     onSubmit(){
       const formData = new FormData();
-
-      formData.append("user_name",this.myForm.get("user_name")?.value);
+      formData.append("f_Name",this.myForm.get("f_Name")?.value);
+      formData.append("l_Name",this.myForm.get("l_Name")?.value);
       formData.append("email_id",this.myForm.get("email_id")?.value);
       formData.append("mobile_number",this.myForm.get("mobile_number")?.value);
       formData.append("date_of_birth",this.myForm.get("date_of_birth")?.value);
@@ -109,9 +111,12 @@ export class EdittrainerComponent implements OnInit {
       this.service.updatetrainerDetails(formData).subscribe({
         next: response => {
           console.log(response);
+          alert("Data Updated");
         },
         error: error => {
           console.log(error);
+          alert("Error");
+
         }
       });
     }

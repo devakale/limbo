@@ -55,6 +55,7 @@ import { FooterComponent } from './footer/footer.component';
 import { UserEventComponent } from './user-event/user-event.component';
 import { UserEventDetailsComponent } from './user-event-details/user-event-details.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
+import { SEOKeywordComponent } from './seo-keyword/seo-keyword.component';
 
 
 @NgModule({
@@ -106,6 +107,7 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
     UserEventComponent,
     UserEventDetailsComponent,
     SuperAdminComponent,
+    SEOKeywordComponent,
     
   ],
   imports: [

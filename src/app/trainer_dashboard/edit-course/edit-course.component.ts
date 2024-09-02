@@ -64,7 +64,7 @@ export class EditCourseComponent implements OnInit {
 
     this.admin.getcategorydata().subscribe(data => {
       console.log(data);
-      this.showCategorydata = data.categoriesWithFullImageUrl;
+      this.showCategorydata = data;
     });
   }
 

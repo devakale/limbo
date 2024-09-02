@@ -15,9 +15,9 @@ export class HeaderComponent {
     requested_Role : ' '
   }
 
-  isTrainer: boolean = true;
-  isUser: boolean = true;
-  isAdmin: boolean = true;
+  // isTrainer: boolean = false;
+  isUser: boolean = false;
+  // isAdmin: boolean = false;
   
   isLoggedIn$: Observable<boolean>;
   user$: Observable<string | null>;
@@ -27,7 +27,9 @@ export class HeaderComponent {
     this.user$ = this.authService.user$;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.checkUserRole();
+  }
 
   logout() {
     this.authService.logout();
@@ -48,18 +50,32 @@ export class HeaderComponent {
 
   }
 
-
-
   checkUserRole() {
     const role = this.authService.getUserRole();
     console.log('User Role:', role);
 
-    this.isAdmin = role === 'ADMIN';
-    this.isTrainer = role === 'TRAINER';
+    // this.isAdmin = role === 'ADMIN';
+    // this.isTrainer = role === 'TRAINER';
     this.isUser = role === 'USER';
 
-    console.log('isTrainer:', this.isTrainer, 'isUser:', this.isUser, 'isAdmin:', this.isAdmin);
+    console.log('isUser:', this.isUser);
 }
+
+
+onRoleChange() {
+  console.log('Selected Role:', this.role.requested_Role);
+}
+
+//   checkUserRole() {
+//     const role = this.authService.getUserRole();
+//     console.log('User Role:', role);
+
+//     this.isAdmin = role === 'ADMIN';
+//     this.isTrainer = role === 'TRAINER';
+//     this.isUser = role === 'USER';
+
+//     console.log('isTrainer:', this.isTrainer, 'isUser:', this.isUser, 'isAdmin:', this.isAdmin);
+// }
 
 
   

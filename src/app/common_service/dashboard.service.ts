@@ -13,6 +13,8 @@ export class DashboardService {
 
   private Enroll ="http://localhost:1000/enrollcourse"
 
+  private SEOkeyword="http://localhost:1000/footer"
+
 
   constructor(private http:HttpClient) { }
 
@@ -57,5 +59,9 @@ export class DashboardService {
 
            courseenroll(data:{course_id: string}): Observable<any> {
             return this.http.post<any>(`${this.Enroll}`, data);
+        }
+
+        SEOkeywords():Observable<any>{
+          return this.http.get<any>(this.SEOkeyword);
         }
 }
