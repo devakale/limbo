@@ -56,6 +56,7 @@ import { UserEventComponent } from './user-event/user-event.component';
 import { UserEventDetailsComponent } from './user-event-details/user-event-details.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { SEOKeywordComponent } from './seo-keyword/seo-keyword.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -120,7 +121,7 @@ import { SEOKeywordComponent } from './seo-keyword/seo-keyword.component';
     NgxPaginationModule
    
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
+  providers: [CookieService,{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

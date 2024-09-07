@@ -68,31 +68,13 @@
                     <h5 class="card-title">{{allcourses.course_name}}</h5>
                     <div class="d-flex  align-items-center gap-3">
                       <i class="fa-solid fa-user card-user"></i>
-                     <h6 class="mt-1" >{{allcourses.trainer_id.user_name}}</h6>
+                     <h6 class="mt-1" >{{allcourses.trainer_id.f_Name + " " + allcourses.trainer_id.l_Name }}</h6>
                     </div>
                        <button class="left-side-top rounded-pill">{{allcourses.category_id.category_name}}</button>
                     </div>
                 </div>
 
               </div>
-
-              <!-- <div class="col-sm-12 col-md-6 col-lg-3 ">
-                <div class="card p-2 round" >
-                  <img src="./assets/19.jpg" class="card-img-top rounded" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Education Claases</h5>
-                    <div class="d-flex  align-items-center gap-3">
-                      <i class="fa-solid fa-user card-user"></i>
-                     <h6 >Nita Ghosh</h6>
-                    </div>
-                   <div class="progress mt-3 " role="progressbar" aria-label=" striped example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar modify rounded-pill" style="width: 50%"></div>
-                                  </div>
-                       <button class="left-side-top rounded-pill">Vocational</button>
-                    </div>
-                </div>
-              </div> -->
-
             </div>
 
             <div class="row mt-3">
@@ -107,8 +89,8 @@
                    <h5 class="card-title">{{product.product_name}}</h5>
                    <p class="m-0"><b>Prize : ₹ </b>{{product.product_prize}}</p>
                    <p class="m-0"><b>Selling Prize : ₹ </b> {{product.product_selling_prize}}</p>
-                   <p class="m-0"><b>Description : </b> {{ (product.products_info | slice: 0 : 8)}}
-                      <button (click)="showProductDescription(product)" class="btn btn-sm btn-primary rounded-pill mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Know More</button>
+                   <p class="m-0"><b>Description : </b> {{ (product.products_info | slice: 0 : 24)}}
+                    ...<button (click)="showProductDescription(product)" class="btn btn-sm btn-primary rounded-pill " data-bs-toggle="modal" data-bs-target="#exampleModal">Know More</button>
                   </p>
                </div>
               </div>
@@ -148,6 +130,7 @@
                        <h5 class="card-title">{{Event.event_name}}</h5>
                        <p class="m-0"><b>Type : </b>{{Event.event_type}}</p>
                        <p class="m-0"><b>Category : </b> {{Event.event_category.category_name}}</p>
+                       <p class="m-0"><b>Date : </b> {{Event.event_date}}</p>
                        <p class="m-0"><b>Start Time : </b> {{Event.event_start_time}}</p>
                        <p class="m-0"><b>End Time : </b> {{Event.event_end_time}}</p>
                    </div>
@@ -165,28 +148,17 @@
                   <div routerLink="/courcedetails" class="d-flex align-items-center  gap-4 " style="cursor: pointer;">
                     <img src="../../assets/Rohit sharma.jpg" class="Trainer-img" alt="">
                     <div >
-                      <h6 class="m-0">{{trainer.user_name}}</h6>
+                      <h6 class="m-0">{{trainer.f_Name || "John" }} <label >{{trainer.l_Name || "Deo" }}</label></h6>
                       <small class="m-0">{{trainer.course_count}} courses</small>
                     </div>
                   </div>
                   <i class="fa-solid fa-ellipsis-vertical "></i>
               </div>
 
-                      <!-- <div class="d-flex align-items-center  gap-5 mb-3">
-                        <div class="d-flex align-items-center  gap-4">
-                          <i class="fa-solid fa-user user-icon"></i>
-                          <div>
-                            <h6 class="m-0">Rihan Patel</h6>
-                            <small class="m-0">22 courses</small>
-                          </div>
-                        </div>
-                        <i class="fa-solid fa-ellipsis-vertical "></i>
-                      </div>  -->
-
-                   
                     <div class="text-center">
                       <button routerLink="/relevance/trainer" class="btn btn-sm btn-primary" >See All</button>
                     </div>
+                    
           </div>
         </div>
 </div>

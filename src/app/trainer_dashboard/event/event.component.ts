@@ -26,6 +26,7 @@ export class EventComponent  implements OnInit{
     event_name: ' ',
     event_type: ' ',
     event_category: ' ',
+    event_date:' ',
     event_start_time: ' ',
     event_end_time: ' ',
     event_thumbnail:null,
@@ -56,6 +57,7 @@ export class EventComponent  implements OnInit{
     formData.append('event_name', this.event.event_name.trim());
     formData.append('event_type', this.event.event_type.trim());
     formData.append('event_category', this.event.event_category.trim());
+    formData.append('event_date', this.event.event_date.trim());
     formData.append('event_start_time', this.event.event_start_time.trim());
     formData.append('event_end_time', this.event.event_end_time.trim());
   

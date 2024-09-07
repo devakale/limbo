@@ -1,7 +1,9 @@
 .inputContainer1 > i {
   position: absolute;
-  color: black;
-  margin-left: 16px;
+  color: #000000;
+  right: 10px;
+  /* padding: 7px 12px; */
+  /* margin-left: 16px; */
 }
 
 .icon {
@@ -109,3 +111,32 @@
     opacity:0;
   }
 }
+
+
+/* search.component.css */
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.suggestions-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.suggestions-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
+

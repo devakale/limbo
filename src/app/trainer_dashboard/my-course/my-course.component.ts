@@ -1,7 +1,9 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { AdminService } from 'src/app/common_service/admin.service';
 import { AuthServiceService } from 'src/app/common_service/auth-service.service';
 import { LoginService } from 'src/app/common_service/login.service';
+import { StudentService } from 'src/app/common_service/student.service';
 import { TrainerService } from 'src/app/common_service/trainer.service';
 import Swal from 'sweetalert2';
 
@@ -14,7 +16,6 @@ export class MyCourseComponent implements OnInit {
 
   isTrainer: boolean = false;
   isUser: boolean = true; // Example default value; adjust as needed
-
 
   checkUserRole() {
     const role = this.auth.getUserRole();
@@ -30,6 +31,7 @@ export class MyCourseComponent implements OnInit {
   }
   showCategorydata:any;
   showcoursedata:any;
+  showcoursedatastudent:any[]=[];
   
 
   thumbnail_image: File | null = null;
@@ -50,23 +52,28 @@ export class MyCourseComponent implements OnInit {
     trainer_materialImage:' ',
   };
 
-  constructor(private admin:AdminService, private service:TrainerService,private auth: AuthServiceService ){}
-
-  
+  constructor(private admin:AdminService, 
+    private service:TrainerService,
+    private auth: AuthServiceService ,
+     private student:StudentService,
+    private cookie:CookieService){}
 
   ngOnInit(): void{
-
     this.checkUserRole();
-
     this.service.gettrainerdatabyID().subscribe((result:any) =>{
-      // console.log("Show course Data",result);
+      console.log("Show course Data",result);
       this.showcoursedata = result.coursesWithFullImageUrl;
-    })
+      })
 
     this.admin.getcategorydata().subscribe( data =>{
       // console.log("data",data)
-      this.showCategorydata = data;
+      this.showCategorydata = data;  
     });
+
+    this.student.getstudentdatabyID().subscribe((result:any) =>{
+      console.log("Show course Data",result);
+      this.showcoursedatastudent = result;      
+    })
     
 
   }
@@ -104,7 +111,6 @@ export class MyCourseComponent implements OnInit {
       this.thumbnail_image = event.target.files[0];
     }
 
-
     onDelete(id: string): void {
       this.service.deleteCoursebyID(id).subscribe(
         response => {
@@ -117,10 +123,5 @@ export class MyCourseComponent implements OnInit {
           alert("Error");
         }
       );
-      
     }
-
-   
-  
-
 }

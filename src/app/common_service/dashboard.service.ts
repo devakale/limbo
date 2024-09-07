@@ -1,3 +1,4 @@
+import { query } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -15,6 +16,8 @@ export class DashboardService {
 
   private SEOkeyword="http://localhost:1000/footer"
 
+  private Search_API="http://localhost:1000/search/globle?q="
+
 
   constructor(private http:HttpClient) { }
 
@@ -24,8 +27,8 @@ export class DashboardService {
             return this.http.get<any>(`${this.beforelogin}/allcategory`);
           }
 
-          getcouserdata():Observable<any>{
-            return this.http.get<any>(`${this.beforelogin}/allcourses`)
+          getcouserdata(page: number, limit: number):Observable<any>{
+            return this.http.get<any>(`${this.beforelogin}/allcourses?page=${page}&limit=${limit}`)
           }
 
           gethomedatauser(page: number, limit: number):Observable<any>{
@@ -59,9 +62,13 @@ export class DashboardService {
 
            courseenroll(data:{course_id: string}): Observable<any> {
             return this.http.post<any>(`${this.Enroll}`, data);
-        }
+          }
 
-        SEOkeywords():Observable<any>{
-          return this.http.get<any>(this.SEOkeyword);
-        }
+          SEOkeywords():Observable<any>{
+            return this.http.get<any>(this.SEOkeyword);
+          }
+
+          search(query: string):Observable<any>{
+            return this.http.get<any>(`${this.Search_API}${query}`)
+          }
 }

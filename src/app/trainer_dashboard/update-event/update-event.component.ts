@@ -33,7 +33,7 @@ export class UpdateEventComponent implements OnInit {
 
     this.admin.getcategorydata().subscribe( data =>{
       // console.log("data",data)
-      this.showCategorydata = data.categoriesWithFullImageUrl;
+      this.showCategorydata = data;
     });
 
     this.uploadform = this.formb.group({

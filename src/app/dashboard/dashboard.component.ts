@@ -56,6 +56,7 @@ export class DashboardComponent implements OnInit {
 
    ngOnInit(): void{
       this.Dservice.gethomedatauser(this.page, this.limit).subscribe( data =>{
+        console.log(data);
         this.showCategorydata = data.categoriesWithFullImageUrl;
       });
 

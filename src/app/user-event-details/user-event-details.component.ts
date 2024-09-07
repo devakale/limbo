@@ -11,15 +11,17 @@ export class UserEventDetailsComponent {
 
   id: any;
   ShowEvent:any;
+  relatedEvent:any;
 
   constructor(private dservice:DashboardService,private router:ActivatedRoute)
   {this.id=this.router.snapshot.paramMap.get('id');}
 
   ngOnInit(): void {
-      // console.log("Course ID:", this.id);
+      console.log("Event ID:", this.id);
         this.dservice.EventdatabyID(this.id).subscribe((data)=>{
         console.log("API Response:", data);
-        this.ShowEvent = data;
+        this.ShowEvent = data.event;
+        this.relatedEvent = data.relatedEvent;
       })
   }
 

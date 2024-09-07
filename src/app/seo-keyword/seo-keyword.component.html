@@ -4,27 +4,29 @@
         <div>
             <div class="mb-2">
                 <p class="m-0 fw-bold">Category</p>
-                <small routerLink="/seeallcategories" *ngFor="let category of categories">{{ category.category_name }} |
+                <small routerLink="/relevance" *ngFor="let category of categories">{{ category.category_name }} |
                 </small>
             </div>
         </div>
         <div class="mb-2">
             <p class="m-0 fw-bold">Cources</p>
-            <small routerLink="/seeallcategories" *ngFor="let Cources of courses">{{ Cources.course_name }} | </small>
+            <small routerLink="/relevance" *ngFor="let Cources of courses">{{ Cources.course_name }} | </small>
 
         </div>
-        <div class="mb-2">
+
+        <!-- <div class="mb-2">
             <p class="m-0 fw-bold">Trainer</p>
-            <small routerLink="/seeallcategories" *ngFor="let Trainer of trainers">{{ Trainer.f_Name + " " +
+            <small routerLink="/relevance" *ngFor="let Trainer of trainers">{{ Trainer.f_Name + " " +
                 Trainer.l_Name}} | </small>
-        </div>
+        </div> -->
+        
         <div class="mb-2">
             <p class="m-0 fw-bold">Product</p>
-            <small routerLink="/seeallcategories" *ngFor="let Product of products">{{ Product.product_name }} | </small>
+            <small routerLink="/relevance" *ngFor="let Product of products">{{ Product.product_name }} | </small>
         </div>
         <div>
             <p class="m-0 fw-bold">Events</p>
-            <small routerLink="/seeallcategories" *ngFor="let Events of events">{{ Events.event_name }} | </small>
+            <small routerLink="/relevance" *ngFor="let Events of events">{{ Events.event_name }} | </small>
         </div>
     </div>
 

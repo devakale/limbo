@@ -9,8 +9,8 @@
                 </div> 
           
                 <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-                  <label for="event_type" class="col-form-label">Event Type:</label>
-                  <input class="form-control"   type="text" id="event_type" formControlName="event_type" name="event_type"  required>  
+                  <label for="event_date" class="col-form-label">Event Date:</label>
+                  <input class="form-control"   type="Date" id="event_date" formControlName="event_date" name="event_date"  required>  
                 </div> 
 
                 <div class="col-sm-12 col-md-6 col-lg-6">
@@ -24,10 +24,15 @@
                   </select>
                 </div>
           
-                <!-- <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-                  <label for="event_categories" class="col-form-label">Event Category:</label>
-                  <input class="form-control" type="text" id="event_categories" formControlName="event_categories" name="event_categories" required>
-                </div> -->
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                  <label for="event_type" class="col-form-label">Event Mode:</label>
+                    <select class="form-select" aria-label="Default select example" id="event_type"
+                    formControlName="event_type" name="event_type">
+                    <option selected>Select Mode</option>
+                    <option value="Online">Online</option>
+                    <option value="Online">Offline</option>
+                  </select>
+                </div>
           
                 <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
                   <label for="event_start_time" class="col-form-label">Event Start Time:</label>

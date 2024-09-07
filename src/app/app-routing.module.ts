@@ -9,7 +9,6 @@ import { CoursesComponent } from './courses/courses.component';
 import { TrainerComponent } from './trainer/trainer.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { SeeallcategoriesComponent } from './seeallcategories/seeallcategories.component';
-import { SeealltrainerComponent } from './seealltrainer/seealltrainer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ShopComponent } from './shop/shop.component';
 import { GalleryComponent } from './gallery/gallery.component';
@@ -48,11 +47,10 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
 const routes: Routes = [
 
     // Routing For Admin Dashboard
-        // {path:"superadmin",component:SuperAdminComponent},
+        {path:"superadmin",component:SuperAdminComponent},
 
   // Routing For Admin Dashboard
   { path:"admin",component:AdminDashboardComponent,
-
     children:[
       { path:"",component:AdminHomeComponent},
       { path:"adminhome",component:AdminHomeComponent},
@@ -60,8 +58,8 @@ const routes: Routes = [
       { path:"admincourse",component:AdminCoursesComponent},
       { path:"instructors",component:InstructorComponent},  
     ]
-    
    },
+
    {path:"editcategory/:_id",component:EditCategoryComponent},
    {path:"updatecourse/:_id",component:UpdateCourseComponent},
 
@@ -85,27 +83,28 @@ const routes: Routes = [
 
   //  Routing For User Dashboard
 
-  {path:"", component:DashboardComponent},
-  {path:"signin", component:SignInComponent},
-  {path:"signup",component:SignUpComponent},
-  {path:"forgotfassword",component:ForgotPasswordComponent},
-  {path:"seeallcategories",component:SeeallcategoriesComponent},
-  {path:"coursedetails/:id", component:CourseDetailsComponent},
-  {path:"shop/:id",component:ShopComponent},
-  {path:"eventdetails/:id",component:UserEventDetailsComponent},
-  {path:"cart",component:CartComponent},
-  {path:"gallery",component:GalleryComponent},
-  {path:"relevance",component:RelevanceComponent,
-    children:[
-      // {path:"",component:RelevanceDataComponent},
-      {path:"",component:SeeallcategoriesComponent},
-      {path:"relevancedata",component:RelevanceDataComponent},
-      {path:"courses",component:CoursesComponent},
-      {path:"trainer",component:TrainerComponent},
-      {path:"userproduct",component:UsersideProductComponent},
-      {path:"userevent",component:UserEventComponent},
-    ]
-  },
+    { path:"", component:DashboardComponent},
+    { path:"signin", component:SignInComponent},
+    { path:"signup",component:SignUpComponent},
+    { path:"forgotfassword",component:ForgotPasswordComponent},
+    { path:"seeallcategories",component:SeeallcategoriesComponent},
+    { path:"coursedetails/:id", component:CourseDetailsComponent},
+    { path:"shop/:id",component:ShopComponent},
+    { path:"eventdetails/:id",component:UserEventDetailsComponent},
+    { path:"cart",component:CartComponent},
+    { path:"gallery",component:GalleryComponent},
+    { path:"relevance",component:RelevanceComponent,
+      children:[
+        // {path:"",component:RelevanceDataComponent},
+        { path:"",component:SeeallcategoriesComponent},
+        { path:"seeallcategory",component:SeeallcategoriesComponent},
+        { path:"relevancedata",component:RelevanceDataComponent},
+        { path:"courses",component:CoursesComponent},
+        { path:"trainer",component:TrainerComponent},
+        { path:"userproduct",component:UsersideProductComponent},
+        { path:"userevent",component:UserEventComponent},
+      ]
+    } ,
 
   {path:"couserenroll/:id",component:CourseenrollComponent},
   {path:"enrollNow",component:EnrollNowComponent},
@@ -123,7 +122,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

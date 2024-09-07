@@ -15,6 +15,7 @@ export class CourseenrollComponent implements OnInit {
 
   id: any;
     Showcoursedetails:any;
+    RelatedCourses:any;
 
     constructor(private dservice:DashboardService,private router:ActivatedRoute, private route:Router,private loginservices:LoginService)
     {this.id=this.router.snapshot.paramMap.get('id');}
@@ -24,43 +25,49 @@ export class CourseenrollComponent implements OnInit {
           this.dservice.getcouserdatabyID(this.id).subscribe((data)=>{
           console.log("API Response:", data);
           this.Showcoursedetails = data.course;
+          this.RelatedCourses = data.relatedCourses;
         })
     }
 
-    CheckLoggedIN() {
-      const token = sessionStorage.getItem('Authorization'); // Assuming your token is stored in sessionStorage
-      if (token) {
-        this.route.navigate(['/signup']);
-      }
-      else {
-        const modalElement = document.getElementById('CheckLoggedIN');
-    if (modalElement) {
-      const modal = new (window as any).bootstrap.Modal(modalElement);
-      modal.show();
-    }
-  }
-    }
+    // CheckLoggedIN() {
+    //   const token = sessionStorage.getItem('Authorization'); // Assuming your token is stored in sessionStorage
+    //   if (token) {
+    //     Swal.fire('Congratulation','You have Succssfully Enroll Now! ', 'success');
+    //     this.route.navigate(['/cartcourse']);
+    //   }
+    //   else {
+    //     const modalElement = document.getElementById('CheckLoggedIN');
+    //       if (modalElement) {
+    //         const modal = new (window as any).bootstrap.Modal(modalElement);
+    //         modal.show();
+    //       }
+    //   }
+    // }
 
-  //   CourseEnroll(course_id: string) {
-  //     const token = sessionStorage.getItem('Authorization'); // Assuming your token is stored in sessionStorage
+    CourseEnroll(course_id: string) {
+      const token = sessionStorage.getItem('Authorization'); // Assuming your token is stored in sessionStorage
   
-  //     if (token) {
-  //         const data = { course_id };
-  //         this.dservice.courseenroll(data).subscribe(
-  //             response => {
-  //                 alert("Yaa Hooh.!!!");
-  //             },
-  //             error => {
-  //                 console.error("Error during enrollment", error);
-  //                 alert("Failed to enroll in course.");
-  //             }
-  //         );
-  //     } else {
-  //         // User is not logged in, redirect to the registration page
-  //         alert("Please Logged In...!!!")
-  //         this.route.navigate(['/signup']); // Adjust the route as needed
-  //     }
-  // }
+      if (token) {
+          const data = { course_id };
+          this.dservice.courseenroll(data).subscribe(
+              response => {
+                Swal.fire('Congratulation','You have Succssfully Enroll Now! ', 'success');
+              },
+              error => {
+                  // console.error("Error during enrollment", error);
+                   Swal.fire('Error', 'You Have Already Enrolled This course.', 'error');
+
+              }
+          );
+      } else {
+        const modalElement = document.getElementById('CheckLoggedIN');
+              if (modalElement) {
+                const modal = new (window as any).bootstrap.Modal(modalElement);
+                modal.show();
+              }
+          
+      }
+  }
 
 
   
@@ -84,7 +91,7 @@ export class CourseenrollComponent implements OnInit {
             next: (response) => {
               // console.log(alert("Success"),response);
               Swal.fire('Congratulation','Welcome to Ximbo! <br> Were thrilled to have you join our community of esteemed trainers, coaches, and educators. Ximbo is designed to empower you with the tools and resources needed to deliver exceptional training and create impactful learning experiences. <br> You Have Register successfully!', 'success');
-              this.route.navigate(['/signin'])
+              this.route.navigate(['/cartcourse'])
             },
             error: (error)=>{
               // console.log(alert("Error"),error);

@@ -1,7 +1,7 @@
 <div class="container rounded my-5" style="box-shadow: 10px  10px 50px #a79ccf;">
     <div *ngIf="Showcoursedetails" class="row ">
         <div class="col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-between p-4 rounded-top" style="background-color: #E9E5FB;">
-            <h5>{{Showcoursedetails.course_name}} Provided By {{Showcoursedetails.trainer_id.user_name}}</h5>
+            <h5>{{Showcoursedetails.course_name}} Provided By {{Showcoursedetails.trainer_id.f_Name + " " + Showcoursedetails.trainer_id.l_Name}}</h5>
             <button routerLink="/relevance" class="btn btn-0 rounded-pill" style="width: 80px;">Back</button>
         </div>
 
@@ -12,25 +12,39 @@
             <h6 class="fs-4 fw-bold" style="color: #674ACB;">Course Information</h6>
             <p class="fs-5" style="text-align: justify;">{{Showcoursedetails.course_information}}</p>
                 <div class="d-flex gap-2">
-                    <label>Course Prize : <b> {{Showcoursedetails.price}} rs</b></label>|
-                    <label>Start Date : <b> {{Showcoursedetails.start_date}}</b> </label>|
-                    <label>End Date :<b> {{Showcoursedetails.end_date}}</b></label>
+                    <label>Course Prize : <b> ₹ {{Showcoursedetails.price}} </b></label>|
+                    <label>Start Date : <b> {{Showcoursedetails.start_date | date}}</b> </label>|
+                    <label>End Date :<b> {{Showcoursedetails.end_date | date}}</b></label>
                 </div>
                 <div class="d-flex gap-2">
-                    <label>Course Offer Prize : <b> {{Showcoursedetails.offer_prize}} rs</b></label>|
+                    <label>Course Offer Prize : <b> ₹ {{Showcoursedetails.offer_prize}}</b></label>|
                     <label>Start Time : <b>{{Showcoursedetails.start_time}}</b> </label>|
                     <label>End Time : <b>{{Showcoursedetails.end_time}}</b></label>
                 </div>
                <div class="mt-4">
-            <button  (click)="CheckLoggedIN()" class="btn text-white rounded-pill mb-3 me-4" style="background-color: #674ACB">Enroll Now</button>
-            <button routerLink="/coursedetails/{{Showcoursedetails.trainer_id._id}}" class="btn btn-0 rounded-pill mb-3" >View Trainer Profile</button>
+            <button  (click)="CourseEnroll(Showcoursedetails._id)" class="btn text-white rounded-pill mb-3 me-4 px-5" style="background-color: #674ACB;">Enroll Now</button>
+            <button routerLink="/coursedetails/{{Showcoursedetails.trainer_id._id}}" class="btn btn-0 rounded-pill mb-3 px-3" >View Trainer Profile</button>
         </div>
         </div>
     </div>
     <div class="row p-5 gap-2">
         <h5 class="fw-bold" style="color: #674ACB;">Related Courses</h5>
-        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-            <div class="col-sm-12 col-md-6 col-lg-3 ">
+        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3">
+          <div *ngFor="let course of RelatedCourses" class="col-sm-12 col-md-6 col-lg-3 mb-3">
+            <div routerLink="/couserenroll/{{course._id}}" class="card p-2 round" >
+              <img src="{{course.thumbnail_image}}" class="card-img-top rounded" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{course.course_name}}</h5>
+                <div class="d-flex align-items-center gap-2"> 
+                  <i class="fa-solid fa-user card-user"></i>
+                  <label>{{course.trainer_id.f_Name  + " " + course.trainer_id.l_Name  }}</label>
+                </div>
+                <button class="left-side-top rounded-pill">{{course.category_id.category_name}}</button>
+              </div>
+            </div>
+          </div>
+
+            <!-- <div class="col-sm-12 col-md-6 col-lg-3 ">
               <div class="card p-2 round"  >
                 <img src="./assets/degree.jpeg" class="card-img-top rounded" alt="...">
                 <div class="card-body">
@@ -96,7 +110,7 @@
                      <button class="left-side-top rounded-pill">Health</button>
                   </div>
               </div>
-            </div>
+            </div> -->
 
           </div>  
     </div>

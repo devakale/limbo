@@ -12,18 +12,34 @@
             <h3 class="card-title mb-2">{{ShowEvent.event_name}}</h3>
             <p ><b>Type : </b>{{ShowEvent.event_type}}</p>
             <p ><b>Category : </b> {{ShowEvent.event_category.category_name}}</p>
+            <p ><b>Date : </b> {{ShowEvent.event_date}}</p>
             <p ><b>Start Time : </b> {{ShowEvent.event_start_time}}</p>
             <p ><b>End Time : </b> {{ShowEvent.event_end_time}}</p>
             <div class="mt-5">
               <button class="btn btn-primary me-3">Book You Seat</button>
-              <button routerLink="/coursedetails/{{ShowEvent.trainerid}}" class="btn btn-0 " >View Trainer Profile</button>
+              <button routerLink="/coursedetails/{{ShowEvent.trainerid._id}}" class="btn btn-0 " >View Trainer Profile</button>
             </div>
         </div>
     </div>
     <div class="row p-5 gap-2">
         <h5 class="fw-bold" style="color: #674ACB;">Related Events</h5>
-        <div class="row row-cols-1 row-cols-md-5 g-3">
-            <div class="col rounded-box">
+        <div class="row row-cols-1 row-cols-md-5 gx-3">
+          <div *ngFor="let Event of relatedEvent" class="col-sm-12 col-md-3 col-lg-3 mb-3">
+            <div class="card p-2 round" routerLink="/eventdetails/{{Event._id}}" >
+             <img src="{{Event.thumbnail_image}}" class="rounded img-fluid" alt="...">
+             <div class="card-body ">
+                 <h5 class="card-title">{{Event.event_name}}</h5>
+                 <p class="m-0"><b>Type : </b>{{Event.event_type}}</p>
+                 <p class="m-0"><b>Category : </b> {{Event.event_category.category_name}}</p>
+                 <p class="m-0"><b>Date : </b> {{Event.event_date}}</p>
+                 <p class="m-0"><b>Start Time : </b> {{Event.event_start_time}}</p>
+                 <p class="m-0"><b>End Time : </b> {{Event.event_end_time}}</p>
+             </div>
+            </div>
+         </div>
+
+
+            <!-- <div class="col rounded-box">
               <div class="card h-100 rounded-box">
                 <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="Event Thumbnail">
                 <div class="card-body text-center">
@@ -32,48 +48,12 @@
                     <button class="btn btn1 mt-3 btn-block ">Add to cart</button>
                 </div>
               </div>
-            </div>
-            <div class="col rounded-box">
-              <div class="card h-100 rounded-box">
-                <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="Event Thumbnail">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Proteins Shakes</h5>
-                    <p class="m-0">₹ 130.00</p>
-                    <button class="btn btn1 mt-3 btn-block ">Add to cart</button>
-                </div>
-              </div>
-            </div>
-            <div class="col rounded-box">
-              <div class="card h-100 rounded-box">
-                <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="Event Thumbnail">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Proteins Shakes</h5>
-                    <p class="m-0">₹ 130.00</p>
-                    <button class="btn btn1 mt-3 btn-block ">Add to cart</button>
-                </div>
-              </div>
-            </div>
-            <div class="col rounded-box">
-              <div class="card h-100 rounded-box">
-                <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="Event Thumbnail">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Proteins Shakes</h5>
-                    <p class="m-0">₹ 130.00</p>
-                    <button class="btn btn1 mt-3 btn-block ">Add to cart</button>
-                </div>
-              </div>
-            </div>
-            <div class="col rounded-box">
-                <div class="card h-100 rounded-box">
-                  <img src="./assets/gym-boy.jpg" class="card-img-top rounded-box" alt="Event Thumbnail">
-                  <div class="card-body text-center">
-                    <h5 class="card-title">Proteins Shakes</h5>
-                    <p class="m-0">₹ 130.00</p>
-                    <button class="btn btn1 mt-3 btn-block ">Add to cart</button>
-                </div>
-                </div>
-              </div>
-          </div>
+            </div> -->
+            
+            
+            
+           
+          </div> 
            
           
     </div>

@@ -1,23 +1,27 @@
 <!-- navbar.component.html -->
 <div class="container-fluid" style="background-color: #F9F8FF;">
   <div class="row mt-1">
-    <div class="col-sm-6 col-md-6 col-lg-3 mt-2">
-      <!-- <h3 style="color: #8775D9;" routerLink="/">
-        MULTI TRAINER
-      </h3> -->
-      <img routerLink="/" class="img-fluid object-fit-cover" src="../../assets/Ximboa-Logo.jpg" width="60%" alt="">
+    <div class="col-sm-6 col-md-6 col-lg-3 ">
+      <img routerLink="/" class="img-fluid object-fit-cover" src="../../assets/Ximboa-Logo.jpg" width="60%" alt=""
+        style="cursor: pointer;">
     </div>
-    <div class="col-sm-6 col-md-6 col-lg-1">
-      <!-- <h1 class="Welcome">Welcome!</h1> -->
-    </div>
-    <div class="col-lg-2"></div>
-    <div class="col-sm-6 col-md-6 col-lg-3">
+    
+    <div class="col-sm-6 col-md-6 col-lg-6 ">
       <div class="d-flex align-items-center justify-content-between inputContainer1 my-2 position-relative">
-        <input type="text" class="form-control form-control-lg rounded-pill" placeholder="Search courses or instructor"
-          style="padding-left: 50px;">
-        <i class="fa-solid fa-magnifying-glass fs-5 pt-1"></i>
+        <input type="text" [(ngModel)]="query" (keyup)="searchitem($event)" class="form-control form-control-lg rounded"
+          placeholder="Search courses or instructor">
+        <i class="fa-solid fa-magnifying-glass fs-5 pt-1 serachlogo" (click)="onsearch()"></i>
+        <div *ngIf="suggestions.length" class="suggestions-list">
+          <ul>
+            <li *ngFor="let item of suggestions" (click)="onSelectSuggestion(item)">
+              <a style="text-decoration: none;color: black;">{{item.name }}</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
+
+
     <div class="col-sm-6 col-md-6 col-lg-3 d-flex align-items-center justify-content-end">
       <button *ngIf="(isLoggedIn$ | async) && isUser " class="btn btn-primary main-button" data-bs-toggle="modal"
         data-bs-target="#exampleModalExpert">
@@ -45,8 +49,6 @@
     </div>
   </div>
 </div>
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalExpert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -99,11 +101,11 @@
           </div>
 
           <div *ngIf="role.requested_Role === 'JOIN INSTITUTE TRAINER'" class="mt-2">
-            <label for="roleSelect">Select Role</label>
-            <select class="form-select" aria-label="Default select example" >
+            <label for="roleSelect">Select Institute</label>
+            <select class="form-select" aria-label="Default select example">
               <option value="" disabled>Select option</option>
               <option value="SELF_EXPERT">BHOJSOFT Class Warje, Pune- 411038</option>
-              <option value="INSTITUTE">JAVA BY KIRAN  Class Karve Nagar, Pune- 411038</option>
+              <option value="INSTITUTE">JAVA BY KIRAN Class Karve Nagar, Pune- 411038</option>
               <option value="JOIN INSTITUTE TRAINER">Brain Works Class Karve Nagar, Pune- 411038</option>
             </select>
           </div>

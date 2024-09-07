@@ -6,22 +6,22 @@ import { DashboardService } from '../common_service/dashboard.service';
   templateUrl: './userside-product.component.html',
   styleUrls: ['./userside-product.component.css']
 })
-export class UsersideProductComponent implements OnInit{
-      
-  showproductdata:any;
+export class UsersideProductComponent implements OnInit {
+
+  showproductdata: any;
 
   selectedProduct: any;
 
   showProductDescription(product: any) {
     this.selectedProduct = product;
   }
-  
-  constructor(private service:DashboardService){}
+
+  constructor(private service: DashboardService) { }
   ngOnInit(): void {
-    this.service.productdata().subscribe(data =>{
+    this.service.productdata().subscribe(data => {
       console.log(data);
-      this.showproductdata=data.productsWithFullImageUrls;
-  });
+      this.showproductdata = data.productsWithFullImageUrls;
+    });
   }
 
 }

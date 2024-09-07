@@ -1,81 +1,19 @@
-.font-style{
-    font-size: large;
-    color: white;
-}
-
-.card{
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out;
-}
-
-.card:hover{
-  transform: scale(1.04);
-  /* transform: translatey(-10px) */
-}
-
-.inputContainer1 > i{
-    position: absolute;
-    color: black;
-    margin-left: 8px;
-  }
-
-  .icon{
-    background-color: gray;
-    color: skyblue;
-    border-radius: 50%;
-    padding: 15px;
-  }
-
-  .Welcome{
-    font-weight: bold;
-  }
-  .start-text{
-    position: absolute;
-    left: 0;
-    margin-top: -120px;
-    margin-left: -80px;
-
-    
-  }
-  .button-75{
-    position: absolute;
-    right: 0;
-    margin-top: -80px;
-  }
- 
-.user-icon{
-  background-color: gray;
-  color: skyblue;
-  border-radius: 50%;
-  padding: 15px;
-}
 .card-user{
   border: 1px solid black ;
   padding: 5px 5px 0 5px;
   border-radius: 5px;
-}
-.left-side-top{
-  background-color: #F9C4C4;
-  padding: 5px 15px 5px 15px;
-  font-size: large;
-  border: none;
-  position: absolute;
-  top: 0%;
-  margin-top: 20px;
 }
 
 .round{
     border-radius: 10px !important;
 }
 
-.form-check{
-    font-size: larger;
-    
-}
-
-
-.modify{
-  background-color: #674ACB !important;
+.tr-img{
+  /* border: 1px solid black ; */
+  height: 24px;
+  object-fit: cover;
+  /* width: 18px; */
+  /* border-radius: 50%; */
 }
 
   
