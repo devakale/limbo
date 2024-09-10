@@ -4,13 +4,13 @@
         <div>
             <div class="mb-2">
                 <p class="m-0 fw-bold">Category</p>
-                <small routerLink="/relevance" *ngFor="let category of categories">{{ category.category_name }} |
+                <small routerLink="/relevance" *ngFor="let category of categories"> <label >{{ category.category_name }}</label> |
                 </small>
             </div>
         </div>
         <div class="mb-2">
             <p class="m-0 fw-bold">Cources</p>
-            <small routerLink="/relevance" *ngFor="let Cources of courses">{{ Cources.course_name }} | </small>
+            <small *ngFor="let Cources of courses" routerLink="/couserenroll/{{Cources._id}}"><label>{{ Cources.course_name }}</label> | </small>
 
         </div>
 
@@ -22,11 +22,11 @@
         
         <div class="mb-2">
             <p class="m-0 fw-bold">Product</p>
-            <small routerLink="/relevance" *ngFor="let Product of products">{{ Product.product_name }} | </small>
+            <small  *ngFor="let Product of products" routerLink="/shop/{{Product._id}}"> <label>{{ Product.product_name }}</label> | </small>
         </div>
         <div>
             <p class="m-0 fw-bold">Events</p>
-            <small routerLink="/relevance" *ngFor="let Events of events">{{ Events.event_name }} | </small>
+            <small *ngFor="let Events of events" routerLink="/eventdetails/{{Events._id}}"><label>{{ Events.event_name }} </label> | </small>
         </div>
     </div>
 

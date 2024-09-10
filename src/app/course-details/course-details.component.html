@@ -88,9 +88,9 @@
             <div class="onmobile d-flex align-items-center gap-3">
                 <button class="btn btn-phone d-flex align-items-center gap-2"><i class="fa-solid fa-mobile-screen"></i>
                     {{showprofile.trainer.mobile_number}}</button>
-                <button class="btn btn-whatsapp d-flex align-items-center gap-2"><i class="fa-brands fa-whatsapp"
-                        style="color: #30d14e;"></i>
-                    {{showprofile.trainer.whatsapp_no}}</button>
+                <a class="btn border-dark d-flex align-items-center  gap-2" href="https://wa.me/{{showprofile.trainer.whatsapp_no}}" target="_blank"><i class="fa-brands fa-whatsapp fw-bold fs-4"
+                        style="color: #30d14e;"></i> Whatsapp
+                    </a>
                 <button class="btn border-dark">Rate <i class="fa-regular fa-star"></i></button>
                 <button (click)="shareicon()" class="btn share-button"><i class="fas fa-share-alt"></i> Share</button>
                 <button class="btn border-dark"><i class="fa-regular fa-heart"></i></button>
@@ -158,11 +158,11 @@
                         <div class="row row-cols-1 row-cols-md-2 g-3">
                             <div *ngFor="let product of showprofile.productsWithFullImageUrl" class="col rounded-box">
                                 <div class="card h-100 rounded-box">
-                                    <img src="{{product.product_image}}" class="card-img-top rounded-box" alt="...">
+                                    <img routerLink="/shop/{{product._id}}" src="{{product.product_image}}" class="card-img-top rounded-box" alt="...">
                                     <div class="card-body text-center">
                                         <h5 class="card-title">{{product.product_name}}</h5>
                                         <p class="m-0">₹ {{product.product_prize ? product.product_prize :" Free"}}</p>
-                                        <button class="btn btn1 mt-3 btn-block " routerLink="/shop">Add to cart</button>
+                                        <button class="btn btn1 mt-3 btn-block " routerLink="/cart">Add to cart</button>
                                     </div>
                                 </div>
                             </div>

@@ -84,6 +84,7 @@
                 <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
               </button>
             </div>
+
             <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
               <div *ngIf="password.errors?.['required']">Password is required.</div>
               <div *ngIf="password.errors?.['pattern']">

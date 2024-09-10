@@ -13,6 +13,8 @@ export class LoginService {
 
     private register ='http://localhost:1000/registration';
 
+    private institute="http://localhost:1000/institute/create-institute";
+
   constructor(private http:HttpClient, private router: Router){ }
 
     login(data:any):Observable<any>{
@@ -33,8 +35,11 @@ export class LoginService {
 
     RoleChange(data: { userid: string, approved: number }): Observable<any> {
       return this.http.post<any>(`${this.register}/approve-role-change`, data);
-  }
+   }
   
+   postinstitute(data:any):Observable<any>{
+    return this.http.post<any>(`${this.institute}`,data);
+   }
 
    
 

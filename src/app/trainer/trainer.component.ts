@@ -15,6 +15,8 @@ export class TrainerComponent implements OnInit{
 
   ngOnInit(): void {
     this.service.gettrainerdata().subscribe(data =>{
+      console.log(data);
+      
       this.showtrainerData=data.trainersWithFullImageUrl;
       this.filtertrainer = this.showtrainerData;
       // console.log(this.filtertrainer);

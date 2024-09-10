@@ -16,6 +16,10 @@ export class HeaderComponent {
     requested_Role : ' '
   }
 
+  institute = {
+    institute_name  : ' '
+  }
+
   query: string = '';
   results: any;
   searchitemresult:any[] = [];
@@ -90,16 +94,16 @@ export class HeaderComponent {
 
     if (result.events) {
       suggestions.push(...result.events.map((events:any) => ({
-        type: 'events',
-        name: events.events_name,
+        type: 'event',
+        name: events.event_name,
         id: events._id
       })));
     }
 
     if (result.trainers) {
       suggestions.push(...result.trainers.map((trainers:any) => ({
-        type: 'trainers',
-        name: trainers.trainers_name,
+        type: 'trainer',
+        name: trainers.f_Name,
         id: trainers._id
       })));
     }
@@ -108,12 +112,11 @@ export class HeaderComponent {
   }
 
   onSelectSuggestion(suggestion: any) {
-    this.query = suggestion.name; // Set the selected suggestion to the query
-    this.suggestions = []; // Clear suggestions
-      this.route.navigate(['/relevance'], {
+    this.query = suggestion.name;
+    this.suggestions = [];
+    this.route.navigate(['/relevance'], {
       queryParams: {
-        category: suggestion.name,
-        
+        category: suggestion.name,      
         id: suggestion.id
       }
     });
@@ -141,11 +144,19 @@ export class HeaderComponent {
       this.route.navigate(['/'])
   }
 
-  onSubmit(){
+  onSubmit() {
+    if (this.role.requested_Role === 'INSTITUTE') {
+      this.addinstitute();
+    } else {
+      this.sendRequest();
+    }
+  }
+
+  sendRequest(){
 
     this.requst.postrequest(this.role).subscribe({
       next : (response) =>{
-        alert("Request Sent.!!!")
+        alert("Request Sent For Self Expert.!!!")
         window.location.reload();
       },
       error: (error)=>{
@@ -154,6 +165,23 @@ export class HeaderComponent {
     })
 
   }
+
+  addinstitute(){
+
+    this.requst.postinstitute(this.institute).subscribe({
+      next : (response) =>{
+        alert("Request Sent For Institute.!!!")
+        window.location.reload();
+      },
+      error: (error)=>{
+        console.log(alert("Error"),error);
+      }
+    })
+
+  }
+
+  
+
 
   checkUserRole() {
     const role = this.authService.getUserRole();

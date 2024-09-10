@@ -18,10 +18,7 @@ export class DashboardService {
 
   private Search_API="http://localhost:1000/search/globle?q="
 
-
   constructor(private http:HttpClient) { }
-
-
 
           getcategoryname():Observable<any>{
             return this.http.get<any>(`${this.beforelogin}/allcategory`);

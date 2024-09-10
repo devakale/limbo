@@ -71,7 +71,7 @@ export class MyCourseComponent implements OnInit {
     });
 
     this.student.getstudentdatabyID().subscribe((result:any) =>{
-      console.log("Show course Data",result);
+      console.log("Show My course Data",result);
       this.showcoursedatastudent = result;      
     })
     

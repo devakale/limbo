@@ -145,7 +145,7 @@
           <div class="col-sm-12 col-lg-2">
             <h5 class="mb-4">Trainer List</h5>
               <div *ngFor="let trainer of visibleTrainer()" class="d-flex align-items-center justify-content-between  gap-5 mb-3">
-                  <div routerLink="/courcedetails" class="d-flex align-items-center  gap-4 " style="cursor: pointer;">
+                  <div routerLink="/coursedetails/{{trainer.t_id}}" class="d-flex align-items-center  gap-4 " style="cursor: pointer;">
                     <img src="../../assets/Rohit sharma.jpg" class="Trainer-img" alt="">
                     <div >
                       <h6 class="m-0">{{trainer.f_Name || "John" }} <label >{{trainer.l_Name || "Deo" }}</label></h6>

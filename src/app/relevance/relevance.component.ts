@@ -27,12 +27,11 @@ export class RelevanceComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.category = params['category'] || '';
       console.log("category search",this.category);
-      
       this.id = params['id'] || '';
       console.log("id",this.id);
-      
     });
   }
+
 
   initializeSelectedCategory() {
     if (this.category) {
@@ -43,7 +42,6 @@ export class RelevanceComponent implements OnInit {
 
   onCategoryChange(categoryName: string, event: Event) {
     const isChecked = (event.target as HTMLInputElement).checked;
-
     if (isChecked) {
       this.selectedCategories.push(categoryName);
     } else {
@@ -61,16 +59,16 @@ export class RelevanceComponent implements OnInit {
     const isChecked = (event.target as HTMLInputElement).checked;
 
     if (isChecked) {
-      this.selectedCategories = this.Showcategorydata.map(cat => cat.category_name);
+      this.selectedCategories = this.Showcategorydata.map(cat => cat.category_name); 
     } else {
       this.selectedCategories = [];
     }
-
     this.filter.updateSelectedCategories(this.selectedCategories);
   }
 
   isCategorySelected(categoryName: string): boolean {
     return this.selectedCategories.includes(categoryName);
+    
   }
 
   areAllCategoriesSelected(): boolean {
@@ -81,6 +79,7 @@ export class RelevanceComponent implements OnInit {
     const selectAllCheckbox = document.getElementById('selectAll') as HTMLInputElement;
     if (selectAllCheckbox) {
       selectAllCheckbox.checked = this.areAllCategoriesSelected();
+      
     }
   }
 }

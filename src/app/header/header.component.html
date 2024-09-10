@@ -22,19 +22,21 @@
     </div>
 
 
-    <div class="col-sm-6 col-md-6 col-lg-3 d-flex align-items-center justify-content-end">
+    <div class="col-sm-6 col-md-6 col-lg-3 d-flex align-items-center justify-content-end ">
       <button *ngIf="(isLoggedIn$ | async) && isUser " class="btn btn-primary main-button" data-bs-toggle="modal"
         data-bs-target="#exampleModalExpert">
         Become an Expert
       </button>&nbsp;&nbsp;&nbsp;&nbsp;
       <!-- <button *ngIf="(isLoggedIn$ | async)" class="btn btn-primary main-button" data-bs-toggle="modal" data-bs-target="#exampleModalExpert">Become an Expert</button>&nbsp;&nbsp;&nbsp;&nbsp; -->
       <!-- <i *ngIf="(isLoggedIn$ | async)" class="fa-solid fa-bell icon"></i> &nbsp;&nbsp;&nbsp;&nbsp; -->
+      <i *ngIf="(isLoggedIn$ | async)" class="fa-solid fa-house-user Home-icon mx-3 text-primary" routerLink="/trainer" style="font-size: 35px;"></i>
       <div class="dropdown">
         <i class="fa-solid fa-user icon" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
         <ul class="dropdown-menu">
           <ng-container *ngIf="(isLoggedIn$ | async); else notLoggedIn">
             <li><a class="dropdown-item">{{ (user$ | async) }}</a></li>
             <li><a class="dropdown-item" routerLink="/edittrainer">Edit Profile</a></li>
+            <!-- <li><a class="dropdown-item" routerLink="/trainer">Dashboard</a></li> -->
             <li><a class="dropdown-item">Notification</a></li>
             <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
           </ng-container>
@@ -54,7 +56,7 @@
 <div class="modal fade" id="exampleModalExpert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content p-4">
-      <form (ngSubmit)="onSubmit()">
+      <form (ngSubmit)="onSubmit()" >
         <div class="modal-body">
           <label for="exampleFormControlInput1" class="form-label">Select Expert Type</label>
           <div class="form-group">
@@ -72,7 +74,7 @@
           <div *ngIf="role.requested_Role === 'INSTITUTE'" class="mt-2">
             <div class="form-group mb-2">
               <label for="field1">INSTITUTE Name</label>
-              <input type="text" id="field1" class="form-control" name="field1">
+              <input type="text" id="institute_name" class="form-control" name="institute_name" [(ngModel)]="institute.institute_name">
             </div>
             <div class="form-group mb-2">
               <label for="field2">Mobile No</label>

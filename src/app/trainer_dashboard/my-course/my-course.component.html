@@ -32,7 +32,7 @@
         <!-- My Courses For Trainer -->
         <div *ngIf="isUser" class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 mt-2 ">
           <div *ngFor="let student of showcoursedatastudent" class="col-sm-12 col-md-6 col-lg-2 mb-3">
-            <div class="card p-2 round">
+            <div class="card p-2 round" routerLink="/couserenroll/{{student.course_id._id}}">
               <img src="{{student.course_thumbnail}}" height="120px" width="200px" class="card-img-top rounded"
                 alt="..." />
               <div class="card-body">

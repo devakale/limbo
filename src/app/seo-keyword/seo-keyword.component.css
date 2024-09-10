@@ -5,7 +5,8 @@ small{
 p{
     font-size: smaller;
 }
-small:hover{
-   
-        color: royalblue;
+
+label:hover{
+    color: royalblue;
+    text-decoration: underline;
 }

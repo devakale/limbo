@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 export class SignUpComponent implements OnInit {
 
  
-  show: boolean = false; 
+ password: string='';
   rememberMe: boolean = false;
 
    userData= {
@@ -21,7 +21,7 @@ export class SignUpComponent implements OnInit {
       middle_Name:'',
       l_Name:'',
       email_id:' ',
-      password:' ',
+      password:'',
       mobile_number:' ',
 
   }
@@ -35,7 +35,7 @@ export class SignUpComponent implements OnInit {
             next: (response) => {
               // console.log(alert("Success"),response);
               Swal.fire('Congratulation','Welcome to Ximbo! <br> Were thrilled to have you join our community of esteemed trainers, coaches, and educators. Ximbo is designed to empower you with the tools and resources needed to deliver exceptional training and create impactful learning experiences. <br> You Have Register successfully!', 'success');
-              this.route.navigate(['/signin'])
+              this.route.navigate(['/trainer']);
             },
             error: (error)=>{
               // console.log(alert("Error"),error);
@@ -49,6 +49,7 @@ export class SignUpComponent implements OnInit {
 
 
        // Hide And Show Password Logic
+       show: boolean = false; 
        togglePassword() {
         this.show = !this.show;
       }

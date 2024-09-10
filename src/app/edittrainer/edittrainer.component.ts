@@ -3,6 +3,7 @@ import { TrainerService } from '../common_service/trainer.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { AuthServiceService } from '../common_service/auth-service.service';
 
 
 @Component({
@@ -11,6 +12,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./edittrainer.component.css']
 })
 export class EdittrainerComponent implements OnInit {
+
+ 
+
+
 
   currentRow = 0;
   myForm!: FormGroup;
@@ -49,12 +54,32 @@ export class EdittrainerComponent implements OnInit {
   selectedFiles: any[] = [];
 
 
-  constructor(private service:TrainerService,private router:ActivatedRoute,private fromb:FormBuilder)
+  constructor(private service:TrainerService,private router:ActivatedRoute,private fromb:FormBuilder,private auth:AuthServiceService)
       { this.id=this.router.snapshot.paramMap.get('id');  }
 
       onFileSelected(event: any) {
           this.selectedFiles = event.target.files;
       }
+
+
+      isTrainer: boolean = true;
+      isUser: boolean = true;
+      isAdmin: boolean = true;
+    
+      checkUserRole() {
+        const role = this.auth.getUserRole();
+        console.log('User Role:', role);
+    
+        // Assign role-based boolean flags
+        this.isAdmin = role === 'ADMIN';
+        this.isTrainer = role === 'TRAINER';
+        this.isUser = role === 'USER';
+    
+        
+        console.log('isAdmin:', this.isAdmin);
+        console.log('isTrainer:', this.isTrainer);
+        console.log('isUser:', this.isUser);
+    }
 
 
     ngOnInit(): void {

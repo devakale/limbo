@@ -22,7 +22,7 @@ export class SEOKeywordComponent implements OnInit{
     this.service.SEOkeywords().subscribe((data) =>{
         // console.log(data);
         this.categories = data.Category || [];
-        this.courses = data.courses || [];
+        this.courses = data.courses || [];        
         this.trainers = data.trainers || [];
         this.products = data.products || [];
         this.events = data.events || [];
