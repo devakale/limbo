@@ -57,6 +57,7 @@ import { LoginService } from '../common_service/login.service';
 import {  Router } from '@angular/router';
 import { AuthServiceService } from '../common_service/auth-service.service';
 import Swal from 'sweetalert2';
+import { jwtDecode } from "jwt-decode";
 
 @Component({
   selector: 'app-sign-in',
@@ -69,6 +70,9 @@ export class SignInComponent implements OnInit {
   message: string = '';
   show: boolean = false; 
   rememberMe: boolean = false;
+   token = "";
+   decoded:any;
+
 
   constructor(
     private loginService: LoginService,
@@ -77,16 +81,19 @@ export class SignInComponent implements OnInit {
     private route:Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    // console.log(this.decoded);
+
+  }
 
   onSubmit(token: string) {
     
     this.loginService.login(token).subscribe({
       next: (response: any) => { 
-        //alert('We’re excited to see you again. Your login was successful, and you’re now ready to continue creating amazing learning experiences.');
-        sessionStorage.setItem("Authorization",response.token)
+        sessionStorage.setItem("Authorization",response.token);
             this.route.navigate(['/trainer']);
-        this.authService.login(response.token); // Set login state
+            this.authService.login(response.token); // Set login state
         Swal.fire('','We’re excited to see you again. Your login was successful, and you’re now ready to continue creating amazing learning experiences.', 'success');
         
       },

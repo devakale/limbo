@@ -58,14 +58,13 @@ export class EditCourseComponent implements OnInit {
         start_time: d.start_time,
         end_time: d.end_time,
         course_information: d.course_information,
-        // Note: Do not set thumbnail_image here; handle it in the file input
       });
       this.thumbnail_image = d.thumbnail_image; // Clear previous image
     });
 
     this.admin.getcategorydata().subscribe(data => {
       console.log(data);
-      this.showCategorydata = data.categories;
+      this.showCategorydata = data;
     });
   }
 

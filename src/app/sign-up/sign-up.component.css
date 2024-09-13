@@ -10,12 +10,8 @@ label{
 }
 .sign-in-btn{
     background: #3078FF  ;
-     /* background: linear-gradient(90deg, rgba(97,73,205,1) 0%, rgba(166,84,172,1) 50%, rgba(234,95,139,1) 100%);  */
     color: white;
     padding: 10px;
-    /* box-shadow: 8px 8px 30px #b9afe7; */
-    
-
 }
 .rounded-input{
     border-radius: 15px;

@@ -13,8 +13,9 @@ export class EnquiryComponent implements OnInit {
   constructor(private service:TrainerService){}
 
     ngOnInit(): void {
-          this.service.gettrainerdatabyID().subscribe(data => {
+          this.service.gettrainerdatabyID().subscribe(data => {            
             this.showenquirydata = data.Enquirys;
+            console.log(this.showenquirydata);
           })
     }
 

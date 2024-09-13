@@ -1,6 +1,10 @@
 .font-style{
     font-size: large;
     color: white;
+
+    h6{
+      cursor: pointer;
+    }
 }
 
 
@@ -65,4 +69,20 @@
 }
 
 
-  
+.active-link {
+  border-bottom: 3px solid #fff; 
+  padding-bottom: 1px; 
+  color: #fff; 
+}
+ 
+
+/* .active-link {
+  text-decoration: underline;
+  color: #fff;
+} */
+
+
+
+
+
+

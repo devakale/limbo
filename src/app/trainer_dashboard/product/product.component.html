@@ -26,14 +26,14 @@
 
 
         <div *ngFor="let product of showproductdata" class="col-sm-12 col-md-3 col-lg-3 mb-3">
-          <div class="card rounded-box" >
-           <img src="{{product.product_image}}" class="rounded-box img-fluid" alt="...">
+          <div class="card p-2 round" >
+           <img src="{{product.product_image}}" class="rounded img-fluid" alt="...">
            <div class="card-body ">
                <h5 class="card-title">{{product.product_name}}</h5>
                <p class="m-0"><b>Prize : ₹ </b>{{product.product_prize}}</p>
                <p class="m-0"><b>Selling Prize : ₹ </b> {{product.product_selling_prize}}</p>
                <p class="m-0"><b>Description : </b> {{ (product.products_info | slice: 0 : 8)}}
-                  <button (click)="showProductDescription(product)" class="btn btn-sm btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">Read More</button>
+                  <button (click)="showProductDescription(product)" class="btn btn-sm btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModalReadMore  ">Read More</button>
               </p>
            </div>
            <i routerLink="/editproduct/{{product._id}}"  *ngIf="showIcon " class="fa-solid fa-edit right-side-top"></i>
@@ -43,7 +43,7 @@
       
           
         <!-- Modal For Show Product Description -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModalReadMore" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
@@ -78,23 +78,18 @@
 <!-- Model For Add New Courses -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
         <form (ngSubmit)="onSubmit()">
-          <div class="modal-body">
             <div class="row">
               <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
                 <label for="product_name" class="col-form-label">Product Name:</label>
                 <input class="form-control" type="text" id="product_name" [(ngModel)]="product.product_name" name="product_name" required>  
-              </div> 
-        
-              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-                <label for="t_id" class="col-form-label">Trainer Name:</label>
-                <input class="form-control" *ngIf="trainerID"  type="text" id="t_id" [(ngModel)]="product.t_id" name="t_id" [value]="trainerID._id"  required>  
               </div> 
         
               <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
@@ -106,6 +101,17 @@
                 <label for="product_selling_prize" class="col-form-label">Product Selling Prize:</label>
                 <input class="form-control" type="number"  id="product_selling_prize" [(ngModel)]="product.product_selling_prize" name="product_selling_prize" required>
               </div> 
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="categoryid" class="col-form-label">Select Categories</label>
+                <select class="form-select" aria-label="Default select example" id="categoryid"
+                  [(ngModel)]="product.categoryid" name="categoryid">
+                  <option selected>Select Categories</option>
+                  <option *ngFor="let category of showCategorydata" [value]="category._id">
+                    {{ category.category_name }}
+                  </option>
+                </select>
+              </div>
         
               <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
                 <label for="product_image" class="col-form-label">Product Image</label>
@@ -122,16 +128,13 @@
                 <textarea class="form-control" id="products_info" [(ngModel)]="product.products_info" name="products_info" required></textarea>
               </div> 
             </div>
-          </div>
+          
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Add Product</button>
           </div>
         </form>
-        
       </div>
-
-  
     </div>
 
   </div>

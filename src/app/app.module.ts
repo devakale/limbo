@@ -53,6 +53,13 @@ import { UsersideProductComponent } from './userside-product/userside-product.co
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FooterComponent } from './footer/footer.component';
 import { UserEventComponent } from './user-event/user-event.component';
+import { UserEventDetailsComponent } from './user-event-details/user-event-details.component';
+import { SuperAdminComponent } from './super-admin/super-admin.component';
+import { SEOKeywordComponent } from './seo-keyword/seo-keyword.component';
+import { CookieService } from 'ngx-cookie-service';
+import { ReviewComponent } from './trainer_dashboard/review/review.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { NotificationComponent } from './notification/notification.component';
 
 
 @NgModule({
@@ -102,6 +109,11 @@ import { UserEventComponent } from './user-event/user-event.component';
     UsersideProductComponent,
     FooterComponent,
     UserEventComponent,
+    UserEventDetailsComponent,
+    SuperAdminComponent,
+    SEOKeywordComponent,
+    ReviewComponent,
+    NotificationComponent,
     
   ],
   imports: [
@@ -111,10 +123,11 @@ import { UserEventComponent } from './user-event/user-event.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatTabsModule
    
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
+  providers: [CookieService,{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

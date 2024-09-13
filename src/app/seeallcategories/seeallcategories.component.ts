@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../common_service/dashboard.service';
 import { FilterService } from '../common_service/filter.service';
 
-
 @Component({
   selector: 'app-seeallcategories',
   templateUrl: './seeallcategories.component.html',
@@ -10,31 +9,53 @@ import { FilterService } from '../common_service/filter.service';
 })
 export class SeeallcategoriesComponent implements OnInit {
 
- 
-  Showcouserdata: any;
-  p: number = 1; // Current page
-  filteredCourses: any[] = [];
+  totalItems = 0;
+  currentPage = 1;
+  itemsPerPage = 8; 
+  ShowCourseData: any[] = [];   
+  filteredCourses: any[] = [];  
+  selectedCategories: string[] = []; 
+  p: number = 1;
 
-
-  constructor(private service: DashboardService, private filter:FilterService) {}
+  constructor(private service: DashboardService, private filter: FilterService) {}
 
   ngOnInit(): void {
-    
-    this.service.getcouserdata().subscribe(result => {
-      this.Showcouserdata = result.coursesWithFullImageUrl;
-      this.filteredCourses = this.Showcouserdata; // Show all courses if no category is selected
+    this.loadCourses(this.currentPage, this.itemsPerPage);
 
-    });
-
+    // Subscribe to selected categories from FilterService
     this.filter.selectedCategories$.subscribe(selectedCategories => {
-      if (selectedCategories.length > 0) {
-        this.filteredCourses = this.Showcouserdata.filter((course:any) => 
-          selectedCategories.includes(course.category_id.category_name)
-        );
-      } else {
-        this.filteredCourses = this.Showcouserdata; // Show all courses if no category is selected
-      }
+      this.selectedCategories = selectedCategories;
+      this.filteredCourses = this.ShowCourseData;
+      this.applyFilter();
     });
+  }
 
+  // Fetch courses from the backend
+  loadCourses(page: number, limit: number): void {
+    this.service.getcouserdata(page, limit).subscribe(result => {
+      console.log(result);
+      
+      this.ShowCourseData = result.coursesWithFullImageUrl;
+      this.totalItems = result.pagination.totalItems;
+      this.applyFilter();  // Apply the filter after loading courses
+    });
+  }
+
+  // Apply filtering logic based on selected categories
+  applyFilter(): void {
+    if (this.selectedCategories.length > 0) {
+      this.filteredCourses = this.ShowCourseData.filter((course: any) => 
+        this.selectedCategories.includes(course.category_id.category_name)
+      );
+    } else {
+      this.filteredCourses = this.ShowCourseData;  // No filtering if no categories selected
+    }
+  }
+
+  // Handle page change for pagination
+  onPageChange(page: number): void {
+    this.currentPage = page;
+    this.loadCourses(this.currentPage, this.itemsPerPage); 
+    this.p = page;
   }
 }

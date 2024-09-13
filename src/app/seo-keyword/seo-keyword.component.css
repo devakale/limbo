@@ -1,0 +1,12 @@
+small{
+    cursor: pointer;
+    font-size: small;  
+}
+p{
+    font-size: smaller;
+}
+
+label:hover{
+    color: royalblue;
+    text-decoration: underline;
+}

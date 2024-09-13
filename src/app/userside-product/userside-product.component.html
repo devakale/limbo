@@ -1,41 +1,38 @@
 <div class="container-fluid">
-    <div class="row">
-      <div  class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gy-2 gx-3">
-
-<div *ngFor="let product of showproductdata" class="col-sm-12 col-md-3 col-lg-3 mb-3">
-    <div class="card p-2 rounded" >
-     <img src="{{product.product_image}}" class="rounded img-fluid" alt="...">
-     <div class="card-body ">
-         <h5 class="card-title">{{product.product_name}}</h5>
-         <p class="m-0"><b>Prize : ₹ </b>{{product.product_prize}}</p>
-         <p class="m-0"><b>Selling Prize : ₹ </b> {{product.product_selling_prize}}</p>
-         <p class="m-0"><b>Description : </b> {{ (product.products_info | slice: 0 : 8)}}
-            <button (click)="showProductDescription(product)" class="btn btn-sm btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">Read More</button>
-        </p>
-      </div>
-    </div>
- </div>
-
-      </div>
-    </div>
-</div>  
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Product Description</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <p *ngIf="selectedProduct">{{ selectedProduct.products_info }}</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+  <div class="row">
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gy-2 gx-3">
+      <div *ngFor="let product of filteredProduct" class="col-sm-12 col-md-3 col-lg-3 mb-3">
+        <div class="card p-2 rounded" routerLink="/shop/{{product._id}}">
+          <img src="{{product.product_image}}"  class="rounded img-fluid" alt="...">
+          <div class="card-body ">
+              <h5 class="card-title">{{product.product_name}}</h5>
+              <p class="m-0"><b>Prize : ₹ </b>{{product.product_prize}}</p>
+              <p class="m-0"><b>Selling Prize : ₹ </b> {{product.product_selling_prize}}</p>
+              <p class="m-0"><b>Description : </b> {{ (product.products_info | slice: 0 : 20)}} <br>
+                <button (click)="showProductDescription(product)" class="btn btn-sm btn-primary rounded-pill mt-2"
+                  data-bs-toggle="modal" data-bs-target="#exampleModal">Read More</button>
+              </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Product Description</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p *ngIf="selectedProduct">{{ selectedProduct.products_info }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

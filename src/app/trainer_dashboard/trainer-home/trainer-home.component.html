@@ -3,25 +3,89 @@
 
         <div class="col-lg-2 bg-dark text-light pt-3 rounded-end" style="height: 100vh;">
             <ul class="list">
-                <li routerLink="/trainer" class="hover"><i class="fa-solid fa-house"></i>Dashboard</li>
-                <li routerLink="/trainer/mycourse" class="hover"><i class="fa-solid fa-cart-shopping"></i>Course</li>
-                <li routerLink="/trainer/product" class="hover"><i class="fa-solid fa-square-check"></i>Product</li>
-                <li routerLink="/trainer/event" class="hover"><i class="fa-solid fa-calendar-days"></i>Event</li>
-                <li routerLink="/trainer/enquiry" class="hover"><i class="fa-solid fa-envelope"></i>Enquiry</li>
-                <li routerLink="/trainer/appointment" class="hover"><i class="fa-solid fa-circle-user"></i>Appointment</li>
-                <li routerLink="er" class="hover"><i class="fa-solid fa-clock-rotate-left"></i>History</li>
+                <!-- Dashboard: Visible to USER, TRAINER, ADMIN -->
+                <li *ngIf="isUser" routerLink="/trainer" class="hover">
+                    <i class="fa-solid fa-house"></i> Dashboard
+                </li>
+        
+                <!-- Request: Visible only to ADMIN -->
+                <li *ngIf="isAdmin" routerLink="/trainer/superadmin" class="hover">
+                    <i class="fa-solid fa-house"></i> Request
+                </li>
+        
+                <!-- Course: Visible to USER, TRAINER, ADMIN -->
+                <li *ngIf="isUser" routerLink="/trainer/mycourse" class="hover">
+                    <i class="fa-solid fa-cart-shopping"></i> Course
+                </li>
+        
+                <!-- Product: Visible to TRAINER and ADMIN -->
+                <li *ngIf="isTrainer || isAdmin" routerLink="/trainer/product" class="hover">
+                    <i class="fa-solid fa-square-check"></i> Product
+                </li>
+        
+                <!-- Event: Visible to TRAINER and ADMIN -->
+                <li *ngIf="isTrainer || isAdmin" routerLink="/trainer/event" class="hover">
+                    <i class="fa-solid fa-calendar-days"></i> Event
+                </li>
+        
+                <!-- Enquiry: Visible to TRAINER and ADMIN -->
+                <li *ngIf="isTrainer || isAdmin" routerLink="/trainer/enquiry" class="hover">
+                    <i class="fa-solid fa-envelope"></i> Enquiry
+                </li>
+        
+                <!-- Appointment: Visible to TRAINER and ADMIN -->
+                <li *ngIf="isTrainer || isAdmin" routerLink="/trainer/appointment" class="hover">
+                    <i class="fa-solid fa-circle-user"></i> Appointment
+                </li>
+
+                <!-- Appointment: Visible to TRAINER and ADMIN -->
+                <li *ngIf="isTrainer || isAdmin" routerLink="/trainer/question" class="hover">
+                    <i class="fa-solid fa-circle-user"></i> Question
+                </li>
+
+                 <!-- Appointment: Visible to TRAINER and ADMIN -->
+                 <li *ngIf="isTrainer || isAdmin" routerLink="/trainer/review" class="hover">
+                    <i class="fa-solid fa-circle-user"></i> Review
+                </li>
+        
+                <!-- Message: Visible only to USER and ADMIN -->
+                <li *ngIf="isUser" routerLink="er" class="hover">
+                    <i class="fa-solid fa-clock-rotate-left"></i> Message
+                </li>
             </ul>
         </div>
+        
+        
+        
+        
 
+        <!-- <div class="col-lg-2 bg-dark text-light pt-3 rounded-end" style="height: 100vh;">
+            <ul class="list">
+                <li *ngIf="isUser" routerLink="/trainer" class="hover"><i class="fa-solid fa-house"></i>Dashboard</li>
+                <li *ngIf="isAdmin" routerLink="/trainer/superadmin" class="hover"><i class="fa-solid fa-house"></i>Request</li>
+                <li *ngIf="isUser" routerLink="/trainer/mycourse" class="hover"><i class="fa-solid fa-cart-shopping"></i>Course</li>
+                <li *ngIf="isTrainer" routerLink="/trainer/product" class="hover"><i class="fa-solid fa-square-check"></i>Product</li>
+                <li *ngIf="isTrainer" routerLink="/trainer/event" class="hover"><i class="fa-solid fa-calendar-days"></i>Event</li>
+                <li *ngIf="isTrainer" routerLink="/trainer/enquiry" class="hover"><i class="fa-solid fa-envelope"></i>Enquiry</li>
+                <li *ngIf="isTrainer" routerLink="/trainer/appointment" class="hover"><i class="fa-solid fa-circle-user"></i>Appointment</li>
+                <li *ngIf="isUser" routerLink="er" class="hover"><i class="fa-solid fa-clock-rotate-left"></i>History</li>
+                <li *ngIf="isUser" routerLink="er" class="hover"><i class="fa-solid fa-clock-rotate-left"></i>Message</li>
+
+            </ul>
+        </div> -->
 
         <div class="col-lg-10">
 
             <div class="row">
                 <router-outlet></router-outlet>
             </div>
-
         </div>
-    </div> <!-- close main row -->
+    </div> 
+
+    <!-- Student Dashboard -->
+     
+   
+
 </div> <!-- close container -->
 
 

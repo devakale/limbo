@@ -1,43 +1,42 @@
 <div class="container-fluid mt-3">
-  <!-- <div class="row">
-    <img src="../../assets/Empower.png" class="img-fluid"  alt="">
-  </div> -->
-    <div class="row">
-        <div class="row p-3 rounded-top" style="background-color: #307Dff;">
-            <div class="col-sm-12 col-md-12 col-lg-8">
-                <div class="d-flex align-items-center gap-5 font-style">
-                  <!-- <h6 routerLink="/relevance/relevancedata">Relevance</h6> -->
-                  <h6 routerLink="/relevance/">Courses</h6>
-                  <h6 routerLink="/relevance/trainer">Trainer</h6>
-                  <h6 routerLink="/relevance/userproduct">Product</h6>
-                  <h6 routerLink="/relevance/userevent">Event</h6>
-                </div>
-            </div>
-        </div> 
+ 
+    <!-- <img src="../../assets/tree.jpg" class="d-block w-100 object-fit-cover" height="250px"  alt="" > -->
+  
+  <div class="row">
+    <div class="row p-3 rounded-top" style="background-color: #307Dff;">
+      <div class="col-sm-12 col-md-12 col-lg-8">
+        <div class="d-flex align-items-center gap-5 font-style">
+          <!-- <h6 routerLink="/relevance/relevancedata">Relevance</h6> -->
+          <h6 routerLink="/relevance/seeallcategory" routerLinkActive="active-link" >Courses</h6>
+          <h6 routerLink="/relevance/trainer" routerLinkActive="active-link">Trainer</h6>
+          <h6 routerLink="/relevance/userproduct" routerLinkActive="active-link">Product</h6>
+          <h6 routerLink="/relevance/userevent" routerLinkActive="active-link">Event</h6>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row ">
+
+    <div class="col-sm-12 col-md-6 col-lg-2 pt-3 ps-4" style="background-color:#DDDBE9;height: 100vh;">
+      <h5>Category</h5>
+    
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="checkbox" id="selectAll" (change)="onSelectAll($event)" [checked]="areAllCategoriesSelected()">
+        <label class="form-check-label" for="selectAll"> All</label>
+      </div>
+      
+      <div *ngFor="let category of Showcategorydata" class="form-check mb-2">
+        <input class="form-check-input" type="checkbox" [id]="category.category_name"
+          (change)="onCategoryChange(category.category_name, $event)" [checked]="isCategorySelected(category.category_name)">
+        <label class="form-check-label" [for]="category.category_name">{{category.category_name}}</label>
+      </div>
+    </div>
+    
+
+    <div class="col-10">
+
+      <router-outlet></router-outlet>
 
     </div>
-        <div class="row ">
-            
-          <div class="col-sm-12 col-md-6 col-lg-2 pt-3 ps-4" style="background-color:#DDDBE9;height: 100vh;">
-            <h5>Category</h5>
-            <!-- <div *ngFor="let category of Showcategorydata" class="form-check mb-2">
-              <input class="form-check-input" type="checkbox"  id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">{{category.category_name}}</label>
-            </div> -->
-
-            <div *ngFor="let category of Showcategorydata" class="form-check mb-2">
-              <input class="form-check-input" type="checkbox" id="{{category.category_name}}" (change)="onCategoryChange(category.category_name, $event)">
-              <label class="form-check-label" for="{{category.category_name}}">{{category.category_name}}</label>
-            </div>
-
-          </div>
-
-            <div class="col-10">
-             
-              <router-outlet></router-outlet>
-
-            </div>    
-
-               
-    
-</div>
+  </div>

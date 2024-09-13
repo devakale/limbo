@@ -19,12 +19,12 @@
     color: #674ACB;
 }
 
-label{
+.label-color label{
   color: #F96D63;
   b{
     color: black;
   }
-}
+} */
 
 
 /* /////////////////////////// */
@@ -86,3 +86,8 @@ label{
 .round{
     border-radius: 10px !important;
 }
+
+
+
+
+

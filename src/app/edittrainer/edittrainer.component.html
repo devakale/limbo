@@ -3,24 +3,29 @@
      <div *ngIf="currentRow === 0  " class="row">
         <h2>Personal Information</h2>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-            <label for="recipient-name" class="col-form-label">Name</label>
-             <input type="text" value="" class="form-control" id="recipient-name" formControlName="user_name">    
+            <label for="f_Name" class="col-form-label">First Name</label>
+             <input type="text" value="" class="form-control" id="f_Name" formControlName="f_Name">    
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="l_Name" class="col-form-label">Last Name</label>
+             <input type="text" value="" class="form-control" id="l_Name" formControlName="l_Name">    
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="recipient-name" class="col-form-label">Email</label>
-             <input type="text" class="form-control" id="recipient-name" formControlName="email_id" >    
+             <input type="email" class="form-control" id="recipient-name" formControlName="email_id" >    
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="recipient-name" class="col-form-label">Mobile Number</label>
-             <input type="text" class="form-control" id="recipient-name" formControlName="mobile_number" >    
+             <input type="number" class="form-control" id="recipient-name" formControlName="mobile_number" >    
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="recipient-name" class="col-form-label">Whatsapp Number</label>
-             <input type="text" class="form-control" id="recipient-name" formControlName="whatsapp_no" >    
+             <input type="number" class="form-control" id="recipient-name" formControlName="whatsapp_no" >    
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="recipient-name" class="col-form-label">Date of Birth</label>
-             <input type="text" class="form-control" id="recipient-name" formControlName="date_of_birth" >    
+             <input type="date" class="form-control" id="recipient-name" formControlName="date_of_birth" >    
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="recipient-name" class="col-form-label">Address Line 1</label>
@@ -32,7 +37,7 @@
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="recipient-name" class="col-form-label">Pincode</label>
-             <input type="text" class="form-control" id="recipient-name" formControlName="pincode" >    
+             <input type="number" class="form-control" id="recipient-name" formControlName="pincode" >    
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="recipient-name" class="col-form-label">City</label>
@@ -47,9 +52,9 @@
             <label for="recipient-name" class="col-form-label">Country</label>
              <input type="text" class="form-control" id="recipient-name" formControlName="country" >    
         </div>
-        <div class="d-flex align-items-center justify-content-between">
+        <div  class="d-flex align-items-center justify-content-between">
             <button type="submit" class="btn btn-primary">Submit</button>
-            <button (click)="nextRow()" class="btn text-light" style="background-color: #674ACB;">Next</button>
+            <button *ngIf="isTrainer " (click)="nextRow()" class="btn text-light" style="background-color: #674ACB;">Next</button>
         </div>
 
            </div>   
@@ -130,6 +135,7 @@
                         <label for="our_services" class="col-form-label">Services</label><br>
                         <textarea type="text" class="form-control" id="our_services" name="our_services" [(ngModel)]="about.our_services" ></textarea>    
                     </div>
+                    
                     <div class="text-end">
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
@@ -145,27 +151,28 @@
                     </div>
 
                     <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-                        <label for="Testimonial_Autor_Name" class="col-form-label">Author Namd</label><br>
+                        <label for="Testimonial_Autor_Name" class="col-form-label">Author Name</label><br>
                         <input type="text" class="form-control" id="Testimonial_Autor_Name" name="Testimonial_Autor_Name" [(ngModel)]="Testimonial.Testimonial_Autor_Name" >    
                     </div>
+
                     <div class="text-end">
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </div>
             </form>
-            <h2 class="mt-3">Gallary</h2>
 
-            <form (ngSubmit)="onGallary()">
-                <div class="row">
-                  <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-                    <label for="photos" class="col-form-label">Upload Images</label><br>
-                    <input type="file" class="form-control" id="photos" (change)="onFileSelected($event)" multiple>
-                  </div>
-                  <div class="text-end">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                  </div>
-                </div>
-            </form>
+            <h2 class="mt-3">Gallary</h2>
+                <form (ngSubmit)="onGallary()">
+                    <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                        <label for="photos" class="col-form-label">Upload Images</label><br>
+                        <input type="file" class="form-control" id="photos" (change)="onFileSelected($event)" multiple>
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                    </div>
+                </form>
         
             <div class="d-flex align-items-center justify-content-start">
                 <button (click)="previousRow()" class="btn text-light " style="background-color: #F96D63;">Back</button>

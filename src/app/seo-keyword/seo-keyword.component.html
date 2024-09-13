@@ -1,0 +1,33 @@
+<hr class="bg-dark">
+<div class="container pb-3">
+    <div class="row">
+        <div>
+            <div class="mb-2">
+                <p class="m-0 fw-bold">Category</p>
+                <small *ngFor="let category of categories" [routerLink]="['/relevance']" [queryParams]="{ category: category.category_name }"> <label >{{ category.category_name }}</label> |
+                </small>
+            </div>
+        </div>
+        <div class="mb-2">
+            <p class="m-0 fw-bold">Cources</p>
+            <small *ngFor="let Cources of courses" routerLink="/couserenroll/{{Cources._id}}"><label>{{ Cources.course_name }}</label> | </small>
+
+        </div>
+
+        <!-- <div class="mb-2">
+            <p class="m-0 fw-bold">Trainer</p>
+            <small routerLink="/relevance" *ngFor="let Trainer of trainers">{{ Trainer.f_Name + " " +
+                Trainer.l_Name}} | </small>
+        </div> -->
+        
+        <div class="mb-2">
+            <p class="m-0 fw-bold">Product</p>
+            <small  *ngFor="let Product of products" routerLink="/shop/{{Product._id}}"> <label>{{ Product.product_name }}</label> | </small>
+        </div>
+        <div>
+            <p class="m-0 fw-bold">Events</p>
+            <small *ngFor="let Events of events" routerLink="/eventdetails/{{Events._id}}"><label>{{ Events.event_name }} </label> | </small>
+        </div>
+    </div>
+
+</div>

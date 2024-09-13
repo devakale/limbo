@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { TrainerService } from '../common_service/trainer.service';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DashboardService } from '../common_service/dashboard.service';
+import Swal from 'sweetalert2';
+import { Token } from '@angular/compiler';
+import { LoginService } from '../common_service/login.service';
+
 
 @Component({
   selector: 'app-course-details',
@@ -11,17 +16,216 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CourseDetailsComponent implements OnInit {
 
   showprofile:any;
+  // photos:any[] = [];
   id: any;
 
-  constructor(private serive:TrainerService,private router:ActivatedRoute)
+
+  constructor(private serive:TrainerService,private router:ActivatedRoute,
+    private dashboard:DashboardService,private loginservices:LoginService,private route:Router)
   {this.id=this.router.snapshot.paramMap.get('id');}
 
   ngOnInit(): void {
+    
     this.serive.getprofile(this.id).subscribe(data =>{
-      // console.log("data",data.trainer);
-      this.showprofile = data;
-
+      console.log("data",data);
+      this.showprofile = data;  
+      // this.photos = data.gallarys;   
+      // console.log(this.photos) 
     })
     
+    this.enquiry.trainerid = this.id;
+    this.question.trainerid = this.id;
+    this.review.t_id=this.id;
   }
+
+//  redirect WhatsApp check Login Or Not
+  handleWhatsAppClick() {
+    if (this.token) {
+      window.open(`https://wa.me/${this.showprofile.trainer.whatsapp_no}`, '_blank');
+    } else {
+      // Swal.fire({icon: 'warning',title: 'Please Login', text: 'You need to be logged in to contact via WhatsApp.',confirmButtonText: 'OK'});
+      const modalElement = document.getElementById('CheckLoggedIN');
+      if (modalElement) {
+        const modal = new (window as any).bootstrap.Modal(modalElement);
+        modal.show();
+      }  
+    }
+  }
+
+  
+  currentUrl: string = window.location.href;
+
+  shareOnWhatsApp() {
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(this.currentUrl)}`;
+      window.open(whatsappUrl, '_blank');
+  }
+  
+  copyLink() {
+      navigator.clipboard.writeText(this.currentUrl).then(() => {
+          alert('Link copied to clipboard!');
+      }).catch(err => {
+          console.error('Could not copy text: ', err);
+      });
+  }
+  
+  shareOnFacebook() {
+      const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(this.currentUrl)}`;
+      window.open(facebookUrl, '_blank');
+  }
+
+  showshare=false;
+  shareicon(){
+    this.showshare = !this.showshare;
+  }
+  
+//  Here get token For user Logged in or not for post Enquiry, question and reviews 
+  token = sessionStorage.getItem('Authorization');
+
+  enquiry = {
+    description:' ',
+    trainerid:' ',
+  }
+  
+  postEnquiry(){
+    if(this.token){
+    this.dashboard.postEnquiry(this.enquiry).subscribe({
+      next: (Response) =>{
+        Swal.fire('Ohh...!', 'You are Enquiry send Successfully..!', 'success');
+      },
+      error : (error)=>{
+        Swal.fire('Error', 'sorry..!', 'error');
+      }
+    })
+  }
+  else {
+    const modalElement = document.getElementById('CheckLoggedIN');
+    if (modalElement) {
+      const modal = new (window as any).bootstrap.Modal(modalElement);
+      modal.show();
+    }  }
+  }
+  
+
+  question = {
+    question:' ',
+    trainerid:' ',
+  }
+  postquestion(){
+    if(this.token){
+    this.dashboard.postquestions(this.question).subscribe({
+      next : (response) => {
+        Swal.fire('Ohh...!', 'You are Question send Successfully..!', 'success');
+      },
+      error : (Error) =>{
+        Swal.fire('Error', 'sorry..!', 'error');
+      }
+    });
+  }
+  else{
+    const modalElement = document.getElementById('CheckLoggedIN');
+    if (modalElement) {
+      const modal = new (window as any).bootstrap.Modal(modalElement);
+      modal.show();
+    }  }
+}
+
+  stars: number[] = [1, 2, 3, 4, 5];  
+  rating: number = 0;  
+  toggleRating(clickedStar: number): void {
+    if (this.rating === clickedStar) {
+      this.rating = 0;
+    } else {
+      this.rating = clickedStar;
+    }
+  }
+
+  review = {
+    review: ' ',
+    t_id:' ',
+  }
+  postreview(){
+    if(this.token){
+    this.dashboard.postreview(this.review).subscribe({
+      next : (Response) =>{
+        Swal.fire('Ohh...!', 'You are Question send Successfully..!', 'success');
+      },
+      error : (Error) => {
+        Swal.fire('Error', 'sorry..!', 'error');
+      }
+    })
+  }
+  else{
+    const modalElement = document.getElementById('CheckLoggedIN');
+    if (modalElement) {
+      const modal = new (window as any).bootstrap.Modal(modalElement);
+      modal.show();
+    }  }
+  }
+
+  Appoinment = {
+    date: ' ',
+    time:' ',
+    t_id:' ',
+  }
+
+  BookAppoinment(){
+    if(this.token){
+    this.dashboard.BookApnmt(this.review).subscribe({
+      next : (Response) =>{
+        Swal.fire('Ohh...!', 'You are Question send Successfully..!', 'success');
+      },
+      error : (Error) => {
+        Swal.fire('Error', 'sorry..!', 'error');
+      }
+    })
+  }
+  else{
+    const modalElement = document.getElementById('CheckLoggedIN');
+    if (modalElement) {
+      const modal = new (window as any).bootstrap.Modal(modalElement);
+      modal.show();
+    }  }
+  }
+
+
+
+  show: boolean = false;
+  rememberMe: boolean = false;
+
+  userData = {
+    f_Name: '',
+    middle_Name: '',
+    l_Name: '',
+    email_id: ' ',
+    password: '',
+    mobile_number: ' ',
+
+  }
+
+
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      this.loginservices.postsignupdata(this.userData).subscribe({
+        next: (response) => {
+          // console.log(alert("Success"),response);
+          Swal.fire('Congratulation', 'Welcome to Ximbo! <br> Were thrilled to have you join our community of esteemed trainers, coaches, and educators. Ximbo is designed to empower you with the tools and resources needed to deliver exceptional training and create impactful learning experiences. <br> You Have Register successfully!', 'success');
+          this.route.navigate(['/cart'])
+        },
+        error: (error) => {
+          // console.log(alert("Error"),error);
+          Swal.fire('Error', 'Please Enter Valid Details.', 'error');
+        }
+      });
+    } else {
+      console.log('Form is invalid');
+    }
+  }
+
+
+  // Hide And Show Password Logic
+  togglePassword() {
+    this.show = !this.show;
+  }
+
+  
 }

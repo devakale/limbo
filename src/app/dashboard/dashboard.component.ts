@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../common_service/dashboard.service';
-import { AdminService } from '../common_service/admin.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +16,9 @@ export class DashboardComponent implements OnInit {
 
   showtrainerData:any[]=[];
   selectedProduct: any;
+
+  page = 0;
+  limit = 4;
 
   showProductDescription(product: any) {
     this.selectedProduct = product;
@@ -44,25 +46,24 @@ export class DashboardComponent implements OnInit {
     this.showtrainerData || [];
     this.showAlltrainer = !this.showAlltrainer;
   }
+
   visibleTrainer(){
     return this.showAlltrainer ? this.showtrainerData : this.showtrainerData.slice(0, 6)
   }
-
-
   
-   constructor(private Dservice:DashboardService, private  service:AdminService,){}
+   constructor(private Dservice:DashboardService){}
 
    ngOnInit(): void{
-      this.service.getcategorydatadashboard().subscribe( data =>{
+      this.Dservice.gethomedatauser(this.page, this.limit).subscribe( data =>{
         console.log(data);
         this.showCategorydata = data.categoriesWithFullImageUrl;
       });
 
-      this.Dservice.getcouserdata().subscribe(result => {
+      this.Dservice.gethomedatauser(this.page, this.limit).subscribe(result => {
         this.Showcouserdata = result.coursesWithFullImageUrl;
       });
 
-      this.Dservice.gettrainerdata().subscribe(data =>{
+      this.Dservice.gethomedatauser(this.page, this.limit).subscribe(data =>{
         this.showtrainerData=data.trainersWithFullImageUrl;
       });
 

@@ -3,6 +3,7 @@ import { TrainerService } from '../common_service/trainer.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { AuthServiceService } from '../common_service/auth-service.service';
 
 
 @Component({
@@ -11,6 +12,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./edittrainer.component.css']
 })
 export class EdittrainerComponent implements OnInit {
+
+ 
+
+
 
   currentRow = 0;
   myForm!: FormGroup;
@@ -49,7 +54,7 @@ export class EdittrainerComponent implements OnInit {
   selectedFiles: any[] = [];
 
 
-  constructor(private service:TrainerService,private router:ActivatedRoute,private fromb:FormBuilder)
+  constructor(private service:TrainerService,private router:ActivatedRoute,private fromb:FormBuilder,private auth:AuthServiceService)
       { this.id=this.router.snapshot.paramMap.get('id');  }
 
       onFileSelected(event: any) {
@@ -57,9 +62,30 @@ export class EdittrainerComponent implements OnInit {
       }
 
 
+      isTrainer: boolean = true;
+      isUser: boolean = true;
+      isAdmin: boolean = true;
+    
+      checkUserRole() {
+        const role = this.auth.getUserRole();
+        console.log('User Role:', role);
+    
+        // Assign role-based boolean flags
+        this.isAdmin = role === 'ADMIN';
+        this.isTrainer = role === 'TRAINER';
+        this.isUser = role === 'USER';
+    
+        
+        console.log('isAdmin:', this.isAdmin);
+        console.log('isTrainer:', this.isTrainer);
+        console.log('isUser:', this.isUser);
+    }
+
+
     ngOnInit(): void {
           this.myForm = this.fromb.group({
-            user_name :[''],
+            f_Name:[' '],
+            l_Name:[' '],
             email_id : [' '],
             mobile_number : [' '],
             trainer_image: [''],
@@ -76,7 +102,8 @@ export class EdittrainerComponent implements OnInit {
           this.service.gettrainerbyID().subscribe((data:any)=>{
               console.log("trainer Details",data);
               this.myForm.patchValue({
-                user_name :data.user_name,
+                f_Name:data.f_Name,
+                l_Name:data.l_Name,
                 email_id : data.email_id,
                 mobile_number : data.mobile_number,
                 date_of_birth: data.date_of_birth,
@@ -93,8 +120,8 @@ export class EdittrainerComponent implements OnInit {
 
     onSubmit(){
       const formData = new FormData();
-
-      formData.append("user_name",this.myForm.get("user_name")?.value);
+      formData.append("f_Name",this.myForm.get("f_Name")?.value);
+      formData.append("l_Name",this.myForm.get("l_Name")?.value);
       formData.append("email_id",this.myForm.get("email_id")?.value);
       formData.append("mobile_number",this.myForm.get("mobile_number")?.value);
       formData.append("date_of_birth",this.myForm.get("date_of_birth")?.value);
@@ -109,9 +136,12 @@ export class EdittrainerComponent implements OnInit {
       this.service.updatetrainerDetails(formData).subscribe({
         next: response => {
           console.log(response);
+          alert("Data Updated");
         },
         error: error => {
           console.log(error);
+          alert("Error");
+
         }
       });
     }
