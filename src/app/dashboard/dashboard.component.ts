@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   showtrainerData:any[]=[];
   selectedProduct: any;
 
-  page = 1;
+  page = 0;
   limit = 4;
 
   showProductDescription(product: any) {
@@ -46,11 +46,10 @@ export class DashboardComponent implements OnInit {
     this.showtrainerData || [];
     this.showAlltrainer = !this.showAlltrainer;
   }
+
   visibleTrainer(){
     return this.showAlltrainer ? this.showtrainerData : this.showtrainerData.slice(0, 6)
   }
-
-
   
    constructor(private Dservice:DashboardService){}
 

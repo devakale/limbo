@@ -10,13 +10,18 @@ import { Observable } from 'rxjs';
 export class DashboardService {
 
    
-  private beforelogin ="http://localhost:1000/beforeLogin"
+  private beforelogin ="http://localhost:1000/beforeLogin";
 
-  private Enroll ="http://localhost:1000/enrollcourse"
+  private Enroll ="http://localhost:1000/enrollcourse";
 
-  private SEOkeyword="http://localhost:1000/footer"
+  private SEOkeyword="http://localhost:1000/footer";
 
-  private Search_API="http://localhost:1000/search/globle?q="
+  private Search_API="http://localhost:1000/search/global?q=";
+
+  private API_URL="http://localhost:1000"
+
+
+
 
   constructor(private http:HttpClient) { }
 
@@ -37,7 +42,7 @@ export class DashboardService {
           }
 
           gettrainerdata():Observable<any>{
-            return this.http.get<any>(`${this.beforelogin}/alltrainers`);
+            return this.http.get<any>(`${this.beforelogin}/alltrainer`);
            }
 
            productdata():Observable<any>{
@@ -67,5 +72,21 @@ export class DashboardService {
 
           search(query: string):Observable<any>{
             return this.http.get<any>(`${this.Search_API}${query}`)
+          }
+
+          postEnquiry(data:any):Observable<any>{
+            return this.http.post<any>(`${this.API_URL}/enquiries`,data)
+          }
+
+          postquestions(data:any):Observable<any>{
+            return this.http.post<any>(`${this.API_URL}/questions`,data)
+          }
+
+          postreview(data:any):Observable<any>{
+            return this.http.post<any>(`${this.API_URL}/review`,data)
+          }
+
+          BookApnmt(data:any):Observable<any>{
+            return this.http.post<any>(`${this.API_URL}/appointment`,data)
           }
 }

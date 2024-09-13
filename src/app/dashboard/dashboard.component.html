@@ -36,27 +36,25 @@
             <div class="row">
                   <div class="d-flex align-items-center justify-content-between my-1">
                     <h5>Categories</h5>
-                    <button routerLink="/relevance" class="btn btn-sm btn-primary">See All</button>
+                    <button routerLink="/relevance/seeallcategory" class="btn btn-sm btn-primary">See All</button>
                   </div>
             </div>
             <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-
               <div *ngFor="let category of visibleCategories()" class="col-sm-12 col-md-6 col-lg-3 ">
-                <div routerLink="/relevance" class="card p-2 round" >
+                <div [routerLink]="['/relevance']" [queryParams]="{ category: category.category_name }" class="card p-2 round" >
                   <img [src]="category.category_image" class="card-img-top rounded" alt="...">
                   <div class="card-body">
                        <button class="left-side-top rounded-pill">{{category.category_name}}</button>
                     </div>
                 </div>
               </div>
-
             </div>
 
             <!-- lasted Tranding Categories -->
             <div class="row mt-3 mb-1">
               <div class="d-flex align-items-center justify-content-between">
                 <h5>Trending Courses</h5>
-                <button class="btn btn-sm cursor-pointer btn-primary" routerLink="/relevance">See All</button>
+                <button class="btn btn-sm cursor-pointer btn-primary" routerLink="/relevance/seeallcategory">See All</button>
               </div>
             </div>
 
@@ -67,7 +65,7 @@
                   <div class="card-body">
                     <h5 class="card-title">{{allcourses.course_name}}</h5>
                     <div class="d-flex  align-items-center gap-3">
-                      <i class="fa-solid fa-user card-user"></i>
+                      <i class="fa-solid fa-user card-user border p-1"></i>
                      <h6 class="mt-1" >{{allcourses.trainer_id.f_Name + " " + allcourses.trainer_id.l_Name }}</h6>
                     </div>
                        <button class="left-side-top rounded-pill">{{allcourses.category_id.category_name}}</button>
@@ -130,7 +128,7 @@
                        <h5 class="card-title">{{Event.event_name}}</h5>
                        <p class="m-0"><b>Type : </b>{{Event.event_type}}</p>
                        <p class="m-0"><b>Category : </b> {{Event.event_category.category_name}}</p>
-                       <p class="m-0"><b>Date : </b> {{Event.event_date}}</p>
+                       <p class="m-0"><b>Date : </b> {{Event.event_date | date}}</p>
                        <p class="m-0"><b>Start Time : </b> {{Event.event_start_time}}</p>
                        <p class="m-0"><b>End Time : </b> {{Event.event_end_time}}</p>
                    </div>
@@ -146,7 +144,7 @@
             <h5 class="mb-4">Trainer List</h5>
               <div *ngFor="let trainer of visibleTrainer()" class="d-flex align-items-center justify-content-between  gap-5 mb-3">
                   <div routerLink="/coursedetails/{{trainer.t_id}}" class="d-flex align-items-center  gap-4 " style="cursor: pointer;">
-                    <img src="../../assets/Rohit sharma.jpg" class="Trainer-img" alt="">
+                    <img src="{{trainer.trainer_image}}" class="Trainer-img" alt="">
                     <div >
                       <h6 class="m-0">{{trainer.f_Name || "John" }} <label >{{trainer.l_Name || "Deo" }}</label></h6>
                       <small class="m-0">{{trainer.course_count}} courses</small>

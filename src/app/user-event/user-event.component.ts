@@ -12,12 +12,11 @@ export class UserEventComponent implements OnInit {
   showeventdata: any[] = [];
   filteredEvent: any[] = [];
 
-
   constructor(private Dservice: DashboardService, private filter: FilterService) { }
 
   ngOnInit(): void {
     this.Dservice.Eventdata().subscribe(Response => {
-      // console.log(Response);
+      console.log(Response);
       this.showeventdata = Response;
       this.filteredEvent = this.showeventdata;
     });

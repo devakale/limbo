@@ -61,3 +61,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .round{
     border-radius: 10px !important;
 }
+
+
+/* Style for Registration POP up */
+
+.sign-in-btn{
+  background: #3078FF  ;
+  color: white;
+  padding: 10px;
+}
+.rounded-input{
+  border-radius: 15px;
+}
+.inputbtn{
+  position: relative;
+}
+.inputbtn > button{
+  position: absolute;
+  right: 10px;
+  border: none;
+  background-color: transparent;
+}
+sup{
+  color: red;
+}

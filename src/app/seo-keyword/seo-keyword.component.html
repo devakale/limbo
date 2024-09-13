@@ -4,7 +4,7 @@
         <div>
             <div class="mb-2">
                 <p class="m-0 fw-bold">Category</p>
-                <small routerLink="/relevance" *ngFor="let category of categories"> <label >{{ category.category_name }}</label> |
+                <small *ngFor="let category of categories" [routerLink]="['/relevance']" [queryParams]="{ category: category.category_name }"> <label >{{ category.category_name }}</label> |
                 </small>
             </div>
         </div>

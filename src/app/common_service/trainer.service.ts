@@ -31,7 +31,7 @@ export class TrainerService {
 
   // *************** Trainer Profile API *****************
       gettrainerbyID():Observable<any>{
-        return this.http.get<any>(`${this.Trainer}/trainer`)
+        return this.http.get<any>(`${this.Trainer}/trainer`);
       }
 
       updatetrainerDetails(formData:FormData):Observable<any>{
@@ -124,7 +124,14 @@ export class TrainerService {
         return this.http.delete<any>(`${this.Appointment}/${_id}`);
       }
 
+  // *************** Appointment *****************
 
+      deletequestionbyID(_id: string):Observable<any>{
+        return this.http.delete<any>(`${this.APIURL}/${_id}`);
+      }
+
+
+  // ****************** Trainer Profile *********************    
       getprofile(id:string):Observable<any>{
         return this.http.get<any>(`${this.Trainer_APIURL}/${id}`);
       }

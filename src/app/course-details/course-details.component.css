@@ -138,3 +138,20 @@
 .share-button:hover {
   background-color: #0056b3; 
 }  
+
+.star-rating{
+  .fa-star {
+  font-size: 18px; 
+  }
+
+.checked {
+  color: gold;  
+}
+
+}
+
+/* textarea{
+  height: 70px;
+   overflow-y: scroll;
+    width: 100%;
+} */

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {  Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -14,6 +14,7 @@ export class LoginService {
     private register ='http://localhost:1000/registration';
 
     private institute="http://localhost:1000/institute/create-institute";
+    
 
   constructor(private http:HttpClient, private router: Router){ }
 
@@ -41,6 +42,11 @@ export class LoginService {
     return this.http.post<any>(`${this.institute}`,data);
    }
 
+   Notification():Observable<any>{
+    let headers = new HttpHeaders()
+    .set("Authorization", `Bearer ${sessionStorage.getItem('Authorization')}`)
+    return this.http.get<any>("http://localhost:1000/notifications/unseen",{headers});
+  }
    
 
 }

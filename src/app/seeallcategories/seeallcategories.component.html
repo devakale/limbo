@@ -7,7 +7,8 @@
               <h5 class="card-title">{{course.course_name}}</h5>
               <div class="d-flex align-items-center gap-2"> 
                 <!-- <i class="fa-solid fa-user card-user"></i> -->
-                <img class="img-fluid tr-img rounded" src="../../assets/Rohit sharma.jpg" alt="">
+                <img class="img-fluid tr-img rounded" src="{{course.trainer_image}}" alt="">
+                <!-- <img class="img-fluid tr-img rounded" src="../../assets/Rohit sharma.jpg" alt=""> -->
                 <label>{{course.trainer_id.f_Name  + " " + course.trainer_id.l_Name  }}</label>
               </div>
               <button class="left-side-top rounded-pill">{{course.category_id.category_name}}</button>
@@ -15,11 +16,7 @@
           </div>
         </div>
       </div>
-      <!-- <pagination-controls  (pageChange)="p = $event" class="text-end"></pagination-controls> -->
       <pagination-controls (pageChange)="onPageChange($event)" class="text-end"></pagination-controls>
-
-     
-
 </div>
 
 

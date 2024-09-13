@@ -43,6 +43,8 @@ import { UsersideProductComponent } from './userside-product/userside-product.co
 import { UserEventComponent } from './user-event/user-event.component';
 import { UserEventDetailsComponent } from './user-event-details/user-event-details.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
+import { ReviewComponent } from './trainer_dashboard/review/review.component';
+import { NotificationComponent } from './notification/notification.component';
 
 const routes: Routes = [
 
@@ -62,6 +64,7 @@ const routes: Routes = [
 
    {path:"editcategory/:_id",component:EditCategoryComponent},
    {path:"updatecourse/:_id",component:UpdateCourseComponent},
+   {path:"Notification",component:NotificationComponent},
 
    //  Routing For Trainer Dashboard
       {path:"trainer",component:TrainerHomeComponent,
@@ -73,7 +76,8 @@ const routes: Routes = [
           {path:"question",component:QuestionComponent},
           {path:"appointment",component:AppointmentComponent},
           {path:"event",component:EventComponent},
-          {path:"enquiry",component:EnquiryComponent}
+          {path:"enquiry",component:EnquiryComponent},
+          {path:"review",component:ReviewComponent},
         ]
       },
       {path:"edittrainer",component:EdittrainerComponent},

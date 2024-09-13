@@ -38,9 +38,9 @@
                 <div class="col-sm-12 col-md-6 col-lg-6">
                     <img src="{{showprofile.gallarys[4].photos}}" class="img-fluid object-fit-cover" alt="...">
                 </div>
-                <div routerLink="/gallery" class="col-sm-12 col-md-6 col-lg-6"
-                    style="position: relative;filter: blur(1px);">
-                    <img src="{{showprofile.gallarys[4].photos}}" class="img-fluid object-fit-cover" alt="...">
+                <div class="col-sm-12 col-md-6 col-lg-6" style="position: relative;filter: blur(1px);">
+                    <img data-bs-toggle="modal" data-bs-target="#gallery" src="{{showprofile.gallarys[4].photos}}"
+                        class="img-fluid object-fit-cover" alt="...">
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-6">
                     <img src="{{showprofile.gallarys[3].photos}}" class="img-fluid object-fit-cover" alt="...">
@@ -63,11 +63,11 @@
             </div>
             <div>
                 <span style="border:solid 1px black;padding: 0px 8px 0px 8px;">5</span> &nbsp;
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star "></span>&nbsp;
+                <span class="fa fa-star fs-6 checked"></span>
+                <span class="ms-2 fa fa-star fs-6 checked"></span>
+                <span class="ms-2 fa fa-star fs-6 checked"></span>
+                <span class="ms-2 fa fa-star fs-6 "></span>
+                <span class="ms-2 fa fa-star fs-6 "></span>&nbsp;
                 <!-- <span>{{showprofile.reviews.length}}</span> -->
             </div>
             <div>
@@ -88,29 +88,33 @@
             <div class="onmobile d-flex align-items-center gap-3">
                 <button class="btn btn-phone d-flex align-items-center gap-2"><i class="fa-solid fa-mobile-screen"></i>
                     {{showprofile.trainer.mobile_number}}</button>
-                <a class="btn border-dark d-flex align-items-center  gap-2" href="https://wa.me/{{showprofile.trainer.whatsapp_no}}" target="_blank"><i class="fa-brands fa-whatsapp fw-bold fs-4"
-                        style="color: #30d14e;"></i> Whatsapp
-                    </a>
-                <button class="btn border-dark">Rate <i class="fa-regular fa-star"></i></button>
-                <button (click)="shareicon()" class="btn share-button"><i class="fas fa-share-alt"></i> Share</button>
-                <button class="btn border-dark"><i class="fa-regular fa-heart"></i></button>
-            </div>
-                <!-- share button scetion -->
-                <div class="share-container">
-                    <div *ngIf="showshare" class="share-options gap-4">
-                        <a (click)="shareOnWhatsApp()" class="share-option">
-                            <i class="fab fa-whatsapp fs-1" style="color: #30d14e; text-decoration: none;"></i>
-                        </a>
-                        <a (click)="copyLink()" class="share-option">
-                            <i class="fas fa-link fs-3"></i>
-                        </a>
-                        <a (click)="shareOnFacebook()" class="share-option">
-                            <i class="fab fa-facebook fs-1" style="color: #0976e4;"></i>
-                        </a>
-                    </div>
-                </div>
+                <!-- <a class="btn border-dark d-flex align-items-center  gap-2"
+                    href="https://wa.me/{{showprofile.trainer.whatsapp_no}}" target="_blank"><i
+                        class="fa-brands fa-whatsapp fw-bold fs-4" style="color: #30d14e;"></i> Whatsapp
+                </a> -->
+                <a class="btn border-dark d-flex align-items-center gap-2" 
+                 (click)="handleWhatsAppClick()"> <i class="fa-brands fa-whatsapp fw-bold fs-4" style="color: #30d14e;"></i> Whatsapp</a>
 
-           
+                <!-- <button class="btn border-dark">Rate <i class="fa-regular fa-star"></i></button> -->
+                <button (click)="shareicon()" class="btn share-button"><i class="fas fa-share-alt"></i> Share</button>
+                <!-- <button class="btn border-dark"><i class="fa-regular fa-heart"></i></button> -->
+            </div>
+            <!-- share button scetion -->
+            <div class="share-container">
+                <div *ngIf="showshare" class="share-options gap-4">
+                    <a (click)="shareOnWhatsApp()" class="share-option">
+                        <i class="fab fa-whatsapp fs-1" style="color: #30d14e; text-decoration: none;"></i>
+                    </a>
+                    <a (click)="copyLink()" class="share-option">
+                        <i class="fas fa-link fs-3"></i>
+                    </a>
+                    <a (click)="shareOnFacebook()" class="share-option">
+                        <i class="fab fa-facebook fs-1" style="color: #0976e4;"></i>
+                    </a>
+                </div>
+            </div>
+
+
 
             <div class="mt-4">
                 <h5 class="text-color">About Us</h5>
@@ -158,7 +162,8 @@
                         <div class="row row-cols-1 row-cols-md-2 g-3">
                             <div *ngFor="let product of showprofile.productsWithFullImageUrl" class="col rounded-box">
                                 <div class="card h-100 rounded-box">
-                                    <img routerLink="/shop/{{product._id}}" src="{{product.product_image}}" class="card-img-top rounded-box" alt="...">
+                                    <img routerLink="/shop/{{product._id}}" src="{{product.product_image}}"
+                                        class="card-img-top rounded-box" alt="...">
                                     <div class="card-body text-center">
                                         <h5 class="card-title">{{product.product_name}}</h5>
                                         <p class="m-0">₹ {{product.product_prize ? product.product_prize :" Free"}}</p>
@@ -202,9 +207,15 @@
         <div class="col-sm-12 col-lg-4 border pt-2">
             <!-- current batches -->
             <div>
-                <h5 class="text-color">Current Batches</h5>
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h5 class="text-color">Current Batches</h5>
+                    <div>
+                        <button class="btn btn-sm btn-primary me-3">Prev</button>
+                        <button class="btn btn-sm btn-primary">Next</button>
+                    </div>
+                </div>
                 <div class="row row-cols-1 row-cols-md-2 g-3">
-                    <div *ngFor="let batch of showprofile.OnGoingBatches" class="col rounded-box">
+                    <div *ngFor="let batch of showprofile.OnGoingBatches.slice(0, 4)" class="col rounded-box">
                         <div class="card h-100 rounded-box" routerLink="/couserenroll/{{batch._id}}">
                             <img [src]="batch.thumbnail_image" class="card-img-top rounded-box" alt="...">
                             <div class="card-body">
@@ -245,45 +256,49 @@
 
 
             <!-- Questions & Answers -->
-            <div>
-                <h5>Questions & Answers</h5>
+            <div class="mt-2">
+                <h5 class="text-color">Questions & Answers</h5>
                 <p>Would you like to ask a question?</p>
-                <button class="btn btnq mt-3 btn-block">Post You Question</button>
+                <form (ngSubmit)="postquestion()">
+                    <div class="col-12">
+                        <textarea type="text" class="form-control" [(ngModel)]="question.question" name="question"
+                            id="question"></textarea>
+                    </div>
+                    <button type="submit" class="btn btnq mt-3 btn-block px-5">Post You'r Question</button>
+                </form>
             </div>
-            <!-- Get the list of best similar "Courses" -->
-            <div class="mt-3">
-                <h5>Get the list of best similar "Courses" </h5>
-                <div class="row">
-                    <div class="col-6">
-                        <input type="text" class="form-control" placeholder="Name" name="" id="">
-                    </div>
-                    <div class="col-6">
-                        <input type="email" class="form-control" placeholder="Email" name="" id="">
-                    </div>
-                </div>
-                <button class="btn btnq mt-3 btn-block  ">Enquiry Now</button>
 
+            <!-- Enquiry -->
+            <div class="mt-3">
+                <h5 class="text-color">Enquiry </h5>
+                <form (ngSubmit)="postEnquiry()">
+                    <div class="col-12">
+                        <textarea type="text" class="form-control" [(ngModel)]="enquiry.description" name="description"
+                            id="description"></textarea>
+                    </div>
+                    <button type="submit" class="btn btnq mt-3 btn-block  px-5">Enquiry Now</button>
+                </form>
             </div>
             <!-- Write Review -->
             <div class="mt-3">
-                <h5>Write Review</h5>
+                <h5 class="text-color">Write Review</h5>
                 <div class="row">
-                    <div class="col-4">
-                        <input type="text" class="form-control" placeholder="Name" name="" id="">
-                    </div>
-                    <div class="col-4">
-                        <input type="email" class="form-control" placeholder="Email" name="" id="">
-                    </div>
-                    <div class="col-4">
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </div>
-                    <div class="mt-3">
-                        <textarea class="form-control " placeholder="Message" name="" id=""></textarea>
-                    </div>
+                    <form (ngSubmit)="postreview()">
+
+                        <div class="d-flex gap-2 star-rating">
+                            <span *ngFor="let i of stars; let index = index" class="fa fa-star"
+                                [ngClass]="{'checked': index < rating}" (click)="toggleRating(index + 1)"
+                                style="cursor: pointer;"></span>
+                            <span style="border:solid 1px black;padding: 0px 8px 0px 8px;">{{ rating }}</span> &nbsp;
+                        </div>
+                        <div class="my-3">
+                            <textarea class="form-control" placeholder="Message" [(ngModel)]="review.review"
+                                name="review" id="review"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary">Submit you'r Review</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -292,14 +307,20 @@
         <!-- Third Row code start hrer -->
         <div class="col-sm-12 col-lg-4 border pt-2">
 
-            
+
 
             <!-- Online Events -->
             <div class="mb-2">
-                <h5 class="text-color">Online Events</h5>
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h5 class="text-color">Online Events</h5>
+                    <div>
+                        <button class="btn btn-sm btn-primary me-3">Prev</button>
+                        <button class="btn btn-sm btn-primary">Next</button>
+                    </div>
+                </div>
                 <div class="row row-cols-1 row-cols-md-2 g-3">
-                    <div *ngFor="let event of showprofile.onlineEventsThumbnailUrl" class="col rounded-box">
-                        <div class="card h-100 rounded-box" routerLink="/eventdetails/{{event._id}}">
+                    <div *ngFor="let event of showprofile.onlineEventsThumbnailUrl.slice(0, 4)" class="col rounded-box">
+                        <div class="card h-100 rounded-box mb-3" routerLink="/eventdetails/{{event._id}}">
                             <img [src]="event.event_thumbnail" class="card-img-top rounded-box"
                                 alt="{{event.event_name}}">
                             <div class="card-body">
@@ -343,24 +364,39 @@
             </div>
             <!-- calender -->
             <div class="mt-3">
-                <h5 class="text-color">Book appointment</h5>
-                <div>
-                    <input type="date" class="form-control" name="" id="">
-                </div>
-                <div class="text-center">
-                    <button class="btn btnq mt-3 btn-block  w-25">Book Now</button>
-                </div>
+                <h5 class="text-color">Book Appointment</h5>
+                <form (ngModel)="BookAppoinment()">
+                    <div class="mb-3">
+                        <label class="form-label">Select Date</label>
+                        <input class="form-control" type="date" class="form-control" name="date" id="date"
+                            [(ngModel)]="Appoinment.date">
+                    </div>
+                    <div>
+                        <label class="form-label">Select Time</label>
+                        <input class="form-control" type="time" class="form-control" name="time" id="time"
+                            [(ngModel)]="Appoinment.time">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btnq mt-3 btn-block  w-25">Book Now</button>
+                    </div>
+                </form>
             </div>
 
             <!-- social Media icon and links -->
             <div class="mt-5 fs-4">
-                <p><a class="text-dark" href="#"><i class="fa-regular fa-envelope"></i> Send Enquiry by Email</a></p>
-                <p><a class="text-dark" href=""><i class="fa-solid fa-mobile-screen-button"></i> Get Information by
-                        phone</a></p>
-                <p><a class="text-dark" href=""><i class="fa-brands fa-facebook"></i> Facebook</a></p>
-                <p><a class="text-dark" href=""><i class="fa-brands fa-instagram"></i> Instagram</a></p>
-                <p><a class="text-dark" href=""><i class="fa-brands fa-youtube"></i> YouTube</a></p>
-                <p><a class="text-dark" href=""><i class="fa-brands fa-linkedin"></i> Linkedin</a></p>
+                <!-- <a href="mailto:jyoti.kokate@kritikasoftware.com?cc=jyotikailaskokate@gmail.com&amp;subject=Contact Us&amp;body=Contact Us">jyoti.kokate@kritikasoftware.com</a> -->
+                <p><a class="text-dark" href="mailto:contact@ximboa.io"> <i class="fa-regular fa-envelope"></i> Send
+                        Enquiry by Email</a></p>
+                <p><a class="text-dark" href="tel:{{showprofile.trainer.mobile_number}}"><i
+                            class="fa-solid fa-mobile-screen-button"></i> Get Information by phone</a></p>
+                <p><a class="text-dark" href="{{showprofile.SocialMedias.facebook}}"><i
+                            class="fa-brands fa-facebook"></i> Facebook</a></p>
+                <p><a class="text-dark" href="{{showprofile.SocialMedias.instagram}}"><i
+                            class="fa-brands fa-instagram"></i> Instagram</a></p>
+                <p><a class="text-dark" href="{{showprofile.SocialMedias.youtube}}"><i class="fa-brands fa-youtube"></i>
+                        YouTube</a></p>
+                <p><a class="text-dark" href="{{showprofile.SocialMedias.Linkdein}}"><i
+                            class="fa-brands fa-linkedin"></i> Linkedin</a></p>
 
             </div>
 
@@ -371,7 +407,7 @@
 
     <div class="row ">
         <div class="col-sm-12 col-lg-4 border pt-2">
-            <h5>Reviews & Ratings</h5>
+            <h5 class="text-color">Reviews & Ratings</h5>
             <div class="d-flex align-items-center gap-3 mt-3">
                 <h6 class="p-2 rounded" style="background-color: #674ACB;color: white;">4.5</h6>
                 <div>
@@ -434,17 +470,7 @@
             </div>
 
         </div>
-        <div class="col-sm-12 col-lg-4 border pt-2">
-            <div class="text-end ">
-                <h6>Start your Review </h6>
-                <div>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                </div>
-            </div>
+        <div class="col-sm-12 col-lg-4  pt-2">
             <div class="row mt-5">
                 <div class="col-8">
                     <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
@@ -558,6 +584,155 @@
     <div class="row" style="height: 100px;background-color: #674ACB;">
 
     </div>
+</div>
 
 
+
+<!-- Modal For Gallery -->
+<div class="modal fade" id="gallery" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">All Images</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div *ngFor="let gallary of showprofile.gallarys" class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                        <img class="img-fluid" src="{{gallary.photos}}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Model For User Registration -->
+
+<div class="modal fade" id="CheckLoggedIN" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="text-end">
+                <button type="button" class="btn-close p-4" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-5">
+                <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
+                    <div class="row desktop">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <h4><b>Register</b></h4>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                <label for="f_Name" class="form-label">First Name <sup>*</sup></label>
+                                <input type="text" class="form-control form-control-lg rounded-input" placeholder=""
+                                    id="f_Name" [(ngModel)]="userData.f_Name" name="f_Name" required
+                                    #FirstName="ngModel">
+                                <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)"
+                                    class="text-danger">
+                                    First Name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                <label for="l_Name" class="form-label">Last Name <sup>*</sup></label>
+                                <input type="text" class="form-control form-control-lg rounded-input" placeholder=""
+                                    id="l_Name" [(ngModel)]="userData.l_Name" name="l_Name" required
+                                    #LastName="ngModel">
+                                <div *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)"
+                                    class="text-danger">
+                                    Last Name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                <label for="middle_Name" class="form-label">Middle Name</label>
+                                <input type="text" class="form-control form-control-lg rounded-input" placeholder=""
+                                    id="middle_Name" [(ngModel)]="userData.middle_Name" name="middle_Name"
+                                    #MiddleName="ngModel">
+                            </div>
+
+
+
+                            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                <label for="email_id" class="form-label">Your Email <sup>*</sup></label>
+                                <input type="email" class="form-control form-control-lg rounded-input" placeholder=""
+                                    id="email_id" [(ngModel)]="userData.email_id" name="email_id" required email
+                                    #email="ngModel">
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                                    <div *ngIf="email.errors?.['required']">Email is required.</div>
+                                    <div *ngIf="email.errors?.['email']">Please enter a valid email address.</div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                <label for="mobile_number" class="form-label">Mobile Number <sup>*</sup></label>
+                                <input type="number" pattern="^[0-9]{10}$"
+                                    class="form-control form-control-lg rounded-input" minlength="10" maxlength="10"
+                                    pattern="^\d{10}$" id="mobile_number" [(ngModel)]="userData.mobile_number"
+                                    name="mobile_number" required #mobile="ngModel">
+                                <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="text-danger">
+                                    <div *ngIf="mobile.errors?.['required']">Mobile Number is required.</div>
+                                    <div *ngIf="mobile.errors?.['pattern']">Mobile Number must be exactly 10 digits.
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                <label for="password" class="form-label">Password <sup>*</sup></label>
+                                <div class="d-flex align-items-center inputbtn">
+                                    <input [type]="show ? 'text' : 'password'"
+                                        class="form-control form-control-lg rounded-input h-25" id="password"
+                                        minlength="8" [(ngModel)]="userData.password" name="password" required
+                                        #password="ngModel"
+                                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
+                                    <button type="button" (click)="togglePassword()">
+                                        <i class="fa fa-eye" aria-hidden="true" *ngIf="!show"></i>
+                                        <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
+                                    </button>
+                                </div>
+                                <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                                    class="text-danger">
+                                    <div *ngIf="password.errors?.['required']">Password is required.</div>
+                                    <div *ngIf="password.errors?.['pattern']">
+                                        Password must be at least 8 characters long, include at least one uppercase
+                                        letter, one lowercase letter, one number, and one special character.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                <div class="form-check pt-3">
+                                    <input class="form-check-input border-dark" type="checkbox" [(ngModel)]="rememberMe"
+                                        name="rememberMe" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">I accept the</label> &nbsp;
+                                    <label style="color: #6149CD;">Terms and Conditions</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                <div class="form-check pt-3">
+                                    <label data-bs-dismiss="modal" aria-label="Close" class="form-check-label"
+                                        for="flexCheckDefault">Already Have an Account ? <a routerLink="/signin"> Login
+                                        </a></label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="pt-5 mb-3 text-center">
+                            <button type="submit" class="btn sign-in-btn rounded-pill "
+                                [disabled]="!signUpForm.form.valid" style="width: 25%;">Sign up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

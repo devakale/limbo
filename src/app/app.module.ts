@@ -57,6 +57,9 @@ import { UserEventDetailsComponent } from './user-event-details/user-event-detai
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { SEOKeywordComponent } from './seo-keyword/seo-keyword.component';
 import { CookieService } from 'ngx-cookie-service';
+import { ReviewComponent } from './trainer_dashboard/review/review.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { NotificationComponent } from './notification/notification.component';
 
 
 @NgModule({
@@ -109,6 +112,8 @@ import { CookieService } from 'ngx-cookie-service';
     UserEventDetailsComponent,
     SuperAdminComponent,
     SEOKeywordComponent,
+    ReviewComponent,
+    NotificationComponent,
     
   ],
   imports: [
@@ -118,7 +123,8 @@ import { CookieService } from 'ngx-cookie-service';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatTabsModule
    
   ],
   providers: [CookieService,{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],

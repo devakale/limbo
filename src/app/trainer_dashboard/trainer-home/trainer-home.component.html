@@ -37,8 +37,16 @@
                 <li *ngIf="isTrainer || isAdmin" routerLink="/trainer/appointment" class="hover">
                     <i class="fa-solid fa-circle-user"></i> Appointment
                 </li>
-        
-        
+
+                <!-- Appointment: Visible to TRAINER and ADMIN -->
+                <li *ngIf="isTrainer || isAdmin" routerLink="/trainer/question" class="hover">
+                    <i class="fa-solid fa-circle-user"></i> Question
+                </li>
+
+                 <!-- Appointment: Visible to TRAINER and ADMIN -->
+                 <li *ngIf="isTrainer || isAdmin" routerLink="/trainer/review" class="hover">
+                    <i class="fa-solid fa-circle-user"></i> Review
+                </li>
         
                 <!-- Message: Visible only to USER and ADMIN -->
                 <li *ngIf="isUser" routerLink="er" class="hover">

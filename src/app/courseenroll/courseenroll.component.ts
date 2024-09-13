@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class CourseenrollComponent implements OnInit {
 
-  id: any;
+    id: any;
     Showcoursedetails:any;
     RelatedCourses:any;
 
@@ -58,8 +58,8 @@ export class CourseenrollComponent implements OnInit {
                    Swal.fire('Error', 'You Have Already Enrolled This course.', 'error');
 
               }
-          );
-      } else {
+          );}
+           else {
         const modalElement = document.getElementById('CheckLoggedIN');
               if (modalElement) {
                 const modal = new (window as any).bootstrap.Modal(modalElement);

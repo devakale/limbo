@@ -1,5 +1,5 @@
 import { Component, Query } from '@angular/core';
-import {  Router } from '@angular/router';
+import {  ActivatedRoute, Router } from '@angular/router';
 import { AuthServiceService } from '../common_service/auth-service.service';
 import { Observable } from 'rxjs';
 import { LoginService } from '../common_service/login.service';
@@ -11,6 +11,11 @@ import { DashboardService } from '../common_service/dashboard.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+
+  category: string = '';
+  id: string = '';
+  type: string = '';  
+  keyword: string = '';
 
   role = {
     requested_Role : ' '
@@ -35,24 +40,33 @@ export class HeaderComponent {
   isLoggedIn$: Observable<boolean>;
   user$: Observable<string | null>;
 
-  constructor(private authService: AuthServiceService,private route:Router, private requst:LoginService, private dservice:DashboardService) {
+  constructor(private authService: AuthServiceService,
+    private route:Router, 
+    private requst:LoginService, 
+    private dservice:DashboardService,
+    private router:ActivatedRoute) {
     this.isLoggedIn$ = this.authService.isLoggedIn$;
     this.user$ = this.authService.user$;
+    this.router.queryParams.subscribe(params => {
+      this.category = params['category'];
+      this.id = params['id'];
+      this.type = params['type'];    // Retrieve the type (table source)
+      this.keyword = params['keyword']; // Retrieve the user-entered keyword
+    });
   }
 
   ngOnInit(): void {
     this.checkUserRole();
-  
   }
 
   searchitem(event: KeyboardEvent) {
     const element = event.target as HTMLInputElement;
     const query = element.value.trim();
 
-    if (query.length > 1) { // Trigger suggestions after at least 2 characters
+    if (query.length > 1) { 
       this.dservice.search(query).subscribe(
         result => {
-          this.suggestions = this.formatSuggestions(result);
+          this.suggestions = this.formatSearchResults(result);
           console.log("search result",this.suggestions);
         },
         error => {
@@ -60,74 +74,74 @@ export class HeaderComponent {
         }
       );
     } else {
-      this.suggestions = []; // Clear suggestions if query is too short
+      this.suggestions = [];
     }
   }
-  formatSuggestions(result: any): any[] {
-    // Combine and format results from different sources
-    const suggestions = [];
-
-    // Combine courses and products as suggestions
-    if (result.courses) {
-      suggestions.push(...result.courses.map((courses:any) => ({
-        type: 'course',
-        name: courses.course_name,
-        id: courses._id
-      })));
-    }
-
-    if (result.products) {
-      suggestions.push(...result.products.map((product:any) => ({
-        type: 'product',
-        name: product.product_name,
-        id: product._id
-      })));
-    }
-
-    if (result.categories) {
-      suggestions.push(...result.categories.map((category:any) => ({
-        type: 'category',
-        name: category.category_name,
-        id: category._id
-      })));
-    }
-
-    if (result.events) {
-      suggestions.push(...result.events.map((events:any) => ({
-        type: 'event',
-        name: events.event_name,
-        id: events._id
-      })));
-    }
-
-    if (result.trainers) {
-      suggestions.push(...result.trainers.map((trainers:any) => ({
-        type: 'trainer',
-        name: trainers.f_Name,
-        id: trainers._id
-      })));
-    }
-
-    return suggestions;
-  }
+ 
 
   onSelectSuggestion(suggestion: any) {
-    this.query = suggestion.name;
+    const enteredKeyword = this.query;
+  
     this.suggestions = [];
-    this.route.navigate(['/relevance'], {
-      queryParams: {
-        category: suggestion.name,      
-        id: suggestion.id
-      }
-    });
+  
+    if (suggestion.type === 'course') {
+      this.route.navigate(['/relevance/seeallcategory'], {
+        // queryParams: {
+        //   category: suggestion.name,
+        //   id: suggestion.id,
+        //   type: suggestion.type,  
+        //   keyword: enteredKeyword  
+        // }
+      });
+    }
+    else if (suggestion.type === 'category') {
+      this.route.navigate(['/relevance/seeallcategory'], {
+        queryParams: {
+          category: suggestion.name,
+          id: suggestion.id,
+          type: suggestion.type,  
+          keyword: enteredKeyword  
+        }
+      });
+    }
+    else if (suggestion.type === 'product') {
+      this.route.navigate(['/relevance/userproduct'], {
+        queryParams: {
+          category: suggestion.name,
+          id: suggestion.id,
+          type: suggestion.type,  
+          keyword: enteredKeyword  
+        }
+      });
+    } else if (suggestion.type === 'event') {
+      this.route.navigate(['/relevance/userevent'], {
+        queryParams: {
+          category: suggestion.name,
+          id: suggestion.id,
+          type: suggestion.type,  
+          keyword: enteredKeyword  
+        }
+      });
+    } else if (suggestion.type === 'trainer') {
+      this.route.navigate(['/relevance/trainer'], {
+        queryParams: {
+          category: suggestion.name,
+          id: suggestion.id,
+          type: suggestion.type,  
+          keyword: enteredKeyword  
+        }
+      });
+    }
   }
   
+  
+
   onsearch() {
     if (this.query) {
       this.dservice.search(this.query).subscribe(
         data => {
-          this.results = data;
-          console.log(this.results);   
+          this.results = this.formatSearchResults(data);
+          console.log(this.results);
         },
         error => {
           alert("Invalid Query");
@@ -136,6 +150,77 @@ export class HeaderComponent {
       );
     }
   }
+
+  formatSearchResults(result: any): any[] {
+    const formattedResults = [];
+      if (result.courses) {
+      formattedResults.push(...result.courses.map((course: any) => ({
+        type: 'course',
+        name: course.course_name,
+        id: course._id
+      })));
+    }
+  
+    if (result.products) {
+      formattedResults.push(...result.products.map((product: any) => ({
+        type: 'product',
+        name: product.product_name,
+        id: product._id
+      })));
+    }
+  
+    if (result.categories) {
+      formattedResults.push(...result.categories.map((category: any) => ({
+        type: 'category',
+        name: category.category_name,
+        id: category._id
+      })));
+    }
+  
+    if (result.events) {
+      formattedResults.push(...result.events.map((event: any) => ({
+        type: 'event',
+        name: event.event_name,
+        id: event._id
+      })));
+    }
+  
+    if (result.trainers) {
+      formattedResults.push(...result.trainers.map((trainer: any) => ({
+        type: 'trainer',
+        name: trainer.f_Name,
+        id: trainer._id
+      })));
+    }
+  
+    return formattedResults;
+  }
+  
+  // onSelectSuggestion(suggestion: any) {
+  //   this.query = suggestion.name;
+  //   this.suggestions = [];
+  //   this.route.navigate(['/relevance'], {
+  //     queryParams: {
+  //       category: suggestion.name,      
+  //       id: suggestion.id
+  //     }
+  //   });
+  // }
+  
+  // onsearch() {
+  //   if (this.query) {
+  //     this.dservice.search(this.query).subscribe(
+  //       data => {
+  //         this.results = data;
+  //         console.log(this.results);   
+  //       },
+  //       error => {
+  //         alert("Invalid Query");
+  //         console.error('Error:', error);
+  //       }
+  //     );
+  //   }
+  // }
 
  
 

@@ -7,7 +7,7 @@
            <h5 class="card-title">{{Event.event_name}}</h5>
            <p class="m-0"><b>Type : </b>{{Event.event_type}}</p>
            <p class="m-0"><b>Category : </b> {{Event.event_category.category_name}}</p>
-           <p class="m-0"><b>Date : </b> {{Event.event_date}}</p>
+           <p class="m-0"><b>Date : </b> {{Event.event_date | date}}</p>
            <p class="m-0"><b>Start Time : </b> {{Event.event_start_time}}</p>
            <p class="m-0"><b>End Time : </b> {{Event.event_end_time}}</p>
        </div>

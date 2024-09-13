@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AdminService } from 'src/app/common_service/admin.service';
 import { TrainerService } from 'src/app/common_service/trainer.service';
 import Swal from 'sweetalert2';
 
@@ -18,6 +19,7 @@ export class ProductComponent implements OnInit {
 
   showproductdata: any;
   selectedProduct: any;
+  showCategorydata: any;
 
   showProductDescription(product: any) {
     this.selectedProduct = product;
@@ -27,6 +29,7 @@ export class ProductComponent implements OnInit {
     product_name: '',
     product_prize: 0,
     product_selling_prize: 0,
+    categoryid:'',
     products_info: '',
     product_image: null,
     product_gallary:null,
@@ -34,7 +37,7 @@ export class ProductComponent implements OnInit {
 
   selectedFile: File | null = null;
 
-  constructor(private service: TrainerService) { }
+  constructor(private service: TrainerService, private admin:AdminService) { }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] as File;
@@ -46,6 +49,11 @@ export class ProductComponent implements OnInit {
       this.showproductdata = data.productsWithFullImageUrl;
     });
 
+    this.admin.getcategorydata().subscribe( data =>{
+      // console.log("data",data)
+      this.showCategorydata = data;  
+    });
+
   }
 
   onSubmit() {
@@ -53,6 +61,7 @@ export class ProductComponent implements OnInit {
     formData.append('product_name', this.product.product_name);
     formData.append('product_prize', this.product.product_prize.toString());
     formData.append('product_selling_prize', this.product.product_selling_prize.toString());
+    formData.append('categoryid', this.product.categoryid);
     formData.append('products_info', this.product.products_info);
 
     if (this.selectedFile) {
