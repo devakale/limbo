@@ -14,6 +14,8 @@ export class LoginService {
     private register ='http://localhost:1000/registration';
 
     private institute="http://localhost:1000/institute/create-institute";
+
+    private APIURL ="http://localhost:1000/notifications";
     
 
   constructor(private http:HttpClient, private router: Router){ }
@@ -24,6 +26,10 @@ export class LoginService {
   
     postsignupdata(Signup:any):Observable<any>{
       return this.http.post<any>(this.register,Signup);
+    }
+
+    forgotpassword(data: { email_id: string }):Observable<any>{
+      return this.http.post<any>(`${this.register}/forget-password`,data)
     }
 
     postrequest(data:any):Observable<any>{
@@ -42,11 +48,14 @@ export class LoginService {
     return this.http.post<any>(`${this.institute}`,data);
    }
 
-   Notification():Observable<any>{
+   Notification(page: number, limit: number):Observable<any>{
     let headers = new HttpHeaders()
     .set("Authorization", `Bearer ${sessionStorage.getItem('Authorization')}`)
-    return this.http.get<any>("http://localhost:1000/notifications/unseen",{headers});
+    return this.http.get<any>(`${this.APIURL}/unseen?page=${page}&limit=${limit}`,{headers});
   }
-   
-
 }
+  // getcouserdata(page: number, limit: number):Observable<any>{
+  //   return this.http.get<any>(`${this.beforelogin}/allcourses?page=${page}&limit=${limit}`)
+  // }
+
+

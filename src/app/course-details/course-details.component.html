@@ -92,8 +92,8 @@
                     href="https://wa.me/{{showprofile.trainer.whatsapp_no}}" target="_blank"><i
                         class="fa-brands fa-whatsapp fw-bold fs-4" style="color: #30d14e;"></i> Whatsapp
                 </a> -->
-                <a class="btn border-dark d-flex align-items-center gap-2" 
-                 (click)="handleWhatsAppClick()"> <i class="fa-brands fa-whatsapp fw-bold fs-4" style="color: #30d14e;"></i> Whatsapp</a>
+                <a class="btn border-dark d-flex align-items-center gap-2" (click)="handleWhatsAppClick()"> <i
+                        class="fa-brands fa-whatsapp fw-bold fs-4" style="color: #30d14e;"></i> Whatsapp</a>
 
                 <!-- <button class="btn border-dark">Rate <i class="fa-regular fa-star"></i></button> -->
                 <button (click)="shareicon()" class="btn share-button"><i class="fas fa-share-alt"></i> Share</button>
@@ -160,7 +160,7 @@
                     <p>{{showprofile.productsWithFullImageUrl.products_info}}</p>
                     <div>
                         <div class="row row-cols-1 row-cols-md-2 g-3">
-                            <div *ngFor="let product of showprofile.productsWithFullImageUrl" class="col rounded-box">
+                            <div *ngFor="let product of showprofile.productsWithFullImageUrl.slice(0, 2)" class="col rounded-box">
                                 <div class="card h-100 rounded-box">
                                     <img routerLink="/shop/{{product._id}}" src="{{product.product_image}}"
                                         class="card-img-top rounded-box" alt="...">
@@ -173,8 +173,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="">
-                        <h5>Testimonial</h5>
+                    <div class="pt-3">
+                        <h5 class="text-color">Testimonial</h5>
                         <div id="carouselExampleDark" class="carousel carousel-dark slide">
                             <div class="carousel-indicators">
                                 <button *ngFor="let testimonial of showprofile.testimonials; let i = index"
@@ -289,7 +289,7 @@
                             <span *ngFor="let i of stars; let index = index" class="fa fa-star"
                                 [ngClass]="{'checked': index < rating}" (click)="toggleRating(index + 1)"
                                 style="cursor: pointer;"></span>
-                            <span style="border:solid 1px black;padding: 0px 8px 0px 8px;">{{ rating }}</span> &nbsp;
+                            <span>{{ rating }}</span>
                         </div>
                         <div class="my-3">
                             <textarea class="form-control" placeholder="Message" [(ngModel)]="review.review"
@@ -405,104 +405,60 @@
 
     </div>
 
-    <div class="row ">
-        <div class="col-sm-12 col-lg-4 border pt-2">
+    <div class="row p-1">
+        <div class="col-sm-12 col-lg-8  pt-2">
             <h5 class="text-color">Reviews & Ratings</h5>
-            <div class="d-flex align-items-center gap-3 mt-3">
+            <div class="d-flex align-items-center gap-3 mt-1">
                 <h6 class="p-2 rounded" style="background-color: #674ACB;color: white;">4.5</h6>
                 <div>
                     <p class="m-0">209 Ratings</p>
                     <p class="m-0">rating index based on 209 ratings across the web</p>
                 </div>
             </div>
-
-            <div class="mt-5">
-                <h5>User Reviews </h5>
-                <div class="d-flex align-items-center gap-3 mt-3">
-                    <img src="./assets/trainer.jpg" class="img-resize" alt="">
-                    <div>
-                        <p class="m-0">Shubham Kadam</p>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
+            <h5 class="my-2">User Reviews </h5>
+            <div *ngFor="let review of showreviewdata | paginate: { itemsPerPage: 2, currentPage: p}" class="row g-0 border rounded mb-4 p-3">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex gap-3">
+                        <img src="{{review.user_image}}" class="img-resize" alt="">
+                        <div>
+                            <small class="m-0 fw-bold">{{ review.f_Name + " " + review.l_Name}}</small><br>
+                            <!-- Star rating section -->
+                            <span *ngFor="let star of starsArray; let i = index"
+                                [ngClass]="{'fa fa-star checked': i < review.star_count, 'fa fa-star': i <= review.star_count }">
+                            </span>
+                           
+                        </div>
+                    </div>
+                    <div class="text-end">
+                        <label>{{review.createdAt | date}}</label>
                     </div>
                 </div>
-                <div class="d-flex align-items-center justify-content-between mt-3">
-                    <label>Helpful (2)</label>
-                    <label>Comment</label>
-                    <label>Share <i class="fa-regular fa-share-from-square"></i></label>
+                <div class="col-12 mt-2">
+                    <p>{{review.review}}</p>
                 </div>
-                <div class="d-flex align-items-center gap-3 mt-3">
-                    <img src="./assets/trainer.jpg" class="img-resize" alt="">
-                    <div>
-                        <p class="m-0">Shubham Kadam</p>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                    </div>
+                <div class="d-flex align-items-center justify-content-between fw-bold mt-1">
+                    <label (click)="shareiconreview()"><i class="fa-regular fa-share-from-square"></i> Share</label>
+                    <label><i class="fa-regular fa-comment"></i> Comment</label>
+                    <label><i class="fa-regular fa-thumbs-up"></i> Helpful (2)</label>
                 </div>
-                <div class="d-flex align-items-center justify-content-between mt-3">
-                    <label>Helpful (2)</label>
-                    <label>Comment</label>
-                    <label>Share <i class="fa-regular fa-share-from-square"></i></label>
+                <!-- <div class="share-container">
+                        <div *ngIf="showsharereview" class="share-options gap-4">
+                            <a (click)="shareOnWhatsApp()" class="share-option">
+                                <i class="fab fa-whatsapp fs-1" style="color: #30d14e; text-decoration: none;"></i>
+                            </a>
+                            <a (click)="copyLink()" class="share-option">
+                                <i class="fas fa-link fs-3"></i>
+                            </a>
+                            <a (click)="shareOnFacebook()" class="share-option">
+                                <i class="fab fa-facebook fs-1" style="color: #0976e4;"></i>
+                            </a>
+                        </div>
+                    </div> -->
                 </div>
-                <div class="d-flex align-items-center gap-3 mt-3">
-                    <img src="./assets/trainer.jpg" class="img-resize" alt="">
-                    <div>
-                        <p class="m-0">Shubham Kadam</p>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center justify-content-between mt-3">
-                    <label>Helpful (2)</label>
-                    <label>Comment</label>
-                    <label>Share <i class="fa-regular fa-share-from-square"></i></label>
-                </div>
-
-            </div>
-
+                <pagination-controls style="float:right" (pageChange)="p = $event"></pagination-controls>
         </div>
-        <div class="col-sm-12 col-lg-4  pt-2">
-            <div class="row mt-5">
-                <div class="col-8">
-                    <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
-                        duis enim velit mollit.</p>
-                </div>
-                <div class="col-4 d-flex gap-5 mt-3">
-                    <label>9 Feb 2023</label>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-8">
-                    <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
-                        duis enim velit mollit.</p>
-                </div>
-                <div class="col-4 d-flex gap-5 mt-3">
-                    <label>9 Feb 2023</label>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-8">
-                    <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
-                        duis enim velit mollit.</p>
-                </div>
-                <div class="col-4 d-flex gap-5 mt-3">
-                    <label>9 Feb 2023</label>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-            </div>
 
-        </div>
+        <!-- Similar Courses -->
         <div class="col-sm-12 col-lg-4 border pt-2">
             <h5 class="text-color">Similar Courses</h5>
             <div>
@@ -579,12 +535,17 @@
             </div>
 
         </div>
+
+
     </div>
 
     <div class="row" style="height: 100px;background-color: #674ACB;">
 
     </div>
 </div>
+
+
+
 
 
 

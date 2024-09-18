@@ -106,6 +106,23 @@ export class SignInComponent implements OnInit {
     });
   }
 
+  forget = {
+    email_id:' ',
+  }
+
+  forgotpwd() {
+    this.loginService.forgotpassword(this.forget).subscribe({
+      next: (response: any) => { 
+        Swal.fire('', 'We’re excited to see you again. Your login was successful, and you’re now ready to continue creating amazing learning experiences.', 'success');  
+      },
+      error: () => { 
+        this.message = 'An error occurred';
+        Swal.fire('Error', 'Please Enter Valid Details.', 'error');
+      }
+    });
+  }
+  
+
   togglePassword() {
     this.show = !this.show;
   }

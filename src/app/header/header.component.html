@@ -35,10 +35,10 @@
         <ul class="dropdown-menu">
           <ng-container *ngIf="(isLoggedIn$ | async); else notLoggedIn">
             <li><a class="dropdown-item">{{ (user$ | async) }}</a></li>
-            <li><a class="dropdown-item" routerLink="/edittrainer">Edit Profile</a></li>
+            <li><a class="dropdown-item" routerLink="/edittrainer">Edit Profile <i class="fa-solid fa-user-pen"></i></a></li>
             <!-- <li><a class="dropdown-item" routerLink="/trainer">Dashboard</a></li> -->
-            <li><a class="dropdown-item" routerLink="/Notification">Notification</a></li>
-            <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+            <li><a class="dropdown-item" routerLink="/Notification">Notification <i class="fa-solid fa-bell"></i></a></li>
+            <li><a class="dropdown-item" (click)="logout()">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
           </ng-container>
           <ng-template #notLoggedIn>
             <li><a class="dropdown-item" routerLink="/signin">LOGIN</a></li>
@@ -121,3 +121,8 @@
     </div>
   </div>
 </div>
+
+
+
+
+

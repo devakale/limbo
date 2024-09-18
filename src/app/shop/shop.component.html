@@ -13,7 +13,7 @@
             <p class="fs-5" style="text-align: justify;">Product Details : {{Showproductdata.products_info}}</p>
             <p>Price : ₹ {{Showproductdata.product_prize}}</p>
             <p>Selling Prize : ₹ {{Showproductdata.product_selling_prize}}</p>
-            <button (click)="buyproduct()"  class="btn text-white me-3" style="background-color: #674ACB">Buy now</button>
+            <button (click)="buyproduct(1, Showproductdata._id)"  class="btn text-white me-3" style="background-color: #674ACB">Buy now</button>
             <button routerLink="/coursedetails/{{Showproductdata.t_id._id}}" class="btn btn-0 " >View Trainer Profile</button>
 
         </div>

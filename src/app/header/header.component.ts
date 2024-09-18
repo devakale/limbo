@@ -196,32 +196,6 @@ export class HeaderComponent {
     return formattedResults;
   }
   
-  // onSelectSuggestion(suggestion: any) {
-  //   this.query = suggestion.name;
-  //   this.suggestions = [];
-  //   this.route.navigate(['/relevance'], {
-  //     queryParams: {
-  //       category: suggestion.name,      
-  //       id: suggestion.id
-  //     }
-  //   });
-  // }
-  
-  // onsearch() {
-  //   if (this.query) {
-  //     this.dservice.search(this.query).subscribe(
-  //       data => {
-  //         this.results = data;
-  //         console.log(this.results);   
-  //       },
-  //       error => {
-  //         alert("Invalid Query");
-  //         console.error('Error:', error);
-  //       }
-  //     );
-  //   }
-  // }
-
  
 
   logout() {
@@ -265,7 +239,6 @@ export class HeaderComponent {
 
   }
 
-  
 
 
   checkUserRole() {
@@ -282,20 +255,6 @@ export class HeaderComponent {
 
 onRoleChange() {
   console.log('Selected Role:', this.role.requested_Role);
-}
-
-//   checkUserRole() {
-//     const role = this.authService.getUserRole();
-//     console.log('User Role:', role);
-
-//     this.isAdmin = role === 'ADMIN';
-//     this.isTrainer = role === 'TRAINER';
-//     this.isUser = role === 'USER';
-
-//     console.log('isTrainer:', this.isTrainer, 'isUser:', this.isUser, 'isAdmin:', this.isAdmin);
-// }
-
-
-  
+}  
 
 }
