@@ -53,14 +53,19 @@
         </div>
 
     </div>
+
+    <div>
+        <h2>{{showprofile.Business_Name}}</h2>
+    </div>
+    
     <div class="row pt-2">
         <!-- First Row code start hrer -->
         <div class="col-sm-12 col-lg-4 border pt-2">
-            <h5 class="text-color">{{ showprofile.coursesWithFullImageUrl[0].course_name }}</h5>
             <div class="d-flex align-items-center gap-3">
                 <i class="fa-solid fa-user card-user"></i>
                 <h6 class="mt-1"> {{showprofile.trainer.f_Name + " " + showprofile.trainer.l_Name}} </h6>
             </div>
+            
             <div>
                 <span style="border:solid 1px black;padding: 0px 8px 0px 8px;">5</span> &nbsp;
                 <span class="fa fa-star fs-6 checked"></span>
@@ -70,22 +75,25 @@
                 <span class="ms-2 fa fa-star fs-6 "></span>&nbsp;
                 <!-- <span>{{showprofile.reviews.length}}</span> -->
             </div>
+
             <div>
                 <i class="fa-solid fa-location-dot p-2"></i> &nbsp;
-                <span>{{showprofile.trainer.address1 + ", " + showprofile.trainer.address2}}</span>
+                <span>{{showprofile.trainer.address1 + ", " + showprofile.trainer.address2 }}</span>
+
                 <div class="d-flex gap-3 py-3">
-                    <a class="text-dark" href="{{showprofile.SocialMedias.facebook}}" target="_blank"><i
+                    <a class="text-dark" href="{{showprofile.SocialMedias?.facebook}}" target="_blank"><i
                             class="fa-brands fa-facebook ms-2 fs-4"></i></a>
-                    <a class="text-dark" href="{{showprofile.SocialMedias.instagram}}"><i
+                    <a class="text-dark" href="{{showprofile.SocialMedias?.instagram}}"><i
                             class="fa-brands fa-instagram ms-2 fs-4"></i></a>
-                    <a class="text-dark" href="{{showprofile.SocialMedias.youtube}}"><i
+                    <a class="text-dark" href="{{showprofile.SocialMedias?.youtube}}"><i
                             class="fa-brands fa-youtube ms-2 fs-4"></i></a>
-                    <a class="text-dark" href="{{showprofile.SocialMedias.Linkdein}}"><i
+                    <a class="text-dark" href="{{showprofile.SocialMedias?.Linkdein}}"><i
                             class="fa-brands fa-linkedin ms-2 fs-4"></i></a>
                 </div>
+
             </div>
 
-            <div class="onmobile d-flex align-items-center gap-3">
+            <div class="d-flex align-items-center gap-3">
                 <button class="btn btn-phone d-flex align-items-center gap-2"><i class="fa-solid fa-mobile-screen"></i>
                     {{showprofile.trainer.mobile_number}}</button>
                 <!-- <a class="btn border-dark d-flex align-items-center  gap-2"
@@ -99,6 +107,9 @@
                 <button (click)="shareicon()" class="btn share-button"><i class="fas fa-share-alt"></i> Share</button>
                 <!-- <button class="btn border-dark"><i class="fa-regular fa-heart"></i></button> -->
             </div>
+
+            
+
             <!-- share button scetion -->
             <div class="share-container">
                 <div *ngIf="showshare" class="share-options gap-4">
@@ -118,11 +129,11 @@
 
             <div class="mt-4">
                 <h5 class="text-color">About Us</h5>
-                <p>{{showprofile.About[0].about_us}}</p>
+                <p>{{showprofile.About.about_us}}</p>
                 <!-- Our Services -->
                 <div class="mt-3">
                     <h5 class="text-color">Our Services</h5>
-                    <p>{{showprofile.About[0].our_services}}</p>
+                    <p>{{showprofile.About.our_services}}</p>
                 </div>
                 <h5 class="text-color">Education</h5>
                 <table>
@@ -389,13 +400,13 @@
                         Enquiry by Email</a></p>
                 <p><a class="text-dark" href="tel:{{showprofile.trainer.mobile_number}}"><i
                             class="fa-solid fa-mobile-screen-button"></i> Get Information by phone</a></p>
-                <p><a class="text-dark" href="{{showprofile.SocialMedias.facebook}}"><i
+                <p><a class="text-dark" href="{{showprofile.SocialMedias?.facebook}}"><i
                             class="fa-brands fa-facebook"></i> Facebook</a></p>
-                <p><a class="text-dark" href="{{showprofile.SocialMedias.instagram}}"><i
+                <p><a class="text-dark" href="{{showprofile.SocialMedias?.instagram}}"><i
                             class="fa-brands fa-instagram"></i> Instagram</a></p>
-                <p><a class="text-dark" href="{{showprofile.SocialMedias.youtube}}"><i class="fa-brands fa-youtube"></i>
+                <p><a class="text-dark" href="{{showprofile.SocialMedias?.youtube}}"><i class="fa-brands fa-youtube"></i>
                         YouTube</a></p>
-                <p><a class="text-dark" href="{{showprofile.SocialMedias.Linkdein}}"><i
+                <p><a class="text-dark" href="{{showprofile.SocialMedias?.Linkdein}}"><i
                             class="fa-brands fa-linkedin"></i> Linkedin</a></p>
 
             </div>
@@ -405,7 +416,7 @@
 
     </div>
 
-    <div class="row p-1">
+    <div class="row">
         <div class="col-sm-12 col-lg-8  pt-2">
             <h5 class="text-color">Reviews & Ratings</h5>
             <div class="d-flex align-items-center gap-3 mt-1">

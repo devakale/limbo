@@ -1,0 +1,18 @@
+.productcard{
+    position: relative;
+  }
+  .productcard :hover + .onproducthover{
+    display: block;
+  
+  }
+  .onproducthover{
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    display: none;
+  
+  }
+
+
+
+  

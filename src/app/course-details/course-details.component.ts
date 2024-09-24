@@ -18,7 +18,6 @@ export class CourseDetailsComponent implements OnInit {
   showprofile:any;
   showreviewdata:any[] = [];
   starsArray = Array(5).fill(0);
-    // photos:any[] = [];
   id: any;
   p: number = 1;
 
@@ -29,13 +28,10 @@ export class CourseDetailsComponent implements OnInit {
   {this.id=this.router.snapshot.paramMap.get('id');}
 
   ngOnInit(): void {
-    
     this.serive.getprofile(this.id).subscribe(data =>{
       console.log("data",data);
       this.showprofile = data;  
-      this.getProfileData();
-      // this.photos = data.gallarys;   
-      // console.log(this.photos) 
+      this.showreviewdata = data.reviews; // Bind reviews data to showreviewdata
     });
     
     this.enquiry.trainerid = this.id;
@@ -43,12 +39,6 @@ export class CourseDetailsComponent implements OnInit {
     this.review.t_id=this.id;
   }
 
-  getProfileData(): void {
-    this.serive.getprofile(this.id).subscribe(data => {
-      console.log("data", data);
-      this.showreviewdata = data.reviews; // Bind reviews data to showreviewdata
-    });
-  }
 
 //  redirect WhatsApp check Login Or Not
   handleWhatsAppClick() {

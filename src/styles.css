@@ -85,3 +85,58 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 sup{
   color: red;
 }
+
+
+/* New Theam CSS */
+
+
+
+:root {
+  --bodyColor: #202331; /*Background Color */
+  --rowColor: #1B1E2A;  /*Row Background Color */
+  --TextColor: #FFFFFF; /*Text Color */
+  --ArrowIcon: #307CFC; /*Arrow Color */
+  --mainColor: ; 
+  --headingFontFamily: "Catamaran", sans-serif;
+  --bodyFontFamily: "Open Sans", sans-serif;
+  --headingColor: #293a5c;
+  --blackColor: #000000;
+  --darkBlueColor: #123726;
+  --boxShadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
+  --transition: all 0.5s;
+  --borderRadius: 20px;
+}
+
+/* body{
+  background-color: var(--bodyColor);
+}
+
+.rowbgcolor{
+  background-color: var(--rowColor);
+  border-radius:  var(--borderRadius);      
+}
+
+.headingColor{
+  color: var(--TextColor);
+} */
+
+
+
+
+/* social icons */
+.social-icons {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.social-icons i {
+  padding: 10px;
+  text-decoration: none;
+}
+
+.social-icons i:hover {
+  background-color: #307DFF;
+  color: white;
+}

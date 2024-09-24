@@ -80,6 +80,4 @@ export class AdminService {
       gettrainerdata():Observable<any>{
         return this.http.get<any>(this.trainer_API);
       }
-
-
 }

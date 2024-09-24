@@ -60,6 +60,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { ReviewComponent } from './trainer_dashboard/review/review.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { NotificationComponent } from './notification/notification.component';
+import { BlogDetailsComponent } from './blog/blog-details/blog-details.component';
+import { BlogComponent } from './blog/blog/blog.component';
 
 
 @NgModule({
@@ -114,6 +116,8 @@ import { NotificationComponent } from './notification/notification.component';
     SEOKeywordComponent,
     ReviewComponent,
     NotificationComponent,
+    BlogDetailsComponent,
+    BlogComponent,
     
   ],
   imports: [

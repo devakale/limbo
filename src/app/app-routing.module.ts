@@ -45,6 +45,8 @@ import { UserEventDetailsComponent } from './user-event-details/user-event-detai
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { ReviewComponent } from './trainer_dashboard/review/review.component';
 import { NotificationComponent } from './notification/notification.component';
+import { BlogDetailsComponent } from './blog/blog-details/blog-details.component';
+import { BlogComponent } from './blog/blog/blog.component';
 
 const routes: Routes = [
 
@@ -122,6 +124,10 @@ const routes: Routes = [
               {path:"studentDashboard",component:StudentDashboardComponent},
             ]
          },
+
+    // blog     
+    {path:"blog",component:BlogComponent},
+    {path:"blogdetails/:id",component:BlogDetailsComponent},
 
 ];
 

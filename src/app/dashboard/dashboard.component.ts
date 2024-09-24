@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../common_service/dashboard.service';
+import { gsap } from 'gsap';
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+
+gsap.registerPlugin(MotionPathPlugin);
 
 @Component({
   selector: 'app-dashboard',
@@ -76,4 +80,71 @@ export class DashboardComponent implements OnInit {
       })
    }
 
+
+   ngAfterViewInit(): void {
+    gsap.registerPlugin(MotionPathPlugin);
+  
+    const animateSVG = (lineId: string, arrowGroupId: string) => {
+      // Set the arrow group transform origin to its center
+      gsap.set(arrowGroupId, { transformOrigin: "50% 50%" });
+  
+      // Create the animation timeline
+      const timeline = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+  
+      // Animate line drawing
+      timeline.to(lineId, {
+        duration: 4,
+        strokeDashoffset: 0,
+        ease: "none"
+      });
+  
+      // Animate arrow movement along the line
+      timeline.to(arrowGroupId, {
+        duration: 4,
+        motionPath: {
+          path: lineId,
+          align: lineId,
+          autoRotate: true, // Enable auto rotation
+          alignOrigin: [0.5, 0.5] // Center the rotation
+        },
+        ease: "none"
+      }, 0);
+    }
+  
+    // Animate each SVG separately
+    animateSVG("#line-1", "#arrow-group-1");
+    animateSVG("#line-2", "#arrow-group-2");
+    animateSVG("#line-3", "#arrow-group-3");
+  }
+  
+
+  //  ngAfterViewInit(): void {
+  //   gsap.registerPlugin(MotionPathPlugin);
+
+  //   // Set the arrow group transform origin to its center
+  //   gsap.set("#arrow-group", { transformOrigin: "50% 50%" });
+    
+
+  //   // Create the animation timeline
+  //   const timeline = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+
+  //   // Animate line drawing
+  //   timeline.to("#line", {
+  //     duration: 4,
+  //     strokeDashoffset: 0,
+  //     ease: "none"
+  //   });
+
+  //   // Animate arrow movement along the line
+  //   timeline.to("#arrow-group", {
+  //     duration: 4,
+  //     motionPath: {
+  //       path: "#line",
+  //       align: "#line",
+  //       autoRotate: true, // Enable auto rotation
+  //       alignOrigin: [0.5, 0.5] // Center the rotation
+  //     },
+  //     ease: "none"
+  //   }, 0);
+  // }
 }

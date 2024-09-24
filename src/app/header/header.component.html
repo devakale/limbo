@@ -1,13 +1,16 @@
 <!-- navbar.component.html -->
-<div class="container-fluid " style="background-color: #F9F8FF;">
-  <div class="row mt-1">
+<div class="container-fluid " style="background-color: #ffffff;">
+  <div class="row mt-1 align-items-center">
     <div class="col-sm-6 col-md-6 col-lg-3 ">
-      <img routerLink="/" class="img-fluid object-fit-cover" src="../../assets/Ximboa-Logo.jpg" width="60%" alt=""
+      <img routerLink="/" class="img-fluid object-fit-cover " src="../../assets/Ximboa-Logo.jpg" width="55%" alt=""
         style="cursor: pointer;">
     </div>
     
-    <div class="col-sm-6 col-md-6 col-lg-6 ">
-      <div class="d-flex align-items-center justify-content-between inputContainer1 my-2 position-relative">
+    <div class="col-sm-6 col-md-6 col-lg-3">
+
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-3 ">
+      <div class="d-flex align-items-center justify-content-between inputContainer1 my-2 position-relative ">
         <input type="text" [(ngModel)]="query" (keyup)="searchitem($event)" class="form-control form-control-lg rounded"
           placeholder="Search courses or instructor">
         <i class="fa-solid fa-magnifying-glass fs-5 pt-1 serachlogo" (click)="onsearch()"></i>
@@ -21,14 +24,22 @@
       </div>
     </div>
 
+    <div class="col-sm-6 col-md-6 col-lg-1 text-end ">
+      <img src="../../assets/cart header.png" alt="">
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-2 text-end d-flex gap-4 justify-content-end ">
+      <button routerLink="/signin" class="btn btn-primary rounded">Sign In</button>
+      <button class="btn btn-light rounded border">Sign Up</button>
+    </div>
+    
 
-    <div class="col-sm-6 col-md-6 col-lg-3 d-flex align-items-center justify-content-end ">
+
+
+    <!-- <div class="col-sm-6 col-md-6 col-lg-1 d-flex align-items-center justify-content-end ">
       <button *ngIf="(isLoggedIn$ | async) && isUser " class="btn btn-primary main-button" data-bs-toggle="modal"
         data-bs-target="#exampleModalExpert">
         Become an Expert
       </button>&nbsp;&nbsp;&nbsp;&nbsp;
-      <!-- <button *ngIf="(isLoggedIn$ | async)" class="btn btn-primary main-button" data-bs-toggle="modal" data-bs-target="#exampleModalExpert">Become an Expert</button>&nbsp;&nbsp;&nbsp;&nbsp; -->
-      <!-- <i *ngIf="(isLoggedIn$ | async)" class="fa-solid fa-bell icon"></i> &nbsp;&nbsp;&nbsp;&nbsp; -->
       <i *ngIf="(isLoggedIn$ | async)" class="fa-solid fa-house-user Home-icon mx-3 text-primary" routerLink="/trainer" style="font-size: 35px;"></i>
       <div class="dropdown">
         <i class="fa-solid fa-user icon" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
@@ -36,19 +47,15 @@
           <ng-container *ngIf="(isLoggedIn$ | async); else notLoggedIn">
             <li><a class="dropdown-item">{{ (user$ | async) }}</a></li>
             <li><a class="dropdown-item" routerLink="/edittrainer">Edit Profile <i class="fa-solid fa-user-pen"></i></a></li>
-            <!-- <li><a class="dropdown-item" routerLink="/trainer">Dashboard</a></li> -->
             <li><a class="dropdown-item" routerLink="/Notification">Notification <i class="fa-solid fa-bell"></i></a></li>
             <li><a class="dropdown-item" (click)="logout()">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
           </ng-container>
           <ng-template #notLoggedIn>
             <li><a class="dropdown-item" routerLink="/signin">LOGIN</a></li>
-            <!-- <li><a class="dropdown-item" routerLink="/login">Student</a></li> -->
-            <!-- <li><a class="dropdown-item" routerLink="/signin">Trainer</a></li> -->
-            <!-- <li><a class="dropdown-item" routerLink="/admin">Admin</a></li> -->
           </ng-template>
         </ul>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 
@@ -122,7 +129,8 @@
   </div>
 </div>
 
-
-
+<!-- whatsapp-icon -->
+<a class="h-0 w-0" href="https://wa.me/+919130167333" target="_blank"><i
+  class="fa-brands fa-whatsapp whatsapp-icon"></i></a>
 
 

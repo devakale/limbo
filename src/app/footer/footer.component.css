@@ -37,8 +37,7 @@ small:hover{
 }
 
   .footer-section {
-    background-color: #307DFF;
-    
+    background-color: #265BBD;
     padding-top: 5rem;  
     padding-bottom: 5rem;  
   }
@@ -63,7 +62,7 @@ small:hover{
     color: black;
   }
   .footer-bottom {
-    background-color: aliceblue;
+    background-color: #307DFF;
     padding: 0.9rem 0;
       text-align: center;
   
@@ -71,8 +70,8 @@ small:hover{
   .footer-bottom p {
     margin: 0;
   }
-  .footer-bottom a {
-    color: #307DFF;
+  .footer-bottom p,a {
+    color: white;
     text-decoration: none;
   }
 

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row">
+  <!-- <div class="row">
     <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gy-2 gx-3">
       <div *ngFor="let product of filteredProduct" class="col-sm-12 col-md-3 col-lg-3 mb-3">
         <div class="card p-2 rounded" routerLink="/shop/{{product._id}}">
@@ -16,8 +16,42 @@
         </div>
       </div>
     </div>
+  </div> -->
+  <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
+    <div *ngFor="let product of filteredProduct" class="col-sm-12 col-md-3 col-lg-3 mb-3">
+      <div class="card productcard">
+        <img src="{{product.product_image}}" routerLink="/shop/{{product._id}}" class="card-img-top img-fluid"
+          alt="...">
+          <button class="btn btn-light rounded onproducthover">Add to cart</button>
+        <div class="card-body text-center">
+          <div>
+            <i class="fa-solid fa-star " style="color: #FFAE06;"></i>
+            <i class="fa-solid fa-star " style="color: #FFAE06;"></i>
+            <i class="fa-solid fa-star " style="color: #FFAE06;"></i>
+            <i class="fa-solid fa-star " style="color: #FFAE06;"></i>
+            <i class="fa-solid fa-star "></i>
+          </div>
+          <h5 class="card-title">{{product.product_name}}</h5>
+          <p>Development</p>
+          <div class="d-flex align-items-center justify-content-between">
+            <i class="fa-solid fa-cart-shopping fs-5"></i>
+            <b>₹ {{product.product_selling_prize}}</b>
+            <i class="fa-regular fa-heart fs-5"></i>
+          </div>
+          <!-- <p class="m-0"><b>Prize : ₹ </b>{{product.product_prize}}</p>
+          <p class="m-0"><b>Selling Prize : ₹ </b> {{product.product_selling_prize}}</p>
+          <p class="m-0"><b>Description : </b> {{ (product.products_info | slice: 0 : 24)}}
+            ...<button (click)="showProductDescription(product)" class="btn btn-sm btn-primary rounded-pill "
+              data-bs-toggle="modal" data-bs-target="#exampleModal">Know More</button>
+          </p> -->
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

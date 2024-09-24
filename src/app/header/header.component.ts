@@ -48,10 +48,10 @@ export class HeaderComponent {
     this.isLoggedIn$ = this.authService.isLoggedIn$;
     this.user$ = this.authService.user$;
     this.router.queryParams.subscribe(params => {
-      this.category = params['category'];
-      this.id = params['id'];
-      this.type = params['type'];    // Retrieve the type (table source)
-      this.keyword = params['keyword']; // Retrieve the user-entered keyword
+    this.category = params['category'];
+    this.id = params['id'];
+    this.type = params['type'];    // Retrieve the type (table source)
+    this.keyword = params['keyword']; // Retrieve the user-entered keyword
     });
   }
 
@@ -63,11 +63,11 @@ export class HeaderComponent {
     const element = event.target as HTMLInputElement;
     const query = element.value.trim();
 
-    if (query.length > 1) { 
+    if (query.length > 1) {
       this.dservice.search(query).subscribe(
         result => {
           this.suggestions = this.formatSearchResults(result);
-          console.log("search result",this.suggestions);
+          console.log("Search results", this.suggestions);
         },
         error => {
           console.error('Error:', error);
@@ -77,62 +77,163 @@ export class HeaderComponent {
       this.suggestions = [];
     }
   }
- 
 
   onSelectSuggestion(suggestion: any) {
     const enteredKeyword = this.query;
-  
     this.suggestions = [];
-  
+
     if (suggestion.type === 'course') {
       this.route.navigate(['/relevance/seeallcategory'], {
-        // queryParams: {
-        //   category: suggestion.name,
-        //   id: suggestion.id,
-        //   type: suggestion.type,  
-        //   keyword: enteredKeyword  
-        // }
-      });
-    }
-    else if (suggestion.type === 'category') {
-      this.route.navigate(['/relevance/seeallcategory'], {
         queryParams: {
-          category: suggestion.name,
+          category: suggestion.category_name || 'defaultCategory',  // For courses
           id: suggestion.id,
-          type: suggestion.type,  
-          keyword: enteredKeyword  
+          type: suggestion.type,
+          keyword: enteredKeyword
         }
       });
-    }
-    else if (suggestion.type === 'product') {
+    } else if (suggestion.type === 'category') {
+      this.route.navigate(['/relevance/seeallcategory'], {
+        queryParams: {
+          category: suggestion.name || 'defaultCategory',
+          id: suggestion.id,
+          type: suggestion.type,
+          keyword: enteredKeyword
+        }
+      });
+    } else if (suggestion.type === 'product') {
       this.route.navigate(['/relevance/userproduct'], {
         queryParams: {
-          category: suggestion.name,
+          category: suggestion.categoryid?.category_name || 'defaultCategory', // For products
           id: suggestion.id,
-          type: suggestion.type,  
-          keyword: enteredKeyword  
+          type: suggestion.type,
+          keyword: enteredKeyword
         }
       });
     } else if (suggestion.type === 'event') {
       this.route.navigate(['/relevance/userevent'], {
         queryParams: {
-          category: suggestion.name,
+          category: suggestion.events_category || 'defaultCategory',
           id: suggestion.id,
-          type: suggestion.type,  
-          keyword: enteredKeyword  
+          type: suggestion.type,
+          keyword: enteredKeyword
         }
       });
     } else if (suggestion.type === 'trainer') {
       this.route.navigate(['/relevance/trainer'], {
         queryParams: {
-          category: suggestion.name,
+          category: suggestion.name || 'defaultCategory',
           id: suggestion.id,
-          type: suggestion.type,  
-          keyword: enteredKeyword  
+          type: suggestion.type,
+          keyword: enteredKeyword
         }
       });
     }
   }
+
+  formatSearchResults(result: any): any[] {
+    const formattedResults = [];
+    if (result.Courses) {
+      formattedResults.push(...result.Courses.map((course: any) => ({
+        type: 'course',
+        name: course.course_name,
+        category_name: course.category_name,  // Add category_name for courses
+        id: course._id
+      })));
+    }
+
+    if (result.products) {
+      formattedResults.push(...result.products.map((product: any) => ({
+        type: 'product',
+        name: product.product_name,
+        categoryid: product.categoryid,  // categoryid contains category_name
+        id: product._id
+      })));
+    }
+
+    if (result.categories) {
+      formattedResults.push(...result.categories.map((category: any) => ({
+        type: 'category',
+        name: category.category_name,
+        id: category._id
+      })));
+    }
+
+    if (result.events) {
+      formattedResults.push(...result.events.map((event: any) => ({
+        type: 'event',
+        name: event.event_name,
+        events_category: event.events_category,
+        id: event._id
+      })));
+    }
+
+    if (result.trainers) {
+      formattedResults.push(...result.trainers.map((trainer: any) => ({
+        type: 'trainer',
+        name: trainer.f_Name,
+        id: trainer._id
+      })));
+    }
+
+    return formattedResults;
+  }
+
+
+
+  // onSelectSuggestion(suggestion: any) {
+  //   const enteredKeyword = this.query;
+  
+  //   this.suggestions = [];
+  
+  //   if (suggestion.type === 'course') {
+  //     this.route.navigate(['/relevance/seeallcategory'], {
+  //       queryParams: {
+  //         category: suggestion.name,
+  //         id: suggestion.id,
+  //         type: suggestion.type,  
+  //         keyword: enteredKeyword  
+  //       }
+  //     });
+  //   }
+  //   else if (suggestion.type === 'category') {
+  //     this.route.navigate(['/relevance/seeallcategory'], {
+  //       queryParams: {
+  //         category: suggestion.category_name,
+  //         id: suggestion.id,
+  //         type: suggestion.type,  
+  //         keyword: enteredKeyword  
+  //       }
+  //     });
+  //   }
+  //   else if (suggestion.type === 'product') {
+  //     this.route.navigate(['/relevance/userproduct'], {
+  //       queryParams: {
+  //         category: suggestion.name,
+  //         id: suggestion.id,
+  //         type: suggestion.type,  
+  //         keyword: enteredKeyword  
+  //       }
+  //     });
+  //   } else if (suggestion.type === 'event') {
+  //     this.route.navigate(['/relevance/userevent'], {
+  //       queryParams: {
+  //         category: suggestion.name,
+  //         id: suggestion.id,
+  //         type: suggestion.type,  
+  //         keyword: enteredKeyword  
+  //       }
+  //     });
+  //   } else if (suggestion.type === 'trainer') {
+  //     this.route.navigate(['/relevance/trainer'], {
+  //       queryParams: {
+  //         category: suggestion.name,
+  //         id: suggestion.id,
+  //         type: suggestion.type,  
+  //         keyword: enteredKeyword  
+  //       }
+  //     });
+  //   }
+  // }
   
   
 
@@ -151,50 +252,6 @@ export class HeaderComponent {
     }
   }
 
-  formatSearchResults(result: any): any[] {
-    const formattedResults = [];
-      if (result.courses) {
-      formattedResults.push(...result.courses.map((course: any) => ({
-        type: 'course',
-        name: course.course_name,
-        id: course._id
-      })));
-    }
-  
-    if (result.products) {
-      formattedResults.push(...result.products.map((product: any) => ({
-        type: 'product',
-        name: product.product_name,
-        id: product._id
-      })));
-    }
-  
-    if (result.categories) {
-      formattedResults.push(...result.categories.map((category: any) => ({
-        type: 'category',
-        name: category.category_name,
-        id: category._id
-      })));
-    }
-  
-    if (result.events) {
-      formattedResults.push(...result.events.map((event: any) => ({
-        type: 'event',
-        name: event.event_name,
-        id: event._id
-      })));
-    }
-  
-    if (result.trainers) {
-      formattedResults.push(...result.trainers.map((trainer: any) => ({
-        type: 'trainer',
-        name: trainer.f_Name,
-        id: trainer._id
-      })));
-    }
-  
-    return formattedResults;
-  }
   
  
 

@@ -67,7 +67,11 @@
 
 /* Become an Expert Button CSS */
 
-.main-button span { position:relative; z-index:5; color: #ffffff;}
+.main-button span { 
+  position:relative; 
+  z-index:5; 
+  color: #ffffff;
+}
 
 .main-button {
   /* background-image: linear-gradient(to right, rgba(255,153,102,100), rgba(255,94,98,100)); */
@@ -142,3 +146,32 @@
   background-color: #f0f0f0;
 }
 
+
+
+
+/* Whatapps icon css */
+
+.whatsapp-icon {
+  position: fixed;
+  width: 50px; 
+  height: 50px; /* Ensure the height is equal to the width for a circular icon */
+  right: 16px;
+  bottom: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0adc57; 
+  background-color: #e7eef4; 
+  border-radius: 50%; 
+  z-index: 1000;
+  cursor: pointer;
+  font-size: 35px; 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+
+}
+
+.whatsapp-icon:hover {
+  background-color: #ffffff; /* Lighter on hover */
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow on hover */
+}

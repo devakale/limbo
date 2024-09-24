@@ -12,6 +12,9 @@ export class DashboardService {
    
   private beforelogin ="http://localhost:1000/beforeLogin";
 
+    // private beforelogin ="http://192.168.0.14:1000/beforeLogin";
+
+
   private Enroll ="http://localhost:1000/enrollcourse";
 
   private SEOkeyword="http://localhost:1000/footer";
@@ -19,6 +22,7 @@ export class DashboardService {
   private Search_API="http://localhost:1000/search/global?q=";
 
   private API_URL="http://localhost:1000"
+
 
 
 
@@ -99,6 +103,15 @@ export class DashboardService {
           }
 
           deletecartproductbyID(productId: string): Observable<any> {
-            return this.http.delete(`${this.API_URL}/cart/remove/${productId}`);
+            return this.http.delete(`${this.API_URL}/cart/remove${productId}`);
+          }
+
+          getblogdata():Observable<any>{
+            return this.http.get<any>(`${this.API_URL}/blog`)
+          }
+         
+          blogdatabyID(id: string): Observable<any> {
+            const url = `http://localhost:1000/blog/${id}`;  // Adjust the API endpoint
+            return this.http.get<any>(url);
           }
 }
