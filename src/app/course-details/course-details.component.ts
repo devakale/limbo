@@ -16,8 +16,12 @@ import { LoginService } from '../common_service/login.service';
 export class CourseDetailsComponent implements OnInit {
 
   showprofile:any;
-  // photos:any[] = [];
+  showreviewdata:any[] = [];
+  starsArray = Array(5).fill(0);
+    // photos:any[] = [];
   id: any;
+  p: number = 1;
+
 
 
   constructor(private serive:TrainerService,private router:ActivatedRoute,
@@ -29,13 +33,21 @@ export class CourseDetailsComponent implements OnInit {
     this.serive.getprofile(this.id).subscribe(data =>{
       console.log("data",data);
       this.showprofile = data;  
+      this.getProfileData();
       // this.photos = data.gallarys;   
       // console.log(this.photos) 
-    })
+    });
     
     this.enquiry.trainerid = this.id;
     this.question.trainerid = this.id;
     this.review.t_id=this.id;
+  }
+
+  getProfileData(): void {
+    this.serive.getprofile(this.id).subscribe(data => {
+      console.log("data", data);
+      this.showreviewdata = data.reviews; // Bind reviews data to showreviewdata
+    });
   }
 
 //  redirect WhatsApp check Login Or Not
@@ -60,6 +72,7 @@ export class CourseDetailsComponent implements OnInit {
       window.open(whatsappUrl, '_blank');
   }
   
+  
   copyLink() {
       navigator.clipboard.writeText(this.currentUrl).then(() => {
           alert('Link copied to clipboard!');
@@ -77,6 +90,15 @@ export class CourseDetailsComponent implements OnInit {
   shareicon(){
     this.showshare = !this.showshare;
   }
+
+  showsharereview=false;
+  shareiconreview(){
+    this.showsharereview = !this.showsharereview;
+  }
+
+
+
+ 
   
 //  Here get token For user Logged in or not for post Enquiry, question and reviews 
   token = sessionStorage.getItem('Authorization');
@@ -131,20 +153,26 @@ export class CourseDetailsComponent implements OnInit {
 
   stars: number[] = [1, 2, 3, 4, 5];  
   rating: number = 0;  
+
+
+
   toggleRating(clickedStar: number): void {
     if (this.rating === clickedStar) {
-      this.rating = 0;
+      this.rating = 0; // Reset the rating if the same star is clicked
     } else {
-      this.rating = clickedStar;
+      this.rating = clickedStar; // Set the new rating
     }
+    this.review.star_count = this.rating; // Ensure star count is updated
   }
 
   review = {
     review: ' ',
+    star_count: 0,
     t_id:' ',
   }
   postreview(){
     if(this.token){
+      this.review.star_count = this.rating;
     this.dashboard.postreview(this.review).subscribe({
       next : (Response) =>{
         Swal.fire('Ohh...!', 'You are Question send Successfully..!', 'success');

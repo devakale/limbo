@@ -2,3 +2,9 @@
     background-color: #F96D63;
     color: white;
 }
+
+.counter{
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 3px 8px;
+}

@@ -34,11 +34,19 @@ export class ShopComponent {
     })
   }
 
-  buyproduct() {
+  buyproduct(quantity:number, productId:string) {
     const token = sessionStorage.getItem('Authorization'); // Assuming your token is stored in sessionStorage
-
     if (token) {
-      this.route.navigate(['/cart']);
+      const  cart = { quantity, productId };
+      this.dservice.Addtocart(cart).subscribe({
+        next: (Response) =>{
+          Swal.fire('Ohh...!', 'Added to cart..!', 'success');
+          this.route.navigate(['/cart'])
+        },
+        error : (error)=>{
+          Swal.fire('Error', 'sorry..!', 'error');
+        }
+      })
     }
     else {
       const modalElement = document.getElementById('CheckLoggedIN');

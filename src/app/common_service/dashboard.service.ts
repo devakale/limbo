@@ -89,4 +89,16 @@ export class DashboardService {
           BookApnmt(data:any):Observable<any>{
             return this.http.post<any>(`${this.API_URL}/appointment`,data)
           }
+
+          Addtocart(cart:{productId:string, quantity:number}):Observable<any>{
+            return this.http.post<any>(`${this.API_URL}/cart/add`,cart)
+          }
+
+          getcartproduct():Observable<any>{
+           return this.http.get<any>(`${this.API_URL}/cart`);
+          }
+
+          deletecartproductbyID(productId: string): Observable<any> {
+            return this.http.delete(`${this.API_URL}/cart/remove/${productId}`);
+          }
 }
