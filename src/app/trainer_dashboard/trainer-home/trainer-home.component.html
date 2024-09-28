@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col-lg-2 bg-dark text-light pt-3 rounded-end" style="height: 100vh;">
+        <div class="col-lg-2 bg-dark text-light pt-2 rounded-end" style="height: 100vh;">
             <ul class="list">
                 <!-- Dashboard: Visible to USER, TRAINER, ADMIN -->
                 <li *ngIf="isUser" routerLink="/trainer" class="hover">
@@ -11,6 +11,11 @@
                 <!-- Request: Visible only to ADMIN -->
                 <li *ngIf="isAdmin" routerLink="/trainer/superadmin" class="hover">
                     <i class="fa-solid fa-house"></i> Request
+                </li>
+
+                 <!-- Request: Visible only to ADMIN -->
+                 <li *ngIf="isAdmin" routerLink="/trainer/admincategory" class="hover">
+                    <i class="fa-solid fa-house"></i> Category
                 </li>
         
                 <!-- Course: Visible to USER, TRAINER, ADMIN -->

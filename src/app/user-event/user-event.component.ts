@@ -13,6 +13,8 @@ export class UserEventComponent implements OnInit {
   filteredEvent: any[] = [];
   selectedCategories: string[] = []; 
   selectedEvent: any;
+  p: number = 1;
+
 
 
   constructor(private Dservice: DashboardService, private filter: FilterService) { }

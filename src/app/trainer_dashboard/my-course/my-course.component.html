@@ -6,13 +6,13 @@
   <mat-tab-group dynamicHeight mat-stretch-tabs="false" mat-align-tabs="start">
     <mat-tab *ngIf="isTrainer" label="My Courses" >
       <div class="row">
-        <div  class="col-sm-12 col-lg-12 d-flex gap-5 justify-content-end my-3">
+        <div  class="col-sm-12 col-lg-12 d-flex gap-5 justify-content-end mb-3">
           <button class="btn rounded-pill text-light" data-bs-toggle="modal" data-bs-target="#exampleModal"
-            data-bs-whatever="@mdo" style="background-color: #3078ff; width: 150px">
+            data-bs-whatever="@mdo" style="background-color: #3078ff;" >
             Add New Course
           </button>
           <button (click)="toggleIcon()" class="btn rounded-pill text-light"
-            style="background-color: #f96d63; width: 200px">
+            style="background-color: #f96d63;">
             Update/Delete Course
           </button>
         </div>
@@ -137,7 +137,8 @@
 
             <div class="mb-3 col-sm-12 col-md-6 col-lg-6">
               <label for="thumbnail_image" class="col-form-label">Upload Course Image</label><br />
-              <input type="file" name="thumbnail_image" id="thumbnail_image" (change)="onFileSelected($event)" />
+              <!-- <input type="file" name="thumbnail_image" id="thumbnail_image" (change)="onFileSelected($event)" /> -->
+              <input type="file" (change)="onFileSelected($event)" accept="image/*" />
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-12 mb-3">

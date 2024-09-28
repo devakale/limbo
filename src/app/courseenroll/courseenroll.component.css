@@ -1,73 +1,8 @@
-
-.btn1{
-    background: rgb(97,73,205);
-    background: linear-gradient(90deg, rgba(97,73,205,1) 0%, rgba(166,84,172,1) 50%, rgba(234,95,139,1) 100%);
-    color: white;
-    border-radius: 25px;
-    width: 90%;
-    text-align: center;
-}
 .btn-0{
-    background-color: #F96D63;
+    background-color: #307DFF;
     color: white;
 }
-.rounded-box{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-.card-title{
-    color: #674ACB;
-}
 
-.label-color label{
-  color: #F96D63;
-  b{
-    color: black;
-  }
-} */
-
-
-/* /////////////////////////// */
-
-.inputContainer1 > i{
-    position: absolute;
-    color: black;
-    margin-left: 8px;
-  }
-
-  .icon{
-    background-color: gray;
-    color: skyblue;
-    border-radius: 50%;
-    padding: 15px;
-  }
-
-  .Welcome{
-    font-weight: bold;
-  }
-  .start-text{
-    position: absolute;
-    left: 0;
-    margin-top: -120px;
-    margin-left: -80px;
-
-    
-  }
-  .modify{
-    background-color: #674ACB !important;
- }
-  .button-75{
-    position: absolute;
-    right: 0;
-    margin-top: -80px;
-  }
- 
-.user-icon{
-  background-color: gray;
-  color: skyblue;
-  border-radius: 50%;
-  padding: 15px;
-}
 .card-user{
   border: 1px solid black ;
   padding: 5px 5px 0 5px;
@@ -81,10 +16,6 @@
   position: absolute;
   top: 0%;
   margin-top: 20px;
-}
-
-.round{
-    border-radius: 10px !important;
 }
 
 

@@ -98,6 +98,13 @@
               <label for="event_thumbnail" class="col-form-label">Event Thumbnail Image</label>
               <input class="form-control" type="file" id="event_thumbnail" name="event_thumbnail" (change)="onFileSelected($event)" required>
             </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+              <label for="event_description" class="col-form-label">Event Information:</label>
+              <textarea type="text" class="form-control" id="event_description" [(ngModel)]="event.event_description"
+                name="event_description" required ></textarea>
+            </div>
+
           </div>
         
         <div class="modal-footer">

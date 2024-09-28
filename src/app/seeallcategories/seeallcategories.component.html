@@ -15,30 +15,32 @@
         </div>
       </div> -->
       <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
-      <div *ngFor="let allcourses of filteredCourses| paginate: { itemsPerPage: itemsPerPage, currentPage: p, totalItems }" class="col-sm-12 col-md-6 col-lg-3 mb-3">
-        <div class="card" routerLink="/couserenroll/{{allcourses._id}}">
-          <img src="{{allcourses.thumbnail_image}}" class="card-img-top img-fluid" alt="...">
-          <div class="card-body ">
-            <div class="d-flex align-items-center justify-content-between">
-              <h5 class="card-title">{{allcourses.course_name}}</h5>
-              <small>Online</small>
+         <div *ngFor="let allcourses of filteredCourses| paginate: { itemsPerPage: itemsPerPage, currentPage: p, totalItems }" class="col-sm-12 col-md-6 col-lg-3 mb-3">
+          <div class="card" routerLink="/couserenroll/{{allcourses._id}}">
+            <img src="{{allcourses.thumbnail_image}}" class="card-img-top img-fluid" alt="...">
+            <div class="card-body ">
+              <div class="d-flex align-items-center justify-content-between">
+                <h5 class="card-title">{{allcourses.course_name}}</h5>
+                <small>{{allcourses.online_offline}}</small>
+              </div>
+              <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center gap-2 ">
+                     <p><img src="{{allcourses.trainer_image}}" class="rounded-circle" height="20px" width="20px" alt=""></p>
+                    <p>{{allcourses.business_Name }}</p>
+                  </div>
+               <p>{{allcourses.course_rating || 4.5}} <i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i></p>
+              </div>
+              <button class="left-side-top rounded-pill">{{allcourses.category_name}}</button>
             </div>
-            <div class="d-flex align-items-center justify-content-between">
-                <div class="d-flex align-items-center gap-2 ">
-                  <p><i class="fa-solid fa-user card-user border p-1"></i></p>
-                  <p>{{allcourses.trainer_id.f_Name + " " + allcourses.trainer_id.l_Name }}</p>
-                </div>
-             <p><i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i> 4.5</p>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <p><i class="fa-solid fa-list-ul"></i> Duration : {{allcourses.course_duration || 2}} Weeks</p>
+                <p style="font-family: Poppins;font-weight: bold;color: var(--TextColor);font-size: 20px;">{{ getFormattedPrice(allcourses.course_price) }}</p>
             </div>
-            <button class="left-side-top rounded-pill">{{allcourses.category_id.category_name}}</button>
           </div>
-          <div class="card-footer d-flex align-items-center justify-content-between">
-              <p><i class="fa-solid fa-list-ul"></i> Duration : 3 Month </p>
-              <p style="font-family: Poppins;font-weight: bold;color: #307DFF;font-size: 20px;">27K</p>
-          </div>
-        </div>
-      </div>
-      </div>
+        </div> 
+      
+      
+    </div>
       <pagination-controls (pageChange)="onPageChange($event)" class="text-end"></pagination-controls>
 </div>
 

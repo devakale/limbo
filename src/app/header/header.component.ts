@@ -12,6 +12,7 @@ import { DashboardService } from '../common_service/dashboard.service';
 })
 export class HeaderComponent {
 
+  Showcategorydata:any;
   category: string = '';
   id: string = '';
   type: string = '';  
@@ -57,6 +58,10 @@ export class HeaderComponent {
 
   ngOnInit(): void {
     this.checkUserRole();
+
+    this.dservice.getcategoryname().subscribe(data => {
+      this.Showcategorydata = data;
+    });
   }
 
   searchitem(event: KeyboardEvent) {
@@ -313,5 +318,6 @@ export class HeaderComponent {
 onRoleChange() {
   console.log('Selected Role:', this.role.requested_Role);
 }  
+
 
 }

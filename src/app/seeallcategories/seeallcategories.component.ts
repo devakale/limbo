@@ -45,7 +45,7 @@ export class SeeallcategoriesComponent implements OnInit {
   applyFilter(): void {
     if (this.selectedCategories.length > 0) {
       this.filteredCourses = this.ShowCourseData.filter((course: any) => 
-        this.selectedCategories.includes(course.category_id.category_name)
+        this.selectedCategories.includes(course.category_name)
       );
     } else {
       this.filteredCourses = this.ShowCourseData;  // No filtering if no categories selected
@@ -58,4 +58,17 @@ export class SeeallcategoriesComponent implements OnInit {
     this.loadCourses(this.currentPage, this.itemsPerPage); 
     this.p = page;
   }
+
+
+    // conver Rupees K or laks
+    getFormattedPrice(price: number): string {
+      if (price >= 100000) {
+        return '₹' + (price / 100000).toFixed(1) + 'L';  // For lakhs
+      } else if (price >= 1000) {
+        return '₹' + (price / 1000).toFixed(1) + 'K';  // For thousands
+      } else {
+        return '₹' + price.toString();  // For rupees
+      }
+    }
+    
 }

@@ -17,6 +17,10 @@ export class MyCourseComponent implements OnInit {
   isTrainer: boolean = false;
   isUser: boolean = true; // Example default value; adjust as needed
 
+  maxSize = 5 * 1024 * 1024; // 5MB
+  maxWidth = 100; // Maximum width in pixels
+  maxHeight = 100;
+
   checkUserRole() {
     const role = this.auth.getUserRole();
     // console.log(role);
@@ -107,9 +111,42 @@ export class MyCourseComponent implements OnInit {
     }); 
    }
 
-    onFileSelected(event: any): void {
-      this.thumbnail_image = event.target.files[0];
+   onFileSelected(event: any): void {
+    this.thumbnail_image = event.target.files[0] || null;
+  
+    // Ensure thumbnail_image is not null before proceeding
+    if (this.thumbnail_image) {
+      // File Size Check
+      if (this.thumbnail_image.size > this.maxSize) {
+        alert('File size exceeds 5MB.');
+        return;
+      }
+  
+      // Check Image Dimensions
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const image = new Image();
+        image.src = e.target.result;
+        image.onload = () => {
+          const width = image.width;
+          const height = image.height;
+  
+          if (width > this.maxWidth || height > this.maxHeight) {
+            alert(`Image dimensions exceed ${this.maxWidth}x${this.maxHeight}px.`);
+          } else {
+            // Proceed with upload or further operations
+            console.log('Image is valid. Proceed with upload.');
+          }
+        };
+      };
+  
+      reader.readAsDataURL(this.thumbnail_image);  // No error, since thumbnail_image is checked
+    } else {
+      alert('No image file selected.');
     }
+  }
+  
+    
 
     onDelete(id: string): void {
       this.service.deleteCoursebyID(id).subscribe(

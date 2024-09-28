@@ -15,7 +15,22 @@ export class ShopComponent {
 
   id: any;
   Showproductdata: any;
+  ShowRelatedPeoduct:any;
   isLoggedIn: boolean = false;
+  starsArray: number[] = [1, 2, 3, 4, 5]; // 5 stars total
+
+
+  count: number = 1;
+
+  increment() {
+    this.count++;
+  }
+
+  decrement() {
+    if (this.count > 1) {
+      this.count--;
+    }
+  }
 
   constructor(private dservice: DashboardService, private router: ActivatedRoute,
      private loginservices: LoginService, private route: Router) 
@@ -30,7 +45,8 @@ export class ShopComponent {
     // console.log("Course ID:", this.id);
     this.dservice.productdatabyID(this.id).subscribe((data) => {
       console.log("API Response:", data);
-      this.Showproductdata = data;
+      this.Showproductdata = data.productDetail;
+      this.ShowRelatedPeoduct = data?.relatedProducts;
     })
   }
 

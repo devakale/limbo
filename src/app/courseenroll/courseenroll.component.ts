@@ -24,7 +24,7 @@ export class CourseenrollComponent implements OnInit {
         // console.log("Course ID:", this.id);
           this.dservice.getcouserdatabyID(this.id).subscribe((data)=>{
           console.log("API Response:", data);
-          this.Showcoursedetails = data.course;
+          this.Showcoursedetails = data?.course;
           this.RelatedCourses = data.relatedCourses;
         })
     }
@@ -69,6 +69,17 @@ export class CourseenrollComponent implements OnInit {
       }
   }
 
+
+  // conver Rupees K or laks
+  getFormattedPrice(price: number): string {
+    if (price >= 100000) {
+      return '₹' +  (price / 100000).toFixed(1) + 'L';  // For lakhs
+    } else if (price >= 1000) {
+      return '₹' + (price / 1000).toFixed(1) + 'K';  // For thousands
+    } else {
+      return '₹' + price.toString();  // For rupees
+    }
+  }
 
   
   show: boolean = false; 

@@ -73,6 +73,7 @@ const routes: Routes = [
         children:[
           {path:"",component:TrainerMyhomeComponent},
           {path:"superadmin",component:SuperAdminComponent},
+          { path:"admincategory",component:AdminDashboardCategoriesComponent},
           {path:"mycourse",component:MyCourseComponent},
           {path:"product",component:ProductComponent},
           {path:"question",component:QuestionComponent},
@@ -90,6 +91,7 @@ const routes: Routes = [
   //  Routing For User Dashboard
 
     { path:"", component:DashboardComponent},
+    { path:"Home", component:DashboardComponent},
     { path:"signin", component:SignInComponent},
     { path:"signup",component:SignUpComponent},
     { path:"forgotfassword",component:ForgotPasswordComponent},

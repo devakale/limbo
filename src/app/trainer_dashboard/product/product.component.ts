@@ -30,6 +30,7 @@ export class ProductComponent implements OnInit {
     product_prize: 0,
     product_selling_prize: 0,
     categoryid:'',
+    product_flag:'',
     products_info: '',
     product_image: null,
     product_gallary:null,
@@ -63,6 +64,7 @@ export class ProductComponent implements OnInit {
     formData.append('product_selling_prize', this.product.product_selling_prize.toString());
     formData.append('categoryid', this.product.categoryid);
     formData.append('products_info', this.product.products_info);
+    formData.append('product_flag', this.product.product_flag);
 
     if (this.selectedFile) {
       formData.append('product_image', this.selectedFile, this.selectedFile.name);

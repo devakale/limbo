@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* html, body { height: 100%; }
+body { 
+  margin: 0;
+  font-family: Poppins !important;
+ } */
 
 .right-side-top{
     background-color: #F9C4C4;
@@ -66,8 +69,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* Style for Registration POP up */
 
 .sign-in-btn{
-  background: #3078FF  ;
-  color: white;
+  background: var(--TextColor)  ;
+  color: var(--WhiteColor);
   padding: 10px;
 }
 .rounded-input{
@@ -92,33 +95,75 @@ sup{
 
 
 :root {
-  --bodyColor: #202331; /*Background Color */
+  --bodyColor: #F5F5F5; /*Background Color */
   --rowColor: #1B1E2A;  /*Row Background Color */
-  --TextColor: #FFFFFF; /*Text Color */
+  --TextColor: #307DFF; /*Text Color */
+  --btndarkColor: #265ABB;
+  --WhiteColor: #FFFFFF;
   --ArrowIcon: #307CFC; /*Arrow Color */
+  --Poppins14: 14px;
   --mainColor: ; 
-  --headingFontFamily: "Catamaran", sans-serif;
-  --bodyFontFamily: "Open Sans", sans-serif;
   --headingColor: #293a5c;
   --blackColor: #000000;
   --darkBlueColor: #123726;
   --boxShadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
   --transition: all 0.5s;
   --borderRadius: 20px;
+
+  
 }
 
-/* body{
-  background-color: var(--bodyColor);
+/* CSS For Product Card on Hover  */
+.productcard{
+  position: relative;
+}
+.productcard:hover  .onproducthover{
+  display: block;
+
+}
+.onproducthover{
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  display: none;
+
+}
+.onproducthoverflag{
+  position: absolute;
+  top: 3%;
+  left: 2%;
+  background-color: #307DFF;
+  color: #ffffff;
 }
 
-.rowbgcolor{
-  background-color: var(--rowColor);
-  border-radius:  var(--borderRadius);      
+/* CSS For Trainer Card on Hover  */
+
+.trainercard {
+  position: relative;
 }
 
-.headingColor{
-  color: var(--TextColor);
-} */
+.trainercard:hover .viewtrainerbtn {
+  display: block;
+}
+
+.viewtrainerbtn {
+  position: absolute;
+  font-size: var(--Poppins14);
+  top: 30%;
+  left: 35%;
+  background-color: #307DFF;
+  color: #ffffff;
+  display: none;
+}
+
+.trainernameheading{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.trainercardfooter{
+  font-size: 13px;
+}
 
 
 
@@ -137,6 +182,117 @@ sup{
 }
 
 .social-icons i:hover {
-  background-color: #307DFF;
-  color: white;
+  background-color: var(--TextColor);
+  color: var(--WhiteColor);
+}
+
+
+
+
+.poppins-thin {
+  font-family: "Poppins", system-ui;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.poppins-extralight {
+  font-family: "Poppins", system-ui;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.poppins-light {
+  font-family: "Poppins", system-ui;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.poppins-regular {
+  font-family: "Poppins", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: "Poppins", system-ui;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", system-ui;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", system-ui;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.poppins-black {
+  font-family: "Poppins", system-ui;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.poppins-thin-italic {
+  font-family: "Poppins", system-ui;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.poppins-extralight-italic {
+  font-family: "Poppins", system-ui;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.poppins-light-italic {
+  font-family: "Poppins", system-ui;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.poppins-regular-italic {
+  font-family: "Poppins", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium-italic {
+  font-family: "Poppins", system-ui;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold-italic {
+  font-family: "Poppins", system-ui;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold-italic {
+  font-family: "Poppins", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-extrabold-italic {
+  font-family: "Poppins", system-ui;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.poppins-black-italic {
+  font-family: "Poppins", system-ui;
+  font-weight: 900;
+  font-style: normal;
 }

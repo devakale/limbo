@@ -26,6 +26,7 @@ export class EventComponent  implements OnInit{
     event_name: ' ',
     event_type: ' ',
     event_category: ' ',
+    event_description:' ',
     event_date:' ',
     event_start_time: ' ',
     event_end_time: ' ',

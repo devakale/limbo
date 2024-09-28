@@ -2,15 +2,14 @@
 <div *ngIf="ShowEvent" class="container" >
   <div class="row gap-5">
     <div class="col-sm-12 col-md-5 col-lg-8">
-      <img src="{{ShowEvent.event_thumbnail}}" class="object-fit-cover" width="100%" height="400px" alt="Event Thumbnail">
-      <h5 class="card-title my-3">{{ShowEvent.event_name}}</h5>
-      <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente illum nisi itaque fugit
-        vel iure debitis dolores.
-        Dicta eos nisi ipsam ut molestiae, modi est repellat, esse ducimus eveniet deleniti facilis atque temporibus
-        libero possimus dolor et magni quod explicabo illum,
-        consequatur veritatis sapiente! Inventore expedita suscipit assumenda architecto aut!</p>
+      <img src="{{ShowEvent.event_thumbnail}}" class="object-fit-cover rounded" width="100%" height="400px" alt="Event Thumbnail">
+      <div class="d-flex align-items-center gap-2">
+        <p class="card-title poppins-semibold" style="font-size: 25px;">{{ShowEvent.event_name}}</p>
+        <p class="mt-3" style="font-size: small;">(Provided by {{ShowEvent.business_Name}})</p>
+     </div>
+      <p class="poppins-regular" style="text-align: justify;">{{ShowEvent.event_description}}</p>
         <div class="row mt-3">
-          <h6>What you'll learn</h6>
+          <p class="poppins-medium" style="font-size: 22px;">What you'll learn</p>
           <div class="col-6">
             <ul>
               <li>Lorem ipsum dolor sit amet.</li>
@@ -37,7 +36,7 @@
         </div>
         <button class="btn btn-sm rounded viewtrainerbtn">View Profile</button>
         <div class="card-body text-center">
-          <h5 class="card-title fw-bold"> {{ShowEvent.trainerid.f_Name + ' ' + ShowEvent.trainerid.l_Name}}</h5>
+          <h5 class="card-title fw-bold"> {{ShowEvent?.business_Name}}</h5>
           <!-- <small class="m-0"><i class="fa-solid fa-book-open-reader"></i> {{trainer.course_count}} Courses</small> -->
           <div class="social-icons">
             <i href="https://www.facebook.com" class="fa-brands fa-facebook border rounded"></i>
@@ -63,23 +62,23 @@
         </div>
         <div class="d-flex align-items-center justify-content-between mb-3">
           <small><i class="fa-solid fa-clock"></i> Schedule </small>
-          <small>{{ShowEvent.event_start_time}}  </small>
+          <small>{{ShowEvent.event_start_time}} To {{ShowEvent.event_end_time}}  </small>
         </div>
         <div class="d-flex align-items-center justify-content-between mb-3">
           <small><i class="fa-solid fa-location-dot"></i> Location </small>
-          <small> Warje, Pune </small>
+          <small> {{ShowEvent.event_location}} </small>
         </div>
         <div class="d-flex align-items-center justify-content-between mb-3">
           <small><i class="fa-solid fa-layer-group"></i> Category </small>
-          <small>{{ShowEvent.event_category.category_name}} </small>
+          <small>{{ShowEvent.event_category}} </small>
         </div>
         <div class="d-flex align-items-center justify-content-between mb-3">
           <small><i class="fa-solid fa-globe"></i> Language </small>
-          <small> English/Hindi </small>
+          <small> {{ShowEvent.event_languages}}  </small>
         </div>
         <div class="d-flex align-items-center justify-content-between mb-3">
           <small><i class="fa-regular fa-flag"></i> Estimated Seat </small>
-          <small> 125 </small>
+          <small> {{ShowEvent.estimated_seats}} </small>
         </div>
         <div class="text-center mt-3">
           <button class="btn btn-primary rounded-pill px-5">Join Event</button>
@@ -88,86 +87,7 @@
     </div>
   </div>
 
-  <div class="row mt-5">
-    <div class="col-lg-6">
-      <div class="row"> 
-        <div class="col-lg-5">
-          <div class="card trainercard ">
-            <div class="text-center mt-3">
-              <img src="../../assets/Rohit sharma.jpg" class="object-fit-cover rounded-circle" alt="..."
-                style="width: 70px !important;height: 70px;">
-            </div>
-            <button class="btn btn-sm rounded viewtrainerbtn">View Profile</button>
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold"> {{ShowEvent.trainerid.f_Name + ' ' + ShowEvent.trainerid.l_Name}}</h5>
-              <!-- <small class="m-0"><i class="fa-solid fa-book-open-reader"></i> {{trainer.course_count}} Courses</small> -->
-              <div class="social-icons">
-                <i href="https://www.facebook.com" class="fa-brands fa-facebook border rounded"></i>
-                <i href="https://twitter.com" target="_blank" class="fab fa-twitter border rounded"></i>
-                <i href="https://www.instagram.com" target="_blank" class="fab fa-instagram border rounded"></i>
-                <i href="https://www.linkedin.com" target="_blank" class="fab fa-linkedin-in border rounded"></i>
-                <i href="https://www.youtube.com" target="_blank" class="fab fa-youtube border rounded"></i>
-              </div>
-            </div>
-            <div class="card-footer d-flex justify-content-between">
-              <p><i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i> 4.5</p>
-              <b> courses </b>
-            </div>
-          </div>
-       </div>
-
-        <div class="col-lg-5">
-            <div class="card trainercard ">
-              <div class="text-center mt-3">
-                <img src="../../assets/Rohit sharma.jpg" class="object-fit-cover rounded-circle" alt="..."
-                  style="width: 70px !important;height: 70px;">
-              </div>
-              <button class="btn btn-sm rounded viewtrainerbtn">View Profile</button>
-              <div class="card-body text-center">
-                <h5 class="card-title fw-bold"> {{ShowEvent.trainerid.f_Name + ' ' + ShowEvent.trainerid.l_Name}}</h5>
-                <!-- <small class="m-0"><i class="fa-solid fa-book-open-reader"></i> {{trainer.course_count}} Courses</small> -->
-                <div class="social-icons">
-                  <i href="https://www.facebook.com" class="fa-brands fa-facebook border rounded"></i>
-                  <i href="https://twitter.com" target="_blank" class="fab fa-twitter border rounded"></i>
-                  <i href="https://www.instagram.com" target="_blank" class="fab fa-instagram border rounded"></i>
-                  <i href="https://www.linkedin.com" target="_blank" class="fab fa-linkedin-in border rounded"></i>
-                  <i href="https://www.youtube.com" target="_blank" class="fab fa-youtube border rounded"></i>
-                </div>
-              </div>
-              <div class="card-footer d-flex justify-content-between">
-                <p><i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i> 4.5</p>
-                <b> courses</b>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="row">
-        <div class="col-6 mb-3">
-          <input type="text" class="form-control" placeholder="Name" aria-label="First name">
-        </div>
-        <div class="col-6 mb-3">
-          <input type="text" class="form-control" placeholder="Phone" aria-label="Last name">
-        </div>
-        <div class="col-6 mb-3">
-          <input type="text" class="form-control" placeholder="Email" aria-label="First name">
-        </div>
-        <div class="col-6 mb-3">
-          <input type="text" class="form-control" placeholder="Subject" aria-label="Last name">
-        </div> 
-        <div class="col">
-          <textarea type="text" class="form-control" placeholder="Message" aria-label="First name"></textarea>
-        </div>
-        
-        <div class="text-center mt-3">
-          <button class="btn btn-primary ">Submit</button>
-        </div>
-      </div>
-    </div>
-
-    
-  </div>
+ 
 </div>
 
 </div>

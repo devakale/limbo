@@ -18,8 +18,8 @@ export class TrainerComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.service.gethomedatauser(this.page, this.limit).subscribe(data =>{
-      this.showtrainerData=data.trainersWithFullImageUrl;
+    this.service.gettrainerdata().subscribe(data =>{
+      this.showtrainerData=data.trainers;
       this.filtertrainer = this.showtrainerData;
     });
     // this.service.gettrainerdata().subscribe(data =>{

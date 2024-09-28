@@ -13,6 +13,10 @@ export class UsersideProductComponent implements OnInit {
   selectedProduct: any;
   selectedCategories: string[] = []; 
   filteredProduct: any[] = [];
+  p: number = 1;
+  starsArray: number[] = [1, 2, 3, 4, 5]; // 5 stars total
+
+
 
   constructor(private service: DashboardService, private filter: FilterService) { }
 
@@ -33,7 +37,7 @@ export class UsersideProductComponent implements OnInit {
   filterProducts(): void {
     if (this.selectedCategories.length > 0) {
       this.filteredProduct = this.showproductdata.filter((product: any) => 
-        this.selectedCategories.includes(product.categoryid?.category_name)
+        this.selectedCategories.includes(product?.products_category)
       );
     } else {
       this.filteredProduct = this.showproductdata;  // No filtering if no categories selected

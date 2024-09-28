@@ -9,7 +9,7 @@ export class AdminService {
 
   private APIURL="http://localhost:1000/trainer";
 
-  private CategoryURL="http://localhost:1000/beforeLogin/allcategory";
+  private CategoryURL="http://localhost:1000/category/add";
 
   private dashboard="http://localhost:1000/beforeLogin/allcategory"
 
@@ -24,15 +24,16 @@ export class AdminService {
 
   // ******************** Category API ***********************
 
-      postCategory(name: string, image: File): Observable<any> {
+      postCategory(name: string, sub_title: string, image: File): Observable<any> {
         const formData: FormData = new FormData();
         formData.append('category_name', name);
         formData.append('category_image', image);
+        formData.append('sub_title', sub_title);
         return this.http.post(this.CategoryURL, formData);
       }
 
       getcategorydata():Observable<any>{
-        return this.http.get<any>(this.CategoryURL);
+        return this.http.get<any>(this.dashboard);
       }
 
       getcategorydatadashboard():Observable<any>{

@@ -15,6 +15,7 @@ export class AdminDashboardCategoriesComponent implements OnInit {
   }
   showCategorydata: any[] = [];
   category_name: string = '';
+  sub_title:string = '';
   category_image: File | null = null;
 
   constructor(private categoryService:AdminService  ){}
@@ -22,7 +23,7 @@ export class AdminDashboardCategoriesComponent implements OnInit {
   ngOnInit(): void{
     this.categoryService.getcategorydata().subscribe( data =>{
       console.log('Data retrieved: ', data); 
-      this.showCategorydata = data.categories;
+      this.showCategorydata = data;
     });
   }
 
@@ -33,7 +34,7 @@ export class AdminDashboardCategoriesComponent implements OnInit {
 
   onSubmit(): void {
     if (this.category_name && this.category_image) {
-      this.categoryService.postCategory(this.category_name, this.category_image).subscribe(
+      this.categoryService.postCategory(this.category_name,this.sub_title, this.category_image).subscribe(
         response => {
           // console.log('Category posted successfully', response);
           this.successNotification();

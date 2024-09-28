@@ -1,9 +1,16 @@
+
 .inputContainer1 > i {
   position: absolute;
   color: #000000;
-  right: 10px;
+  left: 10px;
   /* padding: 7px 12px; */
   /* margin-left: 16px; */
+}
+.searchinput{
+  padding-left: 40px;
+  font-size: var(--Poppins14);
+  height: 40px;
+  width: 300px;
 }
 
 .icon {
@@ -17,7 +24,12 @@
   box-shadow: 5px 5px 20px rgb(225, 223, 223);
 }
 
-.dropdown-menu {
+.navmenu  p{
+    font-size: var(--Poppins14);
+    cursor: pointer;
+}
+
+/* .dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
@@ -58,7 +70,11 @@
 
 .dropdown-item:hover {
   background-color: #f8f9fa;
-}
+} */
+
+
+
+
 
 
 .Home-icon:hover{
@@ -175,3 +191,26 @@
   background-color: #ffffff; /* Lighter on hover */
   box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow on hover */
 }
+
+
+
+.dropdown>.dropdown-menu,
+.dropdown.open>.dropdown-menu {
+   display: block !important;
+   opacity: 0;
+   visibility: hidden;
+   transition: all ease 0.2s;
+}
+.dropdown:hover>.dropdown-menu,
+.dropdown.open:hover>.dropdown-menu { 
+   opacity: 1;
+   visibility: visible; 
+}
+
+
+.active-link {
+  border-bottom: 2px solid #307DFF; 
+  /* padding-bottom: 1px;  */
+  color: #307DFF; 
+}
+

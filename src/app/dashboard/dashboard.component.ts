@@ -71,12 +71,12 @@ export class DashboardComponent implements OnInit {
         this.showtrainerData=data.trainersWithFullImageUrl;
       });
 
-      this.Dservice.productdata().subscribe(data =>{
-          this.showproductdata=data.productsWithFullImageUrls;
+      this.Dservice.gethomedatauser(this.page, this.limit).subscribe(data =>{
+          this.showproductdata=data.productDetails;
       });
 
-      this.Dservice.Eventdata().subscribe(Response =>{
-           this.showeventdata = Response;
+      this.Dservice.gethomedatauser(this.page, this.limit).subscribe(Response =>{
+           this.showeventdata = Response.eventDetails;
       })
    }
 
@@ -116,7 +116,27 @@ export class DashboardComponent implements OnInit {
     animateSVG("#line-2", "#arrow-group-2");
     animateSVG("#line-3", "#arrow-group-3");
   }
+
+
+
+  // conver Rupees K or laks
+  getFormattedPrice(price: number): string {
+    if (price >= 100000) {
+      return '₹' + (price / 100000).toFixed(1) + 'L';  // For lakhs
+    } else if (price >= 1000) {
+      return '₹' + (price / 1000).toFixed(1) + 'K';  // For thousands
+    } else {
+      return '₹' + price.toString();  // For rupees
+    }
+  }
   
+  
+  // product = {
+  //   avgRating: 2  // example average rating
+  // };
+
+  starsArray: number[] = [1, 2, 3, 4, 5]; // 5 stars total
+
 
   //  ngAfterViewInit(): void {
   //   gsap.registerPlugin(MotionPathPlugin);

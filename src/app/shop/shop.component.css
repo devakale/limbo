@@ -1,23 +1,6 @@
 
-.btn1{
-    background: rgb(97,73,205);
-    background: linear-gradient(90deg, rgba(97,73,205,1) 0%, rgba(166,84,172,1) 50%, rgba(234,95,139,1) 100%);
-    color: white;
-    border-radius: 25px;
-    width: 90%;
-    text-align: center;
-}
-.btn-0{
-    background-color: #F96D63;
-    color: white;
-}
-.rounded-box{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-.card-title{
-    color: #674ACB;
-}
-
-
-
+.counter {
+    
+    border: 1px solid #e0e0e0;
+    font-size: 20px;
+  }

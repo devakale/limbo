@@ -46,7 +46,7 @@ export class DashboardService {
           }
 
           gettrainerdata():Observable<any>{
-            return this.http.get<any>(`${this.beforelogin}/alltrainer`);
+            return this.http.get<any>(`${this.beforelogin}/trainers`);
            }
 
            productdata():Observable<any>{

@@ -15,6 +15,12 @@ export class RelevanceComponent implements OnInit {
   selectedCategories: string[] = [];
   category: string = '';
 
+  inputPlaceholder: string = 'Search courses'; // Default placeholder
+
+  updatePlaceholder(newPlaceholder: string): void {
+    this.inputPlaceholder = newPlaceholder;
+  }
+
   constructor(private service: DashboardService, private filter: FilterService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {

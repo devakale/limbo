@@ -1,4 +1,26 @@
-.btn-0{
-    background-color: #F96D63;
-    color: white;
-}
+.trainercard {
+    position: relative;
+  }
+  
+  .trainercard:hover .viewtrainerbtn {
+    display: block;
+  }
+  
+  .viewtrainerbtn {
+    position: absolute;
+    font-size: var(--Poppins14);
+    top: 30%;
+    left: 35%;
+    background-color: #307DFF;
+    color: #ffffff;
+    display: none;
+  }
+  
+  .trainernameheading{
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .trainercardfooter{
+    font-size: 13px;
+  }

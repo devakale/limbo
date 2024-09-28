@@ -1,19 +1,61 @@
 <!-- navbar.component.html -->
 <div class="container-fluid " style="background-color: #ffffff;">
   <div class="row mt-1 align-items-center">
-    <div class="col-sm-6 col-md-6 col-lg-3 ">
-      <img routerLink="/" class="img-fluid object-fit-cover " src="../../assets/Ximboa-Logo.jpg" width="55%" alt=""
+    <div class="col-sm-6 col-md-6 col-lg-2">
+      <img routerLink="/" class="img-fluid object-fit-fill " src="../../assets/Ximboa-Logo.jpg"    alt=""
         style="cursor: pointer;">
     </div>
     
-    <div class="col-sm-6 col-md-6 col-lg-3">
+    <div class="col-sm-6 col-md-6 col-lg-5 d-flex justify-content-between mt-2">
+      <div style="width: 200px;">
+        <div class="dropdown ">
+          <div class="btn dropdown-toggle  border p-2 d-flex align-items-center justify-content-between samllpoppins" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+            <span>
+              <i class="fa-brands fa-pix"></i> Category
+            </span>
+          </div>
+          <div>
+           
+          </div>
+          <ul class="dropdown-menu w-100">
+            <li  *ngFor="let category of Showcategorydata" [routerLink]="['/relevance']" [queryParams]="{ category: category.category_name }">
+              <a class="dropdown-item">{{category.category_name}}</a>
+            </li>
+            <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+          </ul>
+        </div>
+      </div>
 
+      <div class="d-flex  gap-2 mt-2 ">
+        <div class="d-flex gap-2 navmenu">
+          <p routerLink="/Home" routerLinkActive="active-link" >Home </p> 
+          <p>|</p>
+        </div>
+        <div class="d-flex gap-2 navmenu">
+          <p routerLink="/relevance/seeallcategory" routerLinkActive="active-link">Courses </p>
+          <p>|</p>
+        </div>
+        <div class="d-flex gap-2 navmenu">
+          <p routerLink="/relevance/trainer" routerLinkActive="active-link">Trainer </p>
+          <p>|</p>
+        </div>
+        <div class="d-flex gap-2 navmenu">
+          <p routerLink="/relevance/userproduct" routerLinkActive="active-link">Product </p>
+          <p>|</p>
+        </div>
+        <div class="d-flex gap-2 navmenu">
+          <p routerLink="/relevance/userevent" routerLinkActive="active-link">Event</p>
+          <!-- <p>|</p> -->
+        </div>
+      </div>
     </div>
-    <div class="col-sm-6 col-md-6 col-lg-3 ">
-      <div class="d-flex align-items-center justify-content-between inputContainer1 my-2 position-relative ">
-        <input type="text" [(ngModel)]="query" (keyup)="searchitem($event)" class="form-control form-control-lg rounded"
+    
+    <div class="col-sm-6 col-md-6 col-lg-3  d-flex align-items-center gap-4">
+      <div class="d-flex align-items-center justify-content-between inputContainer1  position-relative ">
+        <input type="text" [(ngModel)]="query" (keyup)="searchitem($event)" class="form-control form-control-lg searchinput "
           placeholder="Search courses or instructor">
-        <i class="fa-solid fa-magnifying-glass fs-5 pt-1 serachlogo" (click)="onsearch()"></i>
+        <i class="fa-solid fa-magnifying-glass fs-5 pt-1 serachlogo" (click)="onsearch()" style="color: #307DFF;"></i>
         <div *ngIf="suggestions.length" class="suggestions-list">
           <ul>
             <li *ngFor="let item of suggestions" (click)="onSelectSuggestion(item)">
@@ -22,17 +64,37 @@
           </ul>
         </div>
       </div>
-    </div>
-
-    <div class="col-sm-6 col-md-6 col-lg-1 text-end ">
-      <img src="../../assets/cart header.png" alt="">
-    </div>
-    <div class="col-sm-6 col-md-6 col-lg-2 text-end d-flex gap-4 justify-content-end ">
-      <button routerLink="/signin" class="btn btn-primary rounded">Sign In</button>
-      <button class="btn btn-light rounded border">Sign Up</button>
-    </div>
     
 
+
+    <div class=" ">
+      <img class="img-fluid" src="../../assets/cart header.png" alt="">
+    </div>
+
+  </div>
+
+    <div *ngIf="!(isLoggedIn$ | async)" class="col-sm-6 col-md-6 col-lg-2 text-end d-flex gap-4 justify-content-end ">
+      <button routerLink="/signin" class="btn btn-primary rounded samllpoppins">Sign In</button>
+      <button class="btn btn-light rounded border samllpoppins">Sign Up</button>
+    </div>
+
+    <div *ngIf="(isLoggedIn$ | async)" class="col-sm-6 col-md-6 col-lg-2 d-flex align-items-center justify-content-end">
+      <button *ngIf="isUser" class="btn btn-sm btn-primary main-button" data-bs-toggle="modal" data-bs-target="#exampleModalExpert" style="font-size: x-small;">
+        Become an Expert
+      </button>
+      <i class="fa-solid fa-house-user Home-icon mx-3 text-primary" routerLink="/trainer" style="font-size: 35px;"></i>
+      <div class="dropdown">
+        <i class="fa-solid fa-user icon" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+        <ul class="dropdown-menu" >
+          <li><a class="dropdown-item">{{ (user$ | async) }}</a></li>
+          <li><a class="dropdown-item" routerLink="/edittrainer">Edit Profile <i class="fa-solid fa-user-pen"></i></a></li>
+          <li><a class="dropdown-item" routerLink="/Notification">Notification <i class="fa-solid fa-bell"></i></a></li>
+          <li><a class="dropdown-item" (click)="logout()">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+    
 
 
     <!-- <div class="col-sm-6 col-md-6 col-lg-1 d-flex align-items-center justify-content-end ">
@@ -56,7 +118,7 @@
         </ul>
       </div>
     </div> -->
-  </div>
+ 
 </div>
 
 <!-- Modal -->
@@ -130,7 +192,7 @@
 </div>
 
 <!-- whatsapp-icon -->
-<a class="h-0 w-0" href="https://wa.me/+919130167333" target="_blank"><i
-  class="fa-brands fa-whatsapp whatsapp-icon"></i></a>
+<!-- <a class="h-0 w-0" href="https://wa.me/+919130167333" target="_blank"><i
+  class="fa-brands fa-whatsapp whatsapp-icon"></i></a> -->
 
 

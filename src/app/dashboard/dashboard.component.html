@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-color: #F5F5F5;">
+<div class="container-fluid " style="background-color: var(--bodyColor);">
 
   <div class="row">
 
@@ -28,9 +28,9 @@
       </div>
     </div>
   </div>
+</div>
 
-
-
+<div class="container-fluid " style="background-color: var(--WhiteColor);">
 <div class="container mt-3">
   <div class="col-sm-12">
     <h4 class="text-center fsizeblue m-0 p-0">EXPLORE</h4>
@@ -41,8 +41,8 @@
       <div class="p-2 d-flex align-items-center gap-2">
         <img src="../../assets/computer.png" alt="">
         <div>
-          <h6 class="m-0">Development</h6>
-          <p class="m-0 boxtext">Embark on your journey with these courses.</p>
+          <p class="m-0 categoryheading">Development</p>
+          <p class="m-0 categorysubtitle">Embark on your journey with courses.</p>
         </div>
       </div>
     </div>
@@ -50,8 +50,8 @@
       <div class="p-2 d-flex align-items-center gap-2">
         <img src="../../assets/Business.png" alt="">
         <div>
-          <h6 class="m-0">Business</h6>
-          <p class="m-0 boxtext">Take your journey with this courses.</p>
+          <p class="m-0 categoryheading">Business</p>
+          <p class="m-0 categorysubtitle">Take your journey with this courses.</p>
         </div>
       </div>
     </div>
@@ -59,8 +59,8 @@
       <div class="p-2 d-flex align-items-center gap-2">
         <img src="../../assets/Database_Management 1.png" alt="">
         <div>
-          <h6 class="m-0">Data Science</h6>
-          <p class="m-0 boxtext">Discover the data science.</p>
+          <p class="m-0 categoryheading">Data Science</p>
+          <p class="m-0 categorysubtitle">Discover the data science.</p>
         </div>
       </div>
     </div>
@@ -68,8 +68,8 @@
       <div class="p-2 d-flex align-items-center gap-2">
         <img src="../../assets/marketing.png" alt="">
         <div>
-          <h6 class="m-0">Marketing</h6>
-          <p class="m-0 boxtext">Take up your self in the next level.</p>
+          <p class="m-0 categoryheading">Marketing</p>
+          <p class="m-0 categorysubtitle">Take up your self in the next level.</p>
         </div>
       </div>
     </div>
@@ -77,8 +77,8 @@
       <div class="p-2 d-flex align-items-center gap-2">
         <img src="../../assets/Life style.png" alt="">
         <div>
-          <h6 class="m-0">Life Styles</h6>
-          <p class="m-0 boxtext">Improved your life style course.</p>
+          <p class="m-0 categoryheading">Life Styles</p>
+          <p class="m-0 categorysubtitle">Improved your life style course.</p>
         </div>
       </div>
     </div>
@@ -86,8 +86,8 @@
       <div class="p-2 d-flex align-items-center gap-2">
         <img src="../../assets/photography-01 1.png" alt="">
         <div>
-          <h6 class="m-0">Photography</h6>
-          <p class="m-0 boxtext">Become the great photographer.</p>
+          <p class="m-0 categoryheading">Photography</p>
+          <p class="m-0 categorysubtitle">Become the great photographer.</p>
         </div>
       </div>
     </div>
@@ -95,8 +95,8 @@
       <div class="p-2 d-flex align-items-center gap-2">
         <img src="../../assets/Design.png" alt="">
         <div>
-          <h6 class="m-0">Art & Design</h6>
-          <p class="m-0 boxtext">Grow your design skills.</p>
+          <p class="m-0 categoryheading">Art & Design</p>
+          <p class="m-0 categorysubtitle">Grow your design skills.</p>
         </div>
       </div>
     </div>
@@ -104,8 +104,8 @@
       <div class="p-2 d-flex align-items-center gap-2">
         <img src="../../assets/Health.png" alt="">
         <div>
-          <h6 class="m-0">Health & Fitness</h6>
-          <p class="m-0 boxtext">Enjoy the health life with fitness.</p>
+          <p class="m-0 categoryheading">Health & Fitness</p>
+          <p class="m-0 categorysubtitle">Enjoy the health life with fitness.</p>
         </div>
       </div>
     </div>
@@ -113,23 +113,24 @@
       <div class="p-2 d-flex align-items-center gap-2">
         <img src="../../assets/music-love.png" alt="">
         <div>
-          <h6 class="m-0">Music</h6>
-          <p class="m-0 boxtext">Improve your self with music.</p>
+          <p class="m-0 categoryheading">Music</p>
+          <p class="m-0 categorysubtitle">Improve your self with music.</p>
         </div>
       </div>
     </div>
     <div class="text-end mt-2">
-      <p routerLink="/relevance/trainer" class="me-5">View More <i class="fa-solid fa-arrow-right" style="color: #265BBD;"></i> </p>
+      <p routerLink="/relevance/trainer" class="me-5 ViewmoreArrow">View More <i class="fa-solid fa-arrow-right"></i> </p>
     </div>
   </div>
   
 </div>
-
+</div>
 
 <!-- Trainer List Code Strat From Here -->
+<div class="container-fluid " style="background-color: var(--bodyColor);">
 <div class="container mt-5">
   <div>
-    <h4 class="text-center fsizeblue m-0 p-0">MEET</h4>
+    <h4 class="text-center fsizeblue  m-0 p-0">MEET</h4>
     <h1 class="text-center fsize m-0 p-0">Top Trainers</h1>
   </div>
   <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 mt-3">
@@ -140,8 +141,8 @@
       </div>
       <button class="btn btn-sm rounded viewtrainerbtn">View Profile</button>
         <div class="card-body text-center">
-          <h5 class="card-title fw-bold"> {{trainer.f_Name || "John" }}  {{trainer.l_Name || "Deo" }}</h5>
-            <!-- <small class="m-0"><i class="fa-solid fa-book-open-reader"></i> {{trainer.course_count}} Courses</small> -->
+          <p class="card-title trainernameheading">{{trainer.Business_Name}}</p>
+          <p > {{trainer.f_Name || "John" }}  {{trainer.l_Name || "Deo" }}</p>
             <div class="social-icons">
               <i href="https://www.facebook.com"  class="fa-brands fa-facebook border rounded" ></i>
               <i href="https://twitter.com" target="_blank" class="fab fa-twitter border rounded" ></i>
@@ -150,9 +151,9 @@
               <i href="https://www.youtube.com" target="_blank" class="fab fa-youtube border rounded" ></i>
             </div>
           </div>
-        <div class="card-footer d-flex justify-content-between">
-          <p><i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i> 4.5 (54K+)</p>
-          <b>{{trainer.course_count}} Cources</b>
+        <div class="card-footer d-flex justify-content-between trainercardfooter">
+          <p> <i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i> {{trainer.ratings || 4.5}}</p>
+          <b>{{trainer.course_count}} Courses</b>
         </div>
       </div>
     </div>
@@ -176,14 +177,90 @@
   </div> -->
   
   <div class="text-end">
-    <p routerLink="/relevance/trainer" class="me-3">View More <i class="fa-solid fa-arrow-right" style="color: #265BBD;"></i> </p>
+    <p routerLink="/relevance/trainer" class="me-3 my-0 pb-3 cursor-pointer ViewmoreArrow">View More <i class="fa-solid fa-arrow-right"></i> </p>
   </div>
   
 </div>
+</div>
+
+
+<!-- Ximboa workflow -->
+<div class="container-fluid p-4" style="background-color: var(--TextColor);">
+  <div class="container px-5">
+    <div>
+      <h4 class="text-center text-light fsizeblue m-0 p-0">HOW</h4>
+      <h1 class="text-center text-light fsize m-0 p-0">Ximboa Works</h1>
+    </div>
+
+      <div class="row align-items-center">
+        <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
+          <div class="text-center">
+            <img src="../../assets/Vector.png" height="60px" width="60px" alt=""><br>
+            <small class="workflowwords">CONNECT</small>
+          </div>
+      </div>
+
+      <div class="col-sm-12 col-md-5 col-lg-1">
+        <svg stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 550 300">
+          <path id="line-1" fill="none" stroke="white" stroke-width="14" stroke-dasharray="1000" stroke-dashoffset="1000"
+            d="M18.9 128.6c62 33 186 99 311.3 28.5 37.3-21 77.3-108-81.2-92.3-175.5 17.3-6 116.6 54.4 132.5 
+            16.7 4.4 108.5 34.2 209.9-18.6"/>
+          <g id="arrow-group-1" transform="translate(0, -5)">
+            <path id="arrow-1" fill="white" d="M0 0 l47.1 6 -29.8 33.3 -17.3 -39.3z"/>
+          </g>
+        </svg>
+      </div>
+     
+      <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
+        <div class="text-center">
+          <img src="../../assets/share.png" height="60px" width="60px" alt=""><br>
+          <small class="workflowwords">SHARE</small>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-5 col-lg-1">
+        <svg stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 550 300">
+          <path id="line-2" fill="none" stroke="white" stroke-width="14" stroke-dasharray="1000" stroke-dashoffset="1000"
+            d="M18.9 128.6c62 33 186 99 311.3 28.5 37.3-21 77.3-108-81.2-92.3-175.5 17.3-6 116.6 54.4 132.5 
+            16.7 4.4 108.5 34.2 209.9-18.6"/>
+          <g id="arrow-group-2" transform="translate(0, -5)">
+            <path id="arrow-2" fill="white" d="M0 0 l47.1 6 -29.8 33.3 -17.3 -39.3z"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
+        <div class="text-center">
+          <img src="../../assets/Earn.png" height="60px" width="60px" alt=""><br>
+          <small class="workflowwords">EARN</small>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-5 col-lg-1">
+        <svg stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 550 300">
+          <path id="line-3" fill="none" stroke="white" stroke-width="14" stroke-dasharray="1000" stroke-dashoffset="1000"
+            d="M18.9 128.6c62 33 186 99 311.3 28.5 37.3-21 77.3-108-81.2-92.3-175.5 17.3-6 116.6 54.4 132.5 
+            16.7 4.4 108.5 34.2 209.9-18.6"/>
+          <g id="arrow-group-3" transform="translate(0, -5)">
+            <path id="arrow-3" fill="white" d="M0 0 l47.1 6 -29.8 33.3 -17.3 -39.3z"/>
+          </g>
+        </svg>
+      </div>
+      
+      <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
+        <div class="text-center">
+          <img src="../../assets/Lern.png" height="60px" width="60px" alt=""><br>
+          <small  class="workflowwords">LERN</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- categories code start from here -->
+<div class="container-fluid " style="background-color: var(--bodyColor);">
  <div class="container">
-<div class="row mt-5">
+<div class="row">
   <div class="col-sm-12 col-lg-12">
     <!-- Categories -->
     <div class="container">
@@ -230,113 +307,39 @@
             <div class="card-body ">
               <div class="d-flex align-items-center justify-content-between">
                 <h5 class="card-title">{{allcourses.course_name}}</h5>
-                <small>Online</small>
+                <small>{{allcourses.online_offline}}</small>
               </div>
               <div class="d-flex align-items-center justify-content-between">
                   <div class="d-flex align-items-center gap-2 ">
-                    <p><i class="fa-solid fa-user card-user border p-1"></i></p>
-                    <p>{{allcourses.trainer_id.f_Name + " " + allcourses.trainer_id.l_Name }}</p>
+                    <!-- <p><i class="fa-solid fa-user card-user border p-1"></i></p> -->
+                     <p><img src="{{allcourses.trainer_image}}" class="rounded-circle" height="20px" width="20px" alt=""></p>
+                    <p>{{allcourses.business_Name }}</p>
                   </div>
-               <p><i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i> 4.5</p>
+               <p>{{allcourses.course_rating || 4.5}} <i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i></p>
               </div>
-              <button class="left-side-top rounded-pill">{{allcourses.category_id.category_name}}</button>
+              <button class="left-side-top rounded-pill">{{allcourses.category_name}}</button>
             </div>
             <div class="card-footer d-flex align-items-center justify-content-between">
-                <p><i class="fa-solid fa-list-ul"></i> Duration : 3 Month </p>
-                <p style="font-family: Poppins;font-weight: bold;color: #307DFF;font-size: 20px;">27K</p>
+                <p><i class="fa-solid fa-list-ul"></i> Duration : {{allcourses.course_duration || 2}} Weeks</p>
+                <p style="font-family: Poppins;font-weight: bold;color: var(--TextColor);font-size: 20px;">{{ getFormattedPrice(allcourses.course_price) }}</p>
             </div>
           </div>
         </div>
       </div>
       <div class="text-end">
-        <p routerLink="/relevance/seeallcategory" class="me-3">View More <i class="fa-solid fa-arrow-right" style="color: #265BBD;"></i> </p>
+        <p routerLink="/relevance/seeallcategory" class="me-3 ViewmoreArrow">View More <i class="fa-solid fa-arrow-right "></i> </p>
       </div>
     </div>
   </div>
   </div>
 </div>
 </div>
-
-
-
-
-<!-- Ximboa workflow -->
-<div class="container-fluid p-4" style="background-color: #265BBD;">
-  <div class="container px-5">
-    <div>
-      <h4 class="text-center text-light fsizeblue m-0 p-0">HOW</h4>
-      <h1 class="text-center text-light fsize m-0 p-0">Ximboa Works</h1>
-    </div>
-
-      <div class="row align-items-center">
-        <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
-          <div class="text-center">
-            <img src="../../assets/Vector.png" height="60px" width="60px" alt=""><br>
-            <small>CONNECT</small>
-          </div>
-      </div>
-
-      <div class="col-sm-12 col-md-5 col-lg-1">
-        <svg stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 550 300">
-          <path id="line-1" fill="none" stroke="white" stroke-width="4" stroke-dasharray="1000" stroke-dashoffset="1000"
-            d="M18.9 128.6c62 33 186 99 311.3 28.5 37.3-21 77.3-108-81.2-92.3-175.5 17.3-6 116.6 54.4 132.5 
-            16.7 4.4 108.5 34.2 209.9-18.6"/>
-          <g id="arrow-group-1" transform="translate(0, -5)">
-            <path id="arrow-1" fill="white" d="M0 0 l47.1 6 -29.8 33.3 -17.3 -39.3z"/>
-          </g>
-        </svg>
-      </div>
-     
-      <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
-        <div class="text-center">
-          <img src="../../assets/share.png" height="60px" width="60px" alt=""><br>
-          <small>SHARE</small>
-        </div>
-      </div>
-
-      <div class="col-sm-12 col-md-5 col-lg-1">
-        <svg stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 550 300">
-          <path id="line-2" fill="none" stroke="white" stroke-width="4" stroke-dasharray="1000" stroke-dashoffset="1000"
-            d="M18.9 128.6c62 33 186 99 311.3 28.5 37.3-21 77.3-108-81.2-92.3-175.5 17.3-6 116.6 54.4 132.5 
-            16.7 4.4 108.5 34.2 209.9-18.6"/>
-          <g id="arrow-group-2" transform="translate(0, -5)">
-            <path id="arrow-2" fill="white" d="M0 0 l47.1 6 -29.8 33.3 -17.3 -39.3z"/>
-          </g>
-        </svg>
-      </div>
-
-      <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
-        <div class="text-center">
-          <img src="../../assets/Earn.png" height="60px" width="60px" alt=""><br>
-          <small>EARN</small>
-        </div>
-      </div>
-
-      <div class="col-sm-12 col-md-5 col-lg-1">
-        <svg stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 550 300">
-          <path id="line-3" fill="none" stroke="white" stroke-width="4" stroke-dasharray="1000" stroke-dashoffset="1000"
-            d="M18.9 128.6c62 33 186 99 311.3 28.5 37.3-21 77.3-108-81.2-92.3-175.5 17.3-6 116.6 54.4 132.5 
-            16.7 4.4 108.5 34.2 209.9-18.6"/>
-          <g id="arrow-group-3" transform="translate(0, -5)">
-            <path id="arrow-3" fill="white" d="M0 0 l47.1 6 -29.8 33.3 -17.3 -39.3z"/>
-          </g>
-        </svg>
-      </div>
-      
-      <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
-        <div class="text-center">
-          <img src="../../assets/Lern.png" height="60px" width="60px" alt=""><br>
-          <small>LERN</small>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
-
 
 
 
 <!-- lasted Tranding Product -->
+<div class="container-fluid " style="background-color: var(--WhiteColor);">
 <div class="container mt-4">
   <div class="row py-3 mb-3">
     <div>
@@ -350,36 +353,39 @@
     <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
       <div *ngFor="let product of visibleProduct()" class="col-sm-12 col-md-3 col-lg-3 mb-3">
         <div class="card productcard">
-          <img src="{{product.product_image}}" routerLink="/shop/{{product._id}}" class="card-img-top img-fluid"
+          <img src="{{product.productImage}}" routerLink="/shop/{{product._id}}" class="card-img-top img-fluid"
             alt="...">
-            <button class="btn btn-light rounded onproducthover">Add to cart</button>
-          <div class="card-body text-center">
-            <div>
-              <i class="fa-solid fa-star " style="color: #FFAE06;"></i>
-              <i class="fa-solid fa-star " style="color: #FFAE06;"></i>
-              <i class="fa-solid fa-star " style="color: #FFAE06;"></i>
-              <i class="fa-solid fa-star " style="color: #FFAE06;"></i>
-              <i class="fa-solid fa-star "></i>
+            <button routerLink="/shop/{{product._id}}" class="btn btn-light rounded onproducthover">Add to cart</button>
+            <span class="onproducthoverflag rounded px-3">{{product.identityFlag}}</span>
+          <div class="card-body text-center mb-0 pt-0">
+            <div class="d-flex align-items-center justify-content-between mt-1">
+              <p class="m-0 p-0 text-end w-25"></p>
+                  <div class="w-50 text-center">
+                    <ng-container *ngFor="let star of starsArray; let i = index">
+                      <i
+                        class="fa-solid fa-star"
+                        [ngStyle]="{ 'color': i < (product.avgRating || 4) ? '#FFAE06' : '#d3d3d3' }"
+                      ></i>
+                    </ng-container>
+                  </div>
+               <small class="m-0 p-0 text-end w-25">{{product.productFlag || "virtual"}}</small>
             </div>
-            <h5 class="card-title">{{product.product_name}}</h5>
-            <p>Development</p>
+            <h5 class="card-title">{{product.productName}}</h5>
+            <p>{{product.categoryNam}}</p>
             <div class="d-flex align-items-center justify-content-between">
-              <i class="fa-solid fa-cart-shopping fs-5"></i>
-              <b>₹ {{product.product_selling_prize}}</b>
-              <i class="fa-regular fa-heart fs-5"></i>
+              <i class="fa-solid fa-cart-shopping fs-5" style="color: #417CE8;"></i>
+              <span class="d-flex align-items-center gap-2">
+                <small class="text-decoration-line-through">₹ {{product.productPrice}}</small> 
+                <b>₹ {{product.productSellingPrice}}</b>
+              </span>
+              <i class="fa-regular fa-heart fs-5" style="color: #417CE8;"></i>
             </div>
-            <!-- <p class="m-0"><b>Prize : ₹ </b>{{product.product_prize}}</p>
-            <p class="m-0"><b>Selling Prize : ₹ </b> {{product.product_selling_prize}}</p>
-            <p class="m-0"><b>Description : </b> {{ (product.products_info | slice: 0 : 24)}}
-              ...<button (click)="showProductDescription(product)" class="btn btn-sm btn-primary rounded-pill "
-                data-bs-toggle="modal" data-bs-target="#exampleModal">Know More</button>
-            </p> -->
           </div>
         </div>
       </div>
     </div>
     <div class="text-end">
-      <p routerLink="/relevance/userproduct" class="me-3">View More <i class="fa-solid fa-arrow-right" style="color: #265BBD;"></i> </p>
+      <p routerLink="/relevance/userproduct" class="me-3 ViewmoreArrow">View More <i class="fa-solid fa-arrow-right "></i> </p>
     </div>
 
 
@@ -402,15 +408,17 @@
     </div>
 
   </div>
-  <hr>
+</div>
 </div>
 
+
 <!-- Event List Code Start From Here -->
+<div class="container-fluid " style="background-color: var(--bodyColor);">
 <div class="container">
-  <div class="row rowbgcolor px-3 py-3 mb-3">
+  <div class="row rowbgcolor px-3 py-3">
     <div>
       <h4 class="text-center fsizeblue m-0 p-0">VIEW OUR</h4>
-      <h1 class="text-center fsize m-0 p-0">LATEST EVENTS</h1>
+      <h1 class="text-center fsize m-0 p-0">Latest Events</h1>
     </div>
     <!-- <div class="d-flex align-items-center justify-content-between mb-1">
       <h5 class="headingColor">Events</h5>
@@ -419,19 +427,20 @@
     <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
       <div *ngFor="let Event of visibleEvent()" class="col-sm-12 col-md-3 col-lg-3 mb-3">
         <div class="card" routerLink="/eventdetails/{{Event._id}}">
-          <img src="{{Event.event_thumbnail}}" class="card-img-top img-fluid" alt="...">
+          <img src="{{Event.eventImage}}" class="card-img-top img-fluid" alt="...">
           <div class="card-body text">
             <div class="d-flex align-items-center justify-content-between gap-1">
               <span>
-                <label>{{Event.event_date |  date: 'MMM'}}</label><br>
-                <b>{{Event.event_date |  date: 'dd'}}</b>
+                <label class="poppins-semibold-italic text-muted" style="font-size: 12px;">{{Event.eventDate |  date: 'MMM'}}</label><br>
+                <span class="poppins-semibold-italic" style="font-size: 24px;">{{Event.eventDate |  date: 'dd'}}</span>
               </span>
               <span>
-              <h5 class="card-title">{{Event.event_name}}</h5>
-            </span>
+                <p class="card-title poppins-semibold-italic">{{Event.eventName}}</p>
+              </span>
               <span class="text-center">
-                <b> {{Event.event_type}} </b> <br>
-                <i class="fa-regular fa-circle-play"></i>
+                <span class="poppins-semibold-italic"> {{Event.mode}} </span> <br>
+                <i *ngIf="Event.mode === 'Online'" class="fas fa-circle-play text-muted"></i>
+  <i *ngIf="Event.mode === 'Offline'" class="fas fa-location-dot"></i>
               </span>  
             </div>
             <div class="d-flex align-items-center gap-2 justify-content-center">
@@ -442,25 +451,20 @@
               <label class="p-2 border rounded-circle"> +35</label>
             </div>
             <div class="d-flex align-items-center justify-content-between mt-2">
-              <button class="btn rounded-pill px-4 btn-primary">Book Seat</button>
-              <button class="btn rounded-pill px-4 text-light" style="background-color: #265BBD;">View More</button>
+              <button class="btn rounded-pill px-4 text-light poppins-regular" style="font-size: 14px;background-color: var(--TextColor);">Book Seat</button>
+              <button class="btn rounded-pill px-4 text-light poppins-regular" style="font-size: 14px;background-color: var(--btndarkColor);">View More</button>
             </div>
-            <!-- <h5 class="card-title">{{Event.event_name}}</h5>
-            <p class="m-0"><b>Type : </b>{{Event.event_type}}</p>
-            <p class="m-0"><b>Category : </b> {{Event.event_category.category_name}}</p>
-            <p class="m-0"><b>Date : </b> {{Event.event_date | date}}</p>
-            <p class="m-0"><b>Start Time : </b> {{Event.event_start_time}}</p>
-            <p class="m-0"><b>End Time : </b> {{Event.event_end_time}}</p> -->
           </div>
         </div>
       </div>
     </div>
     <div class="text-end">
-      <p routerLink="/relevance/userevent" class="me-3">View More <i class="fa-solid fa-arrow-right" style="color: #265BBD;"></i> </p>
+      <p routerLink="/relevance/userevent" class="me-3 ViewmoreArrow">View More <i class="fa-solid fa-arrow-right "></i> </p>
     </div>
   </div>
 </div>
-
 </div>
+
+
 
 

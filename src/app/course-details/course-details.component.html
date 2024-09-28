@@ -53,14 +53,11 @@
         </div>
 
     </div>
-
-    <div>
-        <h2>{{showprofile.Business_Name}}</h2>
-    </div>
     
     <div class="row pt-2">
         <!-- First Row code start hrer -->
         <div class="col-sm-12 col-lg-4 border pt-2">
+            <h5 class="text-color">{{showprofile.trainer?.business_Name || showprofile.institutes}}</h5>
             <div class="d-flex align-items-center gap-3">
                 <i class="fa-solid fa-user card-user"></i>
                 <h6 class="mt-1"> {{showprofile.trainer.f_Name + " " + showprofile.trainer.l_Name}} </h6>
@@ -129,11 +126,11 @@
 
             <div class="mt-4">
                 <h5 class="text-color">About Us</h5>
-                <p>{{showprofile.About.about_us}}</p>
+                <p style="text-align: justify;">{{showprofile.About[0].about_us}}</p>
                 <!-- Our Services -->
                 <div class="mt-3">
                     <h5 class="text-color">Our Services</h5>
-                    <p>{{showprofile.About.our_services}}</p>
+                    <p style="text-align: justify;">{{showprofile.About[0].our_services}}</p>
                 </div>
                 <h5 class="text-color">Education</h5>
                 <table>

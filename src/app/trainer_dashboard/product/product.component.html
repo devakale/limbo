@@ -6,7 +6,7 @@
         
             <div class="col-sm-12 col-lg-12 d-flex gap-5 justify-content-end my-3"> 
                 <button class="btn rounded-pill text-light " data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" style="background-color: #3078ff;">Add New Product</button>
-                <button (click)="toggleIcon()" class="btn rounded-pill text-light " style="background-color: #F96D63;width:200px;">Update/Delete Product</button>
+                <button (click)="toggleIcon()" class="btn rounded-pill text-light " style="background-color: #F96D63;">Update/Delete Product</button>
             </div>
        
         <!-- <div *ngFor="let product of showproductdata" class="col-sm-12 col-md-3 col-lg-3 mb-3">
@@ -112,16 +112,26 @@
                   </option>
                 </select>
               </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="product_flag" class="col-form-label">Product Flag</label>
+                <select class="form-select" aria-label="Default select example" id="product_flag"
+                  [(ngModel)]="product.product_flag" name="product_flag">
+                  <option selected>Select Categories</option>
+                  <option  value="Virtual">Virtual</option>
+                  <option  value="Physical">Physical</option>
+                </select>
+              </div>
         
               <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
                 <label for="product_image" class="col-form-label">Product Image</label>
                 <input class="form-control" type="file" id="product_image" name="product_image" (change)="onFileSelected($event)" required>
               </div>
 
-              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+              <!-- <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
                 <label for="product_gallary" class="col-form-label">Product Gallary</label>
                 <input class="form-control" type="file" id="product_gallary" name="product_gallary" (change)="onFileSelected($event)" required>
-              </div>
+              </div> -->
         
               <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
                 <label for="products_info" class="col-form-label">Product Info:</label>
