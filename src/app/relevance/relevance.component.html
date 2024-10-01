@@ -31,17 +31,17 @@
         </button>
         <small class="position-absolute ms-2" style="font-size: x-small;margin-top: -15px !important;">(Courses/Products/Events/Trainers)</small>
         <ul class="dropdown-menu w-100">
-          <li><a class="dropdown-item" (click)="updatePlaceholder('Search Courses')">Courses</a></li>
-          <li><a class="dropdown-item" (click)="updatePlaceholder('Search Trainers')">Trainers</a></li>
-          <li><a class="dropdown-item" (click)="updatePlaceholder('Search Products')">Products</a></li>
-          <li><a class="dropdown-item" (click)="updatePlaceholder('Search Events')">Events</a></li>
+          <li><a class="dropdown-item" routerLink="/relevance/seeallcategory" (click)="updatePlaceholder('Search Courses')">Courses</a></li>
+          <li><a class="dropdown-item" routerLink="/relevance/trainer" (click)="updatePlaceholder('Search Trainers')">Trainers</a></li>
+          <li><a class="dropdown-item" routerLink="/relevance/userproduct" (click)="updatePlaceholder('Search Products')">Products</a></li>
+          <li><a class="dropdown-item" routerLink="/relevance/userevent" (click)="updatePlaceholder('Search Events')">Events</a></li>
         </ul>
       </div>
     </div>
     
     <div class="">
-      <div class="bg-light d-flex align-items-center justify-content-between inputContainer1 py-2 my-2 position-relative">
-        <input type="text" class="form-control form-control-lg searchinput" [placeholder]="inputPlaceholder">
+      <div class="bg-light d-flex align-items-center justify-content-between inputContainer1 py-2 my-2 position-relative " style="width: 300px;">
+        <input type="text" (input)="onSearch($event)" class="form-control form-control-lg searchinput" [placeholder]="inputPlaceholder">
         <i class="fa-solid fa-magnifying-glass fs-5 pt-1 serachlogo"></i>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../common_service/dashboard.service';
 import { FilterService } from '../common_service/filter.service';
 import { ActivatedRoute } from '@angular/router';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-relevance',
@@ -21,7 +22,9 @@ export class RelevanceComponent implements OnInit {
     this.inputPlaceholder = newPlaceholder;
   }
 
-  constructor(private service: DashboardService, private filter: FilterService, private route: ActivatedRoute) {}
+  constructor(private service: DashboardService, private filter: FilterService,
+     private route: ActivatedRoute,
+     private searchService:SearchService) {}
 
   ngOnInit(): void {
     // Fetch category data
@@ -95,6 +98,13 @@ export class RelevanceComponent implements OnInit {
   areAllCategoriesSelected(): boolean {
     return this.Showcategorydata.every(cat => this.selectedCategories.includes(cat.category_name));
   }
+
+  onSearch(event: any) {
+    const searchTerm = event.target.value;
+    console.log('Search Term:', searchTerm);  // Log search term
+    this.searchService.changeSearchData(searchTerm);  // Update the search term in the service
+  }
+  
 }
 
 

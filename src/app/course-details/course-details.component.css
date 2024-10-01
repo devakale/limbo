@@ -1,5 +1,5 @@
 .text-color{
-    color: #674ACB;
+    color: var(--TextColor);
 }
 .card-user{
     border: 1px solid black ;

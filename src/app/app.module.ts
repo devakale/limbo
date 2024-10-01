@@ -62,6 +62,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { NotificationComponent } from './notification/notification.component';
 import { BlogDetailsComponent } from './blog/blog-details/blog-details.component';
 import { BlogComponent } from './blog/blog/blog.component';
+import { CourseNamePipe } from './Filter/course-name.pipe';
 
 
 @NgModule({
@@ -118,6 +119,7 @@ import { BlogComponent } from './blog/blog/blog.component';
     NotificationComponent,
     BlogDetailsComponent,
     BlogComponent,
+    CourseNamePipe,
     
   ],
   imports: [
@@ -128,7 +130,7 @@ import { BlogComponent } from './blog/blog/blog.component';
     HttpClientModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    MatTabsModule
+    MatTabsModule,
    
   ],
   providers: [CookieService,{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],

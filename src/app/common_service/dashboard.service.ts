@@ -114,4 +114,8 @@ export class DashboardService {
             const url = `http://localhost:1000/blog/${id}`;  // Adjust the API endpoint
             return this.http.get<any>(url);
           }
+
+          getDashboardData(): Observable<any> {
+            return this.http.get<any>(`${this.API_URL}/dashboard`);
+          }
 }

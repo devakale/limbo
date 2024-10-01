@@ -34,7 +34,7 @@
           </div>
         </div>
       </div> -->
-      <div *ngFor="let trainer of filtertrainer" class="col-sm-12 col-md-6 col-lg-3  mb-3">
+      <div *ngFor="let trainer of filteredtrainer" class="col-sm-12 col-md-6 col-lg-3  mb-3">
         <div class="card trainercard " routerLink="/coursedetails/{{trainer.t_id}}">
           <div class="text-center mt-3">
           <img src="{{trainer.trainer_image}}" class="object-fit-cover rounded-circle" alt="..." style="width: 170px !important;height: 170px;">
