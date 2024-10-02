@@ -54,24 +54,64 @@
 
     </div>
     <div class="row">
-        <ul class="srolltabs">
-            <li>About Me</li>
-            <li>Education</li>
-            <li>Achievements/Certificates</li>
-            <li>Skills</li>
-            <li>Services</li>
-            <li>Testimonials</li>
-            <li>Courses</li>
-            <li>Events</li>
-            <li>Products</li>
-            <li>Reviews</li>
+        <ul class="srolltabs" >
+            <li href="#About" style="cursor: pointer;"
+            (click)="scrollToSection($event, 'About')"
+            class="nav-link" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">About Me</li>
+
+            <li href="#Education"style="cursor: pointer;"
+            (click)="scrollToSection($event, 'Education')"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Education</li>
+
+            <li href="#Achievements"style="cursor: pointer;"
+            (click)="scrollToSection($event, 'Achievements')"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Achievements/Certificates</li>
+
+            <li href="#Skills"style="cursor: pointer;"
+            (click)="scrollToSection($event, 'Skills')"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Skills</li>
+
+            <li href="#Services"style="cursor: pointer;"
+            (click)="scrollToSection($event, 'Services')"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Services</li>
+
+            <li href="#Testimonials"style="cursor: pointer;"
+            (click)="scrollToSection($event, 'Testimonials')"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Testimonials</li>
+
+            <li href="#Courses"style="cursor: pointer;"
+            (click)="scrollToSection($event, 'Courses')"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Courses</li>
+
+            <li href="#Events"style="cursor: pointer;"
+            (click)="scrollToSection($event, 'Events')"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Events</li>
+
+            <li href="#Products"style="cursor: pointer;"
+            (click)="scrollToSection($event, 'Products')"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Products</li>
+
+            <li href="#Reviews"style="cursor: pointer;"
+            (click)="scrollToSection($event, 'Reviews')"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Reviews</li>
+            
         </ul>
     </div>
         
     <hr >
     <div class="row   justify-content-around">
         <!-- First Row code start hrer -->
-        <div class="col-sm-12 col-lg-4 ">
+        <div class="col-sm-12 col-lg-4 " id="About">
             <h5 class="text-color">{{showprofile.trainer?.business_Name || showprofile.institutes}}</h5>
             <div class="d-flex align-items-center gap-3">
                 <i class="fa-solid fa-user card-user"></i>
@@ -139,20 +179,20 @@
 
             <hr>
 
-            <div class="mt-4">
+            <div class="mt-4" id="about">
                 <h5 class="text-color">About Us</h5>
                 <p style="text-align: justify;">{{showprofile.About[0].about_us}}</p>
 
                 <hr>
                 <!-- Our Services -->
-                <div class="mt-3">
+                <div class="mt-3" id="Services">
                     <h5 class="text-color">Our Services</h5>
                     <p style="text-align: justify;">{{showprofile.About[0].our_services}}</p>
                 </div>
 
                 <hr>
 
-                <h5 class="text-color">Education</h5>
+                <h5 class="text-color" id="Education">Education</h5>
                 <table>
                     <tbody>
                         <tr>
@@ -180,15 +220,15 @@
 
                 <hr>
 
-                <div class="mt-4">
+                <div class="mt-4" id="Achievements">
                     <h5 class="text-color">Achievements / Certifications</h5>
                     <p>{{showprofile.Educations[0].achievements}}</p>
                 </div>
 
                 <hr>
 
-        <!-- Testimonial         -->
-                    <div class="pt-3">
+        <!-- Testimonial-->
+                    <div class="pt-3" id="Testimonials" >
                         <h5 class="text-color">Testimonial</h5>
                         <div id="carouselExampleDark" class="carousel carousel-dark slide">
                             <div class="carousel-indicators">
@@ -218,7 +258,7 @@
                 <hr>
 
                     <!-- Questions & Answers -->
-            <div class="mt-2">
+            <div class="mt-2" >
                 <h5 class="text-color">Questions & Answers</h5>
                 <p>Would you like to ask a question?</p>
                 <form (ngSubmit)="postquestion()">
@@ -269,7 +309,7 @@
             <hr>
 
             <!-- Write Review -->
-            <div class="mt-3">
+            <div class="mt-3" >
                 <h5 class="text-color">Write Review</h5>
                 <div class="row">
                     <form (ngSubmit)="postreview()">
@@ -317,7 +357,7 @@
         </div>
         <!-- First Row code End hrer -->
         <!-- Second Row code start hrer -->
-        <div class="col-sm-12 col-lg-7 border-start px-5" >
+        <div class="col-sm-12 col-lg-7 border-start px-5" id="Courses" >
             <!-- current batches -->
             <div class="pt-3">
                 <div class="d-flex align-items-center justify-content-between mb-2">
@@ -397,7 +437,7 @@
 
             
             <!-- Online Events -->
-            <div class="mb-2">
+            <div class="mb-2" id="Events">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                     <h5 class="text-color">Online Events</h5>
                     <div>
@@ -489,7 +529,7 @@
 
             <hr>
     <!-- Products -->
-            <div class="">
+            <div class="" id="Products">
                 <h5 class="text-color">Our Products</h5>
                 <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
                     <div *ngFor="let product of showprofile.productsWithFullImageUrl.slice(0, 3)" class="col-sm-12 col-md-3 col-lg-4 mb-3">
@@ -531,8 +571,8 @@
             </div>   
            
             
-            <div class="row border-top mt-3">
-                <div class="col-sm-12 col-lg-8  pt-2">
+            <div class="row border-top mt-3"id="Reviews">
+                <div class="col-sm-12 col-lg-8  pt-2"  >
                     <h5 class="text-color">Reviews & Ratings</h5>
                     <div class="d-flex align-items-center gap-3 mt-1">
                         <h6 class="p-2 rounded" style="background-color: var(--btndarkColor);color: white;">4.5</h6>
