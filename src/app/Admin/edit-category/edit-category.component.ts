@@ -15,6 +15,7 @@ export class EditCategoryComponent implements OnInit {
   _id: any;
   uploadform!: FormGroup;
   category_name: any;
+  sub_title : any;
   category_image: File | null = null;
 
 
@@ -34,6 +35,7 @@ export class EditCategoryComponent implements OnInit {
       this.uploadform.patchValue({
         _id: d._id,
         category_name: d.category_name,
+        sub_title: d.sub_title
         // Only set category_image if it’s a URL or path
         // If category_image is a file, handle it differently
       });
@@ -52,6 +54,8 @@ export class EditCategoryComponent implements OnInit {
     // Append non-file data
     formData.append('_id', this.uploadform.get('_id')?.value);
     formData.append('category_name', this.uploadform.get('category_name')?.value);
+    formData.append('sub_title', this.uploadform.get('sub_title')?.value);
+
   
     // Append file data if a file is selected
     if (this.category_image) {

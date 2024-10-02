@@ -1,4 +1,4 @@
-<div *ngIf="showprofile" class="container-fluid">
+<div *ngIf="showprofile" class="container-fluid " style="background-color: #F5F5F5;">
 
     <div class="row m-0 p-0 g-0 ">
         <div class="col-sm-12 col-md-6 col-lg-10">
@@ -53,10 +53,25 @@
         </div>
 
     </div>
-    
-    <div class="row pt-2">
+    <div class="row">
+        <ul class="srolltabs">
+            <li>About Me</li>
+            <li>Education</li>
+            <li>Achievements/Certificates</li>
+            <li>Skills</li>
+            <li>Services</li>
+            <li>Testimonials</li>
+            <li>Courses</li>
+            <li>Events</li>
+            <li>Products</li>
+            <li>Reviews</li>
+        </ul>
+    </div>
+        
+    <hr >
+    <div class="row   justify-content-around">
         <!-- First Row code start hrer -->
-        <div class="col-sm-12 col-lg-4 border pt-2">
+        <div class="col-sm-12 col-lg-4 ">
             <h5 class="text-color">{{showprofile.trainer?.business_Name || showprofile.institutes}}</h5>
             <div class="d-flex align-items-center gap-3">
                 <i class="fa-solid fa-user card-user"></i>
@@ -90,7 +105,7 @@
 
             </div>
 
-            <div class="d-flex align-items-center gap-3">
+            <div class="d-flex align-items-center gap-3 ">
                 <button class="btn btn-phone d-flex align-items-center gap-2"><i class="fa-solid fa-mobile-screen"></i>
                     {{showprofile.trainer.mobile_number}}</button>
                 <!-- <a class="btn border-dark d-flex align-items-center  gap-2"
@@ -105,7 +120,7 @@
                 <!-- <button class="btn border-dark"><i class="fa-regular fa-heart"></i></button> -->
             </div>
 
-            
+           
 
             <!-- share button scetion -->
             <div class="share-container">
@@ -122,16 +137,21 @@
                 </div>
             </div>
 
-
+            <hr>
 
             <div class="mt-4">
                 <h5 class="text-color">About Us</h5>
                 <p style="text-align: justify;">{{showprofile.About[0].about_us}}</p>
+
+                <hr>
                 <!-- Our Services -->
                 <div class="mt-3">
                     <h5 class="text-color">Our Services</h5>
                     <p style="text-align: justify;">{{showprofile.About[0].our_services}}</p>
                 </div>
+
+                <hr>
+
                 <h5 class="text-color">Education</h5>
                 <table>
                     <tbody>
@@ -158,10 +178,14 @@
                     </tbody>
                 </table>
 
+                <hr>
+
                 <div class="mt-4">
                     <h5 class="text-color">Achievements / Certifications</h5>
                     <p>{{showprofile.Educations[0].achievements}}</p>
                 </div>
+
+                <hr>
 
         <!-- Testimonial         -->
                     <div class="pt-3">
@@ -181,8 +205,8 @@
                                     [attr.data-bs-interval]="i === 0 ? 10000 : 2000">
                                     <div style="min-height: 300px;">
                                         <div class="carousel-caption d-block">
-                                            <h1 style="color: #F96D63;">{{testimonial.Testimonial_Title}}</h1>
-                                            <p>{{testimonial.Testimonial_Description}}</p>
+                                            <h1 style="color: #F96D63;">{{testimonial?.Testimonial_Title}}</h1>
+                                            <p>{{testimonial?.Testimonial_Description}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -190,6 +214,8 @@
                         </div>
                    
                 </div>
+
+                <hr>
 
                     <!-- Questions & Answers -->
             <div class="mt-2">
@@ -204,6 +230,8 @@
                 </form>
             </div>
 
+            <hr>
+
             <!-- Enquiry -->
             <div class="mt-3">
                 <h5 class="text-color">Enquiry </h5>
@@ -215,6 +243,31 @@
                     <button type="submit" class="btn btnq mt-3 btn-block  px-5">Enquiry Now</button>
                 </form>
             </div>
+
+            <hr>
+
+            <!-- Book Appointment -->
+            <div class="mt-3">
+                <h5 class="text-color">Book Appointment</h5>
+                <form (ngModel)="BookAppoinment()">
+                    <div class="mb-3">
+                        <label class="form-label">Select Date</label>
+                        <input class="form-control" type="date" class="form-control" name="date" id="date"
+                            [(ngModel)]="Appoinment.date">
+                    </div>
+                    <div>
+                        <label class="form-label">Select Time</label>
+                        <input class="form-control" type="time" class="form-control" name="time" id="time"
+                            [(ngModel)]="Appoinment.time">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btnq mt-3 btn-block  w-25">Book Now</button>
+                    </div>
+                </form>
+            </div>
+
+            <hr>
+
             <!-- Write Review -->
             <div class="mt-3">
                 <h5 class="text-color">Write Review</h5>
@@ -237,170 +290,10 @@
                     </form>
                 </div>
             </div>
-        </div>
-        <!-- Second Row code End hrer -->
 
-        <!-- Third Row code start hrer -->
-        <div class="col-sm-12 col-lg-4 border pt-2">
-
-
-
-            <!-- calender -->
-            <div class="mt-3">
-                <h5 class="text-color">Book Appointment</h5>
-                <form (ngModel)="BookAppoinment()">
-                    <div class="mb-3">
-                        <label class="form-label">Select Date</label>
-                        <input class="form-control" type="date" class="form-control" name="date" id="date"
-                            [(ngModel)]="Appoinment.date">
-                    </div>
-                    <div>
-                        <label class="form-label">Select Time</label>
-                        <input class="form-control" type="time" class="form-control" name="time" id="time"
-                            [(ngModel)]="Appoinment.time">
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btnq mt-3 btn-block  w-25">Book Now</button>
-                    </div>
-                </form>
-            </div>
-
-
-
-            </div>
-        </div>
-        <!-- First Row code End hrer -->
-
-        <!-- Second Row code start hrer -->
-        <div class="col-sm-12 col-lg-8 border pt-2">
-            <!-- current batches -->
-            <div>
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                    <h5 class="text-color">Current Batches</h5>
-                    <div>
-                        <button class="btn btn-sm btn-primary me-3">Prev</button>
-                        <button class="btn btn-sm btn-primary">Next</button>
-                    </div>
-                </div>
-                <div class="row row-cols-1 row-cols-md-3 g-3">
-                    <div *ngFor="let batch of showprofile.OnGoingBatches.slice(0, 3)" class="col rounded-box">
-                        <div class="card h-100 rounded-box" routerLink="/couserenroll/{{batch._id}}">
-                            <img [src]="batch.thumbnail_image" class="card-img-top rounded-box" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{batch.course_name}}</h5>
-                                <div class="d-flex align-items-center gap-3">
-                                    <i class="fa-solid fa-user card-user"></i>
-                                    <h6 class="mt-1">{{batch.trainer_id?.f_Name + " " + batch.trainer_id?.l_Name ||
-                                        'N/A'}}</h6>
-                                </div>
-                                <button class="left-side-top rounded-pill">{{batch.category_id?.category_name ||
-                                    'N/A'}}</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- upcoming batches -->
-            <div class="mt-3">
-                <h5 class="text-color">Upcoming Batches</h5>
-                <div class="row row-cols-1 row-cols-md-3 g-3">
-                    <div *ngFor="let batch of showprofile.UpcomingBatches" class="col rounded-box">
-                        <div class="card h-100 rounded-box" routerLink="/couserenroll/{{batch._id}}">
-                            <img [src]="batch.thumbnail_image" class="card-img-top rounded-box" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{batch.course_name}}</h5>
-                                <div class="d-flex align-items-center gap-3">
-                                    <i class="fa-solid fa-user card-user"></i>
-                                    <h6 class="mt-1">{{batch.trainer_id?.f_Name + " " + batch.trainer_id?.l_Name ||
-                                        'N/A'}}</h6>
-                                </div>
-                                <button class="left-side-top rounded-pill">{{batch.category_id?.category_name ||
-                                    'N/A'}}</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            
-            <!-- Online Events -->
-            <div class="mb-2">
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                    <h5 class="text-color">Online Events</h5>
-                    <div>
-                        <button class="btn btn-sm btn-primary me-3">Prev</button>
-                        <button class="btn btn-sm btn-primary">Next</button>
-                    </div>
-                </div>
-                <div class="row row-cols-1 row-cols-md-3 g-3">
-                    <div *ngFor="let event of showprofile.onlineEventsThumbnailUrl.slice(0, 3)" class="col rounded-box">
-                        <div class="card h-100 rounded-box mb-3" routerLink="/eventdetails/{{event._id}}">
-                            <img [src]="event.event_thumbnail" class="card-img-top rounded-box"
-                                alt="{{event.event_name}}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{event.event_name}}</h5>
-                                <div class="d-flex align-items-center gap-3">
-                                    <!-- <i class="fa-solid fa-user card-user"></i> -->
-                                    <h6 class="mt-1">{{event.trainerid?.user_name}}</h6>
-                                    <!-- Added safe navigation operator -->
-                                </div>
-                                <button
-                                    class="left-side-top rounded-pill">{{event.event_category?.category_name}}</button>
-                                <!-- Added safe navigation operator -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Offline Events -->
-            <div>
-                <h5 class="text-color">Offline Events</h5>
-                <div class="row row-cols-1 row-cols-md-3 g-3">
-                    <div *ngFor="let event of showprofile.offlienEventsThumbnailUrl.slice(0, 3)" class="col rounded-box">
-                        <div class="card h-100 cursor-pointer rounded-box" routerLink="/eventdetails/{{event._id}}">
-                            <img [src]="event.event_thumbnail" class="card-img-top rounded-box"
-                                alt="{{event.event_name}}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{event.event_name}}</h5>
-                                <div class="d-flex align-items-center gap-3">
-                                    <!-- <i class="fa-solid fa-user card-user"></i> -->
-                                    <h6 class="mt-1">{{event.trainerid?.user_name}}</h6>
-                                    <!-- Added safe navigation operator -->
-                                </div>
-                                <button
-                                    class="left-side-top rounded-pill">{{event.event_category?.category_name}}</button>
-                                <!-- Added safe navigation operator -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-    <!-- Products -->
-            <div class="">
-                <h5 class="text-color">Our Products</h5>
-                <p>{{showprofile.productsWithFullImageUrl.products_info}}</p>
-                <div>
-                    <div class="row row-cols-1 row-cols-md-3 g-3">
-                        <div *ngFor="let product of showprofile.productsWithFullImageUrl.slice(0, 3)" class="col rounded-box">
-                            <div class="card h-100 rounded-box">
-                                <img routerLink="/shop/{{product._id}}" src="{{product.product_image}}"
-                                    class="card-img-top rounded-box" alt="...">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">{{product.product_name}}</h5>
-                                    <p class="m-0">₹ {{product.product_prize ? product.product_prize :" Free"}}</p>
-                                    <button class="btn btn1 mt-3 btn-block " routerLink="/cart">Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>    
-
-                    <!-- social Media icon and links -->
-            <div class="mt-5 fs-4">
+            <hr>
+             <!-- social Media icon and links -->
+             <div class="mt-5 fs-4">
                 <!-- <a href="mailto:jyoti.kokate@kritikasoftware.com?cc=jyotikailaskokate@gmail.com&amp;subject=Contact Us&amp;body=Contact Us">jyoti.kokate@kritikasoftware.com</a> -->
                 <p><a class="text-dark" href="mailto:contact@ximboa.io"> <i class="fa-regular fa-envelope"></i> Send
                         Enquiry by Email</a></p>
@@ -417,144 +310,370 @@
 
             </div>
 
+
+        </div>
+        <!-- Second Row code End hrer -->
+
+        </div>
+        <!-- First Row code End hrer -->
+        <!-- Second Row code start hrer -->
+        <div class="col-sm-12 col-lg-7 border-start px-5" >
+            <!-- current batches -->
+            <div class="pt-3">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h5 class="text-color">Current Batches</h5>
+                    <div>
+                        <button class="btn btn-sm btn-primary me-3">Prev</button>
+                        <button class="btn btn-sm btn-primary">Next</button>
+                    </div>
+                </div>
+
+                <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
+                    <div *ngFor="let allcourses of showprofile.OnGoingBatches.slice(0 , 3)" class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                      <div class="card" routerLink="/couserenroll/{{allcourses._id}}">
+                        <img src="{{allcourses.thumbnail_image}}" class="card-img-top img-fluid" alt="...">
+                        <div class="card-body ">
+                          <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="card-title">{{allcourses.course_name}}</h5>
+                            <small>{{allcourses.online_offline || 'N/A'}}</small>
+                          </div>
+                          <div class="d-flex align-items-center justify-content-between">
+                              <div class="d-flex align-items-center gap-2 ">
+                                <!-- <p><i class="fa-solid fa-user card-user border p-1"></i></p> -->
+                                 <p><img src="{{allcourses.trainer_image}}" class="rounded-circle" height="20px" width="20px" alt=""></p>
+                                <p>{{allcourses.business_Name || 'Deva' }}</p>
+                              </div>
+                           <p>{{allcourses.course_rating || 4.5}} <i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i></p>
+                          </div>
+                          <button class="left-side-top rounded-pill">{{allcourses.category_name ||'N/A'}}</button>
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <p><i class="fa-solid fa-list-ul"></i> Duration : {{allcourses.course_duration || 2}} Weeks</p>
+                            <p style="font-family: Poppins;font-weight: bold;color: var(--TextColor);font-size: 20px;">{{ getFormattedPrice(allcourses.course_price) }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-end">
+                    <p class="me-3 ViewmoreArrow">View More <i class="fa-solid fa-arrow-right "></i> </p>
+                  </div>
+                 </div>
+            <hr>
+            <!-- upcoming batches -->
+            <div class="mt-3">
+                <h5 class="text-color">Upcoming Batches</h5>
+                <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-3 gx-3 mt-3">
+                    <div *ngFor="let allcourses of showprofile.UpcomingBatches" class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                      <div class="card" routerLink="/couserenroll/{{allcourses._id}}">
+                        <img src="{{allcourses.thumbnail_image}}" class="card-img-top img-fluid" alt="...">
+                        <div class="card-body ">
+                          <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="card-title">{{allcourses.course_name}}</h5>
+                            <small>{{allcourses.online_offline || 'N/A'}}</small>
+                          </div>
+                          <div class="d-flex align-items-center justify-content-between">
+                              <div class="d-flex align-items-center gap-2 ">
+                                <!-- <p><i class="fa-solid fa-user card-user border p-1"></i></p> -->
+                                 <p><img src="{{allcourses.trainer_image}}" class="rounded-circle" height="20px" width="20px" alt=""></p>
+                                <p>{{allcourses.business_Name || 'Deva' }}</p>
+                              </div>
+                           <p>{{allcourses.course_rating || 4.5}} <i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i></p>
+                          </div>
+                          <button class="left-side-top rounded-pill">{{allcourses.category_name ||'N/A'}}</button>
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <p><i class="fa-solid fa-list-ul"></i> Duration : {{allcourses.course_duration || 2}} Weeks</p>
+                            <p style="font-family: Poppins;font-weight: bold;color: var(--TextColor);font-size: 20px;">{{ getFormattedPrice(allcourses.course_price) }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-end">
+                    <p class="me-3 ViewmoreArrow">View More <i class="fa-solid fa-arrow-right "></i> </p>
+                  </div>
+                 </div>
+
+            <hr>
+
+            
+            <!-- Online Events -->
+            <div class="mb-2">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h5 class="text-color">Online Events</h5>
+                    <div>
+                        <button class="btn btn-sm btn-primary me-3">Prev</button>
+                        <button class="btn btn-sm btn-primary">Next</button>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
+                    <div *ngFor="let Event of showprofile.onlineEventsThumbnailUrl.slice(0, 3)" class="col-sm-12 col-md-3 col-lg-4 mb-3">
+                      <div class="card" routerLink="/eventdetails/{{Event._id}}">
+                        <img src="{{Event.event_thumbnail}}" class="card-img-top img-fluid" alt="...">
+                        <div class="card-body text">
+                          <div class="d-flex align-items-center justify-content-between gap-1">
+                            <span>
+                              <label class="poppins-semibold-italic text-muted" style="font-size: 12px;">{{Event.event_date |  date: 'MMM'}}</label><br>
+                              <span class="poppins-semibold-italic" style="font-size: 24px;">{{Event.event_date |  date: 'dd'}}</span>
+                            </span>
+                            <span>
+                              <p class="card-title poppins-semibold-italic">{{Event.event_name}}</p>
+                            </span>
+                            <span class="text-center">
+                              <span class="poppins-semibold-italic"> {{Event.event_type}} </span> <br>
+                              <i *ngIf="Event.event_type === 'Online'" class="fas fa-circle-play text-muted"></i>
+                <i *ngIf="Event.event_type === 'Offline'" class="fas fa-location-dot"></i>
+                            </span>  
+                          </div>
+                          <div class="d-flex align-items-center gap-2 justify-content-center">
+                            <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+                            <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+                            <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+                            <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+                            <label class="p-2 border rounded-circle"> +35</label>
+                          </div>
+                          <div class="d-flex align-items-center justify-content-between mt-2">
+                            <button class="btn rounded-pill  text-light poppins-regular" style="font-size: 14px;background-color: var(--TextColor);">Book Seat</button>
+                            <button class="btn rounded-pill  text-light poppins-regular" style="font-size: 14px;background-color: var(--btndarkColor);">View More</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-end">
+                    <p class="me-3 ViewmoreArrow">View More <i class="fa-solid fa-arrow-right "></i> </p>
+                  </div>
+                 </div>
+
+            <hr>
+            <!-- Offline Events -->
+            <div>
+                <h5 class="text-color">Offline Events</h5>
+                <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
+                    <div *ngFor="let Event of showprofile.offlienEventsThumbnailUrl.slice(0, 3)" class="col-sm-12 col-md-3 col-lg-4 mb-3">
+                      <div class="card" routerLink="/eventdetails/{{Event._id}}">
+                        <img src="{{Event.event_thumbnail}}" class="card-img-top img-fluid" alt="...">
+                        <div class="card-body text">
+                          <div class="d-flex align-items-center justify-content-between gap-1">
+                            <span>
+                              <label class="poppins-semibold-italic text-muted" style="font-size: 12px;">{{Event.event_date |  date: 'MMM'}}</label><br>
+                              <span class="poppins-semibold-italic" style="font-size: 24px;">{{Event.event_date |  date: 'dd'}}</span>
+                            </span>
+                            <span>
+                              <p class="card-title poppins-semibold-italic">{{Event.event_name}}</p>
+                            </span>
+                            <span class="text-center">
+                              <span class="poppins-semibold-italic"> {{Event.event_type}} </span> <br>
+                              <i *ngIf="Event.event_type === 'Online'" class="fas fa-circle-play text-muted"></i>
+                                 <i *ngIf="Event.event_type === 'Offline'" class="fas fa-location-dot"></i>
+                            </span>  
+                          </div>
+                          <div class="d-flex align-items-center gap-2 justify-content-center">
+                            <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+                            <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+                            <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+                            <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+                            <label class="p-2 border rounded-circle"> +35</label>
+                          </div>
+                          <div class="d-flex align-items-center justify-content-between mt-2">
+                            <button class="btn rounded-pill  text-light poppins-regular" style="font-size: 14px;background-color: var(--TextColor);">Book Seat</button>
+                            <button class="btn rounded-pill  text-light poppins-regular" style="font-size: 14px;background-color: var(--btndarkColor);">View More</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-end">
+                    <p class="me-3 ViewmoreArrow">View More <i class="fa-solid fa-arrow-right "></i> </p>
+                  </div>
+                </div>
+
+            <hr>
+    <!-- Products -->
+            <div class="">
+                <h5 class="text-color">Our Products</h5>
+                <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
+                    <div *ngFor="let product of showprofile.productsWithFullImageUrl.slice(0, 3)" class="col-sm-12 col-md-3 col-lg-4 mb-3">
+                      <div class="card productcard">
+                        <img src="{{product.product_image}}" routerLink="/shop/{{product._id}}" class="card-img-top img-fluid"
+                          alt="...">
+                          <button routerLink="/shop/{{product._id}}" class="btn btn-light rounded onproducthover">Add to cart</button>
+                          <span class="onproducthoverflag rounded px-3">{{product.identityFlag}}</span>
+                        <div class="card-body text-center mb-0 pt-0">
+                          <div class="d-flex align-items-center justify-content-between mt-1">
+                            <p class="m-0 p-0 text-end w-25"></p>
+                                <div class="w-50 text-center">
+                                  <ng-container *ngFor="let star of starsArray; let i = index">
+                                    <i
+                                      class="fa-solid fa-star"
+                                      [ngStyle]="{ 'color': i < (product.avgRating || 4) ? '#FFAE06' : '#d3d3d3' }"
+                                    ></i>
+                                  </ng-container>
+                                </div>
+                             <small class="m-0 p-0 text-end w-25">{{product.product_flag || "virtual"}}</small>
+                          </div>
+                          <h5 class="card-title">{{product.products_name}}</h5>
+                          <p class="text-muted poppins-regular" style="font-size: 12px;">{{product.products_category}}</p>
+                          <div class="d-flex align-items-center justify-content-between">
+                            <i class="fa-solid fa-cart-shopping fs-5" style="color: #417CE8;"></i>
+                            <span class="d-flex align-items-center gap-2">
+                              <small class="text-decoration-line-through">₹ {{product.products_price}}</small> 
+                              <b>₹ {{product.products_selling_price}}</b>
+                            </span>
+                            <i class="fa-regular fa-heart fs-5" style="color: #417CE8;"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-end">
+                    <p class="me-3 ViewmoreArrow">View More <i class="fa-solid fa-arrow-right "></i> </p>
+                  </div>
+            </div>   
+           
+            
+            <div class="row border-top mt-3">
+                <div class="col-sm-12 col-lg-8  pt-2">
+                    <h5 class="text-color">Reviews & Ratings</h5>
+                    <div class="d-flex align-items-center gap-3 mt-1">
+                        <h6 class="p-2 rounded" style="background-color: var(--btndarkColor);color: white;">4.5</h6>
+                        <div>
+                            <p class="m-0">209 Ratings</p>
+                            <p class="m-0">rating index based on 209 ratings across the web</p>
+                        </div>
+                    </div>
+                    
+                    <h5 class="my-2">User Reviews </h5>
+                    <div *ngFor="let review of showreviewdata | paginate: { itemsPerPage: 2, currentPage: p}" class="row g-0 border rounded mb-4 p-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex gap-3">
+                                <img src="{{review.user_image}}" class="img-resize" alt="">
+                                <div>
+                                    <small class="m-0 fw-bold">{{ review.f_Name + " " + review.l_Name}}</small><br>
+                                    <!-- Star rating section -->
+                                    <span *ngFor="let star of starsArray; let i = index"
+                                        [ngClass]="{'fa fa-star checked': i < review.star_count, 'fa fa-star': i <= review.star_count }">
+                                    </span>
+                                   
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <label>{{review.createdAt | date}}</label>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <p>{{review.review}}</p>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between fw-bold mt-1">
+                            <label (click)="shareiconreview()"><i class="fa-regular fa-share-from-square"></i> Share</label>
+                            <label><i class="fa-regular fa-comment"></i> Comment</label>
+                            <label><i class="fa-regular fa-thumbs-up"></i> Helpful (2)</label>
+                        </div>
+                        <!-- <div class="share-container">
+                                <div *ngIf="showsharereview" class="share-options gap-4">
+                                    <a (click)="shareOnWhatsApp()" class="share-option">
+                                        <i class="fab fa-whatsapp fs-1" style="color: #30d14e; text-decoration: none;"></i>
+                                    </a>
+                                    <a (click)="copyLink()" class="share-option">
+                                        <i class="fas fa-link fs-3"></i>
+                                    </a>
+                                    <a (click)="shareOnFacebook()" class="share-option">
+                                        <i class="fab fa-facebook fs-1" style="color: #0976e4;"></i>
+                                    </a>
+                                </div>
+                            </div> -->
+                        </div>
+                        <pagination-controls style="float:right" (pageChange)="p = $event"></pagination-controls>
+                </div>
+        
+                <!-- Similar Courses -->
+                <!-- <div class="col-sm-12 col-lg-4 border-start pt-2">
+                    <h5 class="text-color">Similar Courses</h5>
+                    <div>
+                        <div class="d-flex align-items-center gap-3 mt-3">
+                            <img src="./assets/zumba.jpg" class="img-resize" alt="">
+                            <div class="d-flex gap-5">
+                                <div>
+                                    <h6>Fitness Webinar</h6>
+                                    <p class="m-0">Shubham Kadam</p>
+                                    
+                                    <label>2h 30min . 45 Peoples Enrolled</label>
+                                </div>
+                                <div>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3 mt-3">
+                            <img src="./assets/fitness.jpg" class="img-resize" alt="">
+                            <div class="d-flex gap-5">
+                                <div>
+                                    <h6>Fitness Webinar</h6>
+                                    <p class="m-0">Shubham Kadam</p>
+                                    <br>
+                                    <label>2h 30min . 45 Peoples Enrolled</label>
+                                </div>
+                                <div>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3 mt-3">
+                            <img src="./assets/gym.jpg" class="img-resize" alt="">
+                            <div class="d-flex gap-5">
+                                <div>
+                                    <h6>Fitness Webinar</h6>
+                                    <p class="m-0">Shubham Kadam</p>
+                                    <br>
+                                    <label>2h 30min . 45 Peoples Enrolled</label>
+                                </div>
+                                <div>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3 mt-3">
+                            <img src="./assets/yoga.jpg" class="img-resize" alt="">
+                            <div class="d-flex gap-5">
+                                <div>
+                                    <h6>Fitness Webinar</h6>
+                                    <p class="m-0">Shubham Kadam</p>
+                                    <br>
+                                    <label>2h 30min . 45 Peoples Enrolled</label>
+                                </div>
+                                <div>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3 mt-3">
+                            <img src="./assets/gym-boy.jpg" class="img-resize" alt="">
+                            <div class="d-flex gap-5">
+                                <div>
+                                    <h6>Fitness Webinar</h6>
+                                    <p class="m-0">Shubham Kadam</p>
+                                    <br>
+                                    <label>2h 30min . 45 Peoples Enrolled</label>
+                                </div>
+                                <div>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div> -->
+        
+        
+            </div>
+
+       
+
         </div>
         <!-- Third Row code End hrer -->
 
     </div>
 
-    <div class="row">
-        <div class="col-sm-12 col-lg-8  pt-2">
-            <h5 class="text-color">Reviews & Ratings</h5>
-            <div class="d-flex align-items-center gap-3 mt-1">
-                <h6 class="p-2 rounded" style="background-color: #674ACB;color: white;">4.5</h6>
-                <div>
-                    <p class="m-0">209 Ratings</p>
-                    <p class="m-0">rating index based on 209 ratings across the web</p>
-                </div>
-            </div>
-            <h5 class="my-2">User Reviews </h5>
-            <div *ngFor="let review of showreviewdata | paginate: { itemsPerPage: 2, currentPage: p}" class="row g-0 border rounded mb-4 p-3">
-                <div class="d-flex justify-content-between">
-                    <div class="d-flex gap-3">
-                        <img src="{{review.user_image}}" class="img-resize" alt="">
-                        <div>
-                            <small class="m-0 fw-bold">{{ review.f_Name + " " + review.l_Name}}</small><br>
-                            <!-- Star rating section -->
-                            <span *ngFor="let star of starsArray; let i = index"
-                                [ngClass]="{'fa fa-star checked': i < review.star_count, 'fa fa-star': i <= review.star_count }">
-                            </span>
-                           
-                        </div>
-                    </div>
-                    <div class="text-end">
-                        <label>{{review.createdAt | date}}</label>
-                    </div>
-                </div>
-                <div class="col-12 mt-2">
-                    <p>{{review.review}}</p>
-                </div>
-                <div class="d-flex align-items-center justify-content-between fw-bold mt-1">
-                    <label (click)="shareiconreview()"><i class="fa-regular fa-share-from-square"></i> Share</label>
-                    <label><i class="fa-regular fa-comment"></i> Comment</label>
-                    <label><i class="fa-regular fa-thumbs-up"></i> Helpful (2)</label>
-                </div>
-                <!-- <div class="share-container">
-                        <div *ngIf="showsharereview" class="share-options gap-4">
-                            <a (click)="shareOnWhatsApp()" class="share-option">
-                                <i class="fab fa-whatsapp fs-1" style="color: #30d14e; text-decoration: none;"></i>
-                            </a>
-                            <a (click)="copyLink()" class="share-option">
-                                <i class="fas fa-link fs-3"></i>
-                            </a>
-                            <a (click)="shareOnFacebook()" class="share-option">
-                                <i class="fab fa-facebook fs-1" style="color: #0976e4;"></i>
-                            </a>
-                        </div>
-                    </div> -->
-                </div>
-                <pagination-controls style="float:right" (pageChange)="p = $event"></pagination-controls>
-        </div>
-
-        <!-- Similar Courses -->
-        <div class="col-sm-12 col-lg-4 border pt-2">
-            <h5 class="text-color">Similar Courses</h5>
-            <div>
-                <div class="d-flex align-items-center gap-3 mt-3">
-                    <img src="./assets/zumba.jpg" class="img-resize" alt="">
-                    <div class="d-flex gap-5">
-                        <div>
-                            <h6>Fitness Webinar</h6>
-                            <p class="m-0">Shubham Kadam</p>
-                            <br>
-                            <label>2h 30min . 45 Peoples Enrolled</label>
-                        </div>
-                        <div>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center gap-3 mt-3">
-                    <img src="./assets/fitness.jpg" class="img-resize" alt="">
-                    <div class="d-flex gap-5">
-                        <div>
-                            <h6>Fitness Webinar</h6>
-                            <p class="m-0">Shubham Kadam</p>
-                            <br>
-                            <label>2h 30min . 45 Peoples Enrolled</label>
-                        </div>
-                        <div>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center gap-3 mt-3">
-                    <img src="./assets/gym.jpg" class="img-resize" alt="">
-                    <div class="d-flex gap-5">
-                        <div>
-                            <h6>Fitness Webinar</h6>
-                            <p class="m-0">Shubham Kadam</p>
-                            <br>
-                            <label>2h 30min . 45 Peoples Enrolled</label>
-                        </div>
-                        <div>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center gap-3 mt-3">
-                    <img src="./assets/yoga.jpg" class="img-resize" alt="">
-                    <div class="d-flex gap-5">
-                        <div>
-                            <h6>Fitness Webinar</h6>
-                            <p class="m-0">Shubham Kadam</p>
-                            <br>
-                            <label>2h 30min . 45 Peoples Enrolled</label>
-                        </div>
-                        <div>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center gap-3 mt-3">
-                    <img src="./assets/gym-boy.jpg" class="img-resize" alt="">
-                    <div class="d-flex gap-5">
-                        <div>
-                            <h6>Fitness Webinar</h6>
-                            <p class="m-0">Shubham Kadam</p>
-                            <br>
-                            <label>2h 30min . 45 Peoples Enrolled</label>
-                        </div>
-                        <div>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-
-    </div>
+    
 
     <div class="row" style="height: 100px;background-color: #674ACB;">
 

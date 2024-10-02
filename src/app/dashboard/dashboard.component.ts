@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
 
 
   visibleCategories() {
-    return this.showAll ? this.showCategorydata : this.showCategorydata.slice(0, 4);
+    return this.showAll ? this.showCategorydata : this.showCategorydata.slice(0, 9);
   }
 
   visibleCourses() {

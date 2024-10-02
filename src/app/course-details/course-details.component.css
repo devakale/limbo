@@ -14,19 +14,43 @@
     background-color: #674ACB;
   }
  
+.srolltabs{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 
+  ::after{
+    content: '|';
+    margin-left: 15px;
+  }
+
+  li{
+    text-decoration: none;
+    list-style: none;
+  }
+}
+
+.ViewmoreArrow{
+  cursor: pointer;
+  i{
+    color: var(--TextColor);
+  }
+}
   
 .btn1{
-    background: rgb(97,73,205);
-    background: linear-gradient(90deg, rgba(97,73,205,1) 0%, rgba(166,84,172,1) 50%, rgba(234,95,139,1) 100%);
+  background-color: var(--TextColor);
+    /* background: rgb(97,73,205);
+    background: linear-gradient(90deg, rgba(97,73,205,1) 0%, rgba(166,84,172,1) 50%, rgba(234,95,139,1) 100%); */
     color: white;
     border-radius: 25px;
     width: 90%;
     text-align: center;
 }
 .btnq{
-    background: rgb(97,73,205);
-    background: linear-gradient(90deg, rgba(97,73,205,1) 0%, rgba(166,84,172,1) 50%, rgba(234,95,139,1) 100%);
+  background-color: var(--TextColor);
+    /* background: rgb(97,73,205);
+    background: linear-gradient(90deg, rgba(97,73,205,1) 0%, rgba(166,84,172,1) 50%, rgba(234,95,139,1) 100%); */
     color: white;
     border-radius: 25px;
     text-align: center;
