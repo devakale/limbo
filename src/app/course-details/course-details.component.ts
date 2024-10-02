@@ -206,6 +206,18 @@ export class CourseDetailsComponent implements OnInit {
   }
 
 
+  
+  // conver Rupees K or laks
+  getFormattedPrice(price: number): string {
+    if (price >= 100000) {
+      return '₹' + (price / 100000).toFixed(1) + 'L';  // For lakhs
+    } else if (price >= 1000) {
+      return '₹' + (price / 1000).toFixed(1) + 'K';  // For thousands
+    } else {
+      return '₹' + price.toString();  // For rupees
+    }
+  }
+
 
   show: boolean = false;
   rememberMe: boolean = false;
@@ -219,6 +231,8 @@ export class CourseDetailsComponent implements OnInit {
     mobile_number: ' ',
 
   }
+
+
 
 
   onSubmit(form: NgForm) {
@@ -244,6 +258,8 @@ export class CourseDetailsComponent implements OnInit {
   togglePassword() {
     this.show = !this.show;
   }
+
+  
 
   
 }

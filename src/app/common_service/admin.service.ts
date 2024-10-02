@@ -9,7 +9,7 @@ export class AdminService {
 
   private APIURL="http://localhost:1000/trainer";
 
-  private CategoryURL="http://localhost:1000/category/add";
+  private CategoryURL="http://localhost:1000/category";
 
   private dashboard="http://localhost:1000/beforeLogin/allcategory"
 
