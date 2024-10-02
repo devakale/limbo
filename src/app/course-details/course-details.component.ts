@@ -260,6 +260,25 @@ export class CourseDetailsComponent implements OnInit {
   }
 
   
+  // scroll pages in click on nav
 
+  scrollToSection(event: Event, sectionId: string) {
+    event.preventDefault(); // Prevent the default link click behavior
+  
+    const section = document.getElementById(sectionId);
+  
+    if (section) {
+      const headerOffset = 70; // Adjust this value according to your header height
+      const sectionPosition = section.getBoundingClientRect().top + window.scrollY; // Get the section's position
+      const offsetPosition = sectionPosition - headerOffset; // Adjust for the header
+  
+      // Smooth scroll to the section with an offset
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }
+  
   
 }
