@@ -40,5 +40,50 @@
   .login-img {
     visibility: hidden;
     display: none;
+    visibility: none;
+    height: 0px;
+    width: 0;
   }
+}
+
+
+
+.login-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider-text {
+  padding: 0 5px;
+ font-weight: 600;
+  font-size: 11px;
+ 
+}
+
+hr {
+  flex-grow: 1;
+  border: none;
+  border-top: 1px solid #075efe; 
+  margin: 0 10px;
+}
+
+
+.btn-google {
+  background-color: #265BBD; 
+  color: white;
+}
+
+.btn-facebook {
+  background-color: #265BBD; 
+  color: white;
+}
+
+.btn-google:hover, .btn-facebook:hover {
+  opacity: 0.9; 
+}
+
+
+.custom-checkbox {
+  accent-color: #3078FF; 
 }

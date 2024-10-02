@@ -1,47 +1,35 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row" style="background-image: url('../../assets/Log IN_background.png') ;">
-    <div class="login-img col-md-6 col-lg-6 col-sm-12 d-flex align-items-center justify-containt-center"
+    <div class="login-img col-md-6 col-lg-6 col-sm-12 mt-5 d-flex align-items-center justify-containt-center"
       style="background-image: url('../../assets/Log IN_background.png') ; ">
-      <img src="../../assets/Login-trainer 1.png" class="w-100 " alt="Login Image">
+      <img src="../../assets/Login-Vol 1.png" class="w-100 " alt="Login Image">
 
     </div>
     <div class="col-sm-12 col-md-6  col-lg-6">
-      <div class="row desktop my-5 ms-5 py-3 px-2">
+      <div class="row desktop my-3 ms-5 py-3 px-2">
 
-        <div class="col-sm-12 col-lg-12 text-end">
+        <div class="col-sm-12 col-lg-12 py-1 text-end">
           <p>New Users? <label routerLink="/signup" style="color: #3078FF; cursor: pointer;">Create
-              an account</label></p>
+              an account <span class="px-2 py-1  ms-2" style="border-radius: 12px; font-size: 20px; border: 1px solid #674ACB;">
+                <i class="fas fa-ellipsis-h" style="color: #674ACB;"></i></span></label></p>
         </div>
         <div class="px-5 py-4"
-          style="background-color: white; border-radius: 10px; box-shadow: rgba(146, 145, 145, 0.19) 0px 10px 20px, rgba(154, 153, 153, 0.23) 0px 6px 6px;">
+          style="background-color: white; border-radius:20px; box-shadow: rgba(146, 145, 145, 0.19) 0px 10px 20px, rgba(154, 153, 153, 0.23) 0px 6px 6px;">
           <div>
-            <h4 class="py-3 fw-semibold lh-base">Hello, <br>Welcome back</h4>
-            <div class>
-              <button class="btn btn-block rounded-pill pb-2 mb-2 "> <i class="fa-brands fa-google"></i> Sign in with
-                Google</button>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <button class=" btn  rounded-pill btn-fb pb-2 mb-2 "> <i class="fa-brands fa-facebook"></i> Sign in with
-                Facebook</button>
-            </div>
+            <h5 class="py-1 fw-bold lh-base">Hello, <br>Welcome back</h5>
           </div>
-
-          <div class="col-1 py-3">
-            <hr>
-          </div>
-
-
 
           <!-- <form (ngSubmit)="onSubmit()" #loginForm="ngForm"> -->
           <form #login="ngForm" (ngSubmit)="onSubmit(login.value)">
             <div class="col-12 pt-3">
               <div class="row">
                 <div class="col-sm-12 col-lg-12 mb-2">
-                  <label for="email_id" class="form-label fw-semibold">Your Email</label>
+                  <label for="email_id" class="form-label" style="font-weight: 500;">Your Email</label>
                   <input type="email" class="form-control rounded-pill" id="email_id" [(ngModel)]="email_id"
                     name="email_id" required placeholder="Enter Your Email Id">
                 </div>
-                <div class="col-sm-12 col-lg-12">
-                  <label for="password" class="form-label fw-semibold">Password</label>
+                <div class="col-sm-12 col-lg-12 py-2 ">
+                  <label for="password" class="form-label" style="font-weight: 500;">Password</label>
                   <div class="d-flex align-items-center inputbtn">
                     <input [type]="show ? 'text' : 'password'" class="form-control rounded-pill" id="password"
                       [(ngModel)]="password" name="password" required placeholder>
@@ -53,18 +41,37 @@
                 </div>
               </div>
               <div class="form-check pt-3">
-                <input class="form-check-input border-dark" type="checkbox" [(ngModel)]="rememberMe" name="rememberMe"
+                <input class="form-check-input custom-checkbox border-primary"  type="checkbox" [(ngModel)]="rememberMe" name="rememberMe"
                   id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">Remember
-                  me</label>
+                <label class="form-check-label" for="flexCheckDefault">Remember me</label>
                 &nbsp; &nbsp; &nbsp;
                 <label data-bs-toggle="modal" data-bs-target="#forgotpwd" style="color: #3078FF;cursor: pointer;">Forgot Password?</label>
               </div>
+              
             </div>
-            <div class="pt-5">
-              <button type="submit" [disabled]="!password" class="btn sign-in-btn rounded-pill w-25  ">Sign in</button>
+            <div class="pt-3">
+              <button type="submit" [disabled]="!password" class="btn btn-primary rounded-pill  px-4 mb-3">Sign In</button>
             </div>
           </form>
+          <div class="login-divider">
+            <hr class="my-3">
+            <span class="divider-text">Or login with</span>
+            <hr class="my-3">
+        </div>
+        
+        <div class="row justify-content-center my-3">
+          <div class="col-md-6 col-12 mb-2">
+            <button class="btn  rounded-pill btn-google w-100">
+              <i class="fa-brands fa-google px-2"></i>Google</button>
+          </div>
+          <div class="col-md-6 col-12">
+            <button class="btn  rounded-pill btn-facebook w-100">
+              <i class="fa-brands fa-facebook px-2"></i>Facebook</button>
+          </div>
+          
+        </div>
+          
+
         </div>
       </div>
     </div>
