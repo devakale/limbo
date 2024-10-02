@@ -23,7 +23,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let request of getrequest">
-                <td>{{request.userid}}</td>
+                <td>{{request.userid.f_Name + " " + request.userid.l_Name }}</td>
                 <td>{{request.requestedRole}}</td>
                 <td>{{request.status}}</td>
                 <td>{{request.requestDate | date}}</td>

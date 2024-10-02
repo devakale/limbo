@@ -14,8 +14,8 @@ export class EditCategoryComponent implements OnInit {
   
   _id: any;
   uploadform!: FormGroup;
-  category_name: any;
-  sub_title : any;
+  // category_name: any;
+  // sub_title : any;
   category_image: File | null = null;
 
 
@@ -27,6 +27,7 @@ export class EditCategoryComponent implements OnInit {
     this.uploadform = this.formb.group({
       _id: [''],
       category_name: ['', Validators.required],
+      sub_title:['',Validators.required],
       category_image:['',Validators.required]
     });
 
@@ -36,8 +37,6 @@ export class EditCategoryComponent implements OnInit {
         _id: d._id,
         category_name: d.category_name,
         sub_title: d.sub_title
-        // Only set category_image if it’s a URL or path
-        // If category_image is a file, handle it differently
       });
       this.category_image = d.category_image; // Assuming this is a URL or path
     });

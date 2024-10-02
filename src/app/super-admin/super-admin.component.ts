@@ -15,7 +15,7 @@ export class SuperAdminComponent  implements OnInit{
     ngOnInit(): void {
         this.role.getrolerequest().subscribe(data =>{
           console.log(data);
-          this.getrequest = data.requests;
+          this.getrequest = data;
         })
     }
 

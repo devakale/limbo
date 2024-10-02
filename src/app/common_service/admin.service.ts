@@ -50,7 +50,7 @@ export class AdminService {
       }
     
       updateData(id: string, updatedData: FormData): Observable<any> {
-        return this.http.put(`${this.CategoryURL}/${id}`, updatedData);
+        return this.http.put(`${this.CategoryURL}/update/${id}`, updatedData);
       }
 
   // Category API Code End here

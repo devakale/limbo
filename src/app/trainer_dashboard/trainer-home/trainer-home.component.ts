@@ -22,9 +22,9 @@ export class TrainerHomeComponent implements OnInit{
     const role = this.auth.getUserRole();
     console.log('User Role:', role);
 
-    this.isAdmin = role === 'ADMIN';
+    this.isAdmin = role === 'SUPER_ADMIN';
     this.isTrainer = role === 'TRAINER';
-    this.isUser = role === 'USER' || role === 'TRAINER' || role === 'ADMIN';
+    this.isUser = role === 'USER' || role === 'TRAINER' || role === 'SUPER_ADMIN';
 
     console.log('isTrainer:', this.isTrainer, 'isUser:', this.isUser, 'isAdmin:', this.isAdmin);
   }
