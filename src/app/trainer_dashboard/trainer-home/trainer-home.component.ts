@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/common_service/auth-service.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class TrainerHomeComponent implements OnInit{
   isUser: boolean = false;
   isAdmin: boolean = false;
 
-  constructor(private auth: AuthServiceService) {}
+  constructor(private auth: AuthServiceService,private route:Router) {}
 
   ngOnInit(): void {
     this.checkUserRole();
@@ -29,7 +30,10 @@ export class TrainerHomeComponent implements OnInit{
     console.log('isTrainer:', this.isTrainer, 'isUser:', this.isUser, 'isAdmin:', this.isAdmin);
   }
   
-
+  logout() {
+    this.auth.logout();
+      this.route.navigate(['/'])
+  }
   
 
 }
