@@ -1,49 +1,44 @@
 <div *ngIf="showprofile" class="container-fluid " style="background-color: #F5F5F5;">
 
-    <div class="row m-0 p-0 g-0 ">
+    <div class="row  mb-0">
         <div class="col-sm-12 col-md-6 col-lg-10">
-            <div class="row m-0 p-0 g-0">
-                <div class="col-sm-12 col-md-2 col-lg-2">
-                    <img src="{{showprofile.gallarys[0].photos}}" alt="" class="object-fit-cover img-fluid " alt="...">
+            <div class="row ">
+                <div class="col-sm-12 col-md-2 col-lg-3">
+                    <img src="{{showprofile.gallarys[0].photos}}" alt="" class="object-fit-cover img-fluid rounded" alt="...">
                 </div>
-                <div class="col-sm-12 col-md-2 col-lg-2">
-                    <img src="{{showprofile.gallarys[1].photos}}" alt="" class="object-fit-cover img-fluid " alt="...">
+                <div class="col-sm-12 col-md-2 col-lg-3">
+                    <img src="{{showprofile.gallarys[1].photos}}" alt="" class="object-fit-cover img-fluid rounded" alt="...">
                 </div>
-                <div class="col-sm-12 col-md-2 col-lg-2">
-                    <img src="{{showprofile.gallarys[2].photos}}" alt="" class="object-fit-cover img-fluid " alt="...">
+                <div class="col-sm-12 col-md-2 col-lg-3">
+                    <img src="{{showprofile.gallarys[2].photos}}" alt="" class="object-fit-cover img-fluid rounded" alt="...">
                 </div>
-                <div class="col-sm-12 col-md-2 col-lg-2">
-                    <img src="{{showprofile.gallarys[3].photos}}" alt="" class="object-fit-cover img-fluid " alt="...">
+                 <div class="col-sm-12 col-md-2 col-lg-3">
+                    <img src="{{showprofile.gallarys[3].photos}}" alt="" class="object-fit-cover img-fluid rounded" alt="...">
                 </div>
-                <div class="col-sm-12 col-md-2 col-lg-2">
+                <!--<div class="col-sm-12 col-md-2 col-lg-2">
                     <img src="{{showprofile.gallarys[4].photos}}" alt="" class="object-fit-cover img-fluid " alt="...">
                 </div>
                 <div class="col-sm-12 col-md-2 col-lg-2">
                     <img src="{{showprofile.gallarys[4].photos}}" alt="" class="object-fit-cover img-fluid " alt="...">
-                </div>
+                </div> -->
 
             </div>
         </div>
-        <!-- <div *ngFor="let photo of showprofile.gallarys" class="col-sm-12 col-md-2 col-lg-2" >
-            <div class="col-sm-12 col-md-2 col-lg-2">
-                <img [src]="photo.photos" class="object-fit-cover" alt="..." height="200px" width="253px">
-            </div>
-        </div> -->
-
         <div class="col-sm-12 col-md-6 col-lg-2 ">
-            <div class="row m-0 p-0 g-0 ">
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <img src="{{showprofile.gallarys[5].photos}}" class="img-fluid object-fit-cover" alt="...">
+            <div class="row  ">
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-2">
+                    <img src="{{showprofile.gallarys[5].photos}}" class="rounded object-fit-cover" height="95px" width="114px" alt="...">
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-6">
-                    <img src="{{showprofile.gallarys[4].photos}}" class="img-fluid object-fit-cover" alt="...">
+                    <img src="{{showprofile.gallarys[4].photos}}" class="rounded object-fit-cover" height="95px" width="114px" alt="...">
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-6" style="position: relative;filter: blur(1px);">
-                    <img data-bs-toggle="modal" data-bs-target="#gallery" src="{{showprofile.gallarys[4].photos}}"
-                        class="img-fluid object-fit-cover" alt="...">
+                <div class="col-sm-12 col-md-6 col-lg-6 position-relative" data-bs-toggle="modal" data-bs-target="#gallery" >
+                    <img  height="95px" width="114px" src="{{showprofile.gallarys[4].photos}}"
+                        class="rounded object-fit-cover opacity-25" alt="...">
+                        <span class="position-absolute top-50 start-50 translate-middle fw-bold text-dark p-2" >View More </span>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-6">
-                    <img src="{{showprofile.gallarys[3].photos}}" class="img-fluid object-fit-cover" alt="...">
+                    <img src="{{showprofile.gallarys[3].photos}}" height="95px" width="114px" class="rounded object-fit-cover" alt="...">
                 </div>
                 <!-- <div class="textonimage ">
                     <i class="fa-regular fa-image fs-4 " style="color: #F96D63;"></i>
@@ -51,65 +46,65 @@
                 </div> -->
             </div>
         </div>
-
     </div>
-    <div class="row">
+    <div class="row mt-3 ">
         <ul class="srolltabs" >
-            <li href="#About" style="cursor: pointer;"
+            <li class="btn btn-sm btn-outline-primary" href="#About" 
             (click)="scrollToSection($event, 'About')"
-            class="nav-link" routerLinkActive="active"
+            routerLinkActive="active-link"
             [routerLinkActiveOptions]="{exact: true}">About Me</li>
 
-            <li href="#Education"style="cursor: pointer;"
+            <li class="btn btn-sm btn-outline-primary" href="#Education"
             (click)="scrollToSection($event, 'Education')"
-            routerLinkActive="active"
+            routerLinkActive="active-link"
             [routerLinkActiveOptions]="{exact: true}">Education</li>
 
-            <li href="#Achievements"style="cursor: pointer;"
+            <li class="btn btn-sm btn-outline-primary" href="#Achievements"
             (click)="scrollToSection($event, 'Achievements')"
-            routerLinkActive="active"
+            routerLinkActive="active-link"
             [routerLinkActiveOptions]="{exact: true}">Achievements/Certificates</li>
 
-            <li href="#Skills"style="cursor: pointer;"
+            <li class="btn btn-sm btn-outline-primary" href="#Skills"
             (click)="scrollToSection($event, 'Skills')"
-            routerLinkActive="active"
+            routerLinkActive="active-link"
             [routerLinkActiveOptions]="{exact: true}">Skills</li>
 
-            <li href="#Services"style="cursor: pointer;"
+            <li class="btn btn-sm btn-outline-primary" href="#Services"
             (click)="scrollToSection($event, 'Services')"
-            routerLinkActive="active"
+            routerLinkActive="active-link"
             [routerLinkActiveOptions]="{exact: true}">Services</li>
 
-            <li href="#Testimonials"style="cursor: pointer;"
+            <li class="btn btn-sm btn-outline-primary" href="#Testimonials"
             (click)="scrollToSection($event, 'Testimonials')"
-            routerLinkActive="active"
+            routerLinkActive="active-link"
             [routerLinkActiveOptions]="{exact: true}">Testimonials</li>
 
-            <li href="#Courses"style="cursor: pointer;"
+            <li class="btn btn-sm btn-outline-primary" href="#Courses"
             (click)="scrollToSection($event, 'Courses')"
-            routerLinkActive="active"
+            routerLinkActive="active-link"
             [routerLinkActiveOptions]="{exact: true}">Courses</li>
 
-            <li href="#Events"style="cursor: pointer;"
+            <li class="btn btn-sm btn-outline-primary" href="#Events" 
             (click)="scrollToSection($event, 'Events')"
-            routerLinkActive="active"
+            routerLinkActive="active-link"
             [routerLinkActiveOptions]="{exact: true}">Events</li>
 
-            <li href="#Products"style="cursor: pointer;"
+            <li class="btn btn-sm btn-outline-primary" href="#Products"
             (click)="scrollToSection($event, 'Products')"
-            routerLinkActive="active"
+            routerLinkActive="active-link"
             [routerLinkActiveOptions]="{exact: true}">Products</li>
 
-            <li href="#Reviews"style="cursor: pointer;"
+            <li class="btn btn-sm btn-outline-primary" href="#Reviews"
             (click)="scrollToSection($event, 'Reviews')"
-            routerLinkActive="active"
+            routerLinkActive="active-link"
             [routerLinkActiveOptions]="{exact: true}">Reviews</li>
             
         </ul>
     </div>
-        
-    <hr >
-    <div class="row   justify-content-around">
+
+    
+    <hr class="m-0 p-0 g-0" >
+    <div class="row   justify-content-around mt-1">
         <!-- First Row code start hrer -->
         <div class="col-sm-12 col-lg-4 " id="About">
             <h5 class="text-color">{{showprofile.trainer?.business_Name || showprofile.institutes}}</h5>
@@ -181,13 +176,13 @@
 
             <div class="mt-4" id="about">
                 <h5 class="text-color">About Us</h5>
-                <p style="text-align: justify;">{{showprofile.About[0].about_us}}</p>
+                <p style="text-align: left;">{{showprofile.About[0].about_us}}</p>
 
                 <hr>
                 <!-- Our Services -->
                 <div class="mt-3" id="Services">
                     <h5 class="text-color">Our Services</h5>
-                    <p style="text-align: justify;">{{showprofile.About[0].our_services}}</p>
+                    <p style="text-align: left;">{{showprofile.About[0].our_services}}</p>
                 </div>
 
                 <hr>
@@ -360,14 +355,7 @@
         <div class="col-sm-12 col-lg-7 border-start px-5" id="Courses" >
             <!-- current batches -->
             <div class="pt-3">
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                    <h5 class="text-color">Current Batches</h5>
-                    <div>
-                        <button class="btn btn-sm btn-primary me-3">Prev</button>
-                        <button class="btn btn-sm btn-primary">Next</button>
-                    </div>
-                </div>
-
+                <h5 class="text-color">Current Batches</h5>
                 <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
                     <div *ngFor="let allcourses of showprofile.OnGoingBatches.slice(0 , 3)" class="col-sm-12 col-md-6 col-lg-4 mb-3">
                       <div class="card" routerLink="/couserenroll/{{allcourses._id}}">
@@ -438,13 +426,7 @@
             
             <!-- Online Events -->
             <div class="mb-2" id="Events">
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                    <h5 class="text-color">Online Events</h5>
-                    <div>
-                        <button class="btn btn-sm btn-primary me-3">Prev</button>
-                        <button class="btn btn-sm btn-primary">Next</button>
-                    </div>
-                </div>
+                <h5 class="text-color">Online Events</h5>
                 <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
                     <div *ngFor="let Event of showprofile.onlineEventsThumbnailUrl.slice(0, 3)" class="col-sm-12 col-md-3 col-lg-4 mb-3">
                       <div class="card" routerLink="/eventdetails/{{Event._id}}">
@@ -572,7 +554,7 @@
            
             
             <div class="row border-top mt-3"id="Reviews">
-                <div class="col-sm-12 col-lg-8  pt-2"  >
+                <div class="col-sm-12 col-lg-12  pt-2"  >
                     <h5 class="text-color">Reviews & Ratings</h5>
                     <div class="d-flex align-items-center gap-3 mt-1">
                         <h6 class="p-2 rounded" style="background-color: var(--btndarkColor);color: white;">4.5</h6>
@@ -713,11 +695,7 @@
 
     </div>
 
-    
 
-    <div class="row" style="height: 100px;background-color: #674ACB;">
-
-    </div>
 </div>
 
 

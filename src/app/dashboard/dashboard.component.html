@@ -1,21 +1,18 @@
 <div class="container-fluid " style="background-color: var(--bodyColor);">
 
   <div class="row">
-
-
-
     <!-- carousel -->
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="0" class="active"
+        <button type="button" class="bg-dark" data-bs-target="#carouselExampleInterval" data-bs-slide-to="0" class="active"
           aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="1"
+        <button type="button" class="bg-dark" data-bs-target="#carouselExampleInterval" data-bs-slide-to="1"
           aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="2"
+        <button type="button" class="bg-dark" data-bs-target="#carouselExampleInterval" data-bs-slide-to="2"
           aria-label="Slide 3"></button>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active" style="background-image: url('../../assets/img1.jpg'); background-position: right; background-size: cover; height: 380px;" data-bs-interval="5000">
+        <div class="carousel-item active" style="background-image: url('../../assets/img1.jpg'); background-position: right; background-size: cover; height: 450px;" data-bs-interval="5000">
           <div class="container">
             <div class="row h-100 mt-5">
               <div class="col-5 py-3">
@@ -27,7 +24,7 @@
           </div>
         </div>
       
-        <div class="carousel-item" style="background-image: url('../../assets/img2.jpg'); background-position: right; background-size: cover;height: 380px;" data-bs-interval="4000">
+        <div class="carousel-item" style="background-image: url('../../assets/img2.jpg'); background-position: right; background-size: cover;height: 450px;" data-bs-interval="4000">
           <div class="container">
             <div class="row h-100 mt-5">
               <div class="col-5 py-3">
@@ -38,7 +35,7 @@
           
         </div>
       
-        <div class="carousel-item" style="background-image: url('../../assets/img3.jpg'); background-position: right; background-size: cover;height: 380px;">
+        <div class="carousel-item" style="background-image: url('../../assets/img3.jpg'); background-position: right; background-size: cover;height: 450px;">
           <div class="container">
             <div class="row h-100 mt-5">
               <div class="col-5 py-3 ">
@@ -55,14 +52,16 @@
 
 <div class="container-fluid " style="background-color: var(--WhiteColor);">
 <div class="container mt-3">
-  <div class="col-sm-12">
-    <h4 class="text-center fsizeblue m-0 p-0">EXPLORE</h4>
-  <h1 class="text-center fsize m-0 p-0">Our Top Categories</h1>
-  </div>
-  <div class="row gap-1 justify-content-around pt-3">
+      <div class="col-sm-12">
+        <h4 class="text-center fsizeblue m-0 p-0">EXPLORE</h4>
+        <h1 class="text-center fsize m-0 p-0">Our Top Categories</h1>
+      </div>
 
-    <div *ngFor="let category of visibleCategories()" class="col-sm-12 col-md-5 col-lg-3 border border-dark mt-3 rounded box-hover">
-      <div class="p-2 d-flex align-items-center gap-2">
+  
+  <div class="row justify-content-around pt-3">
+
+    <div *ngFor="let category of visibleCategories()" class="col-sm-12 col-md-5 col-lg-4   mt-3 rounded box-hover mb-2">
+      <div class="p-3 d-flex align-items-center gap-2 border shadow-sm rounded">
         <img src="{{category.category_image}}" alt="">
         <div>
           <p class="m-0 categoryheading">{{category?.category_name}}</p>
@@ -70,79 +69,7 @@
         </div>
       </div>
     </div>
-    <!-- <div class="col-sm-12 col-md-5 col-lg-3 border border-dark rounded mt-3 box-hover">
-      <div class="p-2 d-flex align-items-center gap-2">
-        <img src="../../assets/Business.png" alt="">
-        <div>
-          <p class="m-0 categoryheading">Business</p>
-          <p class="m-0 categorysubtitle">Take your journey with this courses.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-5 col-lg-3 border border-dark mt-3 rounded box-hover">
-      <div class="p-2 d-flex align-items-center gap-2">
-        <img src="../../assets/Database_Management 1.png" alt="">
-        <div>
-          <p class="m-0 categoryheading">Data Science</p>
-          <p class="m-0 categorysubtitle">Discover the data science.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-5 col-lg-3 border border-dark mt-3 rounded box-hover">
-      <div class="p-2 d-flex align-items-center gap-2">
-        <img src="../../assets/marketing.png" alt="">
-        <div>
-          <p class="m-0 categoryheading">Marketing</p>
-          <p class="m-0 categorysubtitle">Take up your self in the next level.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-5 col-lg-3 border border-dark mt-3 rounded box-hover">
-      <div class="p-2 d-flex align-items-center gap-2">
-        <img src="../../assets/Life style.png" alt="">
-        <div>
-          <p class="m-0 categoryheading">Life Styles</p>
-          <p class="m-0 categorysubtitle">Improved your life style course.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-5 col-lg-3 border border-dark mt-3 rounded box-hover">
-      <div class="p-2 d-flex align-items-center gap-2">
-        <img src="../../assets/photography-01 1.png" alt="">
-        <div>
-          <p class="m-0 categoryheading">Photography</p>
-          <p class="m-0 categorysubtitle">Become the great photographer.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-5 col-lg-3 border border-dark mt-3 rounded box-hover">
-      <div class="p-2 d-flex align-items-center gap-2">
-        <img src="../../assets/Design.png" alt="">
-        <div>
-          <p class="m-0 categoryheading">Art & Design</p>
-          <p class="m-0 categorysubtitle">Grow your design skills.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-5 col-lg-3 border border-dark mt-3 rounded box-hover">
-      <div class="p-2 d-flex align-items-center gap-2">
-        <img src="../../assets/Health.png" alt="">
-        <div>
-          <p class="m-0 categoryheading">Health & Fitness</p>
-          <p class="m-0 categorysubtitle">Enjoy the health life with fitness.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-5 col-lg-3 border border-dark mt-3 rounded box-hover">
-      <div class="p-2 d-flex align-items-center gap-2">
-        <img src="../../assets/music-love.png" alt="">
-        <div>
-          <p class="m-0 categoryheading">Music</p>
-          <p class="m-0 categorysubtitle">Improve your self with music.</p>
-        </div>
-      </div>
-    </div> -->
-    <div class="text-end mt-2">
+     <div class="text-end mt-2">
       <p routerLink="/relevance/trainer" class="me-5 ViewmoreArrow">View More <i class="fa-solid fa-arrow-right"></i> </p>
     </div>
   </div>
@@ -219,7 +146,7 @@
       <div class="row align-items-center">
         <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
           <div class="text-center">
-            <img src="../../assets/Vector.png" height="60px" width="60px" alt=""><br>
+            <img src="../../assets/Connect ICON.png" height="60px" width="60px" alt=""><br>
             <small class="workflowwords">CONNECT</small>
           </div>
       </div>
@@ -237,7 +164,7 @@
      
       <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
         <div class="text-center">
-          <img src="../../assets/share.png" height="60px" width="60px" alt=""><br>
+          <img src="../../assets/Share ICON.png" height="60px" width="60px" alt=""><br>
           <small class="workflowwords">SHARE</small>
         </div>
       </div>
@@ -255,7 +182,7 @@
 
       <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
         <div class="text-center">
-          <img src="../../assets/Earn.png" height="60px" width="60px" alt=""><br>
+          <img src="../../assets/EARN ICON.png" height="60px" width="60px" alt=""><br>
           <small class="workflowwords">EARN</small>
         </div>
       </div>
@@ -273,8 +200,8 @@
       
       <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
         <div class="text-center">
-          <img src="../../assets/Lern.png" height="60px" width="60px" alt=""><br>
-          <small  class="workflowwords">LERN</small>
+          <img src="../../assets/LEARN ICON.png" height="60px" width="60px" alt=""><br>
+          <small  class="workflowwords">LEARN</small>
         </div>
       </div>
     </div>
