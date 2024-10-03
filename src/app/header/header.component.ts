@@ -12,6 +12,8 @@ import { DashboardService } from '../common_service/dashboard.service';
 })
 export class HeaderComponent {
 
+  
+
   Showcategorydata:any;
   category: string = '';
   id: string = '';

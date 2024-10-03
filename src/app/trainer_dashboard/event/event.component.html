@@ -95,6 +95,24 @@
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+              <label for="event_location" class="col-form-label">Location:</label>
+              <input type="text" class="form-control" id="event_location" [(ngModel)]="event.event_location"
+                name="event_location" required />
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+              <label for="event_languages" class="col-form-label">Event Language:</label>
+              <input type="text" class="form-control" id="event_languages" [(ngModel)]="event.event_languages"
+                name="event_languages" required />
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+              <label for="estimated_seats" class="col-form-label">Estimate Seat:</label>
+              <input type="text" class="form-control" id="estimated_seats" [(ngModel)]="event.estimated_seats"
+                name="estimated_seats" required />
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
               <label for="event_thumbnail" class="col-form-label">Event Thumbnail Image</label>
               <input class="form-control" type="file" id="event_thumbnail" name="event_thumbnail" (change)="onFileSelected($event)" required>
             </div>

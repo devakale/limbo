@@ -1,18 +1,3 @@
-<!-- <div class="container-fluid">
-  <div class="row">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3"></div>
-      <div *ngFor="let trainer of filtertrainer"   class="col-sm-12 col-md-6 col-lg-2 mb-2 ">
-        <div class="card p-2 round" routerLink="/coursedetails/{{trainer.t_id}}" >
-          <img src="../../assets/1.jpg" class="card-img-top rounded" alt="...">
-          <div class="card-body text-center">
-            <b class="card-title" style="font-size: medium;">{{trainer.f_Name || "John" }} <label >{{trainer.l_Name || "Deo" }}</label></b>
-            <p>{{trainer.course_count}} Courses </p>
-            </div>
-        </div>
-      </div>
-  </div>
-</div> -->
-
 <div class="container-fluid" style="background-color: var(--bodyColor);">
   <div class="row">
     <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
@@ -39,7 +24,7 @@
           <div class="text-center mt-3" style="position: relative;" >
           <img src="{{trainer.trainer_image}}" class="object-fit-cover rounded-circle img-class"  alt="...">
         </div>
-        <button class="btn btn-sm rounded viewtrainerbtn">View Profile</button>
+        <button routerLink="/coursedetails/{{trainer._id}}" class="btn btn-sm rounded viewtrainerbtn">View Profile</button>
           <div class="card-body text-center">
             <p class="card-title trainernameheading">{{trainer.Business_Name}}</p>
             <p > {{trainer.f_Name || "John" }}  {{trainer.l_Name || "Deo" }}</p>

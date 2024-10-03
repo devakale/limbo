@@ -30,6 +30,10 @@ export class EventComponent  implements OnInit{
     event_date:' ',
     event_start_time: ' ',
     event_end_time: ' ',
+    event_location:' ',
+     event_languages: '',
+    estimated_seats:' ',
+
     event_thumbnail:null,
   };
 
@@ -61,6 +65,10 @@ export class EventComponent  implements OnInit{
     formData.append('event_date', this.event.event_date.trim());
     formData.append('event_start_time', this.event.event_start_time.trim());
     formData.append('event_end_time', this.event.event_end_time.trim());
+    formData.append('event_location', this.event.event_location.trim());
+    formData.append('event_languages', this.event.event_languages.trim());
+    formData.append('estimated_seats', this.event.estimated_seats.trim());
+
   
     if (this.selectedFile) {
       formData.append('event_thumbnail', this.selectedFile, this.selectedFile.name);

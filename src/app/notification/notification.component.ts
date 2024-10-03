@@ -11,7 +11,7 @@ export class NotificationComponent implements OnInit {
   Shownotification: any;
   totalItems = 0;
   currentPage = 1;
-  itemsPerPage = 4;  
+  itemsPerPage = 6;  
   p: number = 1;
 
   constructor(private service: LoginService) {}
