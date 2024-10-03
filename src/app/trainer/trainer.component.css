@@ -1,5 +1,5 @@
 .img-class{
-    width: 170px !important;
+    width: 180px !important;
     height: 180px;
     margin-top: -45%;
      border: 1px solid #307DFF; 
@@ -7,13 +7,14 @@
 }
 .viewtrainerbtn {
     position: absolute !important;
-    top: 10%;
-    left: 32%;
+    top: 0%;
+    left: 35%;
     background-color: transparent; 
     color: #f2f4f7; 
     border: none; 
     background-color: #307DFF;
-    transition: background-color 0.3s ease, color 0.3s ease; }
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
 
 /* .viewtrainerbtn:hover {
     background-color: #307DFF;

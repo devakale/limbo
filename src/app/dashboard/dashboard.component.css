@@ -65,17 +65,24 @@
 }
 
 .viewtrainerbtn {
-  position: absolute;
-  font-size: var(--Poppins14);
-  top: 30%;
+  position: absolute !important;
+  top: 0%;
   left: 35%;
+  background-color: transparent; 
+  color: #f2f4f7; 
+  border: none; 
   background-color: #307DFF;
-  color: #ffffff;
-  display: none;
+  transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
 
-
+.img-class{
+  width: 180px !important;
+  height: 180px;
+  margin-top: -45%;
+   border: 1px solid #307DFF; 
+   padding: 2px
+}
 
 
 .line-container {

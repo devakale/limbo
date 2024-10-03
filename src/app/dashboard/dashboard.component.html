@@ -12,7 +12,7 @@
           aria-label="Slide 3"></button>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active" style="background-image: url('../../assets/img1.jpg'); background-position: right; background-size: cover; height: 450px;" data-bs-interval="5000">
+        <div class="carousel-item active" style="background-image: url('../../assets/img1.jpg'); background-position: right; background-size: cover;object-fit: cover; height: 500px;" data-bs-interval="5000">
           <div class="container">
             <div class="row h-100 mt-5">
               <div class="col-5 py-3">
@@ -24,7 +24,7 @@
           </div>
         </div>
       
-        <div class="carousel-item" style="background-image: url('../../assets/img2.jpg'); background-position: right; background-size: cover;height: 450px;" data-bs-interval="4000">
+        <div class="carousel-item" style="background-image: url('../../assets/img2.jpg'); background-position: right; background-size: cover;height: 500px;" data-bs-interval="4000">
           <div class="container">
             <div class="row h-100 mt-5">
               <div class="col-5 py-3">
@@ -35,7 +35,7 @@
           
         </div>
       
-        <div class="carousel-item" style="background-image: url('../../assets/img3.jpg'); background-position: right; background-size: cover;height: 450px;">
+        <div class="carousel-item" style="background-image: url('../../assets/img3.jpg'); background-position: right; background-size: cover;height: 500px;">
           <div class="container">
             <div class="row h-100 mt-5">
               <div class="col-5 py-3 ">
@@ -85,7 +85,30 @@
     <h1 class="text-center fsize m-0 p-0">Top Trainers</h1>
   </div>
   <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 mt-3">
-    <div *ngFor="let trainer of visibleTrainer()" class="col-sm-12 col-md-6 col-lg-3  mb-3">
+    <div *ngFor="let trainer of visibleTrainer()" class="col-sm-12 col-md-6 col-lg-3  mb-3" >
+      <div class="card trainercard " style="margin-top: 40%;border: none;" routerLink="/coursedetails/{{trainer.t_id}}" >
+        <div class="text-center mt-3" style="position: relative;" >
+        <img src="{{trainer.trainer_image}}" class="object-fit-cover rounded-circle img-class"  alt="...">
+      </div>
+      <button class="btn btn-sm rounded viewtrainerbtn">View Profile</button>
+        <div class="card-body text-center">
+          <p class="card-title trainernameheading">{{trainer.Business_Name}}</p>
+          <p > {{trainer.f_Name || "John" }}  {{trainer.l_Name || "Deo" }}</p>
+            <div class="social-icons">
+              <i href="https://www.facebook.com"  class="fa-brands fa-facebook  rounded-pill social-icons1"></i>
+              <i href="https://twitter.com" target="_blank" class="fab fa-twitter rounded-pill social-icons1"></i>
+              <i href="https://www.instagram.com" target="_blank" class="fab fa-instagram rounded-pill social-icons1" ></i>
+              <i href="https://www.linkedin.com" target="_blank" class="fab fa-linkedin-in  rounded-pill social-icons1"></i>
+              <i href="https://www.youtube.com" target="_blank" class="fab fa-youtube  rounded-pill social-icons1"></i>
+            </div>
+          </div>
+        <div class="card-footer d-flex justify-content-between trainercardfooter" style="background-color: white;">
+          <p> <i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i> {{trainer.ratings || 4.5}}</p>
+          <b>{{trainer.course_count}} Courses</b>
+        </div>
+      </div>
+    </div>
+    <!-- <div *ngFor="let trainer of visibleTrainer()" class="col-sm-12 col-md-6 col-lg-3  mb-3">
       <div class="card trainercard " routerLink="/coursedetails/{{trainer.t_id}}">
         <div class="text-center mt-3">
         <img src="{{trainer.trainer_image}}" class="object-fit-cover rounded-circle" alt="..." style="width: 170px !important;height: 170px;">
@@ -107,7 +130,7 @@
           <b>{{trainer.course_count}} Courses</b>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <!-- <div *ngFor="let trainer of visibleTrainer()"
@@ -151,7 +174,7 @@
           </div>
       </div>
 
-      <div class="col-sm-12 col-md-5 col-lg-1">
+      <div class="col-sm-12 col-md-5 col-lg-1 me-2">
         <svg stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 550 300">
           <path id="line-1" fill="none" stroke="white" stroke-width="14" stroke-dasharray="1000" stroke-dashoffset="1000"
             d="M18.9 128.6c62 33 186 99 311.3 28.5 37.3-21 77.3-108-81.2-92.3-175.5 17.3-6 116.6 54.4 132.5 
@@ -169,7 +192,7 @@
         </div>
       </div>
 
-      <div class="col-sm-12 col-md-5 col-lg-1">
+      <div class="col-sm-12 col-md-5 col-lg-1 me-2">
         <svg stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 550 300">
           <path id="line-2" fill="none" stroke="white" stroke-width="14" stroke-dasharray="1000" stroke-dashoffset="1000"
             d="M18.9 128.6c62 33 186 99 311.3 28.5 37.3-21 77.3-108-81.2-92.3-175.5 17.3-6 116.6 54.4 132.5 
@@ -187,7 +210,7 @@
         </div>
       </div>
 
-      <div class="col-sm-12 col-md-5 col-lg-1">
+      <div class="col-sm-12 col-md-5 col-lg-1 me-2">
         <svg stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 550 300">
           <path id="line-3" fill="none" stroke="white" stroke-width="14" stroke-dasharray="1000" stroke-dashoffset="1000"
             d="M18.9 128.6c62 33 186 99 311.3 28.5 37.3-21 77.3-108-81.2-92.3-175.5 17.3-6 116.6 54.4 132.5 
