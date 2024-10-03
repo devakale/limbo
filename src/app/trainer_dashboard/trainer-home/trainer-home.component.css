@@ -58,12 +58,14 @@
         display: flex;
         unicode-bidi: isolate;
         line-height: 35px;
+        cursor: pointer;
+        
  i{
     margin-right: 10px;
-    font-size: 30px;
+    /* font-size: 30px; */
  }
 }
- .hover:hover{
+ /* .hover:hover{
 
     background-color: white;
     color: black;
@@ -72,7 +74,7 @@
     i{
         color: #F96D63;
      }
- }
+ } */
 
 
 
@@ -93,5 +95,15 @@
   color: white;
   font-size: small;
   width: 13%;
+}
+
+
+
+.active {
+  color: #307DFF;
+  font-weight: bold;
+  .active i{
+    color:#307DFF ;
+  }
 }
 
