@@ -34,21 +34,21 @@
           </div>
         </div>
       </div> -->
-      <div *ngFor="let trainer of filteredtrainer" class="col-sm-12 col-md-6 col-lg-3  mb-3">
-        <div class="card trainercard " routerLink="/coursedetails/{{trainer.t_id}}">
-          <div class="text-center mt-3">
-          <img src="{{trainer.trainer_image}}" class="object-fit-cover rounded-circle" alt="..." style="width: 170px !important;height: 170px;">
+      <div *ngFor="let trainer of filteredtrainer" class="col-sm-12 col-md-6 col-lg-3  mb-3" >
+        <div class="card trainercard " style="margin-top: 40%;border: none;" routerLink="/coursedetails/{{trainer.t_id}}" >
+          <div class="text-center mt-3" style="position: relative;" >
+          <img src="{{trainer.trainer_image}}" class="object-fit-cover rounded-circle img-class"  alt="...">
         </div>
         <button class="btn btn-sm rounded viewtrainerbtn">View Profile</button>
           <div class="card-body text-center">
             <p class="card-title trainernameheading">{{trainer.Business_Name}}</p>
             <p > {{trainer.f_Name || "John" }}  {{trainer.l_Name || "Deo" }}</p>
               <div class="social-icons">
-                <i href="https://www.facebook.com"  class="fa-brands fa-facebook border rounded" ></i>
-                <i href="https://twitter.com" target="_blank" class="fab fa-twitter border rounded" ></i>
-                <i href="https://www.instagram.com" target="_blank" class="fab fa-instagram border rounded" ></i>
-                <i href="https://www.linkedin.com" target="_blank" class="fab fa-linkedin-in border rounded" ></i>
-                <i href="https://www.youtube.com" target="_blank" class="fab fa-youtube border rounded" ></i>
+                <i href="https://www.facebook.com"  class="fa-brands fa-facebook  rounded-pill social-icons1"></i>
+                <i href="https://twitter.com" target="_blank" class="fab fa-twitter rounded-pill social-icons1"></i>
+                <i href="https://www.instagram.com" target="_blank" class="fab fa-instagram rounded-pill social-icons1" ></i>
+                <i href="https://www.linkedin.com" target="_blank" class="fab fa-linkedin-in  rounded-pill social-icons1"></i>
+                <i href="https://www.youtube.com" target="_blank" class="fab fa-youtube  rounded-pill social-icons1"></i>
               </div>
             </div>
           <div class="card-footer d-flex justify-content-between trainercardfooter">

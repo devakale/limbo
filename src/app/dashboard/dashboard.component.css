@@ -58,7 +58,7 @@
 
 
 .trainercard {
-  position: relative;
+  /* position: relative; */
 }
 
 .trainercard:hover .viewtrainerbtn {
