@@ -75,21 +75,14 @@
 
     <div *ngIf="!(isLoggedIn$ | async)" class="col-sm-6 col-md-6 col-lg-2 text-end d-flex gap-4 justify-content-end ">
       <button routerLink="/signin" class="btn btn-primary rounded samllpoppins">Sign In</button>
-      <button routerLink="/signup" class="btn btn-light rounded border samllpoppins">Sign Up</button>
+      <button class="btn btn-light rounded border samllpoppins">Sign Up</button>
     </div>
 
     <div *ngIf="(isLoggedIn$ | async)" class="col-sm-6 col-md-6 col-lg-2 d-flex align-items-center justify-content-end">
-      <button *ngIf="isUser" class="btn btn-sm btn-primary main-button me-3" data-bs-toggle="modal" data-bs-target="#exampleModalExpert" style="font-size: x-small;">
+      <button *ngIf="isUser" class="btn btn-sm btn-primary main-button" data-bs-toggle="modal" data-bs-target="#exampleModalExpert" style="font-size: x-small;">
         Become an Expert
       </button>
-     
-      <p routerLink="/Notification" class=" position-relative mt-3 me-3">
-        <i class="fa-regular fa-bell fs-4"></i>
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
-          2
-          <span class="visually-hidden">unread messages</span>
-        </span>
-      </p>
+      <i class="fa-solid fa-house-user Home-icon mx-3 text-primary" routerLink="/trainer" style="font-size: 35px;"></i>
       <div class="dropdown">
         <i class="fa-solid fa-user icon" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
         <ul class="dropdown-menu" >
@@ -99,7 +92,6 @@
           <li><a class="dropdown-item" (click)="logout()">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
         </ul>
       </div>
-      <i class="fa-solid fa-bars Home-icon mx-3 text-primary" routerLink="/trainer" style="font-size: 25px;"></i>
     </div>
 
     
