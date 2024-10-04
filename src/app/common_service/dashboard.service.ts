@@ -45,8 +45,8 @@ export class DashboardService {
             return this.http.get<any>(`${this.beforelogin}/course/${id}`)
           }
 
-          gettrainerdata():Observable<any>{
-            return this.http.get<any>(`${this.beforelogin}/trainers`);
+          gettrainerdata(page: number, limit: number):Observable<any>{
+            return this.http.get<any>(`${this.beforelogin}/trainers?page=${page}&limit=${limit}`);
            }
 
            productdata():Observable<any>{
@@ -68,6 +68,10 @@ export class DashboardService {
 
            courseenroll(data:{course_id: string}): Observable<any> {
             return this.http.post<any>(`${this.Enroll}`, data);
+          }
+
+          bookevent(data:{event_id: string}): Observable<any> {
+            return this.http.post<any>(`${this.API_URL}/event/registerevent`, data);
           }
 
           SEOkeywords():Observable<any>{
@@ -103,7 +107,7 @@ export class DashboardService {
           }
 
           deletecartproductbyID(productId: string): Observable<any> {
-            return this.http.delete(`${this.API_URL}/cart/remove${productId}`);
+            return this.http.delete(`${this.API_URL}/cart/remove/${productId}`);
           }
 
           getblogdata():Observable<any>{

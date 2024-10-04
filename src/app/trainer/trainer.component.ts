@@ -14,21 +14,19 @@ export class TrainerComponent implements OnInit {
   filteredtrainer: any[] = [];
   selectedCategories: string[] = []; 
   searchTerm: string = ''; // New property for search term
-  page = 0;
-  limit = 4;
+  p: number = 1;
+  totalItems = 0;
+  currentPage = 1;
+  itemsPerPage = 8; 
   
   constructor(private service: DashboardService, private filter: FilterService,
     private http: HttpClient, private searchService: SearchService
   ) {}
 
   ngOnInit(): void {
-    this.service.gettrainerdata().subscribe(data => {
-      this.showtrainerData = data.trainers;
-      console.log(this.showtrainerData);
-      this.filterTrainers(); // Initial filter
-    });
+        this.loadtrainers(this.currentPage,this.itemsPerPage)
 
-    this.filter.selectedCategories$.subscribe(categories => {
+       this.filter.selectedCategories$.subscribe(categories => {
       this.selectedCategories = categories;
       this.filterTrainers(); // Re-filter on category selection
     });
@@ -38,6 +36,15 @@ export class TrainerComponent implements OnInit {
       this.searchTerm = term;
       console.log('Received search term in TrainerComponent:', this.searchTerm);
       this.fetchTrainer(); // Fetch trainers based on search term
+    });
+  }
+
+  loadtrainers(page: number, limit: number): void {
+    this.service.gettrainerdata(page, limit).subscribe(data => {
+      this.showtrainerData = data.trainers;
+      console.log(this.showtrainerData);
+      this.totalItems = data.pagination.totalItems;
+      this.filterTrainers(); // Initial filter
     });
   }
 
@@ -85,13 +92,20 @@ export class TrainerComponent implements OnInit {
         );
     } else {
       // If no search term, reload all trainers
-      this.service.gettrainerdata().subscribe(data => {
-        this.showtrainerData = data.trainers || []; // Ensure this is an array
-        this.filterTrainers(); // Filter with all trainers
-      });
+      // this.service.gettrainerdata().subscribe(data => {
+      //   this.showtrainerData = data.trainers || []; // Ensure this is an array
+      //   this.filterTrainers(); // Filter with all trainers
+      // });
+      this.loadtrainers(this.currentPage,this.itemsPerPage)
     }
   }
   
+   // Handle page change for pagination
+   onPageChange(page: number): void {
+    this.currentPage = page;
+    this.loadtrainers(this.currentPage, this.itemsPerPage); 
+    this.p = page;
+  }
 
 }
 

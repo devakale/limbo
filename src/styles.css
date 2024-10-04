@@ -49,7 +49,6 @@ body {
     /* transform: translatey(-10px) */
   }
 
-
 /* css forcategory Show on card image */
   .left-side-top{
     background-color: #F9C4C4;
@@ -67,33 +66,33 @@ body {
 
 
 /* Style for Registration POP up */
-
 .sign-in-btn{
   background: var(--TextColor)  ;
   color: var(--WhiteColor);
   padding: 10px;
 }
+
 .rounded-input{
   border-radius: 15px;
 }
+
 .inputbtn{
   position: relative;
 }
+
 .inputbtn > button{
   position: absolute;
   right: 10px;
   border: none;
   background-color: transparent;
 }
+
 sup{
   color: red;
 }
 
 
 /* New Theam CSS */
-
-
-
 :root {
   --bodyColor: #F5F5F5; /*Background Color */
   --rowColor: #1B1E2A;  /*Row Background Color */
@@ -108,9 +107,7 @@ sup{
   --darkBlueColor: #123726;
   --boxShadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
   --transition: all 0.5s;
-  --borderRadius: 20px;
-
-  
+  --borderRadius: 20px;  
 }
 
 /* CSS For Product Card on Hover  */
@@ -119,15 +116,15 @@ sup{
 }
 .productcard:hover  .onproducthover{
   display: block;
-
 }
+
 .onproducthover{
   position: absolute;
   top: 30%;
   left: 30%;
   display: none;
-
 }
+
 .onproducthoverflag{
   position: absolute;
   top: 3%;

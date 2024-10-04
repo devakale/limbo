@@ -82,9 +82,9 @@
       <button *ngIf="isUser" class="btn btn-sm btn-primary main-button" data-bs-toggle="modal" data-bs-target="#exampleModalExpert" style="font-size: x-small;">
         Become an Expert
       </button>
-      <i class="fa-solid fa-house-user Home-icon mx-3 text-primary" routerLink="/trainer" style="font-size: 35px;"></i>
-      <div class="dropdown">
-        <i class="fa-solid fa-user icon" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+      <i class="fa-regular fa-bell me-3 fs-3"></i>
+        <div class="dropdown">
+        <i routerLink="/Notification" class="fa-solid fa-user icon" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
         <ul class="dropdown-menu" >
           <li><a class="dropdown-item">{{ (user$ | async) }}</a></li>
           <li><a class="dropdown-item" routerLink="/edittrainer">Edit Profile <i class="fa-solid fa-user-pen"></i></a></li>
@@ -92,6 +92,7 @@
           <li><a class="dropdown-item" (click)="logout()">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
         </ul>
       </div>
+      <i routerLink="/trainer" class="fa-solid fa-bars text-primary fs-4 ms-3" ></i>
     </div>
 
     

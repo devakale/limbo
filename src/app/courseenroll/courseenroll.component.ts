@@ -69,6 +69,46 @@ export class CourseenrollComponent implements OnInit {
       }
   }
 
+  token = sessionStorage.getItem('Authorization');
+
+  stars: number[] = [1, 2, 3, 4, 5];  
+  rating: number = 0;  
+
+
+  toggleRating(clickedStar: number): void {
+    if (this.rating === clickedStar) {
+      this.rating = 0; // Reset the rating if the same star is clicked
+    } else {
+      this.rating = clickedStar; // Set the new rating
+    }
+    this.review.star_count = this.rating; // Ensure star count is updated
+  }
+
+  review = {
+    review: ' ',
+    star_count: 0,
+    t_id:' ',
+  }
+  postreview(){
+    if(this.token){
+      this.review.star_count = this.rating;
+    this.dservice.postreview(this.review).subscribe({
+      next : (Response) =>{
+        Swal.fire('Ohh...!', 'You are Question send Successfully..!', 'success');
+      },
+      error : (Error) => {
+        Swal.fire('Error', 'sorry..!', 'error');
+      }
+    })
+  }
+  else{
+    const modalElement = document.getElementById('CheckLoggedIN');
+    if (modalElement) {
+      const modal = new (window as any).bootstrap.Modal(modalElement);
+      modal.show();
+    }  }
+  }
+
 
   // conver Rupees K or laks
   getFormattedPrice(price: number): string {

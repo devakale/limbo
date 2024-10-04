@@ -47,31 +47,14 @@
   }
 }
   
-.btn1{
-  background-color: var(--TextColor);
-    /* background: rgb(97,73,205);
-    background: linear-gradient(90deg, rgba(97,73,205,1) 0%, rgba(166,84,172,1) 50%, rgba(234,95,139,1) 100%); */
-    color: white;
-    border-radius: 25px;
-    width: 90%;
-    text-align: center;
-}
 .btnq{
   background-color: var(--TextColor);
-    /* background: rgb(97,73,205);
-    background: linear-gradient(90deg, rgba(97,73,205,1) 0%, rgba(166,84,172,1) 50%, rgba(234,95,139,1) 100%); */
     color: white;
-    border-radius: 25px;
+    border-radius: 5px;
     text-align: center;
+    font-size: 14px;
 }
-.btn-0{
-    background-color: #F96D63;
-    color: white;
-}
-.rounded-box{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
+
 .card-title{
     font-size: medium;
 }
@@ -93,9 +76,6 @@
     border-radius: 10px;
   }
 
-  /* .carousel {
-    background-color: #f2f2f2;
-  } */
 
   .carousel-indicators button {
     width: 12px;

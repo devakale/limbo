@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   Showcouserdata:any[]=[];
   showproductdata:any[]=[];
   showeventdata:any[]=[];
+  ShowAllCategory:any[]=[];
 
   showtrainerData:any[]=[];
   selectedProduct: any;
@@ -59,9 +60,14 @@ export class DashboardComponent implements OnInit {
 
    ngOnInit(): void{
       this.Dservice.gethomedatauser(this.page, this.limit).subscribe( data =>{
-        console.log(data);
+        console.log("category data",data);
         this.showCategorydata = data.categoriesWithFullImageUrl;
       });
+
+      this.Dservice.getcategoryname().subscribe(response =>{
+        console.log(response);
+        this.ShowAllCategory = response;
+      })
 
       this.Dservice.gethomedatauser(this.page, this.limit).subscribe(result => {
         this.Showcouserdata = result.coursesWithFullImageUrl;

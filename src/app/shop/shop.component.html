@@ -39,7 +39,7 @@
           <span class="mx-3 p-1">{{ count }}</span>
           <button class="btn p-2" (click)="increment()"> <i class="fa-solid fa-plus"></i></button>
         </div>
-        <button (click)="buyproduct(1, Showproductdata._id)"  class="btn text-white me-3 mb-2" style="background-color: var(--TextColor)">Buy now</button>
+        <button (click)="buyproduct( count , Showproductdata._id)"  class="btn text-white me-3 mb-2" style="background-color: var(--TextColor)">Buy now</button>
       </div>
       
       <button routerLink="/coursedetails/{{Showproductdata?._id}}" class="btn border-primary me-3" >Add to Wishlist</button>

@@ -20,6 +20,9 @@ export class CourseDetailsComponent implements OnInit {
   starsArray = Array(5).fill(0);
   id: any;
   p: number = 1;
+  currentCourse: number = 1;
+  currentPageUpcomingBatches: number = 1;
+
 
 
 
@@ -143,7 +146,6 @@ export class CourseDetailsComponent implements OnInit {
 
   stars: number[] = [1, 2, 3, 4, 5];  
   rating: number = 0;  
-
 
 
   toggleRating(clickedStar: number): void {

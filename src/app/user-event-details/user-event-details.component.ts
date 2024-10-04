@@ -31,19 +31,21 @@ export class UserEventDetailsComponent {
       })
   }
 
-  BookEvent() {
+  BookEvent(event_id:string) {
     const token = sessionStorage.getItem('Authorization'); // Assuming your token is stored in sessionStorage
 
-    if (token) {
-        // this.dservice.courseenroll(data).subscribe(
-        //     response => {
+    if (token) {  
+      
+      const data = { event_id };
+        this.dservice.bookevent(data).subscribe(
+            response => {
            Swal.fire('Congratulation','You have Succssfully Booked Event! ', 'success');
-        //     },
-        //     error => {
-        //         // console.error("Error during enrollment", error);
-        //          Swal.fire('Error', 'You Have Already Enrolled This course.', 'error');
+            },
+            error => {
+                // console.error("Error during enrollment", error);
+                 Swal.fire('Error', 'You Have Already Enrolled This course.', 'error');
 
-        //     } );
+            } );
         
         }
          else {

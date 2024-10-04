@@ -16,14 +16,16 @@
           <div class="container">
             <div class="row h-100 mt-5">
               <div class="col-5 py-3">
-                <p class="fs-5 fw-bold text-primary">CONNECT.SHARE.GROW</p>
-                <h1 class=" fw-bold" style="font-size: 55px;">Network with Experts Gain Insight</h1>
+                <p class=" fw-bold " style="font-size: 35px;color: #265BBD;">CONNECT.SHARE.GROW</p>
+                <h1 class=" fw-bold" style="font-size: 55px;">NETWORK WITH EXPERTS GAIN INSIGHT</h1>
                 
               </div>
             </div>
           </div>
         </div>
       
+
+
         <div class="carousel-item" style="background-image: url('../../assets/img2.jpg'); background-position: right; background-size: cover;height: 500px;" data-bs-interval="4000">
           <div class="container">
             <div class="row h-100 mt-5">
@@ -60,8 +62,8 @@
   
   <div class="row justify-content-around pt-3">
 
-    <div *ngFor="let category of visibleCategories()" class="col-sm-12 col-md-5 col-lg-4   mt-3 rounded box-hover mb-2">
-      <div class="p-3 d-flex align-items-center gap-2 border shadow-sm rounded">
+    <div *ngFor="let category of visibleCategories()" class="col-sm-12 col-md-5 col-lg-4   mt-3 rounded box-hover mb-2" [routerLink]="['/relevance']" [queryParams]="{ category: category.category_name }">
+      <div class="p-3 d-flex align-items-center gap-2 border shadow-sm rounded" style="cursor: pointer;">
         <img src="{{category.category_image}}" alt="">
         <div>
           <p class="m-0 categoryheading">{{category?.category_name}}</p>
@@ -70,9 +72,34 @@
       </div>
     </div>
      <div class="text-end mt-2">
-      <p routerLink="/relevance/trainer" class="me-5 ViewmoreArrow">View More <i class="fa-solid fa-arrow-right"></i> </p>
-    </div>
-  </div>
+      <p  class=" ViewmoreArrow" data-bs-toggle="modal" data-bs-target="#categorymodel">View More <i class="fa-solid fa-arrow-right"></i> </p>
+      </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="categorymodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">All Categories</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                <div *ngFor="let category of ShowAllCategory" class="col-sm-12 col-md-5 col-lg-4   mt-3 rounded box-hover mb-2" [routerLink]="['/relevance']" [queryParams]="{ category: category.category_name }" data-bs-dismiss="modal" aria-label="Close">
+                  <div class="p-3 d-flex align-items-center gap-2 border shadow-sm rounded" style="cursor: pointer;">
+                    <img src="{{category.category_image}}" alt="">
+                    <div>
+                      <p class="m-0 categoryheading">{{category?.category_name}}</p>
+                      <p class="m-0 categorysubtitle">{{category?.Sub_title}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
   
 </div>
 </div>
@@ -169,7 +196,7 @@
       <div class="row align-items-center">
         <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
           <div class="text-center">
-            <img src="../../assets/Connect ICON.png" height="60px" width="60px" alt=""><br>
+            <img src="../../assets/CONNECT ICON NEW.png" height="60px" width="60px" alt=""><br>
             <small class="workflowwords">CONNECT</small>
           </div>
       </div>
@@ -187,7 +214,7 @@
      
       <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
         <div class="text-center">
-          <img src="../../assets/Share ICON.png" height="60px" width="60px" alt=""><br>
+          <img src="../../assets/SHARE ICON NEW.png" height="60px" width="60px" alt=""><br>
           <small class="workflowwords">SHARE</small>
         </div>
       </div>
@@ -205,7 +232,7 @@
 
       <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
         <div class="text-center">
-          <img src="../../assets/EARN ICON.png" height="60px" width="60px" alt=""><br>
+          <img src="../../assets/EARN ICON NEW.png" height="60px" width="60px" alt=""><br>
           <small class="workflowwords">EARN</small>
         </div>
       </div>
@@ -223,7 +250,7 @@
       
       <div class="col-sm-12 col-md-5 col-lg-2 my-3 bg-light d-flex align-items-center justify-content-center py-4 rounded">
         <div class="text-center">
-          <img src="../../assets/LEARN ICON.png" height="60px" width="60px" alt=""><br>
+          <img src="../../assets/LEARN ICON NEW.png" height="60px" width="60px" alt=""><br>
           <small  class="workflowwords">LEARN</small>
         </div>
       </div>
