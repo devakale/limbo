@@ -40,6 +40,7 @@ export class CourseDetailsComponent implements OnInit {
     this.enquiry.trainerid = this.id;
     this.question.trainerid = this.id;
     this.review.t_id=this.id;
+    this.Appoinment.t_id=this.id;
   }
 
 
@@ -167,7 +168,7 @@ export class CourseDetailsComponent implements OnInit {
       this.review.star_count = this.rating;
     this.dashboard.postreview(this.review).subscribe({
       next : (Response) =>{
-        Swal.fire('Ohh...!', 'You are Question send Successfully..!', 'success');
+        Swal.fire('Ohh...!', 'You are Review Add Successfully..!', 'success');
       },
       error : (Error) => {
         Swal.fire('Error', 'sorry..!', 'error');
@@ -190,9 +191,9 @@ export class CourseDetailsComponent implements OnInit {
 
   BookAppoinment(){
     if(this.token){
-    this.dashboard.BookApnmt(this.review).subscribe({
+    this.dashboard.BookApnmt(this.Appoinment).subscribe({
       next : (Response) =>{
-        Swal.fire('Ohh...!', 'You are Question send Successfully..!', 'success');
+        Swal.fire('Ohh...!', 'You are Appoinment send Successfully..!', 'success');
       },
       error : (Error) => {
         Swal.fire('Error', 'sorry..!', 'error');

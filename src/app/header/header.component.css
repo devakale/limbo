@@ -214,5 +214,9 @@
   color: #307DFF; 
 }
 
+.dropdown-menu {
+  left: auto;     
+  right: 0;       
+}
 
 

@@ -47,78 +47,44 @@
   <mat-tab-group dynamicHeight mat-stretch-tabs="false" mat-align-tabs="start" animationDuration="0ms">
     <mat-tab label="Description" >
       <div class="p-3">
-      <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam perspiciatis aspernatur sequi magni illo libero ab veniam molestiae consequuntur, maiores quasi, tempore tenetur iste fugit nesciunt. Impedit atque beatae reiciendis illum eveniet, nemo adipisci quo quasi est deserunt rem eum debitis culpa nostrum architecto vero officia unde. Facere cum ipsam tenetur sapiente excepturi vero architecto, veritatis totam harum nemo obcaecati possimus, numquam natus odit, expedita dolorum doloremque aliquam praesentium 
-        ut repudiandae illo quasi! Laborum deleniti obcaecati, debitis laudantium dicta sunt dolorum explicabo ea vel! Voluptatibus, a saepe perferendis harum, minima, incidunt assumenda odit ea placeat sapiente dolores eius corporis repellendus?</p>
+      <p style="text-align: justify;">{{Showcoursedetails?.course_brief_info}}</p>
     </div>
       </mat-tab>
     <mat-tab label="Review" >
       <section class="p-3">
-      <div class="row ">
+      <div class="row " *ngFor="let review of ShowCourseReview | paginate: { itemsPerPage: itemsPerPage, currentPage: p, totalItems }">
         <div class="col-1 text-end">
-          <img src="../../assets/Rohit sharma.jpg" class="object-fit-cover rounded-circle" height="60px" width="60px" alt="">
+          <img src="{{review.trainer_image}}" class="object-fit-cover rounded-circle" height="60px" width="60px" alt="">
         </div>
         <div class="col-10">
-          <h6>Sagar Singh</h6>
+          <h6>{{review.user_name}}</h6>
           <div>
-            <span class="fa fa-star fs-6 checked"></span>
-            <span class="ms-2 fa fa-star fs-6 checked"></span>
-            <span class="ms-2 fa fa-star fs-6 checked"></span>
-            <span class="ms-2 fa fa-star fs-6 "></span>
-            <span class="ms-2 fa fa-star fs-6 "></span>&nbsp;
+            <span *ngFor="let star of starsArray; let i = index"
+            [ngClass]="{'fa fa-star checked': i < review.star_count, 'fa fa-star': i <= review.star_count }">
+           </span>
          </div>
-         <p>Very clean and organized with easy to follow tutorials, Exercises, and solutions. This course does start from the beginning with very little knowledge and gives a great overview of common tools used for data science and progresses into more complex concepts and ideas.</p>
+         <p>{{review.review}}</p>
         </div>
       </div>
-      <div class="row ">
-        <div class="col-1 text-end">
-          <img src="../../assets/Rohit sharma.jpg" class="object-fit-cover rounded-circle" height="60px" width="60px" alt="">
-        </div>
-        <div class="col-10">
-          <h6>Sagar Singh</h6>
-          <div>
-            <span class="fa fa-star fs-6 checked"></span>
-            <span class="ms-2 fa fa-star fs-6 checked"></span>
-            <span class="ms-2 fa fa-star fs-6 checked"></span>
-            <span class="ms-2 fa fa-star fs-6 "></span>
-            <span class="ms-2 fa fa-star fs-6 "></span>&nbsp;
-         </div>
-         <p>Very clean and organized with easy to follow tutorials, Exercises, and solutions. This course does start from the beginning with very little knowledge and gives a great overview of common tools used for data science and progresses into more complex concepts and ideas.</p>
-        </div>
-      </div>
-      <div class="row ">
-        <div class="col-1 text-end">
-          <img src="../../assets/Rohit sharma.jpg" class="object-fit-cover rounded-circle" height="60px" width="60px" alt="">
-        </div>
-        <div class="col-10">
-          <h6>Sagar Singh</h6>
-          <div>
-            <span class="fa fa-star fs-6 checked"></span>
-            <span class="ms-2 fa fa-star fs-6 checked"></span>
-            <span class="ms-2 fa fa-star fs-6 checked"></span>
-            <span class="ms-2 fa fa-star fs-6 "></span>
-            <span class="ms-2 fa fa-star fs-6 "></span>&nbsp;
-         </div>
-         <p>Very clean and organized with easy to follow tutorials, Exercises, and solutions. This course does start from the beginning with very little knowledge and gives a great overview of common tools used for data science and progresses into more complex concepts and ideas.</p>
-        </div>
-      </div>
+      <pagination-controls (pageChange)="onPageChange($event)" class="text-end" style="font-size: small;"></pagination-controls>
       <!-- Write Review -->
       <div class="mt-3" >
         <h5 class="text-color">Write Review</h5>
         <div class="row">
-            <form (ngSubmit)="postreview()">
+            <form (ngSubmit)="postreviewCourse()" #reviewForm="ngForm">
 
-                <div class="d-flex gap-2 star-rating">
+                <div class="d-flex align-items-center gap-2 star-rating">
                     <span *ngFor="let i of stars; let index = index" class="fa fa-star"
                         [ngClass]="{'checked': index < rating}" (click)="toggleRating(index + 1)"
                         style="cursor: pointer;"></span>
-                    <span>{{ rating }}</span>
+                    <span class="border px-2">{{ rating }}</span>
                 </div>
                 <div class="my-3">
                     <textarea class="form-control" placeholder="Message" [(ngModel)]="review.review"
                         name="review" id="review"></textarea>
                 </div>
                 <div>
-                    <button type="submit" class="btn btnq">Submit you'r Review</button>
+                    <button type="submit" class="btn btnq" [disabled]="!reviewForm.valid">Submit you'r Review</button>
                 </div>
             </form>
         </div>
@@ -237,7 +203,7 @@
   <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="text-end">
-        <button type="button" class="btn-close p-4" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close mt-4 me-4" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body px-5">
       <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">

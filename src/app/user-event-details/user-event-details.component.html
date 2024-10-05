@@ -9,23 +9,7 @@
      </div>
       <p class="poppins-regular" style="text-align: justify;">{{ShowEvent.event_description}}</p>
         <div class="row mt-3">
-          <p class="poppins-medium" style="font-size: 22px;">What you'll learn</p>
-          <div class="col-6">
-            <ul>
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Lorem ipsum dolor sit amet.</li>
-            </ul>
-          </div>
-          <div class="col-6">
-            <ul>
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Lorem ipsum dolor sit amet.</li>
-            </ul>
-          </div>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et aliquid veritatis, doloribus blanditiis harum repellendus beatae fuga amet impedit dicta dolorum, quidem ullam distinctio maxime, at soluta laboriosam eligendi! Ex?</p>            
         </div>
     </div>
     <div class="col-sm-12 col-md-5 col-lg-3">
@@ -63,7 +47,11 @@
           <small><i class="fa-solid fa-clock"></i> Schedule </small>
           <small>{{ShowEvent.event_start_time}} To {{ShowEvent.event_end_time}}  </small>
         </div>
-        <div  class="d-flex align-items-center justify-content-between mb-3">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <small><i class="fa-solid fa-clock"></i> Event Mode </small>
+          <small>{{ShowEvent.event_type}} </small>
+        </div>
+        <div *ngIf="ShowEvent?.event_location"  class="d-flex align-items-center justify-content-between mb-3">
           <small><i class="fa-solid fa-location-dot"></i> Location </small>
           <small> {{ShowEvent.event_location}} </small>
         </div>
@@ -84,6 +72,91 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="row">
+    <mat-tab-group dynamicHeight mat-stretch-tabs="false" mat-align-tabs="start" animationDuration="0ms">
+      <mat-tab label="Description" >
+        <div class="p-3">
+        <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam perspiciatis aspernatur sequi magni illo libero ab veniam molestiae consequuntur, maiores quasi, tempore tenetur iste fugit nesciunt. Impedit atque beatae reiciendis illum eveniet, nemo adipisci quo quasi est deserunt rem eum debitis culpa nostrum architecto vero officia unde. Facere cum ipsam tenetur sapiente excepturi vero architecto, veritatis totam harum nemo obcaecati possimus, numquam natus odit, expedita dolorum doloremque aliquam praesentium 
+          ut repudiandae illo quasi! Laborum deleniti obcaecati, debitis laudantium dicta sunt dolorum explicabo ea vel! Voluptatibus, a saepe perferendis harum, minima, incidunt assumenda odit ea placeat sapiente dolores eius corporis repellendus?</p>
+      </div>
+        </mat-tab>
+      <mat-tab label="Review" >
+        <section class="p-3">
+        <div class="row ">
+          <div class="col-1 text-end">
+            <img src="../../assets/Rohit sharma.jpg" class="object-fit-cover rounded-circle" height="60px" width="60px" alt="">
+          </div>
+          <div class="col-10">
+            <h6>Sagar Singh</h6>
+            <div>
+              <span class="fa fa-star fs-6 checked"></span>
+              <span class="ms-2 fa fa-star fs-6 checked"></span>
+              <span class="ms-2 fa fa-star fs-6 checked"></span>
+              <span class="ms-2 fa fa-star fs-6 "></span>
+              <span class="ms-2 fa fa-star fs-6 "></span>&nbsp;
+           </div>
+           <p>Very clean and organized with easy to follow tutorials, Exercises, and solutions. This course does start from the beginning with very little knowledge and gives a great overview of common tools used for data science and progresses into more complex concepts and ideas.</p>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col-1 text-end">
+            <img src="../../assets/Rohit sharma.jpg" class="object-fit-cover rounded-circle" height="60px" width="60px" alt="">
+          </div>
+          <div class="col-10">
+            <h6>Sagar Singh</h6>
+            <div>
+              <span class="fa fa-star fs-6 checked"></span>
+              <span class="ms-2 fa fa-star fs-6 checked"></span>
+              <span class="ms-2 fa fa-star fs-6 checked"></span>
+              <span class="ms-2 fa fa-star fs-6 "></span>
+              <span class="ms-2 fa fa-star fs-6 "></span>&nbsp;
+           </div>
+           <p>Very clean and organized with easy to follow tutorials, Exercises, and solutions. This course does start from the beginning with very little knowledge and gives a great overview of common tools used for data science and progresses into more complex concepts and ideas.</p>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col-1 text-end">
+            <img src="../../assets/Rohit sharma.jpg" class="object-fit-cover rounded-circle" height="60px" width="60px" alt="">
+          </div>
+          <div class="col-10">
+            <h6>Sagar Singh</h6>
+            <div>
+              <span class="fa fa-star fs-6 checked"></span>
+              <span class="ms-2 fa fa-star fs-6 checked"></span>
+              <span class="ms-2 fa fa-star fs-6 checked"></span>
+              <span class="ms-2 fa fa-star fs-6 "></span>
+              <span class="ms-2 fa fa-star fs-6 "></span>&nbsp;
+           </div>
+           <p>Very clean and organized with easy to follow tutorials, Exercises, and solutions. This course does start from the beginning with very little knowledge and gives a great overview of common tools used for data science and progresses into more complex concepts and ideas.</p>
+          </div>
+        </div>
+        <!-- Write Review -->
+        <div class="mt-3" >
+          <h5 class="text-color">Write Review</h5>
+          <div class="row">
+              <form (ngSubmit)="postreviewCourse()" #reviewForm="ngForm">
+  
+                  <div class="d-flex align-items-center gap-2 star-rating">
+                      <span *ngFor="let i of stars; let index = index" class="fa fa-star"
+                          [ngClass]="{'checked': index < rating}" (click)="toggleRating(index + 1)"
+                          style="cursor: pointer;"></span>
+                      <span>{{ rating }}</span>
+                  </div>
+                  <div class="my-3">
+                      <textarea class="form-control" placeholder="Message" [(ngModel)]="review.review"
+                          name="review" id="review"></textarea>
+                  </div>
+                  <div>
+                      <button type="submit" class="btn btnq" [disabled]="!reviewForm.valid">Submit you'r Review</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+        </section>
+      </mat-tab>
+    </mat-tab-group>
   </div>
 
  

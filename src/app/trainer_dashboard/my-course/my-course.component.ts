@@ -51,6 +51,7 @@ export class MyCourseComponent implements OnInit {
     start_time:' ',
     end_time:' ',
     course_information:' ',
+    course_brief_info:' ',
     thumbnail_image:' ',
     gallary_image:' ',
     trainer_materialImage:' ',

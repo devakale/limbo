@@ -43,7 +43,7 @@ export class UserEventDetailsComponent {
             },
             error => {
                 // console.error("Error during enrollment", error);
-                 Swal.fire('Error', 'You Have Already Enrolled This course.', 'error');
+                 Swal.fire('Error', 'You Have Already Enrolled This Event.', 'error');
 
             } );
         
@@ -58,6 +58,56 @@ export class UserEventDetailsComponent {
     }
 }
 
+token = sessionStorage.getItem('Authorization');
+
+stars: number[] = [1, 2, 3, 4, 5];  
+rating: number = 0;  
+
+
+toggleRating(clickedStar: number): void {
+  if (this.rating === clickedStar) {
+    this.rating = 0; // Reset the rating if the same star is clicked
+  } else {
+    this.rating = clickedStar; // Set the new rating
+  }
+  this.review.star_count = this.rating; // Ensure star count is updated
+}
+
+
+review = {
+  review: ' ',
+  star_count: 0,
+  courseid:' ',
+}
+postreviewCourse(){
+  if(this.token){
+    this.review.star_count = this.rating;
+  this.dservice.postreviewCourse(this.review).subscribe({
+    next : (Response) =>{
+      Swal.fire('Ohh...!', 'You are Review Add Successfully..!', 'success');
+      this.resetForm();
+    },
+    error : (Error) => {
+      Swal.fire('Error', 'sorry..!', 'error');
+    }
+  })
+}
+else{
+  const modalElement = document.getElementById('CheckLoggedIN');
+  if (modalElement) {
+    const modal = new (window as any).bootstrap.Modal(modalElement);
+    modal.show();
+  }  }
+}
+
+resetForm() {
+  this.review = {
+    star_count: 0,
+    review: '',
+    courseid: this.review.courseid 
+  };
+  this.rating = 0;  
+}
 
 
 show: boolean = false; 

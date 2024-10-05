@@ -75,6 +75,8 @@ export class SeeallcategoriesComponent implements OnInit {
         this.selectedCategories.includes(course.category_name)
       );
     }
+    
+    // this.totalItems = this.filteredCourses.length;
   
     console.log('Filtered Courses:', this.filteredCourses);  // Log filtered courses for debugging
   }

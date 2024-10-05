@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { NgForm } from '@angular/forms';
 import { LoginService } from '../common_service/login.service';
+import { AuthServiceService } from '../common_service/auth-service.service';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class ShopComponent {
   }
 
   constructor(private dservice: DashboardService, private router: ActivatedRoute,
-     private loginservices: LoginService, private route: Router) 
+     private loginservices: LoginService, private route: Router,private authService:AuthServiceService) 
      { this.id = this.router.snapshot.paramMap.get('id');this.checkLoginStatus(); }
 
      checkLoginStatus() {
@@ -73,6 +74,48 @@ export class ShopComponent {
     }
   }
 
+
+  token = sessionStorage.getItem('Authorization');
+
+  stars: number[] = [1, 2, 3, 4, 5];  
+  rating: number = 0;  
+
+
+  toggleRating(clickedStar: number): void {
+    if (this.rating === clickedStar) {
+      this.rating = 0; // Reset the rating if the same star is clicked
+    } else {
+      this.rating = clickedStar; // Set the new rating
+    }
+    this.review.star_count = this.rating; // Ensure star count is updated
+  }
+
+  review = {
+    review: ' ',
+    star_count: 0,
+    t_id:' ',
+  }
+  postreview(){
+    if(this.token){
+      this.review.star_count = this.rating;
+    this.dservice.postreview(this.review).subscribe({
+      next : (Response) =>{
+        Swal.fire('Ohh...!', 'You are Question send Successfully..!', 'success');
+      },
+      error : (Error) => {
+        Swal.fire('Error', 'sorry..!', 'error');
+      }
+    })
+  }
+  else{
+    const modalElement = document.getElementById('CheckLoggedIN');
+    if (modalElement) {
+      const modal = new (window as any).bootstrap.Modal(modalElement);
+      modal.show();
+    }  }
+  }
+
+
   show: boolean = false;
   rememberMe: boolean = false;
 
@@ -92,6 +135,8 @@ export class ShopComponent {
       this.loginservices.postsignupdata(this.userData).subscribe({
         next: (response) => {
           // console.log(alert("Success"),response);
+          sessionStorage.setItem("Authorization",response.token);
+          this.authService.login(response.token); // Set login state
           Swal.fire('Congratulation', 'Welcome to Ximbo! <br> Were thrilled to have you join our community of esteemed trainers, coaches, and educators. Ximbo is designed to empower you with the tools and resources needed to deliver exceptional training and create impactful learning experiences. <br> You Have Register successfully!', 'success');
           this.route.navigate(['/cart'])
         },

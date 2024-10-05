@@ -24,3 +24,30 @@
   .trainercardfooter{
     font-size: 13px;
   }
+
+  .star-rating{
+    .fa-star {
+    font-size: 18px; 
+    }
+  
+  .checked {
+    color: gold;  
+  }
+  
+  }
+  
+  .fa-star {
+    color: lightgray; /* Default star color */
+  }
+  
+  .checked {
+    color: gold; /* Color for filled stars */
+  }
+  
+  .btnq{
+    background-color: var(--TextColor);
+      color: white;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 14px;
+  }

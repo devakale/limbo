@@ -70,6 +70,10 @@ export class DashboardService {
             return this.http.post<any>(`${this.Enroll}`, data);
           }
 
+          GetCourseReview(id:string,page: number, limit: number):Observable<any>{
+            return this.http.get<any>(`${this.API_URL}/review/course/${id}?page=${page}&limit=${limit}`);
+           }
+
           bookevent(data:{event_id: string}): Observable<any> {
             return this.http.post<any>(`${this.API_URL}/event/registerevent`, data);
           }
@@ -92,6 +96,10 @@ export class DashboardService {
 
           postreview(data:any):Observable<any>{
             return this.http.post<any>(`${this.API_URL}/review`,data)
+          }
+
+          postreviewCourse(data:any):Observable<any>{
+            return this.http.post<any>(`${this.API_URL}/review/course`,data)
           }
 
           BookApnmt(data:any):Observable<any>{
