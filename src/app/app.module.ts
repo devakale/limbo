@@ -63,6 +63,8 @@ import { NotificationComponent } from './notification/notification.component';
 import { BlogDetailsComponent } from './blog/blog-details/blog-details.component';
 import { BlogComponent } from './blog/blog/blog.component';
 import { CourseNamePipe } from './Filter/course-name.pipe';
+import { AboutComponent } from './about/about.component';
+import { FAQComponent } from './faq/faq.component';
 
 
 @NgModule({
@@ -120,6 +122,8 @@ import { CourseNamePipe } from './Filter/course-name.pipe';
     BlogDetailsComponent,
     BlogComponent,
     CourseNamePipe,
+    AboutComponent,
+    FAQComponent,
     
   ],
   imports: [

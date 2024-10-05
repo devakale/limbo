@@ -1,0 +1,83 @@
+/* Styling the background with rounded top and straight bottom */
+.background-arch {
+    background-color: #acd7e0; 
+    border-radius: 50% 50% 0 0; 
+    padding-top: 100px;
+    height: 100%; 
+    padding-bottom: 10px;
+    width: 95%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; 
+    overflow: hidden; 
+}
+
+/* Styling the profile image */
+.profile-img {
+    padding: 0 10px;
+    height: 100%; 
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* Styling the card overlay */
+.overlay-card {
+    position: absolute;
+    bottom: 45px;
+    left: 70%;
+    transform: translateX(-50%);
+    background-color: white;
+    border-radius: 10px;
+    padding: 1px 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    z-index: 3;
+    width: auto;
+}
+
+
+.card-container {
+    display: flex;
+    flex-direction: column; 
+    
+    height: 100%; 
+    transition: transform 0.3s ease-in-out; 
+    transform: scale(1); 
+    border-radius: 8px; 
+    overflow: hidden; 
+    padding: 29px; 
+    background-color: #1b4ba4; 
+}
+
+
+.card-container img {
+    max-width: 100%; 
+    height: auto; 
+}
+
+
+.row {
+    display: flex; 
+}
+
+.col {
+    display: flex; 
+    flex-direction: column; 
+}
+
+
+
+
+.hover-effect{
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-container:hover .card {
+    transform: scale(1.05); 
+  }
+  
+  
+  .card-container:active .card {
+    transform: scale(0.95); 
+  }
