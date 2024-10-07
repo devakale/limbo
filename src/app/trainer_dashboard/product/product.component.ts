@@ -20,6 +20,8 @@ export class ProductComponent implements OnInit {
   showproductdata: any;
   selectedProduct: any;
   showCategorydata: any;
+  starsArray: number[] = [1, 2, 3, 4, 5]; // 5 stars total
+
 
   showProductDescription(product: any) {
     this.selectedProduct = product;
@@ -48,7 +50,7 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
 
     this.service.gettrainerdatabyID().subscribe(data => {
-      this.showproductdata = data.productsWithFullImageUrl;
+      this.showproductdata = data?.productsWithFullImageUrl;
     });
 
     this.admin.getcategorydata().subscribe( data =>{

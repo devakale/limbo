@@ -13,7 +13,9 @@ import { AuthServiceService } from '../common_service/auth-service.service';
 })
 export class EdittrainerComponent implements OnInit {
 
- 
+  isTrainer: boolean = false;
+  isUser: boolean = false;
+  isAdmin: boolean = false;
 
 
 
@@ -62,27 +64,20 @@ export class EdittrainerComponent implements OnInit {
       }
 
 
-      isTrainer: boolean = true;
-      isUser: boolean = true;
-      isAdmin: boolean = true;
-    
       checkUserRole() {
         const role = this.auth.getUserRole();
         console.log('User Role:', role);
     
-        // Assign role-based boolean flags
-        this.isAdmin = role === 'ADMIN';
+        this.isAdmin = role === 'SUPER_ADMIN';
         this.isTrainer = role === 'TRAINER';
-        this.isUser = role === 'USER';
+        this.isUser = role === 'USER' || role === 'TRAINER' || role === 'SUPER_ADMIN';
     
-        
-        console.log('isAdmin:', this.isAdmin);
-        console.log('isTrainer:', this.isTrainer);
-        console.log('isUser:', this.isUser);
-    }
+        console.log('isTrainer:', this.isTrainer, 'isUser:', this.isUser, 'isAdmin:', this.isAdmin);
+      }
 
 
     ngOnInit(): void {
+      this.checkUserRole();
           this.myForm = this.fromb.group({
             f_Name:[' '],
             l_Name:[' '],

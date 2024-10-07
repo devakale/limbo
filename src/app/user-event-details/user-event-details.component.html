@@ -7,10 +7,7 @@
         <p class="card-title poppins-semibold" style="font-size: 25px;">{{ShowEvent.event_name}}</p>
         <p class="mt-3" style="font-size: small;">(Provided by {{ShowEvent.business_Name}})</p>
      </div>
-      <p class="poppins-regular" style="text-align: justify;">{{ShowEvent.event_description}}</p>
-        <div class="row mt-3">
-            <p>{{ShowEvent?.event_info}}</p>            
-        </div>
+      <p class="poppins-regular" style="text-align: justify;">{{ShowEvent.event_info}}</p>
     </div>
     <div class="col-sm-12 col-md-5 col-lg-3">
       <div class="card trainercard ">
@@ -78,7 +75,7 @@
     <mat-tab-group dynamicHeight mat-stretch-tabs="false" mat-align-tabs="start" animationDuration="0ms">
       <mat-tab label="Description" >
         <div class="p-3">
-        <p style="text-align: justify;">{{ShowEvent?.event_info}}</p>
+        <p style="text-align: justify;">{{ShowEvent?.event_description}}</p>
       </div>
         </mat-tab>
       <mat-tab label="Review" >

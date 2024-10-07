@@ -12,6 +12,7 @@
     background-color: transparent; 
     color: #f2f4f7; 
     border: none; 
+    display: none;
     background-color: #307DFF;
     transition: background-color 0.3s ease, color 0.3s ease; 
 }
