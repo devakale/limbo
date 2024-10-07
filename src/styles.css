@@ -111,19 +111,22 @@ sup{
 }
 
 /* CSS For Product Card on Hover  */
-.productcard{
+.productcard {
   position: relative;
 }
-.productcard:hover  .onproducthover{
-  display: block;
+
+.productcard:hover .onproducthover {
+  display: block; /* Shows on hover */
 }
 
-.onproducthover{
+.onproducthover {
   position: absolute;
   top: 30%;
   left: 30%;
-  display: none;
+  display: none; /* Initially hidden */
 }
+
+
 
 .onproducthoverflag{
   position: absolute;

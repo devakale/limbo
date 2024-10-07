@@ -64,6 +64,7 @@ export class TrainerService {
         let headers = new HttpHeaders()
         .set("Authorization", `Bearer ${sessionStorage.getItem('Authorization')}`)
         return this.http.get<any>("http://localhost:1000/trainers",{headers});
+        
       }
 
       deleteCoursebyID(_id: string): Observable<any> {

@@ -49,6 +49,7 @@ import { BlogDetailsComponent } from './blog/blog-details/blog-details.component
 import { BlogComponent } from './blog/blog/blog.component';
 import { AboutComponent } from './about/about.component';
 import { FAQComponent } from './faq/faq.component';
+import { EditProfilePictureComponent } from './edit-profile-picture/edit-profile-picture.component';
 
 const routes: Routes = [
 
@@ -69,6 +70,7 @@ const routes: Routes = [
    {path:"editcategory/:_id",component:EditCategoryComponent},
    {path:"updatecourse/:_id",component:UpdateCourseComponent},
    {path:"Notification",component:NotificationComponent},
+   {path:"editprofilepicture",component:EditProfilePictureComponent},
 
    //  Routing For Trainer Dashboard
       {path:"trainer",component:TrainerHomeComponent,

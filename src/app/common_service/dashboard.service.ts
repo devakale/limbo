@@ -69,6 +69,14 @@ export class DashboardService {
             return this.http.get<any>(`${this.beforelogin}/event/${id}`);
            }
 
+           postreviewEvent(data:any):Observable<any>{
+            return this.http.post<any>(`${this.API_URL}/review/event`,data)
+          }
+
+          GetEventReview(id:string,page: number, limit: number):Observable<any>{
+            return this.http.get<any>(`${this.API_URL}/review/event/${id}?page=${page}&limit=${limit}`);
+           }
+
            courseenroll(data:{course_id: string}): Observable<any> {
             return this.http.post<any>(`${this.Enroll}`, data);
           }

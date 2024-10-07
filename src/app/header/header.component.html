@@ -87,6 +87,7 @@
         <i  class="fa-solid fa-user icon" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
         <ul class="dropdown-menu dropdown-menu-start">
           <li><a class="dropdown-item">{{ (user$ | async) }}</a></li>
+          <li><a class="dropdown-item" routerLink="/editprofilepicture">Change Profile <i class="fa-solid fa-user-pen"></i></a></li>
           <li><a class="dropdown-item" routerLink="/edittrainer">Edit Profile <i class="fa-solid fa-user-pen"></i></a></li>
           <li><a class="dropdown-item" routerLink="/Notification">Notification <i class="fa-solid fa-bell"></i></a></li>
           <li><a class="dropdown-item" (click)="logout()">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>

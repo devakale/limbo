@@ -65,6 +65,7 @@ import { BlogComponent } from './blog/blog/blog.component';
 import { CourseNamePipe } from './Filter/course-name.pipe';
 import { AboutComponent } from './about/about.component';
 import { FAQComponent } from './faq/faq.component';
+import { EditProfilePictureComponent } from './edit-profile-picture/edit-profile-picture.component';
 
 
 @NgModule({
@@ -124,6 +125,7 @@ import { FAQComponent } from './faq/faq.component';
     CourseNamePipe,
     AboutComponent,
     FAQComponent,
+    EditProfilePictureComponent,
     
   ],
   imports: [

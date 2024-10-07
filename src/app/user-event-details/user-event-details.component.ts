@@ -16,6 +16,13 @@ export class UserEventDetailsComponent {
   id: any;
   ShowEvent:any;
   relatedEvent:any;
+  p: number = 1;
+  totalItems = 0;
+  currentPage = 1;
+  itemsPerPage = 3; 
+  ShowEventReview:any;
+  starsArray = Array(5).fill(0);
+
 
   constructor(private dservice:DashboardService,
     private router:ActivatedRoute,private route:Router,
@@ -29,7 +36,21 @@ export class UserEventDetailsComponent {
         this.ShowEvent = data.event;
         this.relatedEvent = data.relatedEvent;
       })
+
+      this.loadreview(this.currentPage,this.itemsPerPage);
+
+      this.review.eventid=this.id;
+
   }
+
+  loadreview(page: number, limit: number): void{
+    this.dservice.GetEventReview(this.id,page, limit).subscribe((Response) =>{
+      console.log("Review",Response);
+    this.ShowEventReview = Response.data.reviews;
+    this.totalItems = Response.pagination.totalReviews;
+    })
+  }
+  
 
   BookEvent(event_id:string) {
     const token = sessionStorage.getItem('Authorization'); // Assuming your token is stored in sessionStorage
@@ -77,12 +98,12 @@ toggleRating(clickedStar: number): void {
 review = {
   review: ' ',
   star_count: 0,
-  courseid:' ',
+  eventid:' ',
 }
-postreviewCourse(){
+postreviewEvent(){
   if(this.token){
     this.review.star_count = this.rating;
-  this.dservice.postreviewCourse(this.review).subscribe({
+  this.dservice.postreviewEvent(this.review).subscribe({
     next : (Response) =>{
       Swal.fire('Ohh...!', 'You are Review Add Successfully..!', 'success');
       this.resetForm();
@@ -104,10 +125,17 @@ resetForm() {
   this.review = {
     star_count: 0,
     review: '',
-    courseid: this.review.courseid 
+    eventid: this.review.eventid 
   };
   this.rating = 0;  
 }
+
+  // Handle page change for pagination
+  onPageChange(page: number): void {
+    this.currentPage = page;
+    this.loadreview(this.currentPage, this.itemsPerPage); 
+    this.p = page;
+  }
 
 
 show: boolean = false; 

@@ -42,6 +42,7 @@ export class HeaderComponent {
   
   isLoggedIn$: Observable<boolean>;
   user$: Observable<string | null>;
+  id$:Observable<string | null>;
 
   constructor(private authService: AuthServiceService,
     private route:Router, 
@@ -50,6 +51,8 @@ export class HeaderComponent {
     private router:ActivatedRoute) {
     this.isLoggedIn$ = this.authService.isLoggedIn$;
     this.user$ = this.authService.user$;
+    this.id$ = this.authService.id$;
+    console.log("entered id",this.id$);
     this.router.queryParams.subscribe(params => {
     this.category = params['category'];
     this.id = params['id'];

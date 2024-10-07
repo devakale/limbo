@@ -57,23 +57,40 @@
 
 
 .trainercard {
-  /* position: relative; */
+  position: relative; /* Uncommented to ensure relative positioning */
 }
 
 .trainercard:hover .viewtrainerbtn {
-  display: block;
+  display: block; /* Shows the button on hover */
 }
 
 .viewtrainerbtn {
-  position: absolute !important;
-  top: 0%;
+  position: absolute;
+  top: 0;
   left: 35%;
   background-color: transparent; 
   color: #f2f4f7; 
   border: none; 
   background-color: #307DFF;
+  display: none; /* Initially hidden */
   transition: background-color 0.3s ease, color 0.3s ease; 
 }
+
+.productcard {
+  position: relative;
+}
+
+.productcard:hover .onproducthover {
+  display: block; /* Shows on hover */
+}
+
+.onproducthover {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  display: none; /* Initially hidden */
+}
+
 
 
 .img-class{
