@@ -118,7 +118,13 @@
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
-              <label for="event_description" class="col-form-label">Event Information:</label>
+              <label for="event_info" class="col-form-label">Event Short Information:</label>
+              <textarea type="text" class="form-control" id="event_info" [(ngModel)]="event.event_info"
+                name="event_info" required ></textarea>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+              <label for="event_description" class="col-form-label">Event Details Information:</label>
               <textarea type="text" class="form-control" id="event_description" [(ngModel)]="event.event_description"
                 name="event_description" required ></textarea>
             </div>

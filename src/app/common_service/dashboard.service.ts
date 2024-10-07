@@ -57,6 +57,9 @@ export class DashboardService {
             return this.http.get<any>(`${this.beforelogin}/product/${id}`);
            }
 
+           GetCourseReview(id:string,page: number, limit: number):Observable<any>{
+            return this.http.get<any>(`${this.API_URL}/review/course/${id}?page=${page}&limit=${limit}`);
+           }
 
            Eventdata():Observable<any>{
             return this.http.get<any>(`${this.beforelogin}/allevents`);
@@ -70,8 +73,12 @@ export class DashboardService {
             return this.http.post<any>(`${this.Enroll}`, data);
           }
 
-          GetCourseReview(id:string,page: number, limit: number):Observable<any>{
-            return this.http.get<any>(`${this.API_URL}/review/course/${id}?page=${page}&limit=${limit}`);
+          postreviewProduct(data:any):Observable<any>{
+            return this.http.post<any>(`${this.API_URL}/review/product`,data)
+          }
+
+          GetProductReview(id:string,page: number, limit: number):Observable<any>{
+            return this.http.get<any>(`${this.API_URL}/review/product/${id}?page=${page}&limit=${limit}`);
            }
 
           bookevent(data:{event_id: string}): Observable<any> {

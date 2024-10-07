@@ -20,8 +20,13 @@ export class CourseDetailsComponent implements OnInit {
   starsArray = Array(5).fill(0);
   id: any;
   p: number = 1;
-  currentCourse: number = 1;
+  currentPageBatches: number = 1;
   currentPageUpcomingBatches: number = 1;
+  currentPageOnlineEvents: number = 1;
+  currentPageOfflineEvents: number = 1;
+  currentPageProducts: number = 1;
+
+  itemsPerPage: number = 3;
 
 
 
@@ -41,7 +46,127 @@ export class CourseDetailsComponent implements OnInit {
     this.question.trainerid = this.id;
     this.review.t_id=this.id;
     this.Appoinment.t_id=this.id;
+
+    console.log("ofline",this.offlineEvents);
+
   }
+
+    // Pagination methods for Current Batches
+  totalPagesBatches(): number {
+    return Math.ceil(this.showprofile.OnGoingBatches.length / this.itemsPerPage);
+  }
+
+  nextPageBatches(): void {
+    if (this.currentPageBatches < this.totalPagesBatches()) {
+      this.currentPageBatches++;
+    }
+  }
+
+  previousPageBatches(): void {
+    if (this.currentPageBatches > 1) {
+      this.currentPageBatches--;
+    }
+  }
+
+  // Pagination methods for Upcoming Batches
+  totalPagesUpcomingBatches(): number {
+    return Math.ceil(this.showprofile.UpcomingBatches.length / this.itemsPerPage);
+  }
+
+  nextPageUpcomingBatches(): void {
+    if (this.currentPageUpcomingBatches < this.totalPagesUpcomingBatches()) {
+      this.currentPageUpcomingBatches++;
+    }
+  }
+
+  previousPageUpcomingBatches(): void {
+    if (this.currentPageUpcomingBatches > 1) {
+      this.currentPageUpcomingBatches--;
+    }
+  }
+
+  // Pagination methods for Online Events
+  totalPagesOnlineEvents(): number {
+    return Math.ceil(this.showprofile.onlineEventsThumbnailUrl.length / this.itemsPerPage);
+  }
+
+  nextPageOnlineEvents(): void {
+    if (this.currentPageOnlineEvents < this.totalPagesOnlineEvents()) {
+      this.currentPageOnlineEvents++;
+    }
+  }
+
+  previousPageOnlineEvents(): void {
+    if (this.currentPageOnlineEvents > 1) {
+      this.currentPageOnlineEvents--;
+    }
+  }
+
+  // Pagination methods for Offline Events
+  totalPagesOfflineEvents(): number {
+    return Math.ceil(this.showprofile.offlienEventsThumbnailUrl.length / this.itemsPerPage);
+  }
+
+  nextPageOfflineEvents(): void {
+    if (this.currentPageOfflineEvents < this.totalPagesOfflineEvents()) {
+      this.currentPageOfflineEvents++;
+    }
+  }
+
+  previousPageOfflineEvents(): void {
+    if (this.currentPageOfflineEvents > 1) {
+      this.currentPageOfflineEvents--;
+    }
+  }
+
+  // Pagination methods for Products
+  totalPagesProducts(): number {
+    return Math.ceil(this.showprofile.productsWithFullImageUrl.length / this.itemsPerPage);
+  }
+
+  nextPageProducts(): void {
+    if (this.currentPageProducts < this.totalPagesProducts()) {
+      this.currentPageProducts++;
+    }
+  }
+
+  previousPageProducts(): void {
+    if (this.currentPageProducts > 1) {
+      this.currentPageProducts--;
+    }
+  }
+
+  // Get items for Current Batches
+  get currentBatches(): any[] {
+    const startIndex = (this.currentPageBatches - 1) * this.itemsPerPage;
+    return this.showprofile.OnGoingBatches.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+
+  // Get items for Upcoming Batches
+  get upcomingBatches(): any[] {
+    const startIndex = (this.currentPageUpcomingBatches - 1) * this.itemsPerPage;
+    return this.showprofile.UpcomingBatches.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+
+  // Get items for Online Events
+  get onlineEvents(): any[] {
+    const startIndex = (this.currentPageOnlineEvents - 1) * this.itemsPerPage;
+    return this.showprofile.onlineEventsThumbnailUrl.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+
+  // Get items for Offline Events
+  get offlineEvents(): any[] {
+    const startIndex = (this.currentPageOfflineEvents - 1) * this.itemsPerPage;
+    return this.showprofile.offlienEventsThumbnailUrl.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+  
+
+  // Get items for Products
+  get products(): any[] {
+    const startIndex = (this.currentPageProducts - 1) * this.itemsPerPage;
+    return this.showprofile.productsWithFullImageUrl.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+
 
 
 //  redirect WhatsApp check Login Or Not

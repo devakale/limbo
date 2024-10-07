@@ -19,6 +19,11 @@ export class ShopComponent {
   ShowRelatedPeoduct:any;
   isLoggedIn: boolean = false;
   starsArray: number[] = [1, 2, 3, 4, 5]; // 5 stars total
+  ShowProductReview:any;
+  p: number = 1;
+  totalItems = 0;
+  currentPage = 1;
+  itemsPerPage = 3; 
 
 
   count: number = 1;
@@ -48,6 +53,18 @@ export class ShopComponent {
       console.log("API Response:", data);
       this.Showproductdata = data.productDetail;
       this.ShowRelatedPeoduct = data?.relatedProducts;
+    })
+
+    this.loadreview(this.currentPage,this.itemsPerPage);
+    
+    this.review.productid = this.id;
+  }
+
+  loadreview(page: number, limit: number): void{
+    this.dservice.GetProductReview(this.id,page, limit).subscribe((Response) =>{
+      console.log("Review",Response);
+    this.ShowProductReview = Response.data.reviews;
+    this.totalItems = Response.pagination.totalReviews;
     })
   }
 
@@ -93,14 +110,16 @@ export class ShopComponent {
   review = {
     review: ' ',
     star_count: 0,
-    t_id:' ',
+    productid:' ',
   }
-  postreview(){
+
+  postreviewProduct(){
     if(this.token){
       this.review.star_count = this.rating;
-    this.dservice.postreview(this.review).subscribe({
+    this.dservice.postreviewProduct(this.review).subscribe({
       next : (Response) =>{
-        Swal.fire('Ohh...!', 'You are Question send Successfully..!', 'success');
+        Swal.fire('Ohh...!', 'You are Review Add Successfully..!', 'success');
+        this.resetForm();
       },
       error : (Error) => {
         Swal.fire('Error', 'sorry..!', 'error');
@@ -114,6 +133,22 @@ export class ShopComponent {
       modal.show();
     }  }
   }
+
+  resetForm() {
+    this.review = {
+      star_count: 0,
+      review: '',
+      productid: this.review.productid 
+    };
+    this.rating = 0;  
+  }
+
+    // Handle page change for pagination
+    onPageChange(page: number): void {
+      this.currentPage = page;
+      this.loadreview(this.currentPage, this.itemsPerPage); 
+      this.p = page;
+    }
 
 
   show: boolean = false;
