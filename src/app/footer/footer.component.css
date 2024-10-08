@@ -75,6 +75,9 @@ small:hover{
     text-decoration: none;
   }
 
+  .footer-bottom p > a:hover{
+    text-decoration: underline;
+  }
 
 
   /* social icons */
@@ -94,4 +97,20 @@ small:hover{
   .social-icons a:hover {
     background-color: white;
     color: #307DFF;
+  }
+
+  .youtube:hover{
+    color: red !important;
+  }
+  
+  .instagram:hover{
+    color: #d62976 !important;
+  }
+
+  .twitter:hover{
+    color: black !important;
+  }
+
+  .linkedIN:hover{
+    color: #0077B5 !important;
   }

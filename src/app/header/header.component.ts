@@ -15,6 +15,7 @@ export class HeaderComponent {
   
 
   Showcategorydata:any;
+  Institutedata:any;
   category: string = '';
   id: string = '';
   type: string = '';  
@@ -25,7 +26,12 @@ export class HeaderComponent {
   }
 
   institute = {
-    institute_name  : ' '
+    business_Name  : ' ',
+    address_1:' ',
+  }
+
+  TrainerundersInstitute = {
+     instituteId:''
   }
 
   query: string = '';
@@ -67,6 +73,12 @@ export class HeaderComponent {
     this.dservice.getcategoryname().subscribe(data => {
       this.Showcategorydata = data;
     });
+
+    this.requst.GetInstitute().subscribe(response => {
+      console.log(response);
+      this.Institutedata = response?.data;
+      
+    })
   }
 
   searchitem(event: KeyboardEvent) {
@@ -273,7 +285,11 @@ export class HeaderComponent {
   onSubmit() {
     if (this.role.requested_Role === 'INSTITUTE') {
       this.addinstitute();
-    } else {
+    }
+    else if(this.role.requested_Role === 'TRAINER'){
+      this.addtrainerunderinstitute();
+    }
+     else {
       this.sendRequest();
     }
   }
@@ -283,7 +299,7 @@ export class HeaderComponent {
     this.requst.postrequest(this.role).subscribe({
       next : (response) =>{
         alert("Request Sent For Self Expert.!!!")
-        window.location.reload();
+        // window.location.reload();
       },
       error: (error)=>{
         console.log(alert("Error"),error);
@@ -293,8 +309,14 @@ export class HeaderComponent {
   }
 
   addinstitute(){
+    const payload = {
+      ...this.role,               
+      ...this.institute            
+    };
 
-    this.requst.postinstitute(this.institute).subscribe({
+    console.log("Sending Institute Request:", payload); // Debugging: Check payload
+
+    this.requst.postrequest(payload).subscribe({
       next : (response) =>{
         alert("Request Sent For Institute.!!!")
         window.location.reload();
@@ -305,6 +327,27 @@ export class HeaderComponent {
     })
 
   }
+
+  addtrainerunderinstitute(){
+    const payload = {
+      ...this.role,               
+      ...this.TrainerundersInstitute            
+    };
+
+    console.log("Sending Institute Request:", payload); // Debugging: Check payload
+
+    this.requst.postrequest(payload).subscribe({
+      next : (response) =>{
+        alert("Request Sent For Institute.!!!")
+        window.location.reload();
+      },
+      error: (error)=>{
+        console.log(alert("Error"),error);
+      }
+    })
+
+  }
+
 
 
 

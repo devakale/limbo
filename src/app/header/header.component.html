@@ -1,5 +1,5 @@
 <!-- navbar.component.html -->
-<div class="container-fluid " style="background-color: #ffffff;">
+<div class="container-fluid" style="background-color: #ffffff;">
   <div class="row mt-1 align-items-center">
     <div class="col-sm-6 col-md-6 col-lg-2">
       <img routerLink="/" class="img-fluid object-fit-fill " src="../../assets/Ximboa-Logo.jpg"    alt=""
@@ -90,7 +90,7 @@
           <li><a class="dropdown-item" routerLink="/editprofilepicture">Change Profile <i class="fa-solid fa-user-pen"></i></a></li>
           <li><a class="dropdown-item" routerLink="/edittrainer">Edit Profile <i class="fa-solid fa-user-pen"></i></a></li>
           <li><a class="dropdown-item" routerLink="/Notification">Notification <i class="fa-solid fa-bell"></i></a></li>
-          <li><a class="dropdown-item" (click)="logout()">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
+          <li><a class="dropdown-item" (click)="logout()" style="cursor: pointer;">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
         </ul>
       </div>
       <i routerLink="/trainer" class="fa-solid fa-bars text-primary fs-4 ms-3" ></i>
@@ -139,7 +139,7 @@
               <option value="" disabled>Select option</option>
               <option value="SELF_EXPERT">Self Expert</option>
               <option value="INSTITUTE">Institution</option>
-              <option value="JOIN INSTITUTE TRAINER">JOIN INSTITUTE TRAINER</option>
+              <option value="TRAINER">JOIN INSTITUTE TRAINER</option>
             </select>
           </div>
 
@@ -147,15 +147,15 @@
           <div *ngIf="role.requested_Role === 'INSTITUTE'" class="mt-2">
             <div class="form-group mb-2">
               <label for="field1">INSTITUTE Name</label>
-              <input type="text" id="institute_name" class="form-control" name="institute_name" [(ngModel)]="institute.institute_name">
+              <input type="text" id="business_Name" class="form-control" name="business_Name" [(ngModel)]="institute.business_Name">
             </div>
             <div class="form-group mb-2">
               <label for="field2">Mobile No</label>
               <input type="text" id="field2" class="form-control" name="field2">
             </div>
             <div class="form-group mb-2">
-              <label for="field3">Address Line 1</label>
-              <input type="text" id="field3" class="form-control" name="field3">
+              <label for="address_1">Address Line 1</label>
+              <input type="text" id="address_1" class="form-control" name="address_1" [(ngModel)]="institute.address_1">
             </div>
             <div class="form-group mb-2">
               <label for="field4">Address Line 2</label>
@@ -175,13 +175,12 @@
             </div>
           </div>
 
-          <div *ngIf="role.requested_Role === 'JOIN INSTITUTE TRAINER'" class="mt-2">
+          <div *ngIf="role.requested_Role === 'TRAINER'" class="mt-2">
             <label for="roleSelect">Select Institute</label>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="TrainerundersInstitute.instituteId"
+            name="instituteId">
               <option value="" disabled>Select option</option>
-              <option value="SELF_EXPERT">BHOJSOFT Class Warje, Pune- 411038</option>
-              <option value="INSTITUTE">JAVA BY KIRAN Class Karve Nagar, Pune- 411038</option>
-              <option value="JOIN INSTITUTE TRAINER">Brain Works Class Karve Nagar, Pune- 411038</option>
+              <option *ngFor="let institute of Institutedata" value="{{institute._id}}">{{institute.institute_name}}</option>
             </select>
           </div>
 

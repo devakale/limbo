@@ -50,6 +50,7 @@ import { BlogComponent } from './blog/blog/blog.component';
 import { AboutComponent } from './about/about.component';
 import { FAQComponent } from './faq/faq.component';
 import { EditProfilePictureComponent } from './edit-profile-picture/edit-profile-picture.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
 
@@ -138,6 +139,7 @@ const routes: Routes = [
 
     {path:"about",component:AboutComponent},
     {path:"faq",component:FAQComponent},
+    {path:"privacy-policy",component:PrivacyPolicyComponent},
 
 ];
 

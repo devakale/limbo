@@ -1,7 +1,7 @@
 <div class="container-fluid g-0 ">
     <div class="container-fluid px-4">
         <div class="row my-5 position-relative">
-            <div class="col-sm-12 col-md-5 poppins-bold">
+            <div class="col-sm-12 col-md-5 poppins-bold " @slideInLeft>
                 <p class="fw-bold pt-5"
                     style="font-size: 52px; font-weight: 700;">About Us</p>
                 <p style="font-size: 17px; font-weight: 500;"><span
@@ -10,31 +10,37 @@
             <div class="col-sm-12 col-md-7 position-relative">
                 <img src="../../assets/about-us.jpg" class="w-100 img-fluid"
                     style="border-radius: 30px;" alt>
-                <img src="../../assets/88-1.png" class="img-fluid"
+                <img src="../../assets/88-1.png" @slideInLeft class="img-fluid"
                     style="position: absolute; top: 10%; left: -5%; height: 102px; width: 81px;"
                     alt>
             </div>
         </div>
     </div>
-    <div class="container-fluid px-4">
-        <div class="row pt-5 position-relative">
-            <div class="col-sm-12 col-md-6 text-center position-relative "
-                style="margin-top: 20px;">
+    <div class="container-fluid px-5">
+        <div class="row position-relative">
+            <div class="col-sm-12 col-md-6 col-lg-6 text-center position-relative  "
+                style="margin-top: 20px;" >
                 <!-- Background Arch -->
-                <div class="background-arch position-relative">
-                    <img src="../../assets/1111.png" class="profile-img"
+                <div class="background-arch position-relative ">
+                    <img src="../../assets/1111.png" @slideInLeft  class="profile-img"
                         alt="Expert Image">
                     <!-- Card with absolute positioning -->
-                    <div class=" overlay-card px-3">
-                        <p class="fw-bold m-0 p-0"
+                    <div class=" overlay-card p-2 countersub"@slideInRight>
+                        <!-- <p class="fw-bold m-0 p-0 d-flex align-items-center counter"
                             style="font-size: 48px; font-weight: 700;">180
-                            <small class="text-primary m-0 p-0">+</small></p>
-                        <p class="fw-bold ">Areas of <br> Expertise</p>
+                            <small class="text-primary">+</small></p>
+                        <p class="fw-bold m-0 p-0 g-0">Areas of <br> Expertise</p> -->
+                        <p class="fw-bold m-0 p-0 d-flex align-items-center counter" style="font-size: 48px; font-weight: 700;">
+                            {{ counterValue | number:'1.0-0' }}
+                            <small class="text-primary">+</small>
+                          </p>
+                          <p class="fw-bold m-0 p-0 g-0">Areas of <br> Expertise</p>
+                          
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-6 px-3">
+            <div class="col-sm-12 col-md-6 col-lg-6 px-4">
                 <h6 class="fw-bold text-primary" style="letter-spacing: 2PX;">THE XIMBOA STORY:</h6>
                 <p class="py-2 m-0  poppins-bold"
                     style="font-size: 59px; font-weight: 700; line-height: 65px;">Empowering
@@ -81,22 +87,22 @@
         </div>
 
     </div>
-    <div class="container-fluid text-light" style="background-color: #2559b8;">
-        <div class="row py-5">
+    <div class="container-fluid text-light" style="background-color: #2d71e8;">
+        <div class="row py-5 ">
             <h1 class="text-center pt-5 fw-bold poppins-bold" style="font-size: 48px;">Our
                 Values </h1>
-            <p class="text-center py-2 " style="font-size: 16px;"> At Ximboa,
+            <p class="text-center py-2 poppins-regular" style="font-size: 16px;"> At Ximboa,
                 we’re driven by a set of core
                 values that reflect our commitment to our community: </p>
 
         </div>
 
         <div class="container pb-5">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 text-light pb-4" >
                 <div class="col  hover-effect">
-                    <div class="card-container">
+                    <div class="card-container card">
                         <img src="../../assets/Untitled-design-7.png"
-                            class="w-25" alt>
+                            class="" width="70px" alt>
                         <div class="card-content py-3">
                             <p style="font-size: 22px;"
                                 class="fw-bold">Empowerment</p>
@@ -107,9 +113,9 @@
                     </div>
                 </div>
                 <div class="col  hover-effect">
-                    <div class="card-container  ">
+                    <div class="card-container card">
                         <img src="../../assets/Untitled-design-8.png"
-                            class="w-25" alt>
+                            class=""  width="70px" alt>
                         <div class="card-content py-3">
                             <p style="font-size: 22px;"
                                 class="fw-bold">Innovation</p>
@@ -121,9 +127,9 @@
                     </div>
                 </div>
                 <div class="col  hover-effect">
-                    <div class="card-container ">
+                    <div class="card-container card">
                         <img src="../../assets/Untitled-design-9.png"
-                            class="w-25" alt>
+                            class=""  width="70px" alt>
                         <div class="card-content py-3">
                             <p style="font-size: 22px;"
                                 class="fw-bold">Quality</p>
@@ -134,9 +140,9 @@
                     </div>
                 </div>
                 <div class="col  hover-effect">
-                    <div class="card-container ">
+                    <div class="card-container card ">
                         <img src="../../assets/Untitled-design-10.png"
-                            class="w-25" alt>
+                            class="" width="70px" alt>
                         <div class="card-content py-3">
                             <p style="font-size: 22px;"
                                 class="fw-bold">Community</p>
@@ -159,13 +165,13 @@
             </div>
             <div class="col-md-4 text-md-end">
                 <a href="#"
-                    class="btn read-more-btn rounded-pill  px-5 py-3 fs-5 text-light "
-                    style="background-color: #307DFF;font-weight: 600; ">Read More &rarr;</a>
+                    class="btn read-more-btn rounded-pill  px-5 py-3 poppins-extrabold text-light "
+                    style="background-color: #307DFF; ">Read More &rarr;</a>
             </div>
         </div>
 
         <!-- Subscribe Section -->
-        <div class="row subscribe-section my-5 g-0  poppins-bold" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 30px;">
+        <div class="row subscribe-section my-5 g-0  poppins-bold" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 30px;"  @slideUp>
             <div class="col-lg-5 mb-4 mb-lg-0">
                 <!-- Replace the image link with your actual image source -->
                 <img src="../../assets/Untitled-design-25.jpg" class="img-fluid"
@@ -179,8 +185,11 @@
                     class="mb-4">Subscribe for Learning Insights!</p>
                 <form class="d-flex">
                     <input type="email" class="form-control w-75 py-3"
-                        placeholder="Your Email">
-                    <button type="submit" class="btn text-light px-5 " style="background-color: #307DFF;border-top-right-radius: 18px;border-bottom-right-radius: 18px; font-weight: 600;letter-spacing: 1px;">SUBSCRIBE HERE</button>
+                        placeholder="Your Email" style="background-color: #f7f7f7; border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important;">
+                        <button type="submit" class="btn text-light px-5"
+                        style="background-color: #307DFF; border-top-right-radius: 18px; border-bottom-right-radius: 18px; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; font-weight: 600; letter-spacing: 1px;">
+                  SUBSCRIBE HERE
+                </button>
                 </form>
             </div>
         </div>

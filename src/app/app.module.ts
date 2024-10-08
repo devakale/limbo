@@ -66,6 +66,7 @@ import { CourseNamePipe } from './Filter/course-name.pipe';
 import { AboutComponent } from './about/about.component';
 import { FAQComponent } from './faq/faq.component';
 import { EditProfilePictureComponent } from './edit-profile-picture/edit-profile-picture.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 
 @NgModule({
@@ -126,6 +127,7 @@ import { EditProfilePictureComponent } from './edit-profile-picture/edit-profile
     AboutComponent,
     FAQComponent,
     EditProfilePictureComponent,
+    PrivacyPolicyComponent,
     
   ],
   imports: [

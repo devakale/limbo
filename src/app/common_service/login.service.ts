@@ -13,10 +13,10 @@ export class LoginService {
 
     private register ='http://localhost:1000/registration';
 
-    private institute="http://localhost:1000/institute/create-institute";
+    private institute="http://localhost:1000/institute";
 
     private APIURL ="http://localhost:1000/notifications";
-    
+  
 
   constructor(private http:HttpClient, private router: Router){ }
 
@@ -45,7 +45,11 @@ export class LoginService {
    }
   
    postinstitute(data:any):Observable<any>{
-    return this.http.post<any>(`${this.institute}`,data);
+    return this.http.post<any>(`${this.institute}/create-institute`,data);
+   }
+
+   GetInstitute():Observable<any>{
+    return this.http.get<any>(`${this.institute}/get-institutes`);
    }
 
    Notification(page: number, limit: number):Observable<any>{
