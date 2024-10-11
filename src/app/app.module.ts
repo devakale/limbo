@@ -67,6 +67,10 @@ import { AboutComponent } from './about/about.component';
 import { FAQComponent } from './faq/faq.component';
 import { EditProfilePictureComponent } from './edit-profile-picture/edit-profile-picture.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { LinkedinAuthCallbackComponent } from './linkedin-auth-callback/linkedin-auth-callback.component';
+import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -128,6 +132,9 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
     FAQComponent,
     EditProfilePictureComponent,
     PrivacyPolicyComponent,
+    LinkedinAuthCallbackComponent,
+    ResetPasswordComponent,
+    ContactComponent,
     
   ],
   imports: [
@@ -139,9 +146,11 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
     ReactiveFormsModule,
     NgxPaginationModule,
     MatTabsModule,
+    OAuthModule.forRoot()
+    
    
   ],
-  providers: [CookieService,{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
+  providers: [OAuthService,CookieService,{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -23,8 +23,24 @@
   padding-bottom: 1px; 
   color: #fff; 
 }
- 
 
+.dropdown>.dropdown-menu,
+.dropdown.open>.dropdown-menu {
+   display: block !important;
+   opacity: 0;
+   visibility: hidden;
+   transition: all ease 0.2s;
+}
+.dropdown:hover>.dropdown-menu,
+.dropdown.open:hover>.dropdown-menu { 
+   opacity: 1;
+   visibility: visible; 
+}
+ 
+.dropdown-menu {
+  left: auto;     
+  right: 0;       
+}
 
 
 

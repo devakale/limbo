@@ -1,10 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* html, body { height: 100%; }
-body { 
-  margin: 0;
-  font-family: Poppins !important;
- } */
+/* html, body { height: 100%; } */
+.body{ 
+  font-family: 'Poppins', sans-serif;
+ } 
 
 .right-side-top{
     background-color: #F9C4C4;
@@ -51,8 +50,9 @@ body {
 
 /* css forcategory Show on card image */
   .left-side-top{
-    background-color: #F9C4C4;
-    padding: 5px 15px 5px 15px;
+    background-color: #307DFF;
+    color: white;
+    /* padding: 5px 15px 5px 15px; */
     font-size: medium;
     border: none;
     position: absolute;
@@ -248,6 +248,7 @@ sup{
   font-weight: 100;
   font-style: normal;
 }
+
 
 .poppins-extralight-italic {
   font-family: "Poppins", system-ui;

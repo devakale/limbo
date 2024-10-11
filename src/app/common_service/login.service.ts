@@ -32,6 +32,11 @@ export class LoginService {
       return this.http.post<any>(`${this.register}/forget-password`,data)
     }
 
+    resetpassword(newPassword: any, token: string): Observable<any> {
+      return this.http.post<any>(`${this.register}/reset-password?token=${token}`, { newPassword });
+    }
+    
+
     postrequest(data:any):Observable<any>{
       return this.http.post<any>(`${this.register}/request-role-change`,data)
     }

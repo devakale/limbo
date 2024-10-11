@@ -51,95 +51,103 @@ import { AboutComponent } from './about/about.component';
 import { FAQComponent } from './faq/faq.component';
 import { EditProfilePictureComponent } from './edit-profile-picture/edit-profile-picture.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { LinkedinAuthCallbackComponent } from './linkedin-auth-callback/linkedin-auth-callback.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
 
-    // Routing For Admin Dashboard
-        {path:"superadmin",component:SuperAdminComponent},
+  { path: "signin", component: SignInComponent },
+  { path: "signup", component: SignUpComponent },
+  { path: "reset-password",component:ResetPasswordComponent},
+  { path: "forgotfassword", component: ForgotPasswordComponent },
+  { path: "auth/linkedin", component: LinkedinAuthCallbackComponent },
+
+  // Routing For Super Admin Dashboard
+  { path: "superadmin", component: SuperAdminComponent },
 
   // Routing For Admin Dashboard
-  { path:"admin",component:AdminDashboardComponent,
-    children:[
-      { path:"",component:AdminHomeComponent},
-      { path:"adminhome",component:AdminHomeComponent},
-      { path:"admincategory",component:AdminDashboardCategoriesComponent},
-      { path:"admincourse",component:AdminCoursesComponent},
-      { path:"instructors",component:InstructorComponent},  
+  {
+    path: "admin", component: AdminDashboardComponent,
+    children: [
+      { path: "", component: AdminHomeComponent },
+      { path: "adminhome", component: AdminHomeComponent },
+      { path: "admincategory", component: AdminDashboardCategoriesComponent },
+      { path: "admincourse", component: AdminCoursesComponent },
+      { path: "instructors", component: InstructorComponent },
     ]
-   },
+  },
 
-   {path:"editcategory/:_id",component:EditCategoryComponent},
-   {path:"updatecourse/:_id",component:UpdateCourseComponent},
-   {path:"Notification",component:NotificationComponent},
-   {path:"editprofilepicture",component:EditProfilePictureComponent},
+  { path: "editcategory/:_id", component: EditCategoryComponent },
+  { path: "updatecourse/:_id", component: UpdateCourseComponent },
+  { path: "Notification", component: NotificationComponent },
+  { path: "editprofilepicture", component: EditProfilePictureComponent },
 
-   //  Routing For Trainer Dashboard
-      {path:"trainer",component:TrainerHomeComponent,
-        children:[
-          {path:"",component:TrainerMyhomeComponent},
-          {path:"superadmin",component:SuperAdminComponent},
-          { path:"admincategory",component:AdminDashboardCategoriesComponent},
-          {path:"mycourse",component:MyCourseComponent},
-          {path:"product",component:ProductComponent},
-          {path:"question",component:QuestionComponent},
-          {path:"appointment",component:AppointmentComponent},
-          {path:"event",component:EventComponent},
-          {path:"enquiry",component:EnquiryComponent},
-          {path:"review",component:ReviewComponent},
-        ]
-      },
-      {path:"edittrainer",component:EdittrainerComponent},
-      {path:"editcourse/:_id",component:EditCourseComponent},
-      {path:"editproduct/:_id",component:UpdateProductComponent},
-      {path:"editevent/:_id",component:UpdateEventComponent},
+  //  Routing For Trainer Dashboard
+  {
+    path: "trainer", component: TrainerHomeComponent,
+    children: [
+      { path: "", component: TrainerMyhomeComponent },
+      { path: "superadmin", component: SuperAdminComponent },
+      { path: "admincategory", component: AdminDashboardCategoriesComponent },
+      { path: "mycourse", component: MyCourseComponent },
+      { path: "product", component: ProductComponent },
+      { path: "question", component: QuestionComponent },
+      { path: "appointment", component: AppointmentComponent },
+      { path: "event", component: EventComponent },
+      { path: "enquiry", component: EnquiryComponent },
+      { path: "review", component: ReviewComponent },
+    ] },
+  { path: "edittrainer", component: EdittrainerComponent },
+  { path: "editcourse/:_id", component: EditCourseComponent },
+  { path: "editproduct/:_id", component: UpdateProductComponent },
+  { path: "editevent/:_id", component: UpdateEventComponent },
+
 
   //  Routing For User Dashboard
+  { path: "", component: DashboardComponent },
+  { path: "Home", component: DashboardComponent },
+  { path: "seeallcategories", component: SeeallcategoriesComponent },
+  { path: "coursedetails/:id", component: CourseDetailsComponent },
+  { path: "shop/:id", component: ShopComponent },
+  { path: "eventdetails/:id", component: UserEventDetailsComponent },
+  { path: "cart", component: CartComponent },
+  { path: "gallery", component: GalleryComponent },
+  {
+    path: "relevance", component: RelevanceComponent,
+    children: [
+      // {path:"",component:RelevanceDataComponent},
+      { path: "", component: SeeallcategoriesComponent },
+      { path: "seeallcategory", component: SeeallcategoriesComponent },
+      { path: "relevancedata", component: RelevanceDataComponent },
+      { path: "courses", component: CoursesComponent },
+      { path: "trainer", component: TrainerComponent },
+      { path: "userproduct", component: UsersideProductComponent },
+      { path: "userevent", component: UserEventComponent },
+    ]
+  },
 
-    { path:"", component:DashboardComponent},
-    { path:"Home", component:DashboardComponent},
-    { path:"signin", component:SignInComponent},
-    { path:"signup",component:SignUpComponent},
-    { path:"forgotfassword",component:ForgotPasswordComponent},
-    { path:"seeallcategories",component:SeeallcategoriesComponent},
-    { path:"coursedetails/:id", component:CourseDetailsComponent},
-    { path:"shop/:id",component:ShopComponent},
-    { path:"eventdetails/:id",component:UserEventDetailsComponent},
-    { path:"cart",component:CartComponent},
-    { path:"gallery",component:GalleryComponent},
-    { path:"relevance",component:RelevanceComponent,
-      children:[
-        // {path:"",component:RelevanceDataComponent},
-        { path:"",component:SeeallcategoriesComponent},
-        { path:"seeallcategory",component:SeeallcategoriesComponent},
-        { path:"relevancedata",component:RelevanceDataComponent},
-        { path:"courses",component:CoursesComponent},
-        { path:"trainer",component:TrainerComponent},
-        { path:"userproduct",component:UsersideProductComponent},
-        { path:"userevent",component:UserEventComponent},
-      ]
-    } ,
+  { path: "couserenroll/:id", component: CourseenrollComponent },
+  { path: "enrollNow", component: EnrollNowComponent },
 
-  {path:"couserenroll/:id",component:CourseenrollComponent},
-  {path:"enrollNow",component:EnrollNowComponent},
-  
   // Routing For Student Dashborad
-         {path:"login",component:LoginComponent},
-         {path:"register",component:StudentRegisterComponent},
-         {path:"student",component:StudentHomeComponent,
-            children: [
-              {path:"student-course",component:StudentCourseComponent},
-              {path:"studentDashboard",component:StudentDashboardComponent},
-            ]
-         },
+  { path: "login", component: LoginComponent },
+  { path: "register", component: StudentRegisterComponent },
+  {
+    path: "student", component: StudentHomeComponent,
+    children: [
+      { path: "student-course", component: StudentCourseComponent },
+      { path: "studentDashboard", component: StudentDashboardComponent },
+    ]
+  },
 
-    // blog     
-    {path:"blog",component:BlogComponent},
-    {path:"blogdetails/:id",component:BlogDetailsComponent},
-
-
-    {path:"about",component:AboutComponent},
-    {path:"faq",component:FAQComponent},
-    {path:"privacy-policy",component:PrivacyPolicyComponent},
+  // blog     
+  { path: "blog", component: BlogComponent },
+  { path: "blogdetails/:id", component: BlogDetailsComponent },
+  { path: "about", component: AboutComponent },
+  { path: "faq", component: FAQComponent },
+  { path: "privacy-policy", component: PrivacyPolicyComponent },
+  { path: "Contact", component:ContactComponent},
 
 ];
 

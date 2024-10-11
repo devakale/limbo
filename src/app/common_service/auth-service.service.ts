@@ -45,19 +45,7 @@ export class AuthServiceService {
     this.userId.next(null);
   }
 
-  // private setUserFromToken(token: string) {
-  //   try {
-  //     const decoded: any = jwtDecode(token);
-  //     const username = decoded.username; // Adjust based on your token structure
-  //     this.loggedIn.next(true);
-  //     this.user.next(username);
-  //     this.id.next(id);
-  //   } catch (error) {
-  //     console.error('Invalid token:', error);
-  //     this.logout();
-  //   }
-  // }
-
+  
   private setUserFromToken(token: string) {
     try {
       const decoded: JwtPayload = jwtDecode(token);
@@ -90,8 +78,7 @@ export class AuthServiceService {
     return null;
   }
 
-  
-
+    
   // Get user role from token
   getUserRole(): string | null {
     const payload = this.getTokenPayload();

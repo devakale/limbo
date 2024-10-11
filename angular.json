@@ -32,7 +32,8 @@
             "scripts": [
               "node_modules/gsap/dist/gsap.min.js",
               "node_modules/gsap/dist/MotionPathPlugin.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/jquery/dist/jquery.min.js"
             ]
           },
           "configurations": {
