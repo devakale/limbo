@@ -1,5 +1,4 @@
 <div class="container-fluid " style="background-color: var(--bodyColor);">
-
   <div class="row">
     <!-- carousel -->
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -59,7 +58,7 @@
   </div>
 </div>
 
-<!-- Top Trainers -->
+<!-- Top category -->
 <div class="container-fluid " style="background-color: var(--WhiteColor);">
   <div class="container mt-5">
     <div class="col-sm-12 my-3">
@@ -144,7 +143,7 @@
               <i href="https://www.youtube.com" target="_blank" class="fab fa-youtube  rounded-pill social-icons1"></i>
             </div>
           </div>
-          <div class="card-footer d-flex justify-content-between trainercardfooter" style="background-color: white;">
+          <div class="card-footer d-flex justify-content-between trainercardfooter">
             <p> <i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i> {{trainer.ratings || 4.5}}</p>
             <b>{{trainer.course_count}} Courses</b>
           </div>
@@ -242,7 +241,7 @@
 
 <!-- lasted Tranding Courses -->
 <div class="container-fluid " style="background-color: var(--bodyColor);">
-  <div class="container pt-5">
+  <div class="container pt-5 pb-3">
       <div >
         <h4 class="text-center fsizeblue m-0 p-0">DISCOVER</h4>
         <h1 class="text-center fsize m-0 p-0">World's Best Courses</h1>
@@ -276,7 +275,7 @@
               <button class="left-side-top rounded px-3">{{allcourses.course_flag}}</button>
 
             </div>
-            <div class="card-footer d-flex align-items-center justify-content-between">
+            <div class="card-footer d-flex align-items-center justify-content-between" >
               <p><i class="fa-solid fa-list-ul"></i> Duration : {{allcourses.course_duration || 2}} Weeks</p>
               <p style="font-family: Poppins;font-weight: bold;color: var(--TextColor);font-size: 20px;">{{
                 getFormattedPrice(allcourses.course_price) }}</p>
@@ -356,11 +355,11 @@
         <div *ngFor="let Event of visibleEvent()" class="col-sm-12 col-md-3 col-lg-3 mb-3">
           <div class="card" routerLink="/eventdetails/{{Event._id}}">
             <img src="{{Event.eventImage}}" class="card-img-top img-fluid" alt="...">
+            <span class="onproducthoverflag rounded px-3">{{Event.event_falg}}</span>
             <div class="card-body text">
               <div class="d-flex align-items-center justify-content-between gap-1">
                 <span>
-                  <label class="poppins-semibold-italic text-muted" style="font-size: 12px;">{{Event.eventDate | date:
-                    'MMM'}}</label><br>
+                  <label class="poppins-semibold-italic text-muted" style="font-size: 12px;">{{Event.eventDate | date: 'MMM'}}</label><br>
                   <span class="poppins-semibold-italic" style="font-size: 24px;">{{Event.eventDate | date: 'dd'}}</span>
                 </span>
                 <span>

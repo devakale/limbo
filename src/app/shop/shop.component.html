@@ -152,7 +152,7 @@
   <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="text-end">
-        <button type="button" class="btn-close mt-4 me-4"  data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" #closebutton class="btn-close mt-4 me-4"  data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body px-5">
       <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
@@ -249,7 +249,7 @@
   
           <div class="pt-5 mb-3 text-center">
             <button type="submit" class="btn sign-in-btn rounded-pill "
-              [disabled]="!signUpForm.form.valid" style="width: 25%;">Sign up</button>
+              [disabled]="!signUpForm.form.valid" id="closeModal"  (click)="onSave()"  style="width: 25%;">Sign up</button>
           </div>
         </div>
       </form>

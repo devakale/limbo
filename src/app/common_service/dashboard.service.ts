@@ -121,7 +121,7 @@ export class DashboardService {
             return this.http.post<any>(`${this.API_URL}/appointment`,data)
           }
 
-          Addtocart(cart:{productId:string, quantity:number}):Observable<any>{
+          Addtocart(cart:{productId:any, quantity:any}):Observable<any>{
             return this.http.post<any>(`${this.API_URL}/cart/add`,cart)
           }
 

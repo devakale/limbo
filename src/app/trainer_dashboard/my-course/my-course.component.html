@@ -185,10 +185,15 @@
               <input type="file" (change)="onFileSelected($event)" accept="image/*" />
             </div>
 
-            <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+            <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
               <label for="course_information" class="col-form-label">Course Short Description</label>
               <textarea type="text" class="form-control" id="course_information"
                 [(ngModel)]="Courses.course_information" name="course_information"></textarea>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+              <label for="tags" class="col-form-label">tags</label>
+              <input type="text" class="form-control" id="tags" [(ngModel)]="Courses.tags" name="tags" />
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-12 mb-3">

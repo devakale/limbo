@@ -48,6 +48,9 @@
     /* transform: translatey(-10px) */
   }
 
+  .card-footer{
+    background-color: #ffffff !important;
+  }
 /* css forcategory Show on card image */
   .left-side-top{
     background-color: #307DFF;

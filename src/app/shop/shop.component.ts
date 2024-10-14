@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { DashboardService } from '../common_service/dashboard.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -13,6 +13,9 @@ import { AuthServiceService } from '../common_service/auth-service.service';
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent {
+
+  @ViewChild('closebutton') closebutton!: ElementRef;
+
 
   id: any;
   Showproductdata: any;
@@ -83,6 +86,11 @@ export class ShopComponent {
       })
     }
     else {
+      console.log(quantity);
+      console.log(productId);
+      sessionStorage.setItem('productId',productId);
+      sessionStorage.setItem('quantity',quantity.toString());
+            
       const modalElement = document.getElementById('CheckLoggedIN');
       if (modalElement) {
         const modal = new (window as any).bootstrap.Modal(modalElement);
@@ -173,7 +181,20 @@ export class ShopComponent {
           sessionStorage.setItem("Authorization",response.token);
           this.authService.login(response.token); // Set login state
           Swal.fire('Congratulation', 'Welcome to Ximbo! <br> Were thrilled to have you join our community of esteemed trainers, coaches, and educators. Ximbo is designed to empower you with the tools and resources needed to deliver exceptional training and create impactful learning experiences. <br> You Have Register successfully!', 'success');
-          this.route.navigate(['/cart'])
+          let quantity = Number(sessionStorage.getItem('quantity'));
+          let productId = sessionStorage.getItem('productId')?.toString();
+          const  cart = {  quantity, productId };
+          this.dservice.Addtocart(cart).subscribe({
+            next: (Response) =>{
+              Swal.fire('Ohh...!', 'Added to cart..!', 'success');
+              sessionStorage.removeItem('productId');
+              sessionStorage.removeItem('quantity');
+              this.route.navigate(['/cart'])
+            },
+            error : (error)=>{
+              Swal.fire('Error', 'sorry..!', 'error');
+            }
+          })
         },
         error: (error) => {
           // console.log(alert("Error"),error);
@@ -189,6 +210,11 @@ export class ShopComponent {
   // Hide And Show Password Logic
   togglePassword() {
     this.show = !this.show;
+  }
+
+
+  public onSave() {
+    this.closebutton.nativeElement.click();
   }
 
 }

@@ -39,7 +39,9 @@ export class EditCourseComponent implements OnInit {
       end_date: ['',Validators.required],
       start_time: ['',Validators.required],
       end_time: ['',Validators.required],
+      tags:['',Validators.required],
       course_information: ['',Validators.required],
+      course_brief_info:['',Validators.required],
       thumbnail_image: ['',Validators.required] // This should be null for initialization
     });
 
@@ -57,7 +59,9 @@ export class EditCourseComponent implements OnInit {
         end_date: d.end_date,
         start_time: d.start_time,
         end_time: d.end_time,
+        tags: d.tags,
         course_information: d.course_information,
+        course_brief_info:d.course_brief_info
       });
       this.thumbnail_image = d.thumbnail_image; // Clear previous image
     });
@@ -86,7 +90,9 @@ export class EditCourseComponent implements OnInit {
     formData.append('end_date',this.uploadform.get('end_date')?.value);
     formData.append('start_time',this.uploadform.get('start_time')?.value);
     formData.append('end_time',this.uploadform.get('end_time')?.value);
+    formData.append('tags',this.uploadform.get('tags')?.value);
     formData.append('course_information',this.uploadform.get('course_information')?.value);
+    formData.append('course_brief_info',this.uploadform.get('course_brief_info')?.value);
 
       
     // Append file data if a file is selected
