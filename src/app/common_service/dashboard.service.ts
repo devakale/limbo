@@ -77,7 +77,7 @@ export class DashboardService {
             return this.http.get<any>(`${this.API_URL}/review/event/${id}?page=${page}&limit=${limit}`);
            }
 
-           courseenroll(data:{course_id: string}): Observable<any> {
+           courseenroll(data:{course_id: any}): Observable<any> {
             return this.http.post<any>(`${this.Enroll}`, data);
           }
 
@@ -89,7 +89,7 @@ export class DashboardService {
             return this.http.get<any>(`${this.API_URL}/review/product/${id}?page=${page}&limit=${limit}`);
            }
 
-          bookevent(data:{event_id: string}): Observable<any> {
+          bookevent(data:{event_id: any}): Observable<any> {
             return this.http.post<any>(`${this.API_URL}/event/registerevent`, data);
           }
 

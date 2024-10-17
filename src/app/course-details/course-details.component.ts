@@ -20,15 +20,13 @@ export class CourseDetailsComponent implements OnInit {
   starsArray = Array(5).fill(0);
   id: any;
   p: number = 1;
-  currentPageBatches: number = 1;
+  currentPageBatches: number = 1;  
   currentPageUpcomingBatches: number = 1;
   currentPageOnlineEvents: number = 1;
   currentPageOfflineEvents: number = 1;
   currentPageProducts: number = 1;
 
   itemsPerPage: number = 3;
-
-
 
 
   constructor(private serive:TrainerService,private router:ActivatedRoute,
@@ -39,7 +37,7 @@ export class CourseDetailsComponent implements OnInit {
     this.serive.getprofile(this.id).subscribe(data =>{
       console.log("data",data);
       this.showprofile = data;  
-      this.showreviewdata = data.reviews; // Bind reviews data to showreviewdata
+      this.showreviewdata = data?.reviews; // Bind reviews data to showreviewdata
     });
     
     this.enquiry.trainerid = this.id;
@@ -210,10 +208,6 @@ export class CourseDetailsComponent implements OnInit {
     this.showshare = !this.showshare;
   }
 
-  showsharereview=false;
-  shareiconreview(){
-    this.showsharereview = !this.showsharereview;
-  }
 
 
 

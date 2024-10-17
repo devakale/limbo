@@ -67,6 +67,7 @@ export class DashboardComponent implements OnInit {
       this.Dservice.getcategoryname().subscribe(response =>{
         console.log(response);
         this.ShowAllCategory = response;
+        this.ShowAllCategory.sort((a, b) => a.category_name.localeCompare(b.category_name));
       })
 
       this.Dservice.gethomedatauser(this.page, this.limit).subscribe(result => {

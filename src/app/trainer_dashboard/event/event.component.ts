@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/common_service/admin.service';
+import { AuthServiceService } from 'src/app/common_service/auth-service.service';
 import { TrainerService } from 'src/app/common_service/trainer.service';
 import Swal from 'sweetalert2';
 
@@ -21,6 +22,21 @@ export class EventComponent  implements OnInit{
     this.showIcon = !this.showIcon;
   }
 
+  isUser: boolean = true; 
+  isTrainer: boolean = false;
+  isSELF_EXPERT: boolean = false;
+  isInstitute : boolean = false;
+  isAdmin : boolean = false;
+
+
+  checkUserRole() {
+    const role = this.auth.getUserRole();
+    this.isTrainer = role === 'TRAINER';
+    this.isSELF_EXPERT = role === 'SELF_EXPERT';
+    this.isInstitute = role === 'INSTITUTE';
+    this.isAdmin = role === 'SUPER_ADMIN';
+    this.isUser = role === 'USER'  || role === 'TRAINER' || role === 'SELF_EXPERT' || role === 'INSTITUTE' || role === 'SUPER_ADMIN' ;
+  }
 
   event = {
     event_name: ' ',
@@ -38,13 +54,15 @@ export class EventComponent  implements OnInit{
     event_thumbnail:null,
   };
 
-  constructor(private service:TrainerService, private admin:AdminService){}
+  constructor(private service:TrainerService, private admin:AdminService, private auth: AuthServiceService){}
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] as File;
   }
 
   ngOnInit(): void {
+      
+    this.checkUserRole();
 
       this.service.gettrainerdatabyID().subscribe(data=>{
         // console.log(data);

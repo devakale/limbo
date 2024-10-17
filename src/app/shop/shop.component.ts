@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { NgForm } from '@angular/forms';
 import { LoginService } from '../common_service/login.service';
 import { AuthServiceService } from '../common_service/auth-service.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class ShopComponent {
   totalItems = 0;
   currentPage = 1;
   itemsPerPage = 3; 
+  routeSub: Subscription = new Subscription();
 
 
   count: number = 1;
@@ -51,16 +53,24 @@ export class ShopComponent {
     }
 
   ngOnInit(): void {
+
+    this.routeSub = this.router.params.subscribe(params => {
+      this.id = params['id']; 
+      this.loadProducts(this.id);
+    });
+    
+    this.loadreview(this.currentPage,this.itemsPerPage);
+    
+    this.review.productid = this.id;
+  }
+
+  loadProducts(id:string): void{
     // console.log("Course ID:", this.id);
     this.dservice.productdatabyID(this.id).subscribe((data) => {
       console.log("API Response:", data);
       this.Showproductdata = data.productDetail;
       this.ShowRelatedPeoduct = data?.relatedProducts;
-    })
-
-    this.loadreview(this.currentPage,this.itemsPerPage);
-    
-    this.review.productid = this.id;
+    });
   }
 
   loadreview(page: number, limit: number): void{
@@ -68,7 +78,13 @@ export class ShopComponent {
       console.log("Review",Response);
     this.ShowProductReview = Response.data.reviews;
     this.totalItems = Response.pagination.totalReviews;
-    })
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.routeSub) {
+      this.routeSub.unsubscribe();
+    }
   }
 
   buyproduct(quantity:number, productId:string) {
@@ -159,6 +175,33 @@ export class ShopComponent {
     }
 
 
+    currentUrl: string = window.location.href;
+
+  shareOnWhatsApp() {
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(this.currentUrl)}`;
+      window.open(whatsappUrl, '_blank');
+  }
+  
+  
+  copyLink() {
+      navigator.clipboard.writeText(this.currentUrl).then(() => {
+          alert('Link copied to clipboard!');
+      }).catch(err => {
+          console.error('Could not copy text: ', err);
+      });
+  }
+  
+  shareOnFacebook() {
+      const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(this.currentUrl)}`;
+      window.open(facebookUrl, '_blank');
+  }
+
+  showshare=false;
+  shareicon(){
+    this.showshare = !this.showshare;
+  }
+
+
   show: boolean = false;
   rememberMe: boolean = false;
 
@@ -177,7 +220,6 @@ export class ShopComponent {
     if (form.valid) {
       this.loginservices.postsignupdata(this.userData).subscribe({
         next: (response) => {
-          // console.log(alert("Success"),response);
           sessionStorage.setItem("Authorization",response.token);
           this.authService.login(response.token); // Set login state
           Swal.fire('Congratulation', 'Welcome to Ximbo! <br> Were thrilled to have you join our community of esteemed trainers, coaches, and educators. Ximbo is designed to empower you with the tools and resources needed to deliver exceptional training and create impactful learning experiences. <br> You Have Register successfully!', 'success');
@@ -194,10 +236,9 @@ export class ShopComponent {
             error : (error)=>{
               Swal.fire('Error', 'sorry..!', 'error');
             }
-          })
+          });
         },
         error: (error) => {
-          // console.log(alert("Error"),error);
           Swal.fire('Error', 'Please Enter Valid Details.', 'error');
         }
       });

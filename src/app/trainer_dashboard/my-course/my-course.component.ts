@@ -14,8 +14,11 @@ import Swal from 'sweetalert2';
 })
 export class MyCourseComponent implements OnInit {
 
-  isTrainer: boolean = false;
   isUser: boolean = true; // Example default value; adjust as needed
+  isTrainer: boolean = false;
+  isSELF_EXPERT: boolean = false;
+  isInstitute : boolean = false;
+  isAdmin : boolean = false;
 
   maxSize = 5 * 1024 * 1024; // 5MB
   maxWidth = 100; // Maximum width in pixels
@@ -25,7 +28,10 @@ export class MyCourseComponent implements OnInit {
     const role = this.auth.getUserRole();
     // console.log(role);
     this.isTrainer = role === 'TRAINER';
-    this.isUser = role === 'USER'  || role === 'TRAINER' ;
+    this.isSELF_EXPERT = role === 'SELF_EXPERT';
+    this.isInstitute = role === 'INSTITUTE';
+    this.isAdmin = role === 'SUPER_ADMIN';
+    this.isUser = role === 'USER'  || role === 'TRAINER' || role === 'SELF_EXPERT' || role === 'INSTITUTE' || role === 'SUPER_ADMIN' ;
   }
 
 

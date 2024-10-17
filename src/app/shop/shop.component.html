@@ -1,23 +1,5 @@
 <div *ngIf="Showproductdata" class="container rounded mt-5 mb-3" style="background-color: var(--bodyColor);box-shadow: 10px  10px 50px #a79ccf;">
-    <!-- <div class="row ">
-        <div class="col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-between p-4 rounded-top" style="background-color: #E9E5FB;">
-            <h5>{{Showproductdata.product_name}}  Provided by {{Showproductdata.t_id.f_Name + ' ' + Showproductdata.t_id.l_Name }}</h5>
-            <button  *ngIf="isLoggedIn" routerLink="/cart" class="btn btn-0">Continue Shopping</button>
-        </div>
-
-        <div class="col-sm-12 col-md-12 col-lg-6 mt-3 p-5">
-            <img src="{{Showproductdata.product_image}}" class="img-fluid " alt="..." style="border-radius: 20px;">
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-6 mt-3 p-5">
-            <h6 class="fs-4 fw-bold" style="color: #674ACB;">{{Showproductdata.product_name}}</h6>
-            <p class="fs-5" style="text-align: justify;">Product Details : {{Showproductdata.products_info}}</p>
-            <p>Price : ₹ {{Showproductdata.product_prize}}</p>
-            <p>Selling Prize : ₹ {{Showproductdata.product_selling_prize}}</p>
-            <button (click)="buyproduct(1, Showproductdata._id)"  class="btn text-white me-3" style="background-color: #674ACB">Buy now</button>
-            <button routerLink="/coursedetails/{{Showproductdata.t_id._id}}" class="btn btn-0 " >View Trainer Profile</button>
-
-        </div>
-    </div> -->
+   
    <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-5 mt-3 p-5">
       <img src="{{Showproductdata.product_image}}" class="img-fluid" alt="..." style="border-radius: 8px;">
@@ -31,6 +13,7 @@
       <p class="poppins-regular" style="text-align: justify;">{{Showproductdata.products_info}}</p>
       <p class="mb-1 poppins-semibold ">Price :  ₹ <span class="text-decoration-line-through">{{Showproductdata.products_price}}</span></p>
       <p class="mb-2 poppins-semibold" >Selling Prize : ₹ {{Showproductdata.products_selling_price}}</p>
+      <p class="mb-2 poppins-semibold">Product Type : {{Showproductdata.product_flag}}</p>
 
 
       <div class="  d-flex gap-3 mb-2">
@@ -42,8 +25,32 @@
         <button (click)="buyproduct( count , Showproductdata._id)"  class="btn text-white me-3 mb-2" style="background-color: var(--TextColor)">Buy now</button>
       </div>
       
-      <button  class="btn border-primary me-3" >Add to Wishlist</button>
-      <button  routerLink="/coursedetails/{{Showproductdata?.traienrid}}" class="btn btn-outline-primary" >View Trainer Profile</button>
+      
+      <div class="row g-1 align-items-center mt-3">
+        <!-- <div class="col-sm-12 col-md-3 col-lg-3 ">
+          <button  class="btn border-primary">Add to Wishlist</button>
+        </div> -->
+        <div class="col-sm-12 col-md-3 col-lg-3">
+          <button  routerLink="/coursedetails/{{Showproductdata?.traienrid}}" class="btn btn-outline-primary" >View Trainer Profile</button>
+        </div>
+<!-- share button scetion -->
+        <div class="col-sm-12 col-md-3 col-lg-2 ">
+          <button  (click)="shareicon()" class="btn text-white   px-2" style="background-color: #307DFF;"><i class="fas fa-share-alt fs-5"></i> Share</button>
+          <div class="share-container">
+              <div *ngIf="showshare" class="share-options gap-4 p-2">
+                  <a (click)="shareOnFacebook()" class="share-option p-1">
+                      <i class="fab fa-facebook fs-1" style="color: #0976e4;"></i>
+                  </a>
+                  <a (click)="shareOnWhatsApp()" class="share-option p-1">
+                      <i class="fab fa-whatsapp fs-1" style="color: #30d14e; text-decoration: none;"></i>
+                  </a>
+                  <a (click)="copyLink()" class="share-option p-1">
+                      <i class="fas fa-link fs-3"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+    </div>
 
       <div class="mt-3 " style="cursor: pointer;">
         <b class="me-2">Tags:</b>
@@ -105,7 +112,7 @@
     </mat-tab-group>
   </div>
     <div class="row p-5 gap-2">
-        <h5 class="fw-bold" style="color: #674ACB;">Related Product</h5>
+        <h5 class="fw-bold" style="color: var(--TextColor);">Related Product</h5>
         <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
           <div *ngFor="let product of ShowRelatedPeoduct " class="col-sm-12 col-md-3 col-lg-3 mb-3">
             <div class="card productcard">

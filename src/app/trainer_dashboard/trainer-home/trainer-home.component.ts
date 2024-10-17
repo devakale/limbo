@@ -13,6 +13,7 @@ export class TrainerHomeComponent implements OnInit{
   isUser: boolean = false;
   isAdmin: boolean = false;
   isInstitute: boolean = false;
+  isSELF_EXPERT: boolean = false
 
   constructor(private auth: AuthServiceService,private route:Router) {}
 
@@ -26,10 +27,11 @@ export class TrainerHomeComponent implements OnInit{
 
     this.isAdmin = role === 'SUPER_ADMIN';
     this.isTrainer = role === 'TRAINER';
-    this.isInstitute = role === 'INSTITUTE'
-    this.isUser = role === 'USER' || role === 'TRAINER' || role === 'SUPER_ADMIN' || role === 'INSTITUTE';
+    this.isInstitute = role === 'INSTITUTE';
+    this.isSELF_EXPERT = role == 'SELF_EXPERT';
+    this.isUser = role === 'USER' || role === 'TRAINER' || role === 'SUPER_ADMIN' || role === 'INSTITUTE' || role === 'SELF_EXPERT';
 
-    console.log('isTrainer:', this.isTrainer, 'isUser:', this.isUser, 'isAdmin:', this.isAdmin, this.isInstitute);
+    console.log('isTrainer:', this.isTrainer, 'isUser:', this.isUser, 'isAdmin:', this.isAdmin, this.isInstitute, this.isSELF_EXPERT);
   }
   
   logout() {

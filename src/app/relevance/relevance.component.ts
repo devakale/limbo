@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../common_service/dashboard.service';
 import { FilterService } from '../common_service/filter.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SearchService } from '../search.service';
 
 @Component({
@@ -16,14 +16,33 @@ export class RelevanceComponent implements OnInit {
   selectedCategories: string[] = [];
   category: string = '';
 
-  inputPlaceholder: string = 'Search courses'; // Default placeholder
+  inputPlaceholder: string = 'Search';
 
-  updatePlaceholder(newPlaceholder: string): void {
-    this.inputPlaceholder = newPlaceholder;
+  updatePlaceholder(event: Event) {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+
+    switch (selectedValue) {
+      case 'Courses':
+        this.inputPlaceholder = 'Search Courses';
+        this.router.navigate(['/relevance/seeallcategory']); 
+        break;
+      case 'Trainers':
+        this.inputPlaceholder = 'Search Trainers';
+        this.router.navigate(['/relevance/trainer']); 
+        break;
+      case 'Products':
+        this.inputPlaceholder = 'Search Products';
+        this.router.navigate(['/relevance/userproduct']); 
+        break;
+      case 'Events':
+        this.inputPlaceholder = 'Search Events';
+        this.router.navigate(['/relevance/userevent']); 
+        break;
+    }
   }
 
   constructor(private service: DashboardService, private filter: FilterService,
-     private route: ActivatedRoute,
+     private route: ActivatedRoute, private router:Router,
      private searchService:SearchService) {}
 
   ngOnInit(): void {

@@ -4,7 +4,7 @@
   </div>
   
   <mat-tab-group dynamicHeight mat-stretch-tabs="false" mat-align-tabs="start">
-    <mat-tab *ngIf="isTrainer" label="My Courses" >
+    <mat-tab *ngIf="isTrainer || isSELF_EXPERT " label="My Courses" >
       <div class="row">
         <div  class="col-sm-12 col-lg-12 d-flex gap-5 justify-content-end mb-3">
           <button class="btn rounded-pill text-light" data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -16,26 +16,11 @@
             Update/Delete Course
           </button>
         </div>
-
-        <!-- My Courses For Trainer -->
-        <!-- <div  class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4">
-          <div *ngFor="let trainer of showcoursedata" class="col-sm-12 col-md-6 col-lg-2 mb-3">
-            <div class="card p-2 round">
-              <img src="{{ trainer.thumbnail_image }}" height="120px" width="200px" class="card-img-top rounded"
-                alt="..." />
-              <div class="card-body">
-                <h6 class="card-title">{{ trainer.course_name }}</h6>
-              </div>
-              <i routerLink="/editcourse/{{ trainer._id }}" *ngIf="showIcon" class="fa-solid fa-edit right-side-top"></i>
-              <i (click)="onDelete(trainer._id)" *ngIf="showIcon" class="fa-solid fa-trash right-side-top-delete"></i>
-            </div>
-          </div>
-        </div> -->
-
-        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
+        
+        <div *ngIf="showcoursedata && showcoursedata.length > 0" class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
           <div *ngFor="let allcourses of showcoursedata" class="col-sm-12 col-md-6 col-lg-3 mb-3">
-            <div class="card" routerLink="/couserenroll/{{allcourses._id}}">
-              <img src="{{allcourses.thumbnail_image}}" class="card-img-top img-fluid" alt="...">
+            <div class="card">
+              <img routerLink="/couserenroll/{{allcourses._id}}" src="{{allcourses.thumbnail_image}}" class="card-img-top img-fluid" alt="...">
               <div class="card-body ">
                 <div class="d-flex align-items-center justify-content-between">
                   <h5 class="card-title">{{allcourses.course_name}}</h5>
@@ -43,7 +28,6 @@
                 </div>
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center gap-2 ">
-                      <!-- <p><i class="fa-solid fa-user card-user border p-1"></i></p> -->
                        <p><img src="{{allcourses.trainer_image}}" class="rounded-circle" height="20px" width="20px" alt=""></p>
                       <p>{{allcourses.business_Name }}</p>
                     </div>
@@ -55,28 +39,23 @@
                   <p><i class="fa-solid fa-list-ul"></i> Duration : {{allcourses.course_duration || 2}} Weeks</p>
                   <p style="font-family: Poppins;font-weight: bold;color: var(--TextColor);font-size: 20px;">{{ getFormattedPrice(allcourses.course_price) }}</p>
               </div>
+              <i routerLink="/editcourse/{{ allcourses._id }}" *ngIf="showIcon" class="fa-solid fa-edit right-side-top"></i>
+              <i (click)="onDelete(allcourses._id)" *ngIf="showIcon" class="fa-solid fa-trash right-side-top-delete"></i>
             </div>
+            
           </div>
         </div>
+        <div *ngIf="!showcoursedata || showcoursedata.length === 0" class="col-12 text-center">
+          <img src="../../../assets/No data-Found.png" class="img-fluid object-fit-cover" height="300px" width="300px" alt="">
+      </div>
 
         
 
       </div>
 </mat-tab>
-<mat-tab label="Enrolled Courses">
+<mat-tab *ngIf="isUser" label="Enrolled Courses">
      <!-- My Courses For Trainer -->
-     <!-- <div *ngIf="isUser" class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 mt-2 ">
-      <div *ngFor="let student of showcoursedatastudent" class="col-sm-12 col-md-6 col-lg-2 mb-3">
-        <div class="card p-2 round" routerLink="/couserenroll/{{student.course_id._id}}">
-          <img src="{{student.course_thumbnail}}" height="120px" width="200px" class="card-img-top rounded"
-            alt="..." />
-          <div class="card-body">
-            <h6 class="card-title">{{ student.course_id.course_name}}</h6>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <div *ngIf="isUser" class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
+    <div *ngIf="showcoursedatastudent && showcoursedatastudent.length > 0" class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
       <div *ngFor="let allcourses of showcoursedatastudent" class="col-sm-12 col-md-6 col-lg-3 mb-3">
         <div class="card" routerLink="/couserenroll/{{allcourses._id}}">
           <img src="{{allcourses.thumbnail_image}}" class="card-img-top img-fluid" alt="...">
@@ -101,8 +80,10 @@
         </div>
       </div>
     </div>
+    <div *ngIf="!showcoursedatastudent || showcoursedatastudent.length === 0" class="col-12 text-center">
+      <img src="../../../assets/No data-Found.png" class="img-fluid object-fit-cover" height="300px" width="300px" alt="">
+  </div>
 </mat-tab>
-<!-- <mat-tab label="Third">Content 3</mat-tab> -->
   </mat-tab-group>
 </div>
 

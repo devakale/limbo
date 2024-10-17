@@ -84,7 +84,13 @@
       </button>
       <i routerLink="/Notification" class="fa-regular fa-bell me-3 fs-3"></i>
       <div class="dropdown">
-        <i  class="fa-solid fa-user icon" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+          <!-- <img *ngIf="UserImage" [src]="UserImage" data-bs-toggle="dropdown" aria-expanded="false" class="rounded-circle object-fit-cover" alt="Trainer Image" height="40" width="40" />
+          <i  class="fa-solid fa-user icon" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i> -->
+          <img *ngIf="UserImage; else noImageIcon" [src]="UserImage" data-bs-toggle="dropdown" aria-expanded="false"
+            class="rounded-circle object-fit-cover" alt="Trainer Image" height="40" width="40" />
+          <ng-template #noImageIcon>
+            <i class="fa-solid fa-user icon" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+          </ng-template>
         <ul class="dropdown-menu dropdown-menu-start">
           <li><a class="dropdown-item">{{ (user$ | async) }}</a></li>
           <li><a class="dropdown-item" routerLink="/editprofilepicture">Change Profile <i class="fa-solid fa-user-pen"></i></a></li>

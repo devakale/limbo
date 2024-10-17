@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DashboardService } from '../common_service/dashboard.service';
 import { FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../common_service/login.service';
 import Swal from 'sweetalert2';
+import { AuthServiceService } from '../common_service/auth-service.service';
+import { Subscription } from 'rxjs';
+
 
 
 @Component({
@@ -11,7 +14,9 @@ import Swal from 'sweetalert2';
   templateUrl: './courseenroll.component.html',
   styleUrls: ['./courseenroll.component.css']
 })
-export class CourseenrollComponent implements OnInit {
+export class CourseenrollComponent implements OnInit, OnDestroy {
+
+  
 
     id: any;
     Showcoursedetails:any;
@@ -22,24 +27,33 @@ export class CourseenrollComponent implements OnInit {
     currentPage = 1;
     itemsPerPage = 3; 
     starsArray = Array(5).fill(0);
+    routeSub: Subscription = new Subscription();
 
 
-    constructor(private dservice:DashboardService,private router:ActivatedRoute, private route:Router,private loginservices:LoginService)
+    constructor(private dservice:DashboardService,private router:ActivatedRoute, private route:Router,private loginservices:LoginService,private authService:AuthServiceService)
     {this.id=this.router.snapshot.paramMap.get('id');}
 
     ngOnInit(): void {
-        // console.log("Course ID:", this.id);
-          this.dservice.getcouserdatabyID(this.id).subscribe((data)=>{
-          console.log("API Response:", data);
-          this.Showcoursedetails = data?.course;
-          this.RelatedCourses = data.relatedCourses;
-        });
-        
+
+      this.routeSub = this.router.params.subscribe(params => {
+        this.id = params['id']; 
+        this.loadCourseDetails(this.id);
+      });
+      
         this.loadreview(this.currentPage,this.itemsPerPage)
           
         this.review.courseid = this.id;
     }
 
+    loadCourseDetails(id: string): void {
+      // console.log("Course ID:", this.id);
+      this.dservice.getcouserdatabyID(this.id).subscribe((data)=>{
+        console.log("API Response:", data);
+        this.Showcoursedetails = data?.course;
+        this.RelatedCourses = data.relatedCourses;
+      });
+    }
+    
       loadreview(page: number, limit: number): void{
         this.dservice.GetCourseReview(this.id,page, limit).subscribe((Response) =>{
           console.log("Review",Response);
@@ -48,22 +62,15 @@ export class CourseenrollComponent implements OnInit {
         })
       }
 
-    // CheckLoggedIN() {
-    //   const token = sessionStorage.getItem('Authorization'); // Assuming your token is stored in sessionStorage
-    //   if (token) {
-    //     Swal.fire('Congratulation','You have Succssfully Enroll Now! ', 'success');
-    //     this.route.navigate(['/cartcourse']);
-    //   }
-    //   else {
-    //     const modalElement = document.getElementById('CheckLoggedIN');
-    //       if (modalElement) {
-    //         const modal = new (window as any).bootstrap.Modal(modalElement);
-    //         modal.show();
-    //       }
-    //   }
-    // }
+      ngOnDestroy(): void {
+        if (this.routeSub) {
+          this.routeSub.unsubscribe();
+        }
+      }
 
-    CourseEnroll(course_id: string) {
+      
+      
+      CourseEnroll(course_id: string) {
       const token = sessionStorage.getItem('Authorization'); // Assuming your token is stored in sessionStorage
       if (token) {
           const data = { course_id };
@@ -77,7 +84,10 @@ export class CourseenrollComponent implements OnInit {
               }
           );}
            else {
-        const modalElement = document.getElementById('CheckLoggedIN');
+            console.log(course_id);
+            sessionStorage.setItem('course_id',course_id);
+
+             const modalElement = document.getElementById('CheckLoggedIN');
               if (modalElement) {
                 const modal = new (window as any).bootstrap.Modal(modalElement);
                 modal.show();
@@ -155,6 +165,32 @@ export class CourseenrollComponent implements OnInit {
       this.p = page;
     }
 
+
+  currentUrl: string = window.location.href;
+
+  shareOnWhatsApp() {
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(this.currentUrl)}`;
+      window.open(whatsappUrl, '_blank');
+  }
+  
+  
+  copyLink() {
+      navigator.clipboard.writeText(this.currentUrl).then(() => {
+          alert('Link copied to clipboard!');
+      }).catch(err => {
+          console.error('Could not copy text: ', err);
+      });
+  }
+  
+  shareOnFacebook() {
+      const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(this.currentUrl)}`;
+      window.open(facebookUrl, '_blank');
+  }
+
+  showshare=false;
+  shareicon(){
+    this.showshare = !this.showshare;
+  }
   
   show: boolean = false; 
   rememberMe: boolean = false;
@@ -174,12 +210,24 @@ export class CourseenrollComponent implements OnInit {
         if (form.valid) {
           this.loginservices.postsignupdata(this.userData).subscribe({
             next: (response) => {
-              // console.log(alert("Success"),response);
+              sessionStorage.setItem("Authorization",response.token);
+               this.authService.login(response.token); // Set login state
               Swal.fire('Congratulation','Welcome to Ximbo! <br> Were thrilled to have you join our community of esteemed trainers, coaches, and educators. Ximbo is designed to empower you with the tools and resources needed to deliver exceptional training and create impactful learning experiences. <br> You Have Register successfully!', 'success');
-              this.route.navigate(['/cartcourse'])
+              let course_id = sessionStorage.getItem('course_id');
+              const data = { course_id };
+              console.log(data);
+              
+              this.dservice.courseenroll(data).subscribe({
+                next: (response) => {
+               Swal.fire('Congratulation','You have Succssfully Enroll Now! ', 'success');
+                sessionStorage.removeItem('course_id');
+              },
+              error: (error) => {
+                   Swal.fire('Error', 'You Have Already Enrolled This course.', 'error');
+              }
+             });
             },
             error: (error)=>{
-              // console.log(alert("Error"),error);
               Swal.fire('Error', 'Please Enter Valid Details.', 'error');
             } 
           });

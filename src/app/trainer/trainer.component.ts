@@ -53,14 +53,14 @@ export class TrainerComponent implements OnInit {
   
     if (this.searchTerm) {
       this.filteredtrainer = this.filteredtrainer.filter(trainer =>
-        trainer.Business_Name && 
-        trainer.Business_Name.toLowerCase().includes(this.searchTerm.toLowerCase())
+        trainer.Business_Name || 
+        trainer.f_Name.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
   
     if (this.selectedCategories.length > 0) {
       this.filteredtrainer = this.filteredtrainer.filter(trainer =>
-        this.selectedCategories.includes(trainer.category_id?.toString()) 
+        this.selectedCategories.includes(trainer.categories?.toString()) 
       );
     }
   
@@ -91,11 +91,6 @@ export class TrainerComponent implements OnInit {
           }
         );
     } else {
-      // If no search term, reload all trainers
-      // this.service.gettrainerdata().subscribe(data => {
-      //   this.showtrainerData = data.trainers || []; // Ensure this is an array
-      //   this.filterTrainers(); // Filter with all trainers
-      // });
       this.loadtrainers(this.currentPage,this.itemsPerPage)
     }
   }
@@ -110,47 +105,3 @@ export class TrainerComponent implements OnInit {
 }
 
 
-// import { Component, OnInit } from '@angular/core';
-// import { DashboardService } from '../common_service/dashboard.service';
-// import { FilterService } from '../common_service/filter.service';
-
-// @Component({
-//   selector: 'app-trainer',
-//   templateUrl: './trainer.component.html',
-//   styleUrls: ['./trainer.component.css']
-// })
-// export class TrainerComponent implements OnInit{
-//   showtrainerData:any;
-//   filtertrainer:any[] = [];
-
-//   page = 0;
-//   limit = 4;
-  
-//   constructor(private service:DashboardService, private filter: FilterService){}
-
-//   ngOnInit(): void {
-
-//     this.service.gettrainerdata().subscribe(data =>{
-//       this.showtrainerData=data.trainers;
-//       this.filtertrainer = this.showtrainerData;
-//     });
-//     // this.service.gettrainerdata().subscribe(data =>{
-//     //   console.log(data);
-      
-//     //   this.showtrainerData=data.trainers;
-//     //   this.filtertrainer = this.showtrainerData;
-//     //   // console.log(this.filtertrainer);
-      
-//     // });
-//     this.filter.selectedCategories$.subscribe(selectedCategories => {
-//       if (selectedCategories.length > 0) {
-//         this.filtertrainer = this.showtrainerData.filter((trainer: any) =>
-//           selectedCategories.includes(trainer.f_Name.category_id)        
-//         );
-//       } else {
-//         this.filtertrainer = this.showtrainerData; // Show all courses if no category is selected
-//       }
-//     });
-//   }
-
-// }

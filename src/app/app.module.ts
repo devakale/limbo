@@ -73,6 +73,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ContactComponent } from './contact/contact.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

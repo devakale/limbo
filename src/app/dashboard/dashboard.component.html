@@ -94,7 +94,7 @@
             </div>
             <div class="modal-body">
               <div class="row">
-                <div *ngFor="let category of ShowAllCategory"
+                <div *ngFor="let category of ShowAllCategory "
                   class="col-sm-12 col-md-5 col-lg-4   mt-3 rounded box-hover mb-2" [routerLink]="['/relevance']"
                   [queryParams]="{ category: category.category_name }" data-bs-dismiss="modal" aria-label="Close">
                   <div class="p-3 d-flex align-items-center gap-2 border shadow-sm rounded" style="cursor: pointer;">
@@ -259,7 +259,6 @@
                   <i *ngIf="allcourses.online_offline === 'Online'" class="fas fa-circle-play text-muted m-0 p-0"></i>
                   <i *ngIf="allcourses.online_offline === 'Offline'" class="fas fa-location-dot m-0 p-0"></i>
                 </span>
-                <!-- <small>{{allcourses.online_offline}}</small> -->
               </div>
               <span class="">{{allcourses.category_name}}</span>
 

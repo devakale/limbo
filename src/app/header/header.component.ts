@@ -4,6 +4,7 @@ import { AuthServiceService } from '../common_service/auth-service.service';
 import { Observable } from 'rxjs';
 import { LoginService } from '../common_service/login.service';
 import { DashboardService } from '../common_service/dashboard.service';
+import { TrainerService } from '../common_service/trainer.service';
 
 @Component({
   selector: 'app-header',
@@ -20,6 +21,9 @@ export class HeaderComponent {
   id: string = '';
   type: string = '';  
   keyword: string = '';
+  UserImage: string | null = null; 
+
+
 
   role = {
     requested_Role : ' '
@@ -54,6 +58,7 @@ export class HeaderComponent {
     private route:Router, 
     private requst:LoginService, 
     private dservice:DashboardService,
+    private service:TrainerService,
     private router:ActivatedRoute) {
     this.isLoggedIn$ = this.authService.isLoggedIn$;
     this.user$ = this.authService.user$;
@@ -68,6 +73,7 @@ export class HeaderComponent {
   }
 
   ngOnInit(): void {
+    
     this.checkUserRole();
 
     this.dservice.getcategoryname().subscribe(data => {
@@ -78,7 +84,16 @@ export class HeaderComponent {
       console.log(response);
       this.Institutedata = response?.data;
       
-    })
+    });
+
+    this.loadTrainerData();
+  }
+
+  loadTrainerData(): void {
+    this.service.gettrainerbyID().subscribe((data: any) => {
+      console.log("Trainer Details", data);     
+      this.UserImage = data.trainer_image; 
+    });
   }
 
   searchitem(event: KeyboardEvent) {
@@ -125,7 +140,7 @@ export class HeaderComponent {
     } else if (suggestion.type === 'product') {
       this.route.navigate(['/relevance/userproduct'], {
         queryParams: {
-          category: suggestion.categoryid?.category_name || 'defaultCategory', // For products
+          category: suggestion.category || 'defaultCategory', // For products
           id: suggestion.id,
           type: suggestion.type,
           keyword: enteredKeyword
@@ -140,10 +155,23 @@ export class HeaderComponent {
           keyword: enteredKeyword
         }
       });
-    } else if (suggestion.type === 'trainer') {
+    }
+    // } else if (suggestion.type === 'trainer') {
+    //   this.route.navigate(['/relevance/trainer'], {
+    //     queryParams: {
+    //       category: suggestion.name || 'defaultCategory',
+    //       id: suggestion.id,
+    //       type: suggestion.type,
+    //       keyword: enteredKeyword
+    //     }
+    //   });
+    // }
+    else if (suggestion.type === 'trainer') {
+      // If the trainer has multiple categories, choose the first one or handle it accordingly
+      const trainerCategory = suggestion.trainer_categories.length > 0 ? suggestion.trainer_categories[0] : 'defaultCategory';
       this.route.navigate(['/relevance/trainer'], {
         queryParams: {
-          category: suggestion.name || 'defaultCategory',
+          category: trainerCategory,
           id: suggestion.id,
           type: suggestion.type,
           keyword: enteredKeyword
@@ -163,11 +191,11 @@ export class HeaderComponent {
       })));
     }
 
-    if (result.products) {
-      formattedResults.push(...result.products.map((product: any) => ({
+    if (result.Products) {
+      formattedResults.push(...result.Products.map((product: any) => ({
         type: 'product',
         name: product.product_name,
-        categoryid: product.categoryid,  // categoryid contains category_name
+        category: product.category,  // categoryid contains category_name
         id: product._id
       })));
     }
@@ -180,8 +208,8 @@ export class HeaderComponent {
       })));
     }
 
-    if (result.events) {
-      formattedResults.push(...result.events.map((event: any) => ({
+    if (result.Events) {
+      formattedResults.push(...result.Events.map((event: any) => ({
         type: 'event',
         name: event.event_name,
         events_category: event.events_category,
@@ -189,10 +217,11 @@ export class HeaderComponent {
       })));
     }
 
-    if (result.trainers) {
-      formattedResults.push(...result.trainers.map((trainer: any) => ({
+    if (result.Trainers) {
+      formattedResults.push(...result.Trainers.map((trainer: any) => ({
         type: 'trainer',
         name: trainer.f_Name,
+        trainer_categories: trainer.trainer_categories,
         id: trainer._id
       })));
     }
@@ -200,63 +229,6 @@ export class HeaderComponent {
     return formattedResults;
   }
 
-
-
-  // onSelectSuggestion(suggestion: any) {
-  //   const enteredKeyword = this.query;
-  
-  //   this.suggestions = [];
-  
-  //   if (suggestion.type === 'course') {
-  //     this.route.navigate(['/relevance/seeallcategory'], {
-  //       queryParams: {
-  //         category: suggestion.name,
-  //         id: suggestion.id,
-  //         type: suggestion.type,  
-  //         keyword: enteredKeyword  
-  //       }
-  //     });
-  //   }
-  //   else if (suggestion.type === 'category') {
-  //     this.route.navigate(['/relevance/seeallcategory'], {
-  //       queryParams: {
-  //         category: suggestion.category_name,
-  //         id: suggestion.id,
-  //         type: suggestion.type,  
-  //         keyword: enteredKeyword  
-  //       }
-  //     });
-  //   }
-  //   else if (suggestion.type === 'product') {
-  //     this.route.navigate(['/relevance/userproduct'], {
-  //       queryParams: {
-  //         category: suggestion.name,
-  //         id: suggestion.id,
-  //         type: suggestion.type,  
-  //         keyword: enteredKeyword  
-  //       }
-  //     });
-  //   } else if (suggestion.type === 'event') {
-  //     this.route.navigate(['/relevance/userevent'], {
-  //       queryParams: {
-  //         category: suggestion.name,
-  //         id: suggestion.id,
-  //         type: suggestion.type,  
-  //         keyword: enteredKeyword  
-  //       }
-  //     });
-  //   } else if (suggestion.type === 'trainer') {
-  //     this.route.navigate(['/relevance/trainer'], {
-  //       queryParams: {
-  //         category: suggestion.name,
-  //         id: suggestion.id,
-  //         type: suggestion.type,  
-  //         keyword: enteredKeyword  
-  //       }
-  //     });
-  //   }
-  // }
-  
   
 
   onsearch() {
@@ -279,7 +251,7 @@ export class HeaderComponent {
 
   logout() {
     this.authService.logout();
-      this.route.navigate(['/'])
+      this.route.navigate(['/']);
   }
 
   onSubmit() {
@@ -366,6 +338,7 @@ export class HeaderComponent {
 onRoleChange() {
   console.log('Selected Role:', this.role.requested_Role);
 }  
+
 
 
 }

@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { DashboardService } from '../common_service/dashboard.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { NgForm } from '@angular/forms';
 import { LoginService } from '../common_service/login.service';
-
+import { AuthServiceService } from '../common_service/auth-service.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-event-details',
@@ -22,24 +23,35 @@ export class UserEventDetailsComponent {
   itemsPerPage = 3; 
   ShowEventReview:any;
   starsArray = Array(5).fill(0);
+  routeSub: Subscription = new Subscription();
+
 
 
   constructor(private dservice:DashboardService,
     private router:ActivatedRoute,private route:Router,
-  private loginservices:LoginService)
+  private loginservices:LoginService,private authService:AuthServiceService)
   {this.id=this.router.snapshot.paramMap.get('id');}
 
   ngOnInit(): void {
-      console.log("Event ID:", this.id);
+
+    this.routeSub = this.router.params.subscribe(params => {
+      this.id = params['id']; 
+      this.loadevent(this.id);
+    });
+      
+      this.loadreview(this.currentPage,this.itemsPerPage);
+
+      this.review.eventid=this.id;
+
+  }
+
+  loadevent(id:string): void{
+    console.log("Event ID:", this.id);
         this.dservice.EventdatabyID(this.id).subscribe((data)=>{
         console.log("API Response:", data);
         this.ShowEvent = data.event;
         this.relatedEvent = data.relatedEvent;
       })
-
-      this.loadreview(this.currentPage,this.itemsPerPage);
-
-      this.review.eventid=this.id;
 
   }
 
@@ -51,6 +63,11 @@ export class UserEventDetailsComponent {
     })
   }
   
+  ngOnDestroy(): void {
+    if (this.routeSub) {
+      this.routeSub.unsubscribe();
+    }
+  }
 
   BookEvent(event_id:string) {
     const token = sessionStorage.getItem('Authorization'); // Assuming your token is stored in sessionStorage
@@ -63,13 +80,13 @@ export class UserEventDetailsComponent {
            Swal.fire('Congratulation','You have Succssfully Booked Event! ', 'success');
             },
             error => {
-                // console.error("Error during enrollment", error);
                  Swal.fire('Error', 'You Have Already Enrolled This Event.', 'error');
 
             } );
         
         }
          else {
+          sessionStorage.setItem('event_id',event_id)
       const modalElement = document.getElementById('CheckLoggedIN');
             if (modalElement) {
               const modal = new (window as any).bootstrap.Modal(modalElement);
@@ -138,6 +155,34 @@ resetForm() {
   }
 
 
+  currentUrl: string = window.location.href;
+
+  shareOnWhatsApp() {
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(this.currentUrl)}`;
+      window.open(whatsappUrl, '_blank');
+  }
+  
+  
+  copyLink() {
+      navigator.clipboard.writeText(this.currentUrl).then(() => {
+          alert('Link copied to clipboard!');
+      }).catch(err => {
+          console.error('Could not copy text: ', err);
+      });
+  }
+  
+  shareOnFacebook() {
+      const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(this.currentUrl)}`;
+      window.open(facebookUrl, '_blank');
+  }
+
+  showshare=false;
+  shareicon(){
+    this.showshare = !this.showshare;
+  }
+
+
+
 show: boolean = false; 
 rememberMe: boolean = false;
 
@@ -156,12 +201,24 @@ rememberMe: boolean = false;
       if (form.valid) {
         this.loginservices.postsignupdata(this.userData).subscribe({
           next: (response) => {
-            // console.log(alert("Success"),response);
-            Swal.fire('Congratulation','Welcome to Ximbo! <br> Were thrilled to have you join our community of esteemed trainers, coaches, and educators. Ximbo is designed to empower you with the tools and resources needed to deliver exceptional training and create impactful learning experiences. <br> You Have Register successfully!', 'success');
-            this.route.navigate(['/cartcourse'])
+            sessionStorage.setItem("Authorization",response.token);
+            this.authService.login(response.token); // Set login state       
+           Swal.fire('Congratulation','Welcome to Ximbo! <br> Were thrilled to have you join our community of esteemed trainers, coaches, and educators. Ximbo is designed to empower you with the tools and resources needed to deliver exceptional training and create impactful learning experiences. <br> You Have Register successfully!', 'success');
+          let event_id = sessionStorage.getItem('event_id')
+           const data = { event_id };
+           this.dservice.bookevent(data).subscribe(
+               response => {
+              Swal.fire('Congratulation','You have Succssfully Booked Event! ', 'success');
+              sessionStorage.removeItem('event_id');
+               },
+               error => {
+                    Swal.fire('Error', 'You Have Already Enrolled This Event.', 'error');
+   
+               } );
+           
+           
           },
           error: (error)=>{
-            // console.log(alert("Error"),error);
             Swal.fire('Error', 'Please Enter Valid Details.', 'error');
           } 
         });

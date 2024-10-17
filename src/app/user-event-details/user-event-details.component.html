@@ -3,9 +3,29 @@
   <div class="row gap-5">
     <div class="col-sm-12 col-md-5 col-lg-8">
       <img src="{{ShowEvent.event_thumbnail}}" class="object-fit-cover rounded" width="100%" height="400px" alt="Event Thumbnail">
-      <div class="d-flex align-items-center gap-2">
-        <p class="card-title poppins-semibold" style="font-size: 25px;">{{ShowEvent.event_name}}</p>
-        <p class="mt-3" style="font-size: small;">(Provided by {{ShowEvent.business_Name}})</p>
+      <div class="d-flex align-items-center justify-content-between px-2">
+        <div class="d-flex gap-2 pt-2">
+          <p class="card-title poppins-semibold" style="font-size: 25px;">{{ShowEvent.event_name}}</p>
+         <p class="mt-3" style="font-size: small;">(Provided by {{ShowEvent.business_Name}})</p>
+        </div>
+        <!-- share button scetion -->
+        <div>
+          <!-- <i  class="fas fa-share-alt  text-primary"></i>  -->
+          <i (click)="shareicon()" class="fa-solid fa-share text-primary fs-3"></i>
+          <div class="share-container">
+              <div *ngIf="showshare" class="share-options gap-4 p-2">
+                  <a (click)="shareOnFacebook()" class="share-option p-1">
+                      <i class="fab fa-facebook fs-1" style="color: #0976e4;"></i>
+                  </a>
+                  <a (click)="shareOnWhatsApp()" class="share-option p-1">
+                      <i class="fab fa-whatsapp fs-1" style="color: #30d14e; text-decoration: none;"></i>
+                  </a>
+                  <a (click)="copyLink()" class="share-option p-1">
+                      <i class="fas fa-link fs-3"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
      </div>
       <p class="poppins-regular" style="text-align: justify;">{{ShowEvent.event_info}}</p>
     </div>
@@ -125,60 +145,47 @@
  
 </div>
 
-</div>
-
-
-<!-- <div *ngIf="ShowEvent" class="container rounded mt-5" style="box-shadow: 10px  10px 50px #a79ccf;">
-    <div class="row ">
-        <div class="col-sm-12 col-md-12 col-lg-12  p-4  d-flex align-items-center justify-content-between" style="background-color: #E9E5FB;">
-            <h5>{{ShowEvent.event_name}} Provided by {{ShowEvent.trainerid.f_Name + ' ' + ShowEvent.trainerid.l_Name }}</h5>
-            <button routerLink="/relevance/userevent" class="btn btn-0">Back</button>
-        </div>
-
-        <div class="col-sm-12 col-md-12 col-lg-6 mt-3 p-5">
-            <img src="{{ShowEvent.event_thumbnail}}" class="img-fluid " alt="Event Thumbnail" style="border-radius: 20px;">
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-6 mt-3 p-5">
-            <h3 class="card-title mb-2">{{ShowEvent.event_name}}</h3>
-            <p ><b>Type : </b>{{ShowEvent.event_type}}</p>
-            <p ><b>Category : </b> {{ShowEvent.event_category.category_name}}</p>
-            <p ><b>Date : </b> {{ShowEvent.event_date | date}}</p>
-            <p ><b>Start Time : </b> {{ShowEvent.event_start_time}}</p>
-            <p ><b>End Time : </b> {{ShowEvent.event_end_time}}</p>
-            <div class="mt-5">
-              <button (click)="BookEvent()" class="btn btn-primary me-3">Book You Seat</button>
-              <button routerLink="/coursedetails/{{ShowEvent.trainerid._id}}" class="btn btn-0 " >View Trainer Profile</button>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="row p-5 gap-2">
-        <h5 class="fw-bold" style="color: #674ACB;">Related Events</h5>
-        <div class="row row-cols-1 row-cols-md-5 gx-3">
-          <div *ngFor="let Event of relatedEvent" class="col-sm-12 col-md-3 col-lg-3 mb-3">
-            <div class="card p-2 round" routerLink="/eventdetails/{{Event._id}}" >
-             <img src="{{Event.thumbnail_image}}" class="rounded img-fluid" alt="...">
-             <div class="card-body ">
-                 <h5 class="card-title">{{Event.event_name}}</h5>
-                 <p class="m-0"><b>Type : </b>{{Event.event_type}}</p>
-                 <p class="m-0"><b>Category : </b> {{Event.event_category.category_name}}</p>
-                 <p class="m-0"><b>Date : </b> {{Event.event_date}}</p>
-                 <p class="m-0"><b>Start Time : </b> {{Event.event_start_time}}</p>
-                 <p class="m-0"><b>End Time : </b> {{Event.event_end_time}}</p>
-             </div>
-            </div>
+<div class="container mt-3">
+  <h5 class="fw-bold" style="color: var(--TextColor);">Related Events</h5>
+  <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
+   <div *ngFor="let Event of relatedEvent" class="col-sm-12 col-md-3 col-lg-3 mb-3">
+     <div class="card" routerLink="/eventdetails/{{Event._id}}">
+       <img src="{{Event.event_thumbnail}}" class="card-img-top img-fluid" alt="...">
+       <span class="onproducthoverflag rounded px-3">{{Event.event_flag}}</span>
+       <div class="card-body text">
+         <div class="d-flex align-items-center justify-content-between gap-1">
+           <span>
+             <label class="poppins-semibold-italic text-muted" style="font-size: 12px;">{{Event.event_date |  date: 'MMM'}}</label><br>
+             <span class="poppins-semibold-italic" style="font-size: 24px;">{{Event.event_date |  date: 'dd'}}</span>
+           </span>
+           <span>
+             <p class="card-title poppins-semibold-italic">{{Event.event_name}}</p>
+           </span>
+           <span class="text-center">
+             <span class="poppins-semibold-italic"> {{Event.event_type}} </span> <br>
+             <i *ngIf="Event.event_type === 'Online'" class="fas fa-circle-play text-muted"></i>
+             <i *ngIf="Event.event_type === 'Offline'" class="fas fa-location-dot"></i>
+           </span>
+       </div>
+         <div class="d-flex align-items-center gap-2 justify-content-center">
+           <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+           <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+           <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+           <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+           <label class="p-2 border rounded-circle"> +35</label>
          </div>
-            
-            
-           
-          </div> 
-           
-          
-    </div>
-</div> -->
+         <div class="d-flex align-items-center justify-content-between mt-2">
+           <button class="btn rounded-pill px-4 text-light poppins-regular" style="font-size: 14px;background-color: var(--TextColor);">Book Seat</button>
+           <button class="btn rounded-pill px-4 text-light poppins-regular" style="font-size: 14px;background-color: var(--btndarkColor);">View More</button>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
 
 
+</div>
 
 <!-- Model For User Registration -->
 
@@ -186,7 +193,7 @@
   <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="text-end">
-        <button type="button" class="btn-close me-3 mt-" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close me-3 mt-3" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body px-5">
         <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">

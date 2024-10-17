@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AdminService } from 'src/app/common_service/admin.service';
+import { AuthServiceService } from 'src/app/common_service/auth-service.service';
 import { TrainerService } from 'src/app/common_service/trainer.service';
 import Swal from 'sweetalert2';
 
@@ -12,20 +13,33 @@ import Swal from 'sweetalert2';
 })
 export class ProductComponent implements OnInit {
 
-  showIcon = false;
-  toggleIcon() {
-    this.showIcon = !this.showIcon;
-  }
+  isUser: boolean = true; // Example default value; adjust as needed
+  isTrainer: boolean = false;
+  isSELF_EXPERT: boolean = false;
+  isInstitute : boolean = false;  
+  isAdmin : boolean = false;
+
 
   showproductdata: any;
   selectedProduct: any;
   showCategorydata: any;
   starsArray: number[] = [1, 2, 3, 4, 5]; // 5 stars total
 
-
-  showProductDescription(product: any) {
-    this.selectedProduct = product;
+  showIcon = false;
+  toggleIcon() {
+    this.showIcon = !this.showIcon;
   }
+
+  checkUserRole() {
+    const role = this.auth.getUserRole();
+    console.log("product role",role);
+    this.isTrainer = role === 'TRAINER';
+    this.isSELF_EXPERT = role === 'SELF_EXPERT';
+    this.isInstitute = role === 'INSTITUTE';
+    this.isAdmin = role === 'SUPER_ADMIN';
+    this.isUser = role === 'USER'  || role === 'TRAINER' || role === 'SELF_EXPERT' || role === 'INSTITUTE' || role === 'SUPER_ADMIN' ;
+  }
+
 
   product = {
     product_name: '',
@@ -41,13 +55,16 @@ export class ProductComponent implements OnInit {
 
   selectedFile: File | null = null;
 
-  constructor(private service: TrainerService, private admin:AdminService) { }
+  constructor(private service: TrainerService, private admin:AdminService,private auth: AuthServiceService) { }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] as File;
   }
 
   ngOnInit(): void {
+
+    this.checkUserRole();
+
 
     this.service.gettrainerdatabyID().subscribe(data => {
       this.showproductdata = data?.productsWithFullImageUrl;
@@ -99,4 +116,6 @@ export class ProductComponent implements OnInit {
       }
     );
   }
+
+  
 }

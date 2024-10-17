@@ -1,48 +1,41 @@
 <div *ngIf="showprofile" class="container-fluid " style="background-color: #F5F5F5;">
 
-    <div class="row  mb-0">
+       <div class="row mb-0">
         <div class="col-sm-12 col-md-6 col-lg-10">
-            <div class="row ">
-                <div class="col-sm-12 col-md-2 col-lg-3">
-                    <img src="{{showprofile.gallarys[0].photos}}" alt="" class="object-fit-cover img-fluid rounded" alt="...">
+            <div class="row">
+                <div class="col-sm-12 col-md-2 col-lg-3" *ngIf="showprofile?.gallarys?.[0]">
+                    <img src="{{showprofile.gallarys[0]?.photos}}" alt="" class="object-fit-cover img-fluid rounded">
                 </div>
-                <div class="col-sm-12 col-md-2 col-lg-3">
-                    <img src="{{showprofile.gallarys[1].photos}}" alt="" class="object-fit-cover img-fluid rounded" alt="...">
+                <div class="col-sm-12 col-md-2 col-lg-3" *ngIf="showprofile?.gallarys?.[1]">
+                    <img src="{{showprofile.gallarys[1]?.photos}}" alt="" class="object-fit-cover img-fluid rounded">
                 </div>
-                <div class="col-sm-12 col-md-2 col-lg-3">
-                    <img src="{{showprofile.gallarys[2].photos}}" alt="" class="object-fit-cover img-fluid rounded" alt="...">
+                <div class="col-sm-12 col-md-2 col-lg-3" *ngIf="showprofile?.gallarys?.[2]">
+                    <img src="{{showprofile.gallarys[2]?.photos}}" alt="" class="object-fit-cover img-fluid rounded">
                 </div>
-                 <div class="col-sm-12 col-md-2 col-lg-3">
-                    <img src="{{showprofile.gallarys[3].photos}}" alt="" class="object-fit-cover img-fluid rounded" alt="...">
+                <div class="col-sm-12 col-md-2 col-lg-3" *ngIf="showprofile?.gallarys?.[3]">
+                    <img src="{{showprofile.gallarys[3]?.photos}}" alt="" class="object-fit-cover img-fluid rounded">
                 </div>
-                <!--<div class="col-sm-12 col-md-2 col-lg-2">
-                    <img src="{{showprofile.gallarys[4].photos}}" alt="" class="object-fit-cover img-fluid " alt="...">
-                </div>
-                <div class="col-sm-12 col-md-2 col-lg-2">
-                    <img src="{{showprofile.gallarys[4].photos}}" alt="" class="object-fit-cover img-fluid " alt="...">
-                </div> -->
-
             </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-2 ">
-            <div class="row  ">
-                <div class="col-sm-12 col-md-6 col-lg-6 mb-2">
-                    <img src="{{showprofile.gallarys[5].photos}}" class="rounded object-fit-cover" height="95px" width="114px" alt="...">
+        <div class="col-sm-12 col-md-6 col-lg-2">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-2" *ngIf="showprofile?.gallarys?.[5]">
+                    <img src="{{showprofile.gallarys[5]?.photos}}" class="rounded object-fit-cover" height="95px" width="114px" alt="...">
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <img src="{{showprofile.gallarys[4].photos}}" class="rounded object-fit-cover" height="95px" width="114px" alt="...">
+                <div class="col-sm-12 col-md-6 col-lg-6" *ngIf="showprofile?.gallarys?.[4]">
+                    <img src="{{showprofile.gallarys[4]?.photos}}" class="rounded object-fit-cover" height="95px" width="114px" alt="...">
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-6 position-relative" data-bs-toggle="modal" data-bs-target="#gallery" >
-                    <img  height="95px" width="114px" src="{{showprofile.gallarys[4].photos}}"
-                        class="rounded object-fit-cover opacity-25" alt="...">
-                        <span class="position-absolute top-50 start-50 translate-middle fw-bold text-dark p-2" >View More </span>
+                <div class="col-sm-12 col-md-6 col-lg-6 position-relative" data-bs-toggle="modal" data-bs-target="#gallery" *ngIf="showprofile?.gallarys?.[4]">
+                    <img src="{{showprofile.gallarys[4]?.photos}}" height="95px" width="114px" class="rounded object-fit-cover opacity-25" alt="...">
+                    <span class="position-absolute top-50 start-50 translate-middle fw-bold text-dark p-2">View More</span>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <img src="{{showprofile.gallarys[3].photos}}" height="95px" width="114px" class="rounded object-fit-cover" alt="...">
+                <div class="col-sm-12 col-md-6 col-lg-6" *ngIf="showprofile?.gallarys?.[3]">
+                    <img src="{{showprofile.gallarys[3]?.photos}}" height="95px" width="114px" class="rounded object-fit-cover" alt="...">
                 </div>
             </div>
         </div>
     </div>
+    
     <div class="row mt-3 ">
         <ul class="srolltabs" >
             <li *ngIf="showprofile.About[0]?.about_us" class="btn btn-sm btn-outline-primary" href="#About" 
@@ -106,13 +99,13 @@
         <!-- First Row code start hrer -->
         <div class="col-sm-12 col-lg-4 " id="About">
             <div class="d-flex align-items-center gap-3 " >
-                <img *ngIf="showprofile.trainer?.role === 'TRAINER'" src="../../assets/SELF_EXPERT.png" class="round" height="40px" width="40px" alt="" style="background-color:var(--TextColor);">
-                <img *ngIf="showprofile.trainer?.role === 'INSTITUTE'" src="../../assets/INSTITUTE.png" class="round" height="40px" width="40px" alt="" style="background-color:var(--TextColor);">
+                <img *ngIf="showprofile.trainer?.role === 'SELF_EXPERT'" src="../../assets/SELF_EXPERT.png" class="round" height="40px" width="40px" alt="" style="background-color:var(--TextColor);">
+                <img *ngIf="showprofile.trainer?.role === 'TRAINER'" src="../../assets/INSTITUTE.png" class="round" height="40px" width="40px" alt="" style="background-color:var(--TextColor);">
                 <h5 class="text-color">{{showprofile.trainer?.business_Name || showprofile.institutes}}</h5>
             </div>
             <div class="d-flex align-items-center gap-3">
                 <i class="fa-solid fa-user card-user"></i>
-                <h6 class="mt-1"> {{showprofile.trainer.f_Name + " " + showprofile.trainer.l_Name}} </h6>
+                <h6 class="mt-1"> {{showprofile.trainer?.f_Name + " " + showprofile.trainer?.l_Name}} </h6>
             </div>
             
             <div>
@@ -127,7 +120,7 @@
 
             <div>
                 <i class="fa-solid fa-location-dot p-2"></i> &nbsp;
-                <span>{{showprofile.trainer.address1 + ", " + showprofile.trainer.address2 }}</span>
+                <span>{{showprofile.trainer?.address1 + ", " + showprofile.trainer?.address2 }}</span>
 
                 <div class="d-flex gap-3 py-3">
                     <a class="text-dark" href="{{showprofile.SocialMedias?.facebook}}" target="_blank"><i
@@ -145,34 +138,26 @@
             <div class="d-flex align-items-center gap-3 ">
                 <button class="btn btn-phone d-flex align-items-center gap-2"><i class="fa-solid fa-mobile-screen"></i>
                     {{showprofile.trainer.mobile_number}}</button>
-                <!-- <a class="btn border-dark d-flex align-items-center  gap-2"
-                    href="https://wa.me/{{showprofile.trainer.whatsapp_no}}" target="_blank"><i
-                        class="fa-brands fa-whatsapp fw-bold fs-4" style="color: #30d14e;"></i> Whatsapp
-                </a> -->
                 <a class="btn border-dark d-flex align-items-center gap-2" (click)="handleWhatsAppClick()"> <i
                         class="fa-brands fa-whatsapp fw-bold fs-4" style="color: #30d14e;"></i> Whatsapp</a>
-
-                <!-- <button class="btn border-dark">Rate <i class="fa-regular fa-star"></i></button> -->
-                <button (click)="shareicon()" class="btn share-button"><i class="fas fa-share-alt"></i> Share</button>
-                <!-- <button class="btn border-dark"><i class="fa-regular fa-heart"></i></button> -->
-            </div>
-
-           
-
             <!-- share button scetion -->
-            <div class="share-container">
-                <div *ngIf="showshare" class="share-options gap-4">
-                    <a (click)="shareOnWhatsApp()" class="share-option">
-                        <i class="fab fa-whatsapp fs-1" style="color: #30d14e; text-decoration: none;"></i>
-                    </a>
-                    <a (click)="copyLink()" class="share-option">
-                        <i class="fas fa-link fs-3"></i>
-                    </a>
-                    <a (click)="shareOnFacebook()" class="share-option">
-                        <i class="fab fa-facebook fs-1" style="color: #0976e4;"></i>
-                    </a>
-                </div>
-            </div>
+                <div >
+                    <button (click)="shareicon()" class="btn share-button"><i class="fas fa-share-alt"></i> Share</button>
+                    <div class="share-container">
+                        <div *ngIf="showshare" class="share-options gap-4 p-2">
+                            <a (click)="shareOnFacebook()" class="share-option p-1">
+                                <i class="fab fa-facebook fs-1" style="color: #0976e4;"></i>
+                            </a>
+                            <a (click)="shareOnWhatsApp()" class="share-option p-1">
+                                <i class="fab fa-whatsapp fs-1" style="color: #30d14e; text-decoration: none;"></i>
+                            </a>
+                            <a (click)="copyLink()" class="share-option p-1">
+                                <i class="fas fa-link fs-3"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>    
+        </div>
 
             <hr>
 
@@ -351,10 +336,10 @@
 
 
         </div>
-        <!-- Second Row code End hrer -->
-
         </div>
         <!-- First Row code End hrer -->
+
+
         <!-- Second Row code start hrer -->
         <div class="col-sm-12 col-lg-7 border-start px-3" id="Courses" >
             <!-- current batches -->
@@ -392,10 +377,6 @@
                     <button class="border border-0 ms-2" (click)="nextPageBatches()" [disabled]="currentPageBatches === totalPagesBatches()"><i class="fa-solid fa-angles-right text-primary"></i></button>
                   </div>
                   
-                  <!-- <div class="text-end mb
-                    <p class="me-3 ViewmoreArrow">View More <i class="fa-solid fa-arrow-right "></i> </p>
-                    <pagination-controls  style="float:right;font-size: small;" (pageChange)="p = $event"></pagination-controls>
-                  </div> -->
                  </div>
             <hr>
             <!-- upcoming batches -->
@@ -530,9 +511,7 @@
                     <span>Page {{currentPageOfflineEvents}} of {{totalPagesOfflineEvents()}}</span>
                     <button class="border border-0 ms-2" (click)="nextPageOfflineEvents()" [disabled]="currentPageOfflineEvents === totalPagesOfflineEvents()"><i class="fa-solid fa-angles-right text-primary"></i></button>
                   </div>
-                  <!-- <div class="text-end">
-                    <p class="me-3 ViewmoreArrow">View More <i class="fa-solid fa-arrow-right "></i> </p>
-                  </div> -->
+                  
                 </div>
 
             <hr>
@@ -578,9 +557,7 @@
                     <span>Page {{currentPageProducts}} of {{totalPagesProducts()}}</span>
                     <button class="border border-0 ms-2" (click)="nextPageProducts()" [disabled]="currentPageProducts === totalPagesProducts()"><i class="fa-solid fa-angles-right text-primary"></i></button>
                   </div>
-                  <!-- <div class="text-end">
-                    <p class="me-3 ViewmoreArrow">View More <i class="fa-solid fa-arrow-right "></i> </p>
-                  </div> -->
+               
             </div>   
            
             
@@ -590,8 +567,8 @@
                     <div class="d-flex align-items-center gap-3 mt-1">
                         <h6 class="p-2 rounded" style="background-color: var(--btndarkColor);color: white;">4.5</h6>
                         <div>
-                            <p class="m-0">209 Ratings</p>
-                            <p class="m-0">rating index based on 209 ratings across the web</p>
+                            <p class="m-0">{{showreviewdata.length}}</p>
+                            <p class="m-0">rating index based on {{showreviewdata.length}} ratings across the web</p>
                         </div>
                     </div>
                     
@@ -616,24 +593,9 @@
                         <div class="col-12 mt-2">
                             <p>{{review.review}}</p>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between fw-bold mt-1">
-                            <label (click)="shareiconreview()"><i class="fa-regular fa-share-from-square"></i> Share</label>
-                            <label><i class="fa-regular fa-comment"></i> Comment</label>
+                        <div class="d-flex align-items-center justify-content-end fw-bold mt-1">
                             <label><i class="fa-regular fa-thumbs-up"></i> Helpful (2)</label>
                         </div>
-                        <!-- <div class="share-container">
-                                <div *ngIf="showsharereview" class="share-options gap-4">
-                                    <a (click)="shareOnWhatsApp()" class="share-option">
-                                        <i class="fab fa-whatsapp fs-1" style="color: #30d14e; text-decoration: none;"></i>
-                                    </a>
-                                    <a (click)="copyLink()" class="share-option">
-                                        <i class="fas fa-link fs-3"></i>
-                                    </a>
-                                    <a (click)="shareOnFacebook()" class="share-option">
-                                        <i class="fab fa-facebook fs-1" style="color: #0976e4;"></i>
-                                    </a>
-                                </div>
-                            </div> -->
                         </div>
                         <pagination-controls style="float:right;font-size: small;" (pageChange)="p = $event"></pagination-controls>
                 </div>

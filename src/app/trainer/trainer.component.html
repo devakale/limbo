@@ -1,24 +1,7 @@
 <div class="container-fluid" style="background-color: var(--bodyColor);">
   <div class="row">
     <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
-      <!-- <div *ngFor="let trainer of filtertrainer" class="col-sm-12 col-md-6 col-lg-3 mb-3">
-        <div class="card" routerLink="/coursedetails/{{trainer.t_id}}">
-          <div class="text-center mt-3">
-          <img src="{{trainer.trainer_image}}" class="object-fit-cover rounded-circle" alt="..." style="width: 150px !important;height: 150px;">
-        </div>
-          <div class="card-body text-center">
-            <h5 class="card-title fw-bold"> {{trainer.f_Name || "John" }}  {{trainer.l_Name || "Deo" }}</h5>
-              <small class="m-0"><i class="fa-solid fa-book-open-reader"></i> {{trainer.course_count}} Courses</small>
-              <div class="social-icons">
-                <i href="https://www.facebook.com"  class="fa-brands fa-facebook border rounded" ></i>
-                <i href="https://twitter.com" target="_blank" class="fab fa-twitter border rounded" ></i>
-                <i href="https://www.instagram.com" target="_blank" class="fab fa-instagram border rounded" ></i>
-                <i href="https://www.linkedin.com" target="_blank" class="fab fa-linkedin-in border rounded" ></i>
-                <i href="https://www.youtube.com" target="_blank" class="fab fa-youtube border rounded" ></i>
-              </div>
-          </div>
-        </div>
-      </div> -->
+      
       <div *ngFor="let trainer of filteredtrainer | paginate: { itemsPerPage: itemsPerPage, currentPage: p, totalItems }" class="col-sm-12 col-md-6 col-lg-3  mb-3" >
         <div class="card trainercard " style="margin-top: 40%;border: none;" routerLink="/coursedetails/{{trainer.t_id}}" >
           <div class="text-center mt-3" style="position: relative;" >

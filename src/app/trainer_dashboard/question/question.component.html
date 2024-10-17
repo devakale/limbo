@@ -14,7 +14,7 @@
                 <th scope="col">Action</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf="ShowQuestion && ShowQuestion.length > 0">
                 <tr *ngFor="let question of ShowQuestion">
                     <td>Sagar Singh</td>
                     <td>{{question.created_at}}</td>
@@ -22,8 +22,12 @@
                     <td><button class="btn btn-primary">Delete</button></td>
                 </tr>
             </tbody>
+            <div *ngIf="!ShowQuestion || ShowQuestion.length === 0" class="col-12 text-center">
+                <img src="../../../assets/No data-Found.png" class="img-fluid object-fit-cover" height="300px" width="300px" alt="">
+            </div>
         </table>
         
         </div>
     </div>
+    
 </div>

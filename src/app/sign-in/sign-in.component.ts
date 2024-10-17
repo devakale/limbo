@@ -49,7 +49,6 @@ export class SignInComponent implements OnInit {
             this.route.navigate(['/trainer']);
             this.authService.login(response.token); // Set login state
         Swal.fire('','We’re excited to see you again. Your login was successful, and you’re now ready to continue creating amazing learning experiences.', 'success');
-        
       },
       error: () => { 
         this.message = 'An error occurred';

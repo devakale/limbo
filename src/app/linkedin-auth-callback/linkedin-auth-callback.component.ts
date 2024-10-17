@@ -44,12 +44,15 @@ export class LinkedinAuthCallbackComponent implements OnInit{
 
   fetchUserProfile(token:string) {
     const apiUrl = 'http://localhost:1000/api/linkedin/userinfo';
+    
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`, // Set the authorization header
       'Content-Type': 'application/json' // Set content type
     });
-   this.http.get(apiUrl,{headers}).subscribe((responspe:any)=>{console.log(responspe)},(error)=>{console.error('Error fetching profile', error);});
+   this.http.get(apiUrl,{headers}).subscribe((responspe:any)=>
+    {console.log(responspe)},(error)=>{console.error('Error fetching profile', error);});  
   }
+  
   getAccessToken(code: string) {
     this.http.post('http://localhost:1000/api/linkedin/access-token', { code })
       .subscribe(
