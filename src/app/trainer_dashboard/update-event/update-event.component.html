@@ -1,5 +1,7 @@
-<div class="container">
+<div class="container-fluid">
+<div class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded border my-3 px-5">
     <div class="row">
+      <h2 class="text-center">Update Event</h2>
         <form [formGroup]="uploadform"  (ngSubmit)="onSubmit()">
             <div class="modal-body">
               <div class="row">
@@ -8,11 +10,6 @@
                   <input class="form-control" type="text" id="event_name" formControlName="event_name" name="event_name" required>  
                 </div> 
           
-                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
-                  <label for="event_date" class="col-form-label">Event Date:</label>
-                  <input class="form-control"   type="Date" id="event_date" formControlName="event_date" name="event_date"  required>  
-                </div> 
-
                 <div class="col-sm-12 col-md-6 col-lg-6">
                   <label for="event_categories" class="col-form-label">Select Categories</label>
                   <select class="form-select" aria-label="Default select example" id="event_categories"
@@ -23,6 +20,11 @@
                     </option>
                   </select>
                 </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                  <label for="event_date" class="col-form-label">Event Date:</label>
+                  <input class="form-control"   type="Date" id="event_date" formControlName="event_date" name="event_date"  required>  
+                </div> 
           
                 <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
                   <label for="event_type" class="col-form-label">Event Mode:</label>
@@ -39,10 +41,41 @@
                   <input class="form-control" type="text"  id="event_start_time" formControlName="event_start_time" name="event_start_time" required>
                 </div> 
           
-                <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
                   <label for="event_end_time" class="col-form-label">Event End Time:</label>
                   <input type="text" class="form-control" id="event_end_time" formControlName="event_end_time" name="event_end_time" required>
                 </div> 
+
+                <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+                  <label for="event_location" class="col-form-label">Location:</label>
+                  <input type="text" class="form-control" id="event_location" formControlName="event_location"
+                    name="event_location" required />
+                </div>
+    
+                <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+                  <label for="event_languages" class="col-form-label">Event Language:</label>
+                  <input type="text" class="form-control" id="event_languages" formControlName="event_languages"
+                    name="event_languages" required />
+                </div>
+    
+                <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+                  <label for="estimated_seats" class="col-form-label">Estimate Seat:</label>
+                  <input type="text" class="form-control" id="estimated_seats" formControlName="estimated_seats"
+                    name="estimated_seats" required />
+                </div>
+
+                <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+                  <label for="event_info" class="col-form-label">Event Short Information:</label>
+                  <textarea type="text" class="form-control" id="event_info" formControlName="event_info"
+                    name="event_info" required ></textarea>
+                </div>
+    
+                <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
+                  <label for="event_description" class="col-form-label">Event Details Information:</label>
+                  <textarea type="text" class="form-control" id="event_description" formControlName="event_description"
+                    name="event_description" required ></textarea>
+                </div>
+    
 
                 <div class="mb-3 col-sm-12 col-md-6 col-lg-6">
                   <label for="event_thumbnail" class="col-form-label">Upload Event Image</label><br />
@@ -62,4 +95,5 @@
             </div>
           </form>
     </div>
+</div>
 </div>

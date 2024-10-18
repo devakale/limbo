@@ -43,7 +43,12 @@ export class UpdateEventComponent implements OnInit {
       event_categories:['',Validators.required],
       event_start_time:['',Validators.required],
       event_end_time:['',Validators.required],
-      event_thumbnail:['']
+      event_location:['',Validators.required],
+      estimated_seats:['',Validators.required],
+      event_languages:['',Validators.required],
+      event_info:['',Validators.required],
+      event_description:['',Validators.required],
+      event_thumbnail:['',Validators.required],
 
 
     });
@@ -57,6 +62,11 @@ export class UpdateEventComponent implements OnInit {
         event_type:d.event_type,
         event_categories:d.event_categories,
         event_start_time:d.event_start_time,
+        event_location:d.event_location,
+      estimated_seats:d.estimated_seats,
+      event_languages:d.event_languages,
+      event_info:d.event_info,
+      event_description:d.event_description,
         event_end_time:d.event_end_time,        
       });
       this.event_thumbnail = d.event_thumbnail;
@@ -76,6 +86,11 @@ export class UpdateEventComponent implements OnInit {
     formData.append('event_categories',this.uploadform.get('event_categories')?.value);
     formData.append('event_start_time',this.uploadform.get('event_start_time')?.value);
     formData.append('event_end_time',this.uploadform.get('event_end_time')?.value);  
+    formData.append('event_location',this.uploadform.get('event_location')?.value);  
+    formData.append('estimated_seats',this.uploadform.get('estimated_seats')?.value);  
+    formData.append('event_languages',this.uploadform.get('event_languages')?.value);  
+    formData.append('event_info',this.uploadform.get('event_info')?.value);  
+    formData.append('event_description',this.uploadform.get('event_description')?.value);  
 
     if (this.event_thumbnail) {
       formData.append('event_thumbnail', this.event_thumbnail);

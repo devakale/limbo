@@ -1,5 +1,5 @@
 <div class="container-fluid" style="background-color: #F9F8FF;">
-  <div class="container">
+  <div class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded border my-3">
     <div class="row p-3">
       <form [formGroup]="uploadform" (ngSubmit)="onSubmit()" >
         <h1 class="text-center">Update Course</h1>
@@ -11,7 +11,7 @@
 
           <div class="col-sm-12 col-md-6 col-lg-6">
             <label for="category_id" class="col-form-label">Select Categories</label>
-            <select class="form-select" formControlName="category_id" id="category_id" name="category_id">
+            <select class="form-select" formControlName="category_id" formControlName="category_name" id="category_id" name="category_id">
               <option value="" disabled>Select Categories</option>
               <option *ngFor="let category of showCategorydata" [value]="category._id">
                 {{ category.category_name }}
@@ -71,19 +71,20 @@
 
           <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
             <label for="tags" class="col-form-label">tags</label>
-            <input type="text" class="form-control" id="tags" formControlName="Courses.tags" name="tags" />
+            <input type="text" class="form-control" id="tags" formControlName="tags" name="tags" />
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+            <label for="course_information" class="col-form-label">Course Short Information</label>
+            <textarea class="form-control" id="course_information" formControlName="course_information"></textarea>
           </div>
 
           <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
             <label for="course_brief_info" class="col-form-label">Course Details Description</label>
             <textarea type="text" class="form-control" id="course_brief_info"
-              formControlName="Courses.course_brief_info" name="course_brief_info"></textarea>
+              formControlName="course_brief_info" name="course_brief_info"></textarea>
           </div>
 
-          <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-            <label for="course_information" class="col-form-label">Course Information</label>
-            <textarea class="form-control" id="course_information" formControlName="course_information"></textarea>
-          </div>
 
           <div class="text-center my-3">
             <button routerLink="/trainer/mycourse" type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">Close</button>

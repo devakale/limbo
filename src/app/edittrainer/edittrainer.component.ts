@@ -47,8 +47,8 @@ export class EdittrainerComponent implements OnInit {
   }
 
   Testimonial = {
-      Testimonial:'',
-     Testimonial_Autor_Name:'',
+    Testimonial_Description:'',
+      Testimonial_Title:'',
   }
 
 
@@ -208,8 +208,8 @@ export class EdittrainerComponent implements OnInit {
 // ***************************  POST DATA Testimonial Details *********************
     ontestimonials(){
       const test ={
-        Testimonial: this.Testimonial.Testimonial,
-       Testimonial_Autor_Name: this.Testimonial.Testimonial_Autor_Name,
+        Testimonial_Description: this.Testimonial.Testimonial_Description,
+       Testimonial_Title: this.Testimonial.Testimonial_Title,
       }
       this.service.posttestimonial(test).subscribe({
         next: (response) => {

@@ -1,7 +1,7 @@
 <div class="container-fluid" style="background-color: #f3f3f3;">
     <div class="row ">
 
-        <div class="col-lg-2 bg-light  rounded-end my-3 " style="height: 100%;">
+        <div class="col-lg-2 bg-light  rounded-end my-2 sidebarlgscreen" >
             <ul class="list px-2">
                 <!-- Dashboard: Visible to USER, TRAINER, ADMIN -->
                 <li *ngIf="isUser" routerLink="/trainer" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="hover" style="font-size: 20px;">
@@ -73,36 +73,12 @@
         </div>
         
         
-        
-        
-
-        <!-- <div class="col-lg-2 bg-dark text-light pt-3 rounded-end" style="height: 100vh;">
-            <ul class="list">
-                <li *ngIf="isUser" routerLink="/trainer" class="hover"><i class="fa-solid fa-house"></i>Dashboard</li>
-                <li *ngIf="isAdmin" routerLink="/trainer/superadmin" class="hover"><i class="fa-solid fa-house"></i>Request</li>
-                <li *ngIf="isUser" routerLink="/trainer/mycourse" class="hover"><i class="fa-solid fa-cart-shopping"></i>Course</li>
-                <li *ngIf="isTrainer" routerLink="/trainer/product" class="hover"><i class="fa-solid fa-square-check"></i>Product</li>
-                <li *ngIf="isTrainer" routerLink="/trainer/event" class="hover"><i class="fa-solid fa-calendar-days"></i>Event</li>
-                <li *ngIf="isTrainer" routerLink="/trainer/enquiry" class="hover"><i class="fa-solid fa-envelope"></i>Enquiry</li>
-                <li *ngIf="isTrainer" routerLink="/trainer/appointment" class="hover"><i class="fa-solid fa-circle-user"></i>Appointment</li>
-                <li *ngIf="isUser" routerLink="er" class="hover"><i class="fa-solid fa-clock-rotate-left"></i>History</li>
-                <li *ngIf="isUser" routerLink="er" class="hover"><i class="fa-solid fa-clock-rotate-left"></i>Message</li>
-
-            </ul>
-        </div> -->
-
-        <div class="col-lg-10">
-
+        <div class="col-lg-10 pt-2">
             <div class="row">
                 <router-outlet></router-outlet>
             </div>
         </div>
-    </div> 
-
-    <!-- Student Dashboard -->
-     
-   
-
+    </div>      
 </div> <!-- close container -->
 
 

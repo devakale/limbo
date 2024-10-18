@@ -32,6 +32,8 @@ export class UpdateProductComponent implements OnInit {
       product_prize: ['', Validators.required],
       product_selling_prize: ['', Validators.required],
       products_info: ['', Validators.required],
+      product_flag: ['',Validators.required],
+      products_description: ['',Validators.required],
       product_image: [''],
       product_gallary: [''],
     });
@@ -44,6 +46,8 @@ export class UpdateProductComponent implements OnInit {
         product_prize: d.product_prize,
         product_selling_prize: d.product_selling_prize,
         products_info: d.products_info,
+        product_flag: d.product_flag,
+        products_description: d.products_description
       });
 
       this.product_image = d.product_image;
@@ -65,6 +69,8 @@ export class UpdateProductComponent implements OnInit {
     formData.append('product_prize', this.uploadform.get('product_prize')?.value);
     formData.append('product_selling_prize', this.uploadform.get('product_selling_prize')?.value);
     formData.append('products_info', this.uploadform.get('products_info')?.value);
+    formData.append('product_flag', this.uploadform.get('product_flag')?.value);
+    formData.append('products_description', this.uploadform.get('products_description')?.value);
   
     if (this.product_image) {
       formData.append('product_image', this.product_image);
@@ -76,13 +82,11 @@ export class UpdateProductComponent implements OnInit {
     this.service.updateproductbyID(this._id, formData).subscribe({
       next: response => {
         // console.log('Response:', response);
-        // alert("Data Updated"); 
         Swal.fire('Success', 'Product updated successfully!', 'success');
         this.route.navigate(['/trainer/product']);
       },
       error: error => {
         // console.error('Update failed', error);
-        // alert("Error");
         Swal.fire('Error', 'Error updating course.', 'error');
       }
     });

@@ -1,10 +1,11 @@
-<div class="container rounded mt-5" style="box-shadow: 5px  5px 30px #a79ccf;">
+<div class="container rounded my-5" style="box-shadow: 5px  5px 30px #a79ccf;">
     <div class="row ">
         <div class="col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-between p-4 rounded-top" style="background-color: #E9E5FB;">
             <p>Shopping Cart</p>
-            <button class="btn btn-0">Continue Shopping</button>
+            <button routerLink="/relevance/userproduct" class="btn btn-0">Continue Shopping</button>
         </div>
 
+        <div *ngIf="showcartdata && showcartdata.length > 0">
         <div class="table-responsive">
             <table class="table  table-bordered border-dark text-center mt-2">
                 <thead>
@@ -41,7 +42,7 @@
             </table>
         </div>
         
-        <div class="row d-flex justify-content-end pt-5">
+        <div class="row d-flex justify-content-end pt-3">
             <div class="col-sm-12 col-md-6 col-lg-3 table-responsive">
                 <h6>CART TOTALS</h6>
                 <table class="table" style="border: 1px solid black;">
@@ -60,6 +61,11 @@
                 <button type="button" class="btn btn-lg btn-block  rounded- w-100" style="background-color: #674ACB;color: white;">Procced to checkout</button>
             </div>
             </div>
+        </div>
+    </div>
+
+        <div *ngIf="!showcartdata || showcartdata.length === 0" class="col-12 text-center">
+            <img src="../../../assets/No data-Found.png" class="img-fluid object-fit-cover" height="300px" width="300px" alt="">
         </div>
        
     </div>    

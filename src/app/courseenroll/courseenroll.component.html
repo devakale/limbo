@@ -1,16 +1,21 @@
 <div class="container rounded my-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
-  <div *ngIf="Showcoursedetails" class="row  ">
-    <div class="col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-end my-3" >
-      <!-- <h5>{{Showcoursedetails.course_name}} Provided By {{Showcoursedetails.business_Name}}</h5> -->
-      <button routerLink="/relevance" class="btn btn-0 rounded-pill" style="width: 80px;">Back</button>
-  </div>
-    <div class="col-sm-12 col-md-12 col-lg-5">
+  <div *ngIf="Showcoursedetails" class="row pt-4">
+    <div class="col-sm-12 col-md-12 col-lg-5 ">
         <img src="{{Showcoursedetails.thumbnail_image}}" class="img-fluid" alt="..." style="border-radius: 6px;"><br>
-        <p class="text-end">
+       <div class="d-flex align-items-center justify-content-between px-1">
+        <p class="text-end mt-2">
           <span class="poppins-semibold-italic"> {{Showcoursedetails.online_offline}} </span> 
           <i *ngIf="Showcoursedetails.online_offline === 'Online'" class="fas fa-circle-play text-muted m-0 p-0"></i>
           <i *ngIf="Showcoursedetails.online_offline === 'Offline'" class="fas fa-location-dot m-0 p-0"></i>
         </p>
+        <div class="m-0 p-0 g-0" style="margin-top: -13px !important;">
+          Rating 
+          <span *ngFor="let star of starsArray; let i = index"
+          [ngClass]="{'fa fa-star checked': i < Showcoursedetails.course_rating, 'fa fa-star': i <= Showcoursedetails.course_rating }">
+         </span>
+        </div>
+        
+      </div>
     </div>
     <div class="col-sm-12 col-md-12 col-lg-7  px-5 label-color">
       <div class="d-flex align-items-center gap-2">
